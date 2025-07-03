@@ -30,6 +30,11 @@ import io.helidon.common.features.api.Preview;
 @SuppressWarnings({ "requires-automatic"})
 module io.helidon.integrations.neo4j {
 
+    requires static jakarta.cdi;
+    requires static jakarta.inject;
+    requires static io.helidon.config;
+    requires static io.helidon.config.mp;
+
     requires io.helidon.common;
 
     requires static io.helidon.common.features.api;
@@ -39,5 +44,6 @@ module io.helidon.integrations.neo4j {
     requires transitive org.neo4j.driver;
 
     exports io.helidon.integrations.neo4j;
+    provides jakarta.enterprise.inject.spi.Extension with io.helidon.integrations.neo4j.Neo4jCdiExtension;
 
 }
