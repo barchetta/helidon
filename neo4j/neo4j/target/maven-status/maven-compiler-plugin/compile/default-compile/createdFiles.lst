@@ -1,0 +1,8 @@
+io/helidon/integrations/neo4j/Neo4j.class
+io/helidon/integrations/neo4j/Neo4j$Builder.class
+io/helidon/integrations/neo4j/package-info.class
+module-info.class
+io/helidon/integrations/neo4j/Neo4j$Builder$TrustStrategy.class
+META-INF/helidon/config-metadata.json
+io/helidon/integrations/neo4j/Neo4jException.class
+META-INF/helidon/feature-metadata.properties
