@@ -71,6 +71,11 @@ if [ "${HELIDON_VERSION}" != "${HELIDON_VERSION_IN_EXAMPLES}" ]; then
   exit 1
 fi
 
+echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+docker version
+docker ps
+echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
 # shellcheck disable=SC2086
 mvn ${MVN_ARGS} \
     -f "${WS_DIR}/helidon-examples/pom.xml" \
