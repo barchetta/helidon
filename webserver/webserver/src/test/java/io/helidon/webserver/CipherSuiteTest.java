@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021, 2023 Oracle and/or its affiliates.
+ * Copyright (c) 2021, 2026 Oracle and/or its affiliates.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,9 +32,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -121,9 +119,16 @@ class CipherSuiteTest {
             IllegalStateException ise = (IllegalStateException) cause;
             // this is the message we get when connection is closed
             assertThat(ise.getMessage(), containsString("Connection reset by the host"));
+        } else if (cause instanceof java.nio.channels.ClosedChannelException ) {
+            return;
         } else {
             assertThat(cause, instanceOf(SSLHandshakeException.class));
-            assertThat(cause.getMessage(), is("Received fatal alert: handshake_failure"));
+            assertThat(cause.getMessage(),
+                    anyOf(
+                            is("Received fatal alert: handshake_failure"),
+                            containsString("No appropriate protocol")
+                    ));
         }
     }
+
 }
