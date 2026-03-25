@@ -252,192 +252,21 @@ Webclient provides three DNS resolver implementations out of the box:
 
 The class responsible for WebClient configuration is:
 
-Type: [io.helidon.webclient.api.WebClient](/apidocs/io.helidon.webclient.api/io/helidon/webclient/api/WebClient.html)
-
-This is a standalone configuration type, prefix from configuration root: `clients`
-
 ### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>base-uri</code></p></td>
-<td style="text-align: left;"><p>ClientUri</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Base uri used by the client in all requests.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>connect-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Connect timeout.</p>
-<p>See io.helidon.common.socket.SocketOptions.connectTimeout()</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>connection-cache-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>256</code></p></td>
-<td style="text-align: left;"><p>Maximal size of the connection cache for a single connection key. A connection key is formed by the scheme, host, port, TLS configuration, DNS resolver, DNS address lookup, and proxy.</p>
-<p>For most HTTP protocols, we may cache connections to various endpoints for keep alive (or stream reuse in case of HTTP/2). This option limits the size. Setting this number lower than the "usual" number of target services will cause connections to be closed and reopened frequently.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>content-encoding</code></p></td>
-<td style="text-align: left;"><p><a href="../se/../config/io_helidon_http_encoding_ContentEncodingContext.xml">ContentEncodingContext</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Configure the listener specific io.helidon.http.encoding.ContentEncodingContext. This method discards all previously registered ContentEncodingContext. If no content encoding context is registered, default encoding context is used.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>cookie-manager</code></p></td>
-<td style="text-align: left;"><p><a href="../se/../config/io_helidon_webclient_api_WebClientCookieManager.xml">WebClientCookieManager</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>WebClient cookie manager.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>default-headers</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, string&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Default headers to be used in every request from configuration.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>follow-redirects</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to follow redirects.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>keep-alive</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Determines if connection keep alive is enabled (NOT socket keep alive, but HTTP connection keep alive, to re-use the same connection for multiple requests).</p>
-<p>See io.helidon.common.socket.SocketOptions.socketKeepAlive()</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-in-memory-entity</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>131072</code></p></td>
-<td style="text-align: left;"><p>If the entity is expected to be smaller that this number of bytes, it would be buffered in memory to optimize performance. If bigger, streaming will be used.</p>
-<p>Note that for some entity types we cannot use streaming, as they are already fully in memory (String, byte[]), for such cases, this option is ignored. Default is 128Kb.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-redirects</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>10</code></p></td>
-<td style="text-align: left;"><p>Max number of followed redirects. This is ignored if followRedirects() option is <code>false</code>.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>media-context</code></p></td>
-<td style="text-align: left;"><p><a href="../se/../config/io_helidon_http_media_MediaContext.xml">MediaContext</a></p></td>
-<td style="text-align: left;"><p><code>create()</code></p></td>
-<td style="text-align: left;"><p>Configure the listener specific io.helidon.http.media.MediaContext. This method discards all previously registered MediaContext. If no media context is registered, default media context is used.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>media-type-parser-mode</code></p></td>
-<td style="text-align: left;"><p>ParserMode (STRICT, RELAXED)</p></td>
-<td style="text-align: left;"><p><code>ParserMode.STRICT</code></p></td>
-<td style="text-align: left;"><p>Configure media type parsing mode for HTTP <code>Content-Type</code> header.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>properties</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, string&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Properties configured for this client. These properties are propagated through client request, to be used by services (and possibly for other purposes).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>protocol-configs</code></p></td>
-<td style="text-align: left;"><p>io.helidon.webclient.spi.ProtocolConfig[] (service provider interface)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Configuration of client protocols.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>protocol-preference</code></p></td>
-<td style="text-align: left;"><p>string[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>List of HTTP protocol IDs by order of preference. If left empty, all discovered providers will be used, ordered by weight.</p>
-<p>For example if both HTTP/2 and HTTP/1.1 providers are available (considering HTTP/2 has higher weights), for ALPN we will send h2 and http/1.1 and decide based on response. If TLS is not used, we would attempt an upgrade (or use prior knowledge if configured in protocolConfigs()).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>proxy</code></p></td>
-<td style="text-align: left;"><p><a href="../se/../config/io_helidon_webclient_api_Proxy.xml">Proxy</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Proxy configuration to be used for requests.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>read-continue-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>PT1S</code></p></td>
-<td style="text-align: left;"><p>Socket 100-Continue read timeout. Default is 1 second. This read timeout is used when 100-Continue is sent by the client, before it sends an entity.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>read-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Read timeout.</p>
-<p>See io.helidon.common.socket.SocketOptions.readTimeout()</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>relative-uris</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Can be set to <code>true</code> to force the use of relative URIs in all requests, regardless of the presence or absence of proxies or no-proxy lists.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>send-expect-continue</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether Expect-100-Continue header is sent to verify server availability before sending an entity.</p>
-<p>Defaults to <code>true</code>.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>services</code></p></td>
-<td style="text-align: left;"><p>io.helidon.webclient.spi.WebClientService[] (service provider interface)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>WebClient services.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>share-connection-cache</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to share connection cache between all the WebClient instances in JVM.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>socket-options</code></p></td>
-<td style="text-align: left;"><p><a href="../se/../config/io_helidon_common_socket_SocketOptions.xml">SocketOptions</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Socket options for connections opened by this client. If there is a value explicitly configured on this type and on the socket options, the one configured on this type’s builder will win:</p>
-<ul>
-<li><p>readTimeout()</p></li>
-<li><p>connectTimeout()</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>tls</code></p></td>
-<td style="text-align: left;"><p><a href="../se/../config/io_helidon_common_tls_Tls.xml">Tls</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>TLS configuration for any TLS request from this client. TLS can also be configured per request. TLS is used when the protocol is set to <code>https</code>.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>write-buffer-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>4096</code></p></td>
-<td style="text-align: left;"><p>Buffer size used when writing data to the underlying socket on a client TCP connection. A value that is less or equal to 1 can be set to disable buffering at this level. Note that if writing data to the socket in small chunks, they may not be delivered to the network immediately due to Nagle’s algorithm (i.e., if TCP_NO_DELAY is turned off).</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a48ec2-connect-timeout"></span> `connect-timeout` | `VALUE` | `Duration` |   | Connect timeout |
+| <span id="a5bc70-follow-redirects"></span> `follow-redirects` | `VALUE` | `Boolean` | `true` | Whether to follow redirects |
+| <span id="a6536a-keep-alive"></span> `keep-alive` | `VALUE` | `Boolean` | `true` | Determines if connection keep alive is enabled (NOT socket keep alive, but HTTP connection keep alive, to re-use the same connection for multiple requests) |
+| <span id="a04b74-max-redirects"></span> `max-redirects` | `VALUE` | `Integer` | `10` | Max number of followed redirects |
+| <span id="a419a4-properties"></span> `properties` | `MAP` | `String` |   | Properties configured for this client |
+| <span id="a3662c-protocol-configs"></span> [`protocol-configs`](../config/io_helidon_webclient_spi_ProtocolConfig.md) | `LIST` | `i.h.w.s.ProtocolConfig` |   | Configuration of client protocols |
+| <span id="adcd34-protocol-configs-discover-services"></span> `protocol-configs-discover-services` | `VALUE` | `Boolean` | `true` | Whether to enable automatic service discovery for `protocol-configs` |
+| <span id="a23735-protocol-preference"></span> `protocol-preference` | `LIST` | `String` |   | List of HTTP protocol IDs by order of preference |
+| <span id="a62d6a-proxy"></span> [`proxy`](../config/io_helidon_webclient_api_Proxy.md) | `VALUE` | `i.h.w.a.Proxy` |   | Proxy configuration to be used for requests |
+| <span id="aecd9d-read-timeout"></span> `read-timeout` | `VALUE` | `Duration` |   | Read timeout |
+| <span id="aba9ef-tls"></span> [`tls`](../config/io_helidon_common_tls_Tls.md) | `VALUE` | `i.h.c.t.Tls` |   | TLS configuration for any TLS request from this client |
 
 ### Protocol Specific Configuration
 
@@ -445,157 +274,33 @@ Protocol specific configuration can be set using the `protocol-configs` paramete
 
 - `HTTP/1.1`
 
-Type: [io.helidon.webclient.http1.Http1ClientProtocolConfig](/apidocs/io.helidon.webclient.http1/io/helidon/webclient/http1/Http1ClientProtocolConfig.html)
-
 #### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>default-keep-alive</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to use keep alive by default.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-buffered-entity-size</code></p></td>
-<td style="text-align: left;"><p>Size</p></td>
-<td style="text-align: left;"><p><code>64 KB</code></p></td>
-<td style="text-align: left;"><p>Configure the maximum size allowed for an entity that can be explicitly buffered by the application by calling io.helidon.http.media.ReadableEntity.buffer.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-header-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>16384</code></p></td>
-<td style="text-align: left;"><p>Configure the maximum allowed header size of the response.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-status-line-length</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>256</code></p></td>
-<td style="text-align: left;"><p>Configure the maximum allowed length of the status line from the response.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>http_1_1</code></p></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>validate-request-headers</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Sets whether the request header format is validated or not.</p>
-<pre><code>Defaults to `false` as user has control on the header creation.</code></pre></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>validate-response-headers</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Sets whether the response header format is validated or not.</p>
-<pre><code>Defaults to `true`.</code></pre></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a7a44c-default-keep-alive"></span> `default-keep-alive` | `VALUE` | `Boolean` | `true` | Whether to use keep alive by default |
+| <span id="a81fda-max-buffered-entity-size"></span> `max-buffered-entity-size` | `VALUE` | `i.h.c.Size` | `64 KB` | Configure the maximum size allowed for an entity that can be explicitly buffered by the application by calling `io.helidon.http.media.ReadableEntity#buffer` |
+| <span id="a403a3-max-header-size"></span> `max-header-size` | `VALUE` | `Integer` | `16384` | Configure the maximum allowed header size of the response |
+| <span id="ab0904-max-status-line-length"></span> `max-status-line-length` | `VALUE` | `Integer` | `256` | Configure the maximum allowed length of the status line from the response |
+| <span id="a2ff23-name"></span> `name` | `VALUE` | `String` | `http_1_1` | `N/A` |
+| <span id="a607dc-validate-request-headers"></span> `validate-request-headers` | `VALUE` | `Boolean` | `false` | Sets whether the request header format is validated or not |
+| <span id="a21e77-validate-response-headers"></span> `validate-response-headers` | `VALUE` | `Boolean` | `true` | Sets whether the response header format is validated or not |
 
 - `HTTP/2`
 
-Type: [io.helidon.webclient.http2.Http2ClientProtocolConfig](/apidocs/io.helidon.webclient.http2/io/helidon/webclient/http2/Http2ClientProtocolConfig.html)
-
 #### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>flow-control-block-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>PT15S</code></p></td>
-<td style="text-align: left;"><p>Timeout for blocking while waiting for window update when window is depleted.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>initial-window-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>65535</code></p></td>
-<td style="text-align: left;"><p>Configure INITIAL_WINDOW_SIZE setting for new HTTP/2 connections. Sends to the server the size of the largest frame payload client is willing to receive. Defaults to <code>65535</code>.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-buffered-entity-size</code></p></td>
-<td style="text-align: left;"><p>Size</p></td>
-<td style="text-align: left;"><p><code>64 KB</code></p></td>
-<td style="text-align: left;"><p>Configure the maximum size allowed for an entity that can be explicitly buffered by the application by calling io.helidon.http.media.ReadableEntity.buffer.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-frame-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>16384</code></p></td>
-<td style="text-align: left;"><p>Configure initial MAX_FRAME_SIZE setting for new HTTP/2 connections. Maximum size of data frames in bytes the client is prepared to accept from the server. Default value is 2^14(16_384).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-header-list-size</code></p></td>
-<td style="text-align: left;"><p>long</p></td>
-<td style="text-align: left;"><p><code>-1</code></p></td>
-<td style="text-align: left;"><p>Configure initial MAX_HEADER_LIST_SIZE setting for new HTTP/2 connections. Sends to the server the maximum header field section size client is prepared to accept. Defaults to <code>-1</code>, which means "unconfigured".</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>h2</code></p></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>ping</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Check healthiness of cached connections with HTTP/2.0 ping frame. Defaults to <code>false</code>.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>ping-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>PT0.5S</code></p></td>
-<td style="text-align: left;"><p>Timeout for ping probe used for checking healthiness of cached connections. Defaults to <code>PT0.5S</code>, which means 500 milliseconds.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>prior-knowledge</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Prior knowledge of HTTP/2 capabilities of the server. If server we are connecting to does not support HTTP/2 and prior knowledge is set to <code>false</code>, only features supported by HTTP/1 will be available and attempts to use HTTP/2 specific will throw an UnsupportedOperationException.</p>
-<p><u>Plain text connection</u></p>
-<p>If prior knowledge is set to <code>true</code>, we will not attempt an upgrade of connection and use prior knowledge. If prior knowledge is set to <code>false</code>, we will initiate an HTTP/1 connection and upgrade it to HTTP/2, if supported by the server. plaintext connection (<code>h2c</code>).</p>
-<p><u>TLS protected connection</u></p>
-<p>If prior knowledge is set to <code>true</code>, we will negotiate protocol using HTTP/2 only, failing if not supported. if prior knowledge is set to <code>false</code>, we will negotiate protocol using both HTTP/2 and HTTP/1, using the protocol supported by server.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a06f7b-flow-control-block-timeout"></span> `flow-control-block-timeout` | `VALUE` | `Duration` | `PT15S` | Timeout for blocking while waiting for window update when window is depleted |
+| <span id="a942dc-initial-window-size"></span> `initial-window-size` | `VALUE` | `Integer` | `65535` | Configure INITIAL_WINDOW_SIZE setting for new HTTP/2 connections |
+| <span id="a2ae0e-max-buffered-entity-size"></span> `max-buffered-entity-size` | `VALUE` | `i.h.c.Size` | `64 KB` | Configure the maximum size allowed for an entity that can be explicitly buffered by the application by calling `io.helidon.http.media.ReadableEntity#buffer` |
+| <span id="aecd63-max-frame-size"></span> `max-frame-size` | `VALUE` | `Integer` | `16384` | Configure initial MAX_FRAME_SIZE setting for new HTTP/2 connections |
+| <span id="aa6ab2-max-header-list-size"></span> `max-header-list-size` | `VALUE` | `Long` | `-1` | Configure initial MAX_HEADER_LIST_SIZE setting for new HTTP/2 connections |
+| <span id="ae847a-name"></span> `name` | `VALUE` | `String` | `h2` | `N/A` |
+| <span id="ac97c5-ping"></span> `ping` | `VALUE` | `Boolean` | `false` | Check healthiness of cached connections with HTTP/2.0 ping frame |
+| <span id="af75f0-ping-timeout"></span> `ping-timeout` | `VALUE` | `Duration` | `PT0.5S` | Timeout for ping probe used for checking healthiness of cached connections |
+| <span id="a8e968-prior-knowledge"></span> `prior-knowledge` | `VALUE` | `Boolean` | `false` | Prior knowledge of HTTP/2 capabilities of the server |
 
 ### Example of a WebClient Runtime Configuration
 
@@ -1080,17 +785,21 @@ client:
 
 Full configuration reference:
 
-# WebClientContextService (webclient.context) Configuration
+# io.helidon.webclient.context.WebClientContextService
 
-Type: [io.helidon.webclient.context.WebClientContextService](/apidocs/io.helidon.webclient.context/io/helidon/webclient/context/WebClientContextService.html)
+## Description
+
+Configuration of WebClient transport level propagation of context values.
+
+## Usages
 
 ## Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `records` | [ContextRecordConfig\[\]](../se/../config/io_helidon_common_context_http_ContextRecordConfig.md) |   | List of propagation records. |
+| <span id="ab403e-records"></span> [`records`](../config/io_helidon_common_context_http_ContextRecordConfig.md) | `LIST` | `i.h.c.c.h.ContextRecordConfig` | List of propagation records |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.
 
 # Reference
 

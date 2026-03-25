@@ -1,25 +1,19 @@
-# TracingObserver (webserver.observe.tracing) Configuration
+# io.helidon.webserver.observe.tracing.TracingObserver
 
-Type: [io.helidon.webserver.observe.tracing.TracingObserver](/apidocs/io.helidon.webserver.observe.tracing/io/helidon/webserver/observe/tracing/TracingObserver.html)
+## Description
 
-*Config key*
+Configuration of Tracing observer.
 
-``` text
-tracing
-```
+## Usages
 
-This type provides the following service implementations:
-
-- `io.helidon.webserver.observe.spi.ObserveProvider`
+- [`server.features.observe.observers.tracing`](../config/io_helidon_webserver_observe_spi_Observer.md#a743b9-tracing)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `enabled` | boolean | `true` | Whether this observer is enabled. |
-| `env-config` | TracingConfig | `TracingConfig.ENABLED` | Use the provided configuration as a default for any request. |
-| `paths` | PathTracingConfig\[\] | `new @java.util.ArrayList@(@java.util.List@.of(PathTracingConfig.builder() .path("/metrics/") .tracingConfig(TracingConfig.DISABLED) .build(), PathTracingConfig.builder() .path("/observe/metrics/") .tracingConfig(TracingConfig.DISABLED) .build(), PathTracingConfig.builder() .path("/health/") .tracingConfig(TracingConfig.DISABLED) .build(), PathTracingConfig.builder() .path("/observe/health/") .tracingConfig(TracingConfig.DISABLED) .build(), PathTracingConfig.builder() .path("/openapi/") .tracingConfig(TracingConfig.DISABLED) .build(), PathTracingConfig.builder() .path("/observe/openapi/") .tracingConfig(TracingConfig.DISABLED) .build()))` | Path specific configuration of tracing. |
-| `wait-tracing-enabled` | boolean | `false` | Whether waiting due to concurrency limit constraints should be traced. |
-| `weight` | double | `900.0` | Weight of the feature registered with WebServer. Changing weight may cause tracing to be executed at a different time (such as after security, or even after all routes). Please understand feature weights before changing this order. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="af6949-paths"></span> `paths` | `LIST` | `i.h.w.o.t.PathTracingConfig` |   | Path specific configuration of tracing |
+| <span id="a2456e-wait-tracing-enabled"></span> `wait-tracing-enabled` | `VALUE` | `Boolean` | `false` | Whether waiting due to concurrency limit constraints should be traced |
+| <span id="a9c34b-weight"></span> `weight` | `VALUE` | `Double` | `900.0` | Weight of the feature registered with WebServer |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

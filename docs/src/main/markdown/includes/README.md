@@ -20,7 +20,7 @@ Index of Includes documentation.
 | [Pages](pages.md) | Documentation for this topic |
 | [Prerequisites](prerequisites.md) | Prerequisite product versions for Helidon {helidon-version} |
 | [Reactivestreams](reactivestreams/README.md) | Index of Reactivestreams documentation |
-| [Se](se.md) | Documentation for this topic |
+| [SE](se.md) | Documentation for this topic |
 | [Security](security/README.md) | Index of Security documentation |
 | [Server](server/README.md) | Index of Server documentation |
 | [Tracing](tracing/README.md) | Index of Tracing documentation |

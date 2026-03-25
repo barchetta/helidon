@@ -1,13 +1,17 @@
-# org.eclipse.microprofile.config.Config Configuration
+# io.helidon.config.mp.MpConfigBuilder
 
-Type: org.eclipse.microprofile.config.Config
+## Description
 
-This is a standalone configuration type, prefix from configuration root: `mp.config`
+Configuration builder.
+
+## Usages
+
+- [`mp.config`](../config/config_reference.md#ac96b0-mp-config)
 
 ## Configuration options
 
-| key       | type   | default value | description                         |
-|-----------|--------|---------------|-------------------------------------|
-| `profile` | string |               | Configure an explicit profile name. |
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="a2c415-profile"></span> `profile` | `VALUE` | `String` | Configure an explicit profile name |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

@@ -1,16 +1,22 @@
-# JsonIndexConfig (integrations.langchain4j.providers.oracle) Configuration
+# io.helidon.integrations.langchain4j.providers.oracle.JsonIndexConfig
 
-Type: [io.helidon.integrations.langchain4j.providers.oracle.JsonIndexConfig](/apidocs/io.helidon.integrations.langchain4j.providers.oracle/io/helidon/integrations/langchain4j/providers/oracle/JsonIndexConfig.html)
+## Description
 
-This is a standalone configuration type, prefix from configuration root: `langchain4j.providers.oracle.json-index`
+N/A
+
+.
+
+## Usages
+
+- [`langchain4j.providers.oracle.json-index`](../config/config_reference.md#a86391-langchain4j-providers-oracle-json-index)
 
 ## Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `create-option` | CreateOption (CREATE_NONE, CREATE_IF_NOT_EXISTS, CREATE_OR_REPLACE) |   | Generated from dev.langchain4j.store.embedding.oracle.IndexBuilder.createOption(dev.langchain4j.store.embedding.oracle.CreateOption) |
-| `is-bitmap` | boolean |   | Generated from dev.langchain4j.store.embedding.oracle.JSONIndexBuilder.isBitmap(boolean) |
-| `is-unique` | boolean |   | Generated from dev.langchain4j.store.embedding.oracle.JSONIndexBuilder.isUnique(boolean) |
-| `name` | string |   | Generated from dev.langchain4j.store.embedding.oracle.IndexBuilder.name(java.lang.String) |
+| <span id="abfafc-create-option"></span> [`create-option`](../config/dev_langchain4j_store_embedding_oracle_CreateOption.md) | `VALUE` | `d.l.s.e.o.CreateOption` | Generated from `dev.langchain4j.store.embedding.oracle.IndexBuilder#createOption(dev.langchain4j.store.embedding.oracle.CreateOption)` |
+| <span id="af7e64-is-bitmap"></span> `is-bitmap` | `VALUE` | `Boolean` | Generated from `dev.langchain4j.store.embedding.oracle.JSONIndexBuilder#isBitmap(boolean)` |
+| <span id="aa21b0-is-unique"></span> `is-unique` | `VALUE` | `Boolean` | Generated from `dev.langchain4j.store.embedding.oracle.JSONIndexBuilder#isUnique(boolean)` |
+| <span id="a79a64-name"></span> `name` | `VALUE` | `String` | Generated from `dev.langchain4j.store.embedding.oracle.IndexBuilder#name(java.lang.String)` |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

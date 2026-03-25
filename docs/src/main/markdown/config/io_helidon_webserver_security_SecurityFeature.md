@@ -1,60 +1,20 @@
-# SecurityFeature (webserver.security) Configuration
+# io.helidon.webserver.security.SecurityFeature
 
-Type: [io.helidon.webserver.security.SecurityFeature](/apidocs/io.helidon.webserver.security/io/helidon/webserver/security/SecurityFeature.html)
+## Description
 
-*Config key*
+Configuration of security feature fow webserver.
 
-``` text
-security
-```
+## Usages
 
-This type provides the following service implementations:
-
-- `io.helidon.webserver.spi.ServerFeatureProvider`
+- [`server.features.security`](../config/io_helidon_webserver_spi_ServerFeature.md#ad5f1a-security)
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>defaults</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_webserver_security_SecurityHandler.xml">SecurityHandler</a></p></td>
-<td style="text-align: left;"><p><code>SecurityHandler.create()</code></p></td>
-<td style="text-align: left;"><p>The default security handler.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>paths</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_webserver_security_PathsConfig.xml">PathsConfig[]</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Configuration for webserver paths.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>security</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_security_Security.xml">Security</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Security associated with this feature. If not specified here, the feature uses security registered with io.helidon.common.context.Contexts.globalContext(), if not found, it creates a new instance from root of configuration (using <code>security</code> key).</p>
-<p>This configuration allows usage of a different security instance for a specific security feature setup.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>weight</code></p></td>
-<td style="text-align: left;"><p>double</p></td>
-<td style="text-align: left;"><p><code>800.0</code></p></td>
-<td style="text-align: left;"><p>Weight of the security feature. Value is: <code>800.0</code>.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="abe190-defaults"></span> [`defaults`](../config/io_helidon_webserver_security_SecurityHandler.md) | `VALUE` | `i.h.w.s.SecurityHandler` |   | The default security handler |
+| <span id="accc93-paths"></span> [`paths`](../config/io_helidon_webserver_security_PathsConfig.md) | `LIST` | `i.h.w.s.PathsConfig` |   | Configuration for webserver paths |
+| <span id="ad067b-security"></span> [`security`](../config/io_helidon_security_Security.md) | `VALUE` | `i.h.s.Security` |   | Security associated with this feature |
+| <span id="ad2ec3-weight"></span> `weight` | `VALUE` | `Double` | `800.0` | Weight of the security feature |
+
+See the [manifest](../config/manifest.md) for all available types.

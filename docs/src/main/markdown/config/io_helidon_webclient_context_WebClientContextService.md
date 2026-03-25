@@ -1,11 +1,15 @@
-# WebClientContextService (webclient.context) Configuration
+# io.helidon.webclient.context.WebClientContextService
 
-Type: [io.helidon.webclient.context.WebClientContextService](/apidocs/io.helidon.webclient.context/io/helidon/webclient/context/WebClientContextService.html)
+## Description
+
+Configuration of WebClient transport level propagation of context values.
+
+## Usages
 
 ## Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `records` | [ContextRecordConfig\[\]](../config/../config/io_helidon_common_context_http_ContextRecordConfig.md) |   | List of propagation records. |
+| <span id="ab403e-records"></span> [`records`](../config/io_helidon_common_context_http_ContextRecordConfig.md) | `LIST` | `i.h.c.c.h.ContextRecordConfig` | List of propagation records |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

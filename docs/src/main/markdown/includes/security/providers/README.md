@@ -5,7 +5,7 @@ Index of Providers documentation.
 | Topic | Description |
 | --- | --- |
 | [ABAC Provider](abac.md) | Helidon Security ABAC Provider |
-| [Example code](oidc.md) | Open ID Connect security provider |
+| [Example code](oidc.md) | Security#encrypt(String, byte[)&lt;/code&gt; and &lt;code&gt;Security#decrypt(String, String)&lt;/code&gt;]</td> |
 | [Google Login Provider](google-login.md) | Helidon Security Google Login Provider |
 | [Header Authentication Provider](header-assertion.md) | Helidon Security Header Provider |
 | [HTTP Basic Authentication Provider](http-basic-auth.md) | Helidon Security HTTP Basic Provider |

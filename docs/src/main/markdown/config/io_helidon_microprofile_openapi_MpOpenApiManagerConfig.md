@@ -1,11 +1,17 @@
-# MpOpenApiManagerConfig (microprofile.openapi) Configuration
+# io.helidon.microprofile.openapi.MpOpenApiManagerConfig
 
-Type: [io.helidon.microprofile.openapi.MpOpenApiManagerConfig](/apidocs/io.helidon.microprofile.openapi/io/helidon/microprofile/openapi/MpOpenApiManagerConfig.html)
+## Description
+
+MpOpenApiManager
+
+prototype.
+
+## Usages
 
 ## Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `mp.openapi.extensions.helidon.use-jaxrs-semantics` | boolean |   | If `true` and the `jakarta.ws.rs.core.Application` class returns a non-empty set, endpoints defined by other resources are not included in the OpenAPI document. |
+| <span id="a386fa-mp-openapi-extensions-helidon-use-jaxrs-semantics"></span> `mp.openapi.extensions.helidon.use-jaxrs-semantics` | `VALUE` | `Boolean` | If `true` and the `jakarta.ws.rs.core.Application` class returns a non-empty set, endpoints defined by other resources are not included in the OpenAPI document |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

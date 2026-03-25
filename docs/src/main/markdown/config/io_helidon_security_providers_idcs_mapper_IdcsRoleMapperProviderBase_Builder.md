@@ -1,13 +1,21 @@
-# Builder (security.providers.idcs.mapper.IdcsRoleMapperProviderBase) Configuration
+# io.helidon.security.providers.idcs.mapper.IdcsRoleMapperProviderBase.Builder
 
-Type: [io.helidon.security.providers.idcs.mapper.IdcsRoleMapperProviderBase.Builder](/apidocs/io.helidon.security.providers.idcs.mapper/io/helidon/security/providers/idcs/mapper/IdcsRoleMapperProviderBase.Builder.html)
+## Description
+
+Fluent API builder for
+
+IdcsRoleMapperProviderBase
+
+.
+
+## Usages
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `default-idcs-subject-type` | string | `user` | Configure subject type to use when requesting roles from IDCS. Can be either IDCS_SUBJECT_TYPE_USER or IDCS_SUBJECT_TYPE_CLIENT. Defaults to IDCS_SUBJECT_TYPE_USER. |
-| `oidc-config` | [OidcConfig](../config/io_helidon_security_providers_oidc_common_OidcConfig.md) |   | Use explicit io.helidon.security.providers.oidc.common.OidcConfig instance, e.g. when using it also for OIDC provider. |
-| `subject-types` | SubjectType\[\] (USER, SERVICE) | `USER` | Add a supported subject type. If none added, io.helidon.security.SubjectType.USER is used. If any added, only the ones added will be used (e.g. if you want to use both io.helidon.security.SubjectType.USER and io.helidon.security.SubjectType.SERVICE, both need to be added. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a2b0a8-default-idcs-subject-type"></span> `default-idcs-subject-type` | `VALUE` | `String` | `user` | Configure subject type to use when requesting roles from IDCS |
+| <span id="a65404-oidc-config"></span> [`oidc-config`](../config/io_helidon_security_providers_oidc_common_OidcConfig.md) | `VALUE` | `i.h.s.p.o.c.OidcConfig` |   | Use explicit `io.helidon.security.providers.oidc.common.OidcConfig` instance, e.g |
+| <span id="a724fe-subject-types"></span> [`subject-types`](../config/io_helidon_security_SubjectType.md) | `LIST` | `i.h.s.SubjectType` | `USER` | Add a supported subject type |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

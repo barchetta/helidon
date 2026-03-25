@@ -1,93 +1,37 @@
-# OpenApiFeature (openapi) Configuration
+# io.helidon.openapi.OpenApiFeature
 
-Type: [io.helidon.openapi.OpenApiFeature](/apidocs/io.helidon.openapi/io/helidon/openapi/OpenApiFeature.html)
+## Description
 
-This is a standalone configuration type, prefix from configuration root: `openapi`
+OpenApiFeature
 
-This type provides the following service implementations:
+prototype.
 
-- `io.helidon.webserver.spi.ServerFeatureProvider`
+## Usages
+
+- [`openapi`](../config/config_reference.md#a937cb-openapi)
+
+- [`server.features.openapi`](../config/io_helidon_webserver_spi_ServerFeature.md#a582c4-openapi)
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><span class="line-through"><code>cors</code></span></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_cors_CrossOriginConfig.xml">CrossOriginConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p><strong>Deprecated</strong> CORS config.</p>
-<p>@deprecated feature specific CORS configuration is deprecated and will be removed; use either config based CORS setup (configuration key <code>cors</code>, or programmatic setup using the <code>io.helidon.webserver.cors.CorsFeature</code> server feature</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Sets whether the feature should be enabled.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>manager</code></p></td>
-<td style="text-align: left;"><p>io.helidon.openapi.OpenApiManager (service provider interface)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>OpenAPI manager.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>permit-all</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to allow anybody to access the endpoint.</p>
-<p>See roles()</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>roles</code></p></td>
-<td style="text-align: left;"><p>string[]</p></td>
-<td style="text-align: left;"><p><code>openapi</code></p></td>
-<td style="text-align: left;"><p>Hints for role names the user is expected to be in.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>services</code></p></td>
-<td style="text-align: left;"><p>io.helidon.openapi.OpenApiService[] (service provider interface)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>OpenAPI services.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>sockets</code></p></td>
-<td style="text-align: left;"><p>string[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>List of sockets to register this feature on. If empty, it would get registered on all sockets.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>static-file</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Path of the static OpenAPI document file. Default types are <code>json</code>, <code>yaml</code>, and <code>yml</code>.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>web-context</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>/openapi</code></p></td>
-<td style="text-align: left;"><p>Web context path for the OpenAPI endpoint.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>weight</code></p></td>
-<td style="text-align: left;"><p>double</p></td>
-<td style="text-align: left;"><p><code>90.0</code></p></td>
-<td style="text-align: left;"><p>Weight of the OpenAPI feature. This is quite low, to be registered after routing. <code>90.0</code>.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a9052a-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Sets whether the feature should be enabled |
+| <span id="a2bdbe-manager"></span> [`manager`](../config/io_helidon_openapi_OpenApiManager.md) | `VALUE` | `i.h.o.OpenApiManager` |   | OpenAPI manager |
+| <span id="a8b0d5-manager-discover-services"></span> `manager-discover-services` | `VALUE` | `Boolean` | `false` | Whether to enable automatic service discovery for `manager` |
+| <span id="a99850-permit-all"></span> `permit-all` | `VALUE` | `Boolean` | `true` | Whether to allow anybody to access the endpoint |
+| <span id="ad5281-roles"></span> `roles` | `LIST` | `String` | `openapi` | Hints for role names the user is expected to be in |
+| <span id="a8653c-services"></span> [`services`](../config/io_helidon_openapi_OpenApiService.md) | `LIST` | `i.h.o.OpenApiService` |   | OpenAPI services |
+| <span id="ae938a-services-discover-services"></span> `services-discover-services` | `VALUE` | `Boolean` | `true` | Whether to enable automatic service discovery for `services` |
+| <span id="a47a74-sockets"></span> `sockets` | `LIST` | `String` |   | List of sockets to register this feature on |
+| <span id="a0169c-static-file"></span> `static-file` | `VALUE` | `String` |   | Path of the static OpenAPI document file |
+| <span id="ac378f-web-context"></span> `web-context` | `VALUE` | `String` | `/openapi` | Web context path for the OpenAPI endpoint |
+| <span id="adb903-weight"></span> `weight` | `VALUE` | `Double` | `90.0` | Weight of the OpenAPI feature |
+
+### Deprecated Options
+
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="ab0d30-cors"></span> [`cors`](../config/io_helidon_cors_CrossOriginConfig.md) | `VALUE` | `i.h.c.CrossOriginConfig` | CORS config |
+
+See the [manifest](../config/manifest.md) for all available types.

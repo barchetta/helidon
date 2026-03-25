@@ -1,40 +1,17 @@
-# io.opentracing.Tracer Configuration
+# io.helidon.tracing.providers.zipkin.ZipkinTracerBuilder
 
-Zipkin tracer configuration
+## Description
 
-Type: io.opentracing.Tracer
+Zipkin tracer configuration.
 
-This is a standalone configuration type, prefix from configuration root: `tracing`
+## Usages
+
+- [`tracing`](../config/config_reference.md#abca8b-tracing)
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>api-version</code></p></td>
-<td style="text-align: left;"><p>ZipkinTracerBuilder.Version (V1, V2)</p></td>
-<td style="text-align: left;"><p><code>V2</code></p></td>
-<td style="text-align: left;"><p>Version of Zipkin API to use. Defaults to Version.V2.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>V1</code>: Version 1.</p></li>
-<li><p><code>V2</code>: Version 2.</p></li>
-</ul></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a3dd17-api-version"></span> [`api-version`](../config/io_helidon_tracing_providers_zipkin_ZipkinTracerBuilder_Version.md) | `VALUE` | `i.h.t.p.z.Z.Version` | `V2` | Version of Zipkin API to use |
+
+See the [manifest](../config/manifest.md) for all available types.

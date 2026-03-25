@@ -1,23 +1,21 @@
-# WsConfig (webserver.websocket) Configuration
+# io.helidon.webserver.websocket.WsConfig
 
-Type: [io.helidon.webserver.websocket.WsConfig](/apidocs/io.helidon.webserver.websocket/io/helidon/webserver/websocket/WsConfig.html)
+## Description
 
-*Config key*
+WebSocket protocol configuration.
 
-``` text
-websocket
-```
+## Usages
 
-This type provides the following service implementations:
+- [`server.protocols.websocket`](../config/io_helidon_webserver_spi_ProtocolConfig.md#ae25cf-websocket)
 
-- `io.helidon.webserver.spi.ProtocolConfigProvider`
+- [`server.sockets.protocols.websocket`](../config/io_helidon_webserver_spi_ProtocolConfig.md#ae25cf-websocket)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `max-frame-length` | int | `1048576` | Max WebSocket frame size supported by the server on a read operation. Default is 1 MB. |
-| `name` | string | `websocket` | Name of this configuration. |
-| `origins` | string\[\] |   | WebSocket origins. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="ab8bc8-max-frame-length"></span> `max-frame-length` | `VALUE` | `Integer` | `1048576` | Max WebSocket frame size supported by the server on a read operation |
+| <span id="a43fd4-name"></span> `name` | `VALUE` | `String` | `websocket` | Name of this configuration |
+| <span id="a28c06-origins"></span> `origins` | `LIST` | `String` |   | WebSocket origins |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

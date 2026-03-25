@@ -1,49 +1,29 @@
-# RequestedUriDiscoveryContext (http) Configuration
+# io.helidon.http.RequestedUriDiscoveryContext
 
-Type: [io.helidon.http.RequestedUriDiscoveryContext](/apidocs/io.helidon.http/io/helidon/http/RequestedUriDiscoveryContext.html)
+## Description
+
+Requested URI discovery settings for a socket.
+
+## Usages
+
+- [`server.protocols.http_1_1.requested-uri-discovery`](../config/io_helidon_webserver_http1_Http1Config.md#afc226-requested-uri-discovery)
+
+- [`server.protocols.http_2.requested-uri-discovery`](../config/io_helidon_webserver_http2_Http2Config.md#a4b1c1-requested-uri-discovery)
+
+- [`server.requested-uri-discovery`](../config/io_helidon_webserver_WebServer.md#aaf9ce-requested-uri-discovery)
+
+- [`server.sockets.protocols.http_1_1.requested-uri-discovery`](../config/io_helidon_webserver_http1_Http1Config.md#afc226-requested-uri-discovery)
+
+- [`server.sockets.protocols.http_2.requested-uri-discovery`](../config/io_helidon_webserver_http2_Http2Config.md#a4b1c1-requested-uri-discovery)
+
+- [`server.sockets.requested-uri-discovery`](../config/io_helidon_webserver_ListenerConfig.md#a1c079-requested-uri-discovery)
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true if 'types' or 'trusted-proxies' is set; false otherwise</code></p></td>
-<td style="text-align: left;"><p>Sets whether requested URI discovery is enabled for requestes arriving on the socket.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>trusted-proxies</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_common_configurable_AllowList.xml">AllowList</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Sets the trusted proxies for requested URI discovery for requests arriving on the socket.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>types</code></p></td>
-<td style="text-align: left;"><p>RequestedUriDiscoveryContext.RequestedUriDiscoveryType[] (FORWARDED, X_FORWARDED, HOST)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Sets the discovery types for requested URI discovery for requests arriving on the socket.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>FORWARDED</code>: The <code>io.helidon.http.Header#FORWARDED</code> header is used to discover the original requested URI.</p></li>
-<li><p><code>X_FORWARDED</code>: The <code>io.helidon.http.Header#X_FORWARDED_PROTO</code>, <code>io.helidon.http.Header#X_FORWARDED_HOST</code>, <code>io.helidon.http.Header#X_FORWARDED_PORT</code>, <code>io.helidon.http.Header#X_FORWARDED_PREFIX</code> headers are used to discover the original requested URI.</p></li>
-<li><p><code>HOST</code>: This is the default, only the <code>io.helidon.http.Header#HOST</code> header is used to discover requested URI.</p></li>
-</ul></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="aa5773-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true if 'types' or 'trusted-proxies' is set; false otherwise` | Sets whether requested URI discovery is enabled for requestes arriving on the socket |
+| <span id="acaa10-trusted-proxies"></span> [`trusted-proxies`](../config/io_helidon_common_configurable_AllowList.md) | `VALUE` | `i.h.c.c.AllowList` |   | Sets the trusted proxies for requested URI discovery for requests arriving on the socket |
+| <span id="a3fdad-types"></span> [`types`](../config/io_helidon_http_RequestedUriDiscoveryContext_RequestedUriDiscoveryType.md) | `LIST` | `i.h.h.R.RequestedUriDiscoveryType` |   | Sets the discovery types for requested URI discovery for requests arriving on the socket |
+
+See the [manifest](../config/manifest.md) for all available types.

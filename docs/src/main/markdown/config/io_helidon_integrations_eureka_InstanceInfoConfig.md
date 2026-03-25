@@ -1,146 +1,40 @@
-# InstanceInfoConfig (integrations.eureka) Configuration
+# io.helidon.integrations.eureka.InstanceInfoConfig
 
-Type: [io.helidon.integrations.eureka.InstanceInfoConfig](/apidocs/io.helidon.integrations.eureka/io/helidon/integrations/eureka/InstanceInfoConfig.html)
+## Description
+
+A
+
+Prototype.Api prototype
+
+describing initial Eureka Server service instance registration details.
+
+## Usages
+
+- [`server.features.eureka.instance`](../config/io_helidon_integrations_eureka_EurekaRegistrationServerFeature.md#a20963-instance)
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>appGroup</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>unknown</code></p></td>
-<td style="text-align: left;"><p>The app group name.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>asgName</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>The ASG name. &lt;abbr&gt;ASG&lt;/abbr&gt; stands for Auto Scaling Group.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>healthCheckUrl</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>The health check URL.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>healthCheckUrlPath</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>The health check URL path (used if any health check URL is not explicitly set).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>homePageUrl</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>The home page URL.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>homePageUrlPath</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>/</code></p></td>
-<td style="text-align: left;"><p>The home page URL path (used if the homepage URL is not explicitly set).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>hostName</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>The hostname.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>instanceId</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>The instance id.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>ipAddr</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>The IP address.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>lease</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_integrations_eureka_LeaseInfoConfig.xml">LeaseInfoConfig</a></p></td>
-<td style="text-align: left;"><p><code>io.helidon.integrations.eureka.InstanceInfoConfigBlueprint.create()</code></p></td>
-<td style="text-align: left;"><p>The LeaseInfoConfig.</p>
-<p>See LeaseInfoConfig</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>metadata</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, string&gt;</p></td>
-<td style="text-align: left;"><p><code>@java.util.Map@.of()</code></p></td>
-<td style="text-align: left;"><p>Metadata.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>unknown</code></p></td>
-<td style="text-align: left;"><p>The app name.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>port</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_integrations_eureka_PortInfoConfig.xml">PortInfoConfig</a></p></td>
-<td style="text-align: left;"><p><code>io.helidon.integrations.eureka.InstanceInfoConfigBlueprint.create()</code></p></td>
-<td style="text-align: left;"><p>(Non-secure) port information.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>secureHealthCheckUrl</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>The secure health check URL.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>securePort</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_integrations_eureka_PortInfoConfig.xml">PortInfoConfig</a></p></td>
-<td style="text-align: left;"><p><code>io.helidon.integrations.eureka.InstanceInfoConfigBlueprint.create()</code></p></td>
-<td style="text-align: left;"><p>Secure port information.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>secureVipAddress</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>The secure VIP address. &lt;abbr&gt;VIP&lt;/abbr&gt; stands for Virtual IP.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>statusPageUrl</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>The status page URL.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>statusPageUrlPath</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>/Status</code></p></td>
-<td style="text-align: left;"><p>The status page URL path (used if status page URL is not explicitly set).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>traffic.enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether traffic is enabled on startup (normally <code>true</code>).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>vipAddress</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>The VIP address. &lt;abbr&gt;VIP&lt;/abbr&gt; stands for Virtual IP.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a21bc4-appGroup"></span> `appGroup` | `VALUE` | `String` | `unknown` | The app group name |
+| <span id="a8056c-asgName"></span> `asgName` | `VALUE` | `String` |   | The ASG name |
+| <span id="a7d309-healthCheckUrl"></span> `healthCheckUrl` | `VALUE` | `URI` |   | The health check URL |
+| <span id="ae7cc8-healthCheckUrlPath"></span> `healthCheckUrlPath` | `VALUE` | `String` |   | The health check URL path (used if any health check URL is not explicitly set) |
+| <span id="af4ebc-homePageUrl"></span> `homePageUrl` | `VALUE` | `URI` |   | The home page URL |
+| <span id="ad24f5-homePageUrlPath"></span> `homePageUrlPath` | `VALUE` | `String` | `/` | The home page URL path (used if the homepage URL is not explicitly set) |
+| <span id="afe68d-hostName"></span> `hostName` | `VALUE` | `String` |   | The hostname |
+| <span id="a10ac1-instanceId"></span> `instanceId` | `VALUE` | `String` |   | The instance id |
+| <span id="ae995e-ipAddr"></span> `ipAddr` | `VALUE` | `String` |   | The IP address |
+| <span id="aaab1a-lease"></span> [`lease`](../config/io_helidon_integrations_eureka_LeaseInfoConfig.md) | `VALUE` | `i.h.i.e.LeaseInfoConfig` |   | The `LeaseInfoConfig` |
+| <span id="a1be3b-metadata"></span> `metadata` | `MAP` | `String` |   | Metadata |
+| <span id="ae3aaf-name"></span> `name` | `VALUE` | `String` | `unknown` | The app name |
+| <span id="a12cb2-port"></span> [`port`](../config/io_helidon_integrations_eureka_PortInfoConfig.md) | `VALUE` | `i.h.i.e.PortInfoConfig` |   | (Non-secure) port information |
+| <span id="ae6709-secureHealthCheckUrl"></span> `secureHealthCheckUrl` | `VALUE` | `URI` |   | The secure health check URL |
+| <span id="aa21a8-securePort"></span> [`securePort`](../config/io_helidon_integrations_eureka_PortInfoConfig.md) | `VALUE` | `i.h.i.e.PortInfoConfig` |   | Secure port information |
+| <span id="ae94ec-secureVipAddress"></span> `secureVipAddress` | `VALUE` | `String` |   | The secure VIP address |
+| <span id="a04766-statusPageUrl"></span> `statusPageUrl` | `VALUE` | `URI` |   | The status page URL |
+| <span id="ab626b-statusPageUrlPath"></span> `statusPageUrlPath` | `VALUE` | `String` | `/Status` | The status page URL path (used if status page URL is not explicitly set) |
+| <span id="ad856f-traffic-enabled"></span> `traffic.enabled` | `VALUE` | `Boolean` | `true` | Whether traffic is enabled on startup (normally `true`) |
+| <span id="a5fd26-vipAddress"></span> `vipAddress` | `VALUE` | `String` |   | The VIP address |
+
+See the [manifest](../config/manifest.md) for all available types.

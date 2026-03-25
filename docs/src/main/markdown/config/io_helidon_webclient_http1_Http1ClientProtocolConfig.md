@@ -1,69 +1,21 @@
-# Http1ClientProtocolConfig (webclient.http1) Configuration
+# io.helidon.webclient.http1.Http1ClientProtocolConfig
 
-Type: [io.helidon.webclient.http1.Http1ClientProtocolConfig](/apidocs/io.helidon.webclient.http1/io/helidon/webclient/http1/Http1ClientProtocolConfig.html)
+## Description
+
+Configuration of an HTTP/1.1 client.
+
+## Usages
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>default-keep-alive</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to use keep alive by default.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-buffered-entity-size</code></p></td>
-<td style="text-align: left;"><p>Size</p></td>
-<td style="text-align: left;"><p><code>64 KB</code></p></td>
-<td style="text-align: left;"><p>Configure the maximum size allowed for an entity that can be explicitly buffered by the application by calling io.helidon.http.media.ReadableEntity.buffer.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-header-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>16384</code></p></td>
-<td style="text-align: left;"><p>Configure the maximum allowed header size of the response.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-status-line-length</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>256</code></p></td>
-<td style="text-align: left;"><p>Configure the maximum allowed length of the status line from the response.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>http_1_1</code></p></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>validate-request-headers</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Sets whether the request header format is validated or not.</p>
-<pre><code>Defaults to `false` as user has control on the header creation.</code></pre></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>validate-response-headers</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Sets whether the response header format is validated or not.</p>
-<pre><code>Defaults to `true`.</code></pre></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a7a44c-default-keep-alive"></span> `default-keep-alive` | `VALUE` | `Boolean` | `true` | Whether to use keep alive by default |
+| <span id="a81fda-max-buffered-entity-size"></span> `max-buffered-entity-size` | `VALUE` | `i.h.c.Size` | `64 KB` | Configure the maximum size allowed for an entity that can be explicitly buffered by the application by calling `io.helidon.http.media.ReadableEntity#buffer` |
+| <span id="a403a3-max-header-size"></span> `max-header-size` | `VALUE` | `Integer` | `16384` | Configure the maximum allowed header size of the response |
+| <span id="ab0904-max-status-line-length"></span> `max-status-line-length` | `VALUE` | `Integer` | `256` | Configure the maximum allowed length of the status line from the response |
+| <span id="a2ff23-name"></span> `name` | `VALUE` | `String` | `http_1_1` | `N/A` |
+| <span id="a607dc-validate-request-headers"></span> `validate-request-headers` | `VALUE` | `Boolean` | `false` | Sets whether the request header format is validated or not |
+| <span id="a21e77-validate-response-headers"></span> `validate-response-headers` | `VALUE` | `Boolean` | `true` | Sets whether the response header format is validated or not |
+
+See the [manifest](../config/manifest.md) for all available types.

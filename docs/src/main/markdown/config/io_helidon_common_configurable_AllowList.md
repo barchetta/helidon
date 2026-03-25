@@ -1,19 +1,37 @@
-# AllowList (common.configurable) Configuration
+# io.helidon.common.configurable.AllowList
 
-Type: [io.helidon.common.configurable.AllowList](/apidocs/io.helidon.common.configurable/io/helidon/common/configurable/AllowList.html)
+## Description
+
+AllowList
+
+defines a list of allowed and/or denied matches and tests if a particular value conforms to the conditions.
+
+## Usages
+
+- [`server.protocols.http_1_1.requested-uri-discovery.trusted-proxies`](../config/io_helidon_http_RequestedUriDiscoveryContext.md#acaa10-trusted-proxies)
+
+- [`server.protocols.http_2.requested-uri-discovery.trusted-proxies`](../config/io_helidon_http_RequestedUriDiscoveryContext.md#acaa10-trusted-proxies)
+
+- [`server.requested-uri-discovery.trusted-proxies`](../config/io_helidon_http_RequestedUriDiscoveryContext.md#acaa10-trusted-proxies)
+
+- [`server.sockets.protocols.http_1_1.requested-uri-discovery.trusted-proxies`](../config/io_helidon_http_RequestedUriDiscoveryContext.md#acaa10-trusted-proxies)
+
+- [`server.sockets.protocols.http_2.requested-uri-discovery.trusted-proxies`](../config/io_helidon_http_RequestedUriDiscoveryContext.md#acaa10-trusted-proxies)
+
+- [`server.sockets.requested-uri-discovery.trusted-proxies`](../config/io_helidon_http_RequestedUriDiscoveryContext.md#acaa10-trusted-proxies)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `allow.all` | boolean | `false` | Allows all strings to match (subject to "deny" conditions). An `allow.all` setting of `false` does not deny all strings but rather represents the absence of a universal match, meaning that other allow and deny settings determine the matching outcomes. |
-| `allow.exact` | string\[\] |   | Exact strings to allow. |
-| `allow.pattern` | Pattern\[\] |   | Patterns specifying strings to allow. |
-| `allow.prefix` | string\[\] |   | Prefixes specifying strings to allow. |
-| `allow.suffix` | string\[\] |   | Suffixes specifying strings to allow. |
-| `deny.exact` | string\[\] |   | Exact strings to deny. |
-| `deny.pattern` | Pattern\[\] |   | Patterns specifying strings to deny. |
-| `deny.prefix` | string\[\] |   | Prefixes specifying strings to deny. |
-| `deny.suffix` | string\[\] |   | Suffixes specifying strings to deny. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a2e40a-allow-all"></span> `allow.all` | `VALUE` | `Boolean` | `false` | Allows all strings to match (subject to "deny" conditions) |
+| <span id="a92614-allow-exact"></span> `allow.exact` | `LIST` | `String` |   | Exact strings to allow |
+| <span id="a4ac9a-allow-pattern"></span> `allow.pattern` | `LIST` | `Pattern` |   | `Pattern`s specifying strings to allow |
+| <span id="ab1da1-allow-prefix"></span> `allow.prefix` | `LIST` | `String` |   | Prefixes specifying strings to allow |
+| <span id="aef91b-allow-suffix"></span> `allow.suffix` | `LIST` | `String` |   | Suffixes specifying strings to allow |
+| <span id="a6423c-deny-exact"></span> `deny.exact` | `LIST` | `String` |   | Exact strings to deny |
+| <span id="a60eff-deny-pattern"></span> `deny.pattern` | `LIST` | `Pattern` |   | Patterns specifying strings to deny |
+| <span id="a06a3f-deny-prefix"></span> `deny.prefix` | `LIST` | `String` |   | Prefixes specifying strings to deny |
+| <span id="aadd4a-deny-suffix"></span> `deny.suffix` | `LIST` | `String` |   | Suffixes specifying strings to deny |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

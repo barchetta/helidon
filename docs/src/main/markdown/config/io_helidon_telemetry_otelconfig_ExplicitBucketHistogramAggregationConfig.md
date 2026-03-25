@@ -1,11 +1,15 @@
-# ExplicitBucketHistogramAggregationConfig (telemetry.otelconfig) Configuration
+# io.helidon.telemetry.otelconfig.ExplicitBucketHistogramAggregationConfig
 
-Type: [io.helidon.telemetry.otelconfig.ExplicitBucketHistogramAggregationConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/ExplicitBucketHistogramAggregationConfig.html)
+## Description
+
+Settings for explicit bucket histogram default aggregation.
+
+## Usages
 
 ## Configuration options
 
-| key                 | type       | default value | description                 |
-|---------------------|------------|---------------|-----------------------------|
-| `bucket-boundaries` | double\[\] |               | Explicit bucket boundaries. |
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="abd1fd-bucket-boundaries"></span> `bucket-boundaries` | `LIST` | `Double` | Explicit bucket boundaries |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

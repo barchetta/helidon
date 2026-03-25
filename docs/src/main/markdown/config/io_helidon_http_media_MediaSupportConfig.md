@@ -1,44 +1,17 @@
-# MediaSupportConfig (http.media) Configuration
+# io.helidon.http.media.MediaSupportConfig
 
-Type: [io.helidon.http.media.MediaSupportConfig](/apidocs/io.helidon.http.media/io/helidon/http/media/MediaSupportConfig.html)
+## Description
+
+A set of configurable options expected to be used by each media support.
+
+## Usages
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>accepted-media-types</code></p></td>
-<td style="text-align: left;"><p>MediaType[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Types accepted by this media support. When server processes the response, it checks the <code>Accept</code> header, to choose the right media support, if there are more supports available for the provided entity object.</p>
-<p>NOTE Make sure that you accept the type returned by contentType().</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>content-type</code></p></td>
-<td style="text-align: left;"><p>HttpMediaType</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Content type to use if not configured (in response headers for server, and in request headers for client).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Name of the support. Each extension should provide its own default. This is to enable multiple instance of the same type.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="a4a328-accepted-media-types"></span> `accepted-media-types` | `LIST` | `i.h.h.m.M.CustomMethods` | Types accepted by this media support |
+| <span id="aef6af-content-type"></span> `content-type` | `VALUE` | `i.h.h.m.M.CustomMethods` | Content type to use if not configured (in response headers for server, and in request headers for client) |
+| <span id="a3fdf9-name"></span> `name` | `VALUE` | `String` | Name of the support |
+
+See the [manifest](../config/manifest.md) for all available types.

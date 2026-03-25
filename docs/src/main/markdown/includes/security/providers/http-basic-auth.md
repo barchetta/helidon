@@ -15,33 +15,15 @@ HTTP Basic authentication support
 
 ### Overview
 
-HTTP Basic Authentication provider
-
-Type: [io.helidon.security.providers.httpauth.HttpBasicAuthProvider]({javadoc-base-url}/io.helidon.security.providers.httpauth/io/helidon/security/providers/httpauth/HttpBasicAuthProvider.md)
-
-*Config key*
-
-``` text
-http-basic-auth
-```
-
-This type provides the following service implementations:
-
-- `io.helidon.security.spi.SecurityProvider`
-
-- `io.helidon.security.spi.AuthenticationProvider`
-
 ### Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `optional` | boolean | `false` | Whether authentication is required. By default, request will fail if the authentication cannot be verified. If set to false, request will process and this provider will abstain. |
-| `outbound` | [OutboundTarget\[\]](../../../includes/security/providers/../../../config/io_helidon_security_providers_common_OutboundTarget.md) |   | Add a new outbound target to configure identity propagation or explicit username/password. |
-| `principal-type` | SubjectType (USER, SERVICE) | `USER` | Principal type this provider extracts (and also propagates). |
-| `realm` | string | `helidon` | Set the realm to use when challenging users. |
-| `users` | [ConfigUserStore.ConfigUser\[\]](../../../includes/security/providers/../../../config/io_helidon_security_providers_httpauth_ConfigUserStore_ConfigUser.md) |   | Set user store to validate users. Removes any other stores added through addUserStore(SecureUserStore). |
-
-Optional configuration options
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a57c45-optional"></span> `optional` | `VALUE` | `Boolean` | `false` | Whether authentication is required |
+| <span id="aade93-outbound"></span> [`outbound`](../../../config/io_helidon_security_providers_common_OutboundTarget.md) | `LIST` | `i.h.s.p.c.OutboundTarget` |   | Add a new outbound target to configure identity propagation or explicit username/password |
+| <span id="aa4dbd-principal-type"></span> [`principal-type`](../../../config/io_helidon_security_SubjectType.md) | `VALUE` | `i.h.s.SubjectType` | `USER` | Principal type this provider extracts (and also propagates) |
+| <span id="a9be1e-realm"></span> `realm` | `VALUE` | `String` | `helidon` | Set the realm to use when challenging users |
+| <span id="a18d67-users"></span> [`users`](../../../config/io_helidon_security_providers_httpauth_ConfigUserStore_ConfigUser.md) | `LIST` | `i.h.s.p.h.C.ConfigUser` |   | Set user store to validate users |
 
 ### Example code
 

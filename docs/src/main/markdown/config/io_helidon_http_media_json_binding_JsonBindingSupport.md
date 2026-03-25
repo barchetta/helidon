@@ -1,54 +1,15 @@
-# JsonBindingSupport (http.media.json.binding) Configuration
+# io.helidon.http.media.json.binding.JsonBindingSupport
 
-Type: [io.helidon.http.media.json.binding.JsonBindingSupport](/apidocs/io.helidon.http.media.json.binding/io/helidon/http/media/json/binding/JsonBindingSupport.html)
+## Description
 
-*Config key*
+Configuration for Helidon JSON Binding media support.
 
-``` text
-json-binding
-```
+## Usages
 
-This type provides the following service implementations:
+- [`server.media-context.media-supports.json-binding`](../config/io_helidon_http_media_MediaSupport.md#a0cf65-json-binding)
 
-- `io.helidon.http.media.spi.MediaSupportProvider`
+- [`server.sockets.media-context.media-supports.json-binding`](../config/io_helidon_http_media_MediaSupport.md#a0cf65-json-binding)
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>accepted-media-types</code></p></td>
-<td style="text-align: left;"><p>MediaType[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Types accepted by this media support. When server processes the response, it checks the <code>Accept</code> header, to choose the right media support, if there are more supports available for the provided entity object.</p>
-<p>NOTE Make sure that you accept the type returned by contentType().</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>content-type</code></p></td>
-<td style="text-align: left;"><p>HttpMediaType</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Content type to use if not configured (in response headers for server, and in request headers for client).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Name of the support. Each extension should provide its own default. This is to enable multiple instance of the same type.</p></td>
-</tr>
-</tbody>
-</table>
+See the [manifest](../config/manifest.md) for all available types.

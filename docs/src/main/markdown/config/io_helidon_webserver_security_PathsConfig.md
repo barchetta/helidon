@@ -1,23 +1,28 @@
-# PathsConfig (webserver.security) Configuration
+# io.helidon.webserver.security.PathsConfig
 
-Type: [io.helidon.webserver.security.PathsConfig](/apidocs/io.helidon.webserver.security/io/helidon/webserver/security/PathsConfig.html)
+## Description
+
+Configuration of a single path security setup.
+
+## Usages
+
+- [`server.features.security.paths`](../config/io_helidon_webserver_security_SecurityFeature.md#accc93-paths)
 
 ## Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `audit` | boolean |   | Whether to audit this request - defaults to false, if enabled, request is audited with event type "request". |
-| `audit-event-type` | string |   | Override for event-type, defaults to `request`. |
-| `audit-message-format` | string |   | Override for audit message format, defaults to `%3$s %1$s "%2$s" %5$s %6$s requested by %4$s`. |
-| `authenticate` | boolean |   | If called, request will go through authentication process - defaults to false (even if authorize is true). |
-| `authentication-optional` | boolean |   | If called, authentication failure will not abort request and will continue as anonymous (defaults to false). |
-| `authenticator` | string |   | Use a named authenticator (as supported by security - if not defined, default authenticator is used). Will enable authentication. |
-| `authorize` | boolean |   | Enable authorization for this route. |
-| `authorizer` | string |   | Use a named authorizer (as supported by security - if not defined, default authorizer is used, if none defined, all is permitted). Will enable authorization. |
-| `methods` | Method\[\] |   | HTTP methods to match when applying this configured path. |
-| `path` | string |   | Path to secure. Uses the same rules as Helidon WebServer. |
-| `roles-allowed` | string\[\] |   | An array of allowed roles for this path - must have a security provider supporting roles (either authentication or authorization provider). This method enables authentication and authorization (you can disable them again by calling SecurityHandler.skipAuthorization() and authenticationOptional() if needed). |
-| `sockets` | string\[\] | `@default` | Named listeners that should be secured, defaults to the default listener. |
-| `sockets` | string\[\] |   | List of sockets this configuration should be applied to. If empty, the configuration is applied to all configured sockets. |
+| <span id="afdf21-audit"></span> `audit` | `VALUE` | `Boolean` | Whether to audit this request - defaults to false, if enabled, request is audited with event type "request" |
+| <span id="a55838-audit-event-type"></span> `audit-event-type` | `VALUE` | `String` | Override for event-type, defaults to `SecurityHandler#DEFAULT_AUDIT_EVENT_TYPE` |
+| <span id="a6a816-audit-message-format"></span> `audit-message-format` | `VALUE` | `String` | Override for audit message format, defaults to `SecurityHandler#DEFAULT_AUDIT_MESSAGE_FORMAT` |
+| <span id="af770c-authenticate"></span> `authenticate` | `VALUE` | `Boolean` | If called, request will go through authentication process - defaults to false (even if authorize is true) |
+| <span id="a67160-authentication-optional"></span> `authentication-optional` | `VALUE` | `Boolean` | If called, authentication failure will not abort request and will continue as anonymous (defaults to false) |
+| <span id="a65dfc-authenticator"></span> `authenticator` | `VALUE` | `String` | Use a named authenticator (as supported by security - if not defined, default authenticator is used) |
+| <span id="a14aae-authorize"></span> `authorize` | `VALUE` | `Boolean` | Enable authorization for this route |
+| <span id="a4547f-authorizer"></span> `authorizer` | `VALUE` | `String` | Use a named authorizer (as supported by security - if not defined, default authorizer is used, if none defined, all is permitted) |
+| <span id="a75a39-methods"></span> `methods` | `LIST` | `i.h.w.s.S.PathConfigCustomMethods` | HTTP methods to match when applying this configured path |
+| <span id="aeaf0b-path"></span> `path` | `VALUE` | `String` | Path to secure |
+| <span id="a68b5a-roles-allowed"></span> `roles-allowed` | `LIST` | `String` | An array of allowed roles for this path - must have a security provider supporting roles (either authentication or authorization provider) |
+| <span id="a03d7c-sockets"></span> `sockets` | `LIST` | `String` | List of sockets this configuration should be applied to |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

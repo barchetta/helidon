@@ -1,13 +1,23 @@
-# ScopingConfig (metrics.api) Configuration
+# io.helidon.metrics.api.ScopingConfig
 
-Type: [io.helidon.metrics.api.ScopingConfig](/apidocs/io.helidon.metrics.api/io/helidon/metrics/api/ScopingConfig.html)
+## Description
+
+N/A
+
+.
+
+## Usages
+
+- [`metrics.scoping`](../config/io_helidon_webserver_observe_metrics_MetricsObserver.md#a2d4d9-scoping)
+
+- [`server.features.observe.observers.metrics.scoping`](../config/io_helidon_webserver_observe_metrics_MetricsObserver.md#a2d4d9-scoping)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `default` | string | `application` | Default scope value to associate with meters that are registered without an explicit setting; no setting means meters are assigned scope `application`. |
-| `scopes` | [Map\<string, ScopeConfig\>](../config/io_helidon_metrics_api_ScopeConfig.md) |   | Settings for individual scopes. |
-| `tag-name` | string | `scope` | Tag name for storing meter scope values in the underlying implementation meter registry. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="ac42cc-default"></span> `default` | `VALUE` | `String` | `application` | Default scope value to associate with meters that are registered without an explicit setting; no setting means meters are assigned scope `io.helidon.metrics.api.Meter.Scope#DEFAULT` |
+| <span id="aacbce-scopes"></span> [`scopes`](../config/io_helidon_metrics_api_ScopeConfig.md) | `MAP` | `i.h.m.a.ScopeConfig` |   | Settings for individual scopes |
+| <span id="a910f9-tag-name"></span> `tag-name` | `VALUE` | `String` | `scope` | Tag name for storing meter scope values in the underlying implementation meter registry |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

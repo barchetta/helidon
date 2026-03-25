@@ -80,37 +80,24 @@ As a result, configuring more than one active meter registry can affect performa
 
 If you configure an OTLP publisher, Helidon exports metrics data periodically to a backend system you configure.
 
-Type: [io.helidon.metrics.providers.micrometer.OtlpPublisher]({javadoc-base-url}/io.helidon.metrics.providers.micrometer/io/helidon/metrics/providers/micrometer/OtlpPublisher.md)
-
-*Config key*
-
-``` text
-otlp
-```
-
-This type provides the following service implementations:
-
-- `io.helidon.metrics.spi.MetricsPublisherProvider`
-
 ### Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `aggregation-temporality` | AggregationTemporality (DELTA, CUMULATIVE) | `AggregationTemporality.CUMULATIVE` | Algorithm to use for adjusting values before transmission. |
-| `base-time-unit` | TimeUnit (NANOSECONDS, MICROSECONDS, MILLISECONDS, SECONDS, MINUTES, HOURS, DAYS) | `TimeUnit.java.util.concurrent.TimeUnit.MILLISECONDS` | Base time unit for timers. |
-| `batch-size` | int | `10000` | Number of measurements to send in a single request to the backend. |
-| `enabled` | boolean | `true` | Whether the configured publisher is enabled. |
-| `headers` | Map\<string, string\> |   | Headers to add to each transmission message. |
-| `interval` | Duration | `PT60s` | Interval between successive transmissions of metrics data. |
-| `max-bucket-count` | int | `160` | Maximum bucket count to apply to statistical histogram. |
-| `max-buckets-per-meter` | Map\<string, int\> |   | Maximum number of buckets to use for specific meters. |
-| `max-scale` | int | `20` | Maximum scale value to apply to statistical histogram. |
-| `prefix` | string | `otlp` | The prefix for settings. |
-| `properties` | Map\<string, string\> |   | Property values to be returned by the OTLP meter registry configuration. |
-| `resource-attributes` | Map\<string, string\> |   | Attribute name/value pairs to be associated with all metrics transmissions. |
-| `url` | string | `http://localhost:4318/v1/metrics` | URL to which to send metrics telemetry. |
-
-Optional configuration options
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a5a031-aggregation-temporality"></span> [`aggregation-temporality`](../../config/io_micrometer_registry_otlp_AggregationTemporality.md) | `VALUE` | `i.m.r.o.AggregationTemporality` | `CUMULATIVE` | Algorithm to use for adjusting values before transmission |
+| <span id="a726ba-base-time-unit"></span> [`base-time-unit`](../../config/java_util_concurrent_TimeUnit.md) | `VALUE` | `TimeUnit` | `java.util.concurrent.TimeUnit.MILLISECONDS` | Base time unit for timers |
+| <span id="ace1fb-batch-size"></span> `batch-size` | `VALUE` | `Integer` | `10000` | Number of measurements to send in a single request to the backend |
+| <span id="a6b5d5-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Whether the configured publisher is enabled |
+| <span id="a821e5-headers"></span> `headers` | `MAP` | `String` |   | Headers to add to each transmission message |
+| <span id="afbfb5-interval"></span> `interval` | `VALUE` | `Duration` | `PT60s` | Interval between successive transmissions of metrics data |
+| <span id="a65cf0-max-bucket-count"></span> `max-bucket-count` | `VALUE` | `Integer` | `160` | Maximum bucket count to apply to statistical histogram |
+| <span id="a11feb-max-buckets-per-meter"></span> `max-buckets-per-meter` | `MAP` | `Integer` |   | Maximum number of buckets to use for specific meters |
+| <span id="a52180-max-scale"></span> `max-scale` | `VALUE` | `Integer` | `20` | Maximum scale value to apply to statistical histogram |
+| <span id="a00636-name"></span> `name` | `VALUE` | `String` |   | `N/A` |
+| <span id="a64095-prefix"></span> `prefix` | `VALUE` | `String` | `otlp` | The prefix for settings |
+| <span id="afb329-properties"></span> `properties` | `MAP` | `String` |   | Property values to be returned by the OTLP meter registry configuration |
+| <span id="a5f081-resource-attributes"></span> `resource-attributes` | `MAP` | `String` |   | Attribute name/value pairs to be associated with all metrics transmissions |
+| <span id="a1f8b3-url"></span> `url` | `VALUE` | `String` | `http://localhost:4318/v1/metrics` | URL to which to send metrics telemetry |
 
 The configuration directly mirrors the Micrometer `OtlpMeterRegistry` settings so you can control all behavior which Micrometer exposes for the meter registry.
 
@@ -134,28 +121,15 @@ metrics:
 
 If you configure a Prometheus publisher or rely on the inferred one, Helidon can make the metrics data available in the Prometheus/OpenMetrics format. (To serve the data at the metrics endpoint in your service, your project must also depend on the Helidon metrics observer component.)
 
-Type: [io.helidon.metrics.providers.micrometer.PrometheusPublisher]({javadoc-base-url}/io.helidon.metrics.providers.micrometer/io/helidon/metrics/providers/micrometer/PrometheusPublisher.md)
-
-*Config key*
-
-``` text
-prometheus
-```
-
-This type provides the following service implementations:
-
-- `io.helidon.metrics.spi.MetricsPublisherProvider`
-
 ### Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `descriptions` | boolean |   | Whether to include meter descriptions in Prometheus output. |
-| `enabled` | boolean | `true` | Whether the configured publisher is enabled. |
-| `interval` | Duration |   | Step size used in computing "windowed" statistics. Micrometer advises that this value should be close to the interval with which backend systems scrape the Prometheus-format metrics data. |
-| `prefix` | string |   | Property name prefix. |
-
-Optional configuration options
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a6614e-descriptions"></span> `descriptions` | `VALUE` | `Boolean` |   | Whether to include meter descriptions in Prometheus output |
+| <span id="a248f8-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Whether the configured publisher is enabled |
+| <span id="ae8bbc-interval"></span> `interval` | `VALUE` | `Duration` |   | Step size used in computing "windowed" statistics |
+| <span id="abd446-name"></span> `name` | `VALUE` | `String` |   | `N/A` |
+| <span id="a3221e-prefix"></span> `prefix` | `VALUE` | `String` |   | Property name prefix |
 
 #### Understanding the Inferred Prometheus Publisher
 

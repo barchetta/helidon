@@ -1,72 +1,25 @@
-# JsonbSupport (http.media.jsonb) Configuration
+# io.helidon.http.media.jsonb.JsonbSupport
 
-Type: [io.helidon.http.media.jsonb.JsonbSupport](/apidocs/io.helidon.http.media.jsonb/io/helidon/http/media/jsonb/JsonbSupport.html)
+## Description
 
-*Config key*
+Configuration of the
 
-``` text
-jsonb
-```
+JsonbSupport
 
-This type provides the following service implementations:
+.
 
-- `io.helidon.http.media.spi.MediaSupportProvider`
+## Usages
+
+- [`server.media-context.media-supports.jsonb`](../config/io_helidon_http_media_MediaSupport.md#a48832-jsonb)
+
+- [`server.sockets.media-context.media-supports.jsonb`](../config/io_helidon_http_media_MediaSupport.md#a48832-jsonb)
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>accepted-media-types</code></p></td>
-<td style="text-align: left;"><p>MediaType[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Types accepted by this media support. When server processes the response, it checks the <code>Accept</code> header, to choose the right media support, if there are more supports available for the provided entity object.</p>
-<p>NOTE Make sure that you accept the type returned by contentType().</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>boolean-properties</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, boolean&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Jsonb <code>boolean</code> configuration properties. Properties are being ignored if specific Jsonb is set.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>class-properties</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, Class&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Jsonb Class configuration properties. Properties are being ignored if specific Jsonb is set.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>content-type</code></p></td>
-<td style="text-align: left;"><p>HttpMediaType</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Content type to use if not configured (in response headers for server, and in request headers for client).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Name of the support. Each extension should provide its own default. This is to enable multiple instance of the same type.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>properties</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, string&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Jsonb String configuration properties. Properties are being ignored if specific Jsonb is set.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="a0e015-boolean-properties"></span> `boolean-properties` | `MAP` | `Boolean` | Jsonb `boolean` configuration properties |
+| <span id="ad0c9b-class-properties"></span> `class-properties` | `MAP` | `Class` | Jsonb `Class` configuration properties |
+| <span id="acf561-properties"></span> `properties` | `MAP` | `String` | Jsonb `String` configuration properties |
+
+See the [manifest](../config/manifest.md) for all available types.

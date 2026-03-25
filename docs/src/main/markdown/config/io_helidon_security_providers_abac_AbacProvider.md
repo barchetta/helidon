@@ -1,26 +1,20 @@
-# AbacProvider (security.providers.abac) Configuration
+# io.helidon.security.providers.abac.AbacProvider
 
-Attribute Based Access Control provider
+## Description
 
-Type: [io.helidon.security.providers.abac.AbacProvider](/apidocs/io.helidon.security.providers.abac/io/helidon/security/providers/abac/AbacProvider.html)
+Attribute Based Access Control provider.
 
-*Config key*
+## Usages
 
-``` text
-abac
-```
+- [`security.providers.abac`](../config/io_helidon_security_spi_SecurityProvider.md#a4ca40-abac)
 
-This type provides the following service implementations:
-
-- `io.helidon.security.spi.SecurityProvider`
-
-- `io.helidon.security.spi.AuthorizationProvider`
+- [`server.features.security.security.providers.abac`](../config/io_helidon_security_spi_SecurityProvider.md#a4ca40-abac)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `fail-if-none-validated` | boolean | `true` | Whether to fail if NONE of the attributes is validated. |
-| `fail-on-unvalidated` | boolean | `true` | Whether to fail if any attribute is left unvalidated. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a4f520-fail-if-none-validated"></span> `fail-if-none-validated` | `VALUE` | `Boolean` | `true` | Whether to fail if NONE of the attributes is validated |
+| <span id="a52725-fail-on-unvalidated"></span> `fail-on-unvalidated` | `VALUE` | `Boolean` | `true` | Whether to fail if any attribute is left unvalidated |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

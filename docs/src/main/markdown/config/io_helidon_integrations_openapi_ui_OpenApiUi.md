@@ -1,13 +1,19 @@
-# OpenApiUi (integrations.openapi.ui) Configuration
+# io.helidon.integrations.openapi.ui.OpenApiUi
 
-Type: [io.helidon.integrations.openapi.ui.OpenApiUi](/apidocs/io.helidon.integrations.openapi.ui/io/helidon/integrations/openapi/ui/OpenApiUi.html)
+## Description
+
+OpenApiUi
+
+prototype.
+
+## Usages
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `enabled` | boolean | `true` | Sets whether the service should be enabled. |
-| `options` | Map\<string, string\> |   | Merges implementation-specific UI options. |
-| `web-context` | string |   | Full web context (not just the suffix). |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="ad2183-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Sets whether the service should be enabled |
+| <span id="aa88b9-options"></span> `options` | `MAP` | `String` |   | Merges implementation-specific UI options |
+| <span id="a05812-web-context"></span> `web-context` | `VALUE` | `String` |   | Full web context (not just the suffix) |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

@@ -1,23 +1,19 @@
-# ContextFeature (webserver.context) Configuration
+# io.helidon.webserver.context.ContextFeature
 
-Type: [io.helidon.webserver.context.ContextFeature](/apidocs/io.helidon.webserver.context/io/helidon/webserver/context/ContextFeature.html)
+## Description
 
-*Config key*
+Configuration of context feature.
 
-``` text
-context
-```
+## Usages
 
-This type provides the following service implementations:
-
-- `io.helidon.webserver.spi.ServerFeatureProvider`
+- [`server.features.context`](../config/io_helidon_webserver_spi_ServerFeature.md#a57af2-context)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `records` | [ContextRecordConfig\[\]](../config/../config/io_helidon_common_context_http_ContextRecordConfig.md) |   | List of propagation records. |
-| `sockets` | string\[\] |   | List of sockets to register this feature on. If empty, it would get registered on all sockets. |
-| `weight` | double | `1100.0` | Weight of the context feature. As it is used by other features, the default is quite high: `1100.0`. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="aa10e9-records"></span> [`records`](../config/io_helidon_common_context_http_ContextRecordConfig.md) | `LIST` | `i.h.c.c.h.ContextRecordConfig` |   | List of propagation records |
+| <span id="ac7113-sockets"></span> `sockets` | `LIST` | `String` |   | List of sockets to register this feature on |
+| <span id="a37f63-weight"></span> `weight` | `VALUE` | `Double` | `1100.0` | Weight of the context feature |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

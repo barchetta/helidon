@@ -1,29 +1,33 @@
-# AimdLimit (common.concurrency.limits) Configuration
+# io.helidon.common.concurrency.limits.AimdLimit
 
-Type: [io.helidon.common.concurrency.limits.AimdLimit](/apidocs/io.helidon.common.concurrency.limits/io/helidon/common/concurrency/limits/AimdLimit.html)
+## Description
 
-*Config key*
+Configuration of
 
-``` text
-aimd
-```
+io.helidon.common.concurrency.limits.AimdLimit
 
-This type provides the following service implementations:
+.
 
-- `io.helidon.common.concurrency.limits.spi.LimitProvider`
+## Usages
+
+- [`server.concurrency-limit.aimd`](../config/io_helidon_common_concurrency_limits_Limit.md#a1db99-aimd)
+
+- [`server.features.limits.concurrency-limit.aimd`](../config/io_helidon_common_concurrency_limits_Limit.md#a1db99-aimd)
+
+- [`server.sockets.concurrency-limit.aimd`](../config/io_helidon_common_concurrency_limits_Limit.md#a1db99-aimd)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `backoff-ratio` | double | `0.9` | Backoff ratio to use for the algorithm. The value must be within \[0.5, 1.0). |
-| `enable-metrics` | boolean | `false` | Whether to collect metrics for the AIMD implementation. |
-| `fair` | boolean | `false` | Whether the java.util.concurrent.Semaphore should be java.util.concurrent.Semaphore.isFair(). Defaults to `false`. |
-| `initial-limit` | int | `20` | Initial limit. The value must be within \[minLimit(), maxLimit()\]. |
-| `max-limit` | int | `200` | Maximal limit. The value must be same or higher than minLimit(). |
-| `min-limit` | int | `20` | Minimal limit. The value must be same or lower than maxLimit(). |
-| `queue-length` | int | `0` | How many requests can be enqueued waiting for a permit after the max limit is reached. Note that this may not be an exact behavior due to concurrent invocations. We use java.util.concurrent.Semaphore.getQueueLength() in the io.helidon.common.concurrency.limits.AimdLimit implementation. Default value is `0`. If set to {code 0}, there is no queueing. |
-| `queue-timeout` | Duration | `PT1S` | How long to wait for a permit when enqueued. Defaults to `PT1S` |
-| `timeout` | Duration | `PT5S` | Timeout that when exceeded is the same as if the task failed. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a12670-backoff-ratio"></span> `backoff-ratio` | `VALUE` | `Double` | `0.9` | Backoff ratio to use for the algorithm |
+| <span id="a1d183-enable-metrics"></span> `enable-metrics` | `VALUE` | `Boolean` | `false` | Whether to collect metrics for the AIMD implementation |
+| <span id="a68122-fair"></span> `fair` | `VALUE` | `Boolean` | `false` | Whether the `java.util.concurrent.Semaphore` should be `java.util.concurrent.Semaphore#isFair()` |
+| <span id="a71a0b-initial-limit"></span> `initial-limit` | `VALUE` | `Integer` | `20` | Initial limit |
+| <span id="ae27df-max-limit"></span> `max-limit` | `VALUE` | `Integer` | `200` | Maximal limit |
+| <span id="a18d50-min-limit"></span> `min-limit` | `VALUE` | `Integer` | `20` | Minimal limit |
+| <span id="ab5106-queue-length"></span> `queue-length` | `VALUE` | `Integer` | `0` | How many requests can be enqueued waiting for a permit after the max limit is reached |
+| <span id="aa41cd-queue-timeout"></span> `queue-timeout` | `VALUE` | `Duration` | `PT1S` | How long to wait for a permit when enqueued |
+| <span id="ad4ee4-timeout"></span> `timeout` | `VALUE` | `Duration` | `PT5S` | Timeout that when exceeded is the same as if the task failed |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

@@ -1,19 +1,24 @@
-# JlamaEmbeddingModelConfig (integrations.langchain4j.providers.jlama) Configuration
+# io.helidon.integrations.langchain4j.providers.jlama.JlamaEmbeddingModelConfig
 
-Type: [io.helidon.integrations.langchain4j.providers.jlama.JlamaEmbeddingModelConfig](/apidocs/io.helidon.integrations.langchain4j.providers.jlama/io/helidon/integrations/langchain4j/providers/jlama/JlamaEmbeddingModelConfig.html)
+## Description
 
-This is a standalone configuration type, prefix from configuration root: `langchain4j.providers.jlama`
+Configuration for LangChain4j model JlamaEmbeddingModel.
+
+## Usages
+
+- [`langchain4j.providers.jlama`](../config/config_reference.md#a2ba60-langchain4j-providers-jlama)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `auth-token` | string |   | Generated from dev.langchain4j.model.jlama.JlamaEmbeddingModel.JlamaEmbeddingModelBuilder.authToken(java.lang.String) |
-| `enabled` | boolean | `true` | If set to `false`, JlamaEmbeddingModel will not be available even if configured. |
-| `model-cache-path` | Path |   | Generated from dev.langchain4j.model.jlama.JlamaEmbeddingModel.JlamaEmbeddingModelBuilder.modelCachePath(java.nio.file.Path) |
-| `pooling-type` | Generator.PoolingType (MODEL, AVG, MAX, SUM) |   | Generated from dev.langchain4j.model.jlama.JlamaEmbeddingModel.JlamaEmbeddingModelBuilder.poolingType(com.github.tjake.jlama.model.functions.Generator.PoolingType) |
-| `quantize-model-at-runtime` | boolean |   | Generated from dev.langchain4j.model.jlama.JlamaEmbeddingModel.JlamaEmbeddingModelBuilder.quantizeModelAtRuntime(java.lang.Boolean) |
-| `thread-count` | int |   | Generated from dev.langchain4j.model.jlama.JlamaEmbeddingModel.JlamaEmbeddingModelBuilder.threadCount(java.lang.Integer) |
-| `working-directory` | Path |   | Generated from dev.langchain4j.model.jlama.JlamaEmbeddingModel.JlamaEmbeddingModelBuilder.workingDirectory(java.nio.file.Path) |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="ac6e53-auth-token"></span> `auth-token` | `VALUE` | `String` |   | Generated from `dev.langchain4j.model.jlama.JlamaEmbeddingModel.JlamaEmbeddingModelBuilder#authToken(java.lang.String)` |
+| <span id="a01169-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | If set to `false`, JlamaEmbeddingModel will not be available even if configured |
+| <span id="a06dd9-model-cache-path"></span> `model-cache-path` | `VALUE` | `Path` |   | Generated from `dev.langchain4j.model.jlama.JlamaEmbeddingModel.JlamaEmbeddingModelBuilder#modelCachePath(java.nio.file.Path)` |
+| <span id="a77594-model-name"></span> `model-name` | `VALUE` | `String` |   | Configure the model name |
+| <span id="a396e9-pooling-type"></span> [`pooling-type`](../config/com_github_tjake_jlama_model_functions_Generator_PoolingType.md) | `VALUE` | `c.g.t.j.m.f.G.PoolingType` |   | Generated from `dev.langchain4j.model.jlama.JlamaEmbeddingModel.JlamaEmbeddingModelBuilder#poolingType(com.github.tjake.jlama.model.functions.Generator.PoolingType)` |
+| <span id="aa6135-quantize-model-at-runtime"></span> `quantize-model-at-runtime` | `VALUE` | `Boolean` |   | Generated from `dev.langchain4j.model.jlama.JlamaEmbeddingModel.JlamaEmbeddingModelBuilder#quantizeModelAtRuntime(java.lang.Boolean)` |
+| <span id="a233b1-thread-count"></span> `thread-count` | `VALUE` | `Integer` |   | Generated from `dev.langchain4j.model.jlama.JlamaEmbeddingModel.JlamaEmbeddingModelBuilder#threadCount(java.lang.Integer)` |
+| <span id="a6f4c6-working-directory"></span> `working-directory` | `VALUE` | `Path` |   | Generated from `dev.langchain4j.model.jlama.JlamaEmbeddingModel.JlamaEmbeddingModelBuilder#workingDirectory(java.nio.file.Path)` |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

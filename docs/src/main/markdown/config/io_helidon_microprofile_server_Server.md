@@ -1,16 +1,18 @@
-# Server (microprofile.server) Configuration
+# io.helidon.microprofile.server.Server
 
-Configuration of Helidon Microprofile Server
+## Description
 
-Type: [io.helidon.microprofile.server.Server](/apidocs/io.helidon.microprofile.server/io/helidon/microprofile/server/Server.html)
+Configuration of Helidon Microprofile Server.
 
-This is a standalone configuration type, prefix from configuration root: `server`
+## Usages
+
+- [`server`](../config/config_reference.md#a8a683-server)
 
 ## Configuration options
 
-| key    | type   | default value | description            |
-|--------|--------|---------------|------------------------|
-| `host` | string |               | Configure listen host. |
-| `port` | int    |               | Configure listen port. |
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="af9036-host"></span> `host` | `VALUE` | `String` | Configure listen host |
+| <span id="a5e5af-port"></span> `port` | `VALUE` | `Integer` | Configure listen port |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

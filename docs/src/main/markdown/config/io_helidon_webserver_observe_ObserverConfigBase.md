@@ -1,11 +1,15 @@
-# ObserverConfigBase (webserver.observe) Configuration
+# io.helidon.webserver.observe.ObserverConfigBase
 
-Type: [io.helidon.webserver.observe.ObserverConfigBase](/apidocs/io.helidon.webserver.observe/io/helidon/webserver/observe/ObserverConfigBase.html)
+## Description
+
+Base configuration for any observer that exposes an endpoint.
+
+## Usages
 
 ## Configuration options
 
-| key       | type    | default value | description                       |
-|-----------|---------|---------------|-----------------------------------|
-| `enabled` | boolean | `true`        | Whether this observer is enabled. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a4d4e5-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Whether this observer is enabled |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

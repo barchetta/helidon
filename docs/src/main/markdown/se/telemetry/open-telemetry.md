@@ -237,74 +237,17 @@ You can control almost all of OpenTelemetry’s overall, tracing, metrics, and l
 
 Several settings control the operation of OpenTelemetry as a whole, as shown in the next table.
 
-Type: [io.helidon.telemetry.otelconfig.HelidonOpenTelemetry](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/HelidonOpenTelemetry.html)
-
-This is a standalone configuration type, prefix from configuration root: `telemetry`
-
 #### Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `service` | string |   | Service name used in sending telemetry data to the collector. |
-
-Required configuration options
-
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether the OpenTelemetry support is enabled.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>global</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether the io.opentelemetry.api.OpenTelemetry instance created from this configuration should be made the global one.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>propagators</code></p></td>
-<td style="text-align: left;"><p>TextMapPropagator[]</p></td>
-<td style="text-align: left;"><p><code>new java.util.ArrayList&lt;&gt;(io.helidon.telemetry.otelconfig.ContextPropagationType.DEFAULT_PROPAGATORS)</code></p></td>
-<td style="text-align: left;"><p>OpenTelemetry io.opentelemetry.context.propagation.TextMapPropagator instances added explicitly by the app.</p>
-<p>Default: <code>tracecontext,baggage</code>. See io.helidon.telemetry.otelconfig.ContextPropagationType</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>signals.logging</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/telemetry/../../config/io_helidon_telemetry_otelconfig_OpenTelemetryLoggingConfig.xml">OpenTelemetryLoggingConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>OpenTelemetry logging settings.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>signals.metrics</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/telemetry/../../config/io_helidon_telemetry_otelconfig_OpenTelemetryMetricsConfig.xml">OpenTelemetryMetricsConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>OpenTelemetry metrics settings.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>signals.tracing</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/telemetry/../../config/io_helidon_telemetry_otelconfig_OpenTelemetryTracingConfig.xml">OpenTelemetryTracingConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>OpenTelemetry tracing settings.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="acc8da-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Whether the OpenTelemetry support is enabled |
+| <span id="a104b9-global"></span> `global` | `VALUE` | `Boolean` | `true` | Whether the `io.opentelemetry.api.OpenTelemetry` instance created from this configuration should be made the global one |
+| <span id="a9f65d-propagators"></span> `propagators` | `LIST` | `i.h.t.o.O.CustomMethods` |   | OpenTelemetry `io.opentelemetry.context.propagation.TextMapPropagator` instances added explicitly by the app |
+| <span id="a2f6cf-service"></span> `service` | `VALUE` | `String` |   | Service name used in sending telemetry data to the collector |
+| <span id="aa0da5-signals-logging"></span> [`signals.logging`](../../config/io_helidon_telemetry_otelconfig_OpenTelemetryLoggingConfig.md) | `VALUE` | `i.h.t.o.OpenTelemetryLoggingConfig` |   | OpenTelemetry logging settings |
+| <span id="a8cca2-signals-metrics"></span> [`signals.metrics`](../../config/io_helidon_telemetry_otelconfig_OpenTelemetryMetricsConfig.md) | `VALUE` | `i.h.t.o.OpenTelemetryMetricsConfig` |   | OpenTelemetry metrics settings |
+| <span id="a9cc8d-signals-tracing"></span> [`signals.tracing`](../../config/io_helidon_telemetry_otelconfig_OpenTelemetryTracingConfig.md) | `VALUE` | `i.h.t.o.OpenTelemetryTracingConfig` |   | OpenTelemetry tracing settings |
 
 Notes:
 
@@ -322,18 +265,14 @@ Configured attributes are key/value pairs that OpenTelemetry attaches to each tr
 
 You can add attributes to the configuration for any of the signals under the signal’s `attributes` section.
 
-Type: [io.helidon.telemetry.otelconfig.TypedAttributes](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/TypedAttributes.html)
-
 ##### Configuration options
 
-| key        | type                   | default value | description         |
-|------------|------------------------|---------------|---------------------|
-| `booleans` | Map\<string, boolean\> |               | Boolean attributes. |
-| `doubles`  | Map\<string, double\>  |               | Double attributes.  |
-| `longs`    | Map\<string, long\>    |               | Long attributes.    |
-| `strings`  | Map\<string, string\>  |               | String attributes.  |
-
-Optional configuration options
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="a3fd47-booleans"></span> `booleans` | `MAP` | `Boolean` | Boolean attributes |
+| <span id="a4baae-doubles"></span> `doubles` | `MAP` | `Double` | Double attributes |
+| <span id="a4159e-longs"></span> `longs` | `MAP` | `Long` | Long attributes |
+| <span id="a7a017-strings"></span> `strings` | `MAP` | `String` | String attributes |
 
 The following example shows attribute settings for the tracing signal.
 
@@ -377,91 +316,16 @@ An OpenTelemetry span or log record processor or metric reader is one of the fol
 
 In the table below only the `type` and `exporters` setting apply to `simple` processors; the other settings are for batch processors.
 
-Type: [io.helidon.telemetry.otelconfig.BatchProcessorConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/BatchProcessorConfig.html)
-
 ##### Configuration options
 
-<table style="width:100%;">
-<caption>Required configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>type</code></p></td>
-<td style="text-align: left;"><p>ProcessorType (SIMPLE, BATCH)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Processor type.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>SIMPLE</code>: Simple Processor.</p></li>
-<li><p><code>BATCH</code>: Batch Processor.</p></li>
-</ul></td>
-</tr>
-</tbody>
-</table>
-
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>exporters</code></p></td>
-<td style="text-align: left;"><p>string[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Name(s) of the exporter(s) this processor should use; specifying no names uses all configured exporters (or if no exporters are configured, the default OpenTelemetry exporter(s)).</p>
-<p>Each name must be the name of one of the configured OpenTelemetryTracingConfig.exporterConfigs().</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-export-batch-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Maximum number of items batched for export together. OpenTelemetry requires this value to not exceed the maxQueueSize().</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-queue-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Maximum number of items retained before discarding excess unexported ones.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>schedule-delay</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Delay between consecutive exports.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Maximum time an export can run before being cancelled.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="a3fd48-exporters"></span> `exporters` | `LIST` | `String` | Name(s) of the exporter(s) this processor should use; specifying no names uses all configured exporters (or if no exporters are configured, the default OpenTelemetry exporter(s)) |
+| <span id="a945cc-max-export-batch-size"></span> `max-export-batch-size` | `VALUE` | `Integer` | Maximum number of items batched for export together |
+| <span id="abb28b-max-queue-size"></span> `max-queue-size` | `VALUE` | `Integer` | Maximum number of items retained before discarding excess unexported ones |
+| <span id="a9794f-schedule-delay"></span> `schedule-delay` | `VALUE` | `Duration` | Delay between consecutive exports |
+| <span id="a3709d-timeout"></span> `timeout` | `VALUE` | `Duration` | Maximum time an export can run before being cancelled |
+| <span id="a0ebee-type"></span> [`type`](../../config/io_helidon_telemetry_otelconfig_ProcessorType.md) | `VALUE` | `i.h.t.o.ProcessorType` | Processor type |
 
 ##### Configuring Exporters
 
@@ -473,113 +337,24 @@ Helidon configuration supports several of the most popular exporters, discussed 
 
 Most users choose an `Otlp` exporter which has two variations—​one using gRPC and one using HTTP with protocol buffers—​as indicated by the `protocol` setting.
 
-*Common Configuration for OTLP exporters*
-
-Type: [io.helidon.telemetry.otelconfig.OtlpExporterConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/OtlpExporterConfig.html)
-
 ##### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>certificate</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/telemetry/../../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Trusted certificates.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>client.certificate</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/telemetry/../../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>TLS certificate.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>client.key</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/telemetry/../../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>TLS client key.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>compression</code></p></td>
-<td style="text-align: left;"><p>CompressionType (GZIP, NONE)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Compression the exporter uses.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>GZIP</code>: GZIP compression.</p></li>
-<li><p><code>NONE</code>: No compression.</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>connect-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Connection timeout.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>endpoint</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Endpoint of the collector to which the exporter should transmit.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>headers</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, string&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Headers added to each export message.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>internal-telemetry-version</code></p></td>
-<td style="text-align: left;"><p>InternalTelemetryVersion (LEGACY, LATEST)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Self-monitoring telemetry OpenTelemetry should collect.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>memory-mode</code></p></td>
-<td style="text-align: left;"><p>MemoryMode (REUSABLE_DATA, IMMUTABLE_DATA)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Memory mode.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>protocol</code></p></td>
-<td style="text-align: left;"><p>OtlpExporterProtocolType (HTTP_PROTO, GRPC)</p></td>
-<td style="text-align: left;"><p><code>OtlpExporterProtocolType.DEFAULT</code></p></td>
-<td style="text-align: left;"><p>Exporter protocol type.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>HTTP_PROTO</code>: http/proto protocol type.</p></li>
-<li><p><code>GRPC</code>: grpc protocol type.</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>retry-policy</code></p></td>
-<td style="text-align: left;"><p>RetryPolicy</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Retry policy.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Exporter timeout.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a13db1-certificate"></span> [`certificate`](../../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | Trusted certificates |
+| <span id="a5bbef-client-certificate"></span> [`client.certificate`](../../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | TLS certificate |
+| <span id="a75a00-client-key"></span> [`client.key`](../../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | TLS client key |
+| <span id="aeddd9-compression"></span> [`compression`](../../config/io_helidon_telemetry_otelconfig_CompressionType.md) | `VALUE` | `i.h.t.o.CompressionType` |   | Compression the exporter uses |
+| <span id="ade7dd-connect-timeout"></span> `connect-timeout` | `VALUE` | `Duration` |   | Connection timeout |
+| <span id="ac7f6f-endpoint"></span> `endpoint` | `VALUE` | `URI` |   | Endpoint of the collector to which the exporter should transmit |
+| <span id="ab438b-headers"></span> `headers` | `MAP` | `String` |   | Headers added to each export message |
+| <span id="a13506-internal-telemetry-version"></span> [`internal-telemetry-version`](../../config/io_opentelemetry_sdk_common_InternalTelemetryVersion.md) | `VALUE` | `i.o.s.c.InternalTelemetryVersion` |   | Self-monitoring telemetry OpenTelemetry should collect |
+| <span id="a2502b-memory-mode"></span> [`memory-mode`](../../config/io_opentelemetry_sdk_common_export_MemoryMode.md) | `VALUE` | `i.o.s.c.e.MemoryMode` |   | Memory mode |
+| <span id="a83cb7-protocol"></span> `protocol` | `VALUE` | `i.h.t.o.O.CustomMethods` | `DEFAULT` | Exporter protocol type |
+| <span id="a8e89c-retry-policy"></span> `retry-policy` | `VALUE` | `i.h.t.o.O.CustomMethods` |   | Retry policy |
+| <span id="ab1755-timeout"></span> `timeout` | `VALUE` | `Duration` |   | Exporter timeout |
+
+Common Configuration for OTLP exporters
 
 <table>
 <caption>OpenTelemetry OTLP exporter defaults</caption>
@@ -622,77 +397,29 @@ Type: [io.helidon.telemetry.otelconfig.OtlpExporterConfig](/apidocs/io.helidon.t
 
 You can control how each exporter retries if a transmission to a backend fails.
 
-Type: [io.helidon.telemetry.otelconfig.RetryPolicyConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/RetryPolicyConfig.html)
-
 ###### Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `initial-backoff` | Duration |   | Initial backoff time. |
-| `max-attempts` | int |   | Maximum number of retry attempts. |
-| `max-backoff` | Duration |   | Maximum backoff time. |
-| `max-backoff-multiplier` | double |   | Maximum backoff multiplier. |
-
-Optional configuration options
+| <span id="a45b53-initial-backoff"></span> `initial-backoff` | `VALUE` | `Duration` | Initial backoff time |
+| <span id="a38788-max-attempts"></span> `max-attempts` | `VALUE` | `Integer` | Maximum number of retry attempts |
+| <span id="a56cea-max-backoff"></span> `max-backoff` | `VALUE` | `Duration` | Maximum backoff time |
+| <span id="a11229-max-backoff-multiplier"></span> `max-backoff-multiplier` | `VALUE` | `Double` | Maximum backoff multiplier |
 
 OpenTelemetry also supports a Zipkin exporter which it has recently deprecated.
 
 ###### Zipkin Exporter
 
-*Configuration for Zipkin exporters*
-
-Type: [io.helidon.telemetry.otelconfig.ZipkinExporterConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/ZipkinExporterConfig.html)
-
 ##### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>compression</code></p></td>
-<td style="text-align: left;"><p>CompressionType (GZIP, NONE)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Compression type.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>GZIP</code>: GZIP compression.</p></li>
-<li><p><code>NONE</code>: No compression.</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>encoder</code></p></td>
-<td style="text-align: left;"><p>SpanBytesEncoder (JSON_V1, THRIFT, JSON_V2, PROTO3)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Encoder type.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>endpoint</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Collector endpoint to which this exporter should transmit.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Exporter timeout.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="a1e003-compression"></span> [`compression`](../../config/io_helidon_telemetry_otelconfig_CompressionType.md) | `VALUE` | `i.h.t.o.CompressionType` | Compression type |
+| <span id="aa7e39-encoder"></span> [`encoder`](../../config/zipkin2_codec_SpanBytesEncoder.md) | `VALUE` | `z.c.SpanBytesEncoder` | Encoder type |
+| <span id="ad1fa8-endpoint"></span> `endpoint` | `VALUE` | `URI` | Collector endpoint to which this exporter should transmit |
+| <span id="a971c1-timeout"></span> `timeout` | `VALUE` | `Duration` | Exporter timeout |
+
+Configuration for Zipkin exporters
 
 The [OpenTelemetry documentation](https://opentelemetry.io/docs/languages/java/configuration/#properties-exporters) describes the defaults; see the "Properties for Zipkin span exporters" section there.
 
@@ -857,60 +584,15 @@ The settings under `signals.tracing` prepare an OpenTelemetry `TracerProvider`. 
 
 The next table describes the OpenTelemetry tracing settings.
 
-Type: [io.helidon.telemetry.otelconfig.OpenTelemetryTracingConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/OpenTelemetryTracingConfig.html)
-
 #### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>attributes</code></p></td>
-<td style="text-align: left;"><p>AttributesBuilder</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Name/value pairs passed to OpenTelemetry.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>exporters</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, SpanExporter&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Span exporters.</p>
-<p>The key in the map is a unique name—​of the user’s choice—​for the exporter config settings. The ProcessorConfig.exporters() config setting for a processor config specifies zero or more of these names to associate the exporters built from the exporter configs with the processor built from the processor config.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>processors</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/telemetry/../../config/io_helidon_telemetry_otelconfig_ProcessorConfig.xml">ProcessorConfig[]</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Settings for span processors.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>sampler</code></p></td>
-<td style="text-align: left;"><p>Sampler</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Tracing sampler.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>span-limits</code></p></td>
-<td style="text-align: left;"><p>SpanLimits</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Tracing span limits.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="a3d5a9-attributes"></span> `attributes` | `VALUE` | `i.h.t.o.O.CustomMethods` | Name/value pairs passed to OpenTelemetry |
+| <span id="ae0ab8-exporters"></span> `exporters` | `MAP` | `i.h.t.o.O.CustomMethods` | Span exporters |
+| <span id="ae1681-processors"></span> `processors` | `LIST` | `i.h.t.o.O.CustomMethods` | Settings for span processors |
+| <span id="ace1fe-sampler"></span> `sampler` | `VALUE` | `i.h.t.o.O.CustomMethods` | Tracing sampler |
+| <span id="abff29-span-limits"></span> `span-limits` | `VALUE` | `i.h.t.o.O.CustomMethods` | Tracing span limits |
 
 OpenTelemetry applies the defaults described in the next table.
 
@@ -943,69 +625,27 @@ Helidon configuration supports the sampler implementations that reside in the `o
 
 - Prepare the sampler and the OpenTelemetry-related builders programmatically and use your sampler to assign the sampler the `OpenTelemetryTracer.Builder` should use.
 
-Type: [io.helidon.telemetry.otelconfig.SamplerConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/SamplerConfig.html)
-
 #### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>param</code></p></td>
-<td style="text-align: left;"><p>double</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Sampler parameter.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>type</code></p></td>
-<td style="text-align: left;"><p>SamplerType (ALWAYS_ON, ALWAYS_OFF, TRACEIDRATIO, PARENTBASED_ALWAYS_ON, PARENTBASED_ALWAYS_OFF, PARENTBASED_TRACEIDRATIO)</p></td>
-<td style="text-align: left;"><p><code>SamplerType.DEFAULT</code></p></td>
-<td style="text-align: left;"><p>Sampler type.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>ALWAYS_ON</code>: Always on sampler.</p></li>
-<li><p><code>ALWAYS_OFF</code>: Always off sampler.</p></li>
-<li><p><code>TRACEIDRATIO</code>: Trace ID ratio-based sampler.</p></li>
-<li><p><code>PARENTBASED_ALWAYS_ON</code>: Parent-based always-on sampler.</p></li>
-<li><p><code>PARENTBASED_ALWAYS_OFF</code>: Parent-based always-off sampler.</p></li>
-<li><p><code>PARENTBASED_TRACEIDRATIO</code>: Parent-based trace ID ration-based sampler.</p></li>
-</ul></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a8f212-param"></span> `param` | `VALUE` | `Double` |   | Sampler parameter |
+| <span id="a08fdc-type"></span> [`type`](../../config/io_helidon_telemetry_otelconfig_SamplerType.md) | `VALUE` | `i.h.t.o.SamplerType` | `DEFAULT` | Sampler type |
 
 #### Configuring Span Limits
 
 OpenTelemetry allows you to constrain certain aspects of the data it gathers in tracing spans. By assigning the settings in the table below, you can apply the span limits you want.
 
-Type: [io.helidon.telemetry.otelconfig.SpanLimitsConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/SpanLimitsConfig.html)
-
 #### Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `max-attribute-value-length` | int |   | Maximum attribute value length. |
-| `max-attributes` | int |   | Maximum number of attributes. |
-| `max-attributes-per-event` | int |   | Maximum number of attributes per event. |
-| `max-attributes-per-link` | int |   | Maximum number of attributes per link. |
-| `max-events` | int |   | Maximum number of events. |
-| `max-links` | int |   | Maximum number of links. |
-
-Optional configuration options
+| <span id="ab951d-max-attribute-value-length"></span> `max-attribute-value-length` | `VALUE` | `Integer` | Maximum attribute value length |
+| <span id="a87a84-max-attributes"></span> `max-attributes` | `VALUE` | `Integer` | Maximum number of attributes |
+| <span id="ac75ae-max-attributes-per-event"></span> `max-attributes-per-event` | `VALUE` | `Integer` | Maximum number of attributes per event |
+| <span id="aa0fbc-max-attributes-per-link"></span> `max-attributes-per-link` | `VALUE` | `Integer` | Maximum number of attributes per link |
+| <span id="acea3c-max-events"></span> `max-events` | `VALUE` | `Integer` | Maximum number of events |
+| <span id="a090c5-max-links"></span> `max-links` | `VALUE` | `Integer` | Maximum number of links |
 
 The [OpenTelemetry documentation](https://opentelemetry.io/docs/languages/java/sdk/#sampler) describes the defaults; see the "Properties for span limits" section there.
 
@@ -1029,18 +669,14 @@ See the earlier sections about [configuring attributes](#attributes-config) and 
 
 The next table describes the OpenTelemetry metrics settings.
 
-Type: [io.helidon.telemetry.otelconfig.OpenTelemetryMetricsConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/OpenTelemetryMetricsConfig.html)
-
 #### Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `attributes` | AttributesBuilder |   | Name/value pairs passed to OpenTelemetry. |
-| `exporters` | Map\<string, MetricExporter\> |   | Metric exporter configurations, configurable using io.helidon.telemetry.otelconfig.MetricExporterConfig. |
-| `readers` | [MetricReaderConfig\[\]](../../se/telemetry/../../config/io_helidon_telemetry_otelconfig_MetricReaderConfig.md) |   | Settings for metric readers. |
-| `views` | OpenTelemetryMetricsConfigSupport.ViewRegistration\[\] |   | Metric view information, configurable using io.helidon.telemetry.otelconfig.ViewRegistrationConfig. |
-
-Optional configuration options
+| <span id="a33ff0-attributes"></span> `attributes` | `VALUE` | `i.h.t.o.O.CustomMethods` | Name/value pairs passed to OpenTelemetry |
+| <span id="a0f4af-exporters"></span> `exporters` | `MAP` | `i.h.t.o.O.CustomMethods` | Metric exporter configurations, configurable using `io.helidon.telemetry.otelconfig.MetricExporterConfig` |
+| <span id="ab707a-readers"></span> `readers` | `LIST` | `i.h.t.o.O.CustomMethods` | Settings for metric readers |
+| <span id="a7406f-views"></span> `views` | `LIST` | `i.h.t.o.O.CustomMethods` | Metric view information, configurable using `io.helidon.telemetry.otelconfig.ViewRegistrationConfig` |
 
 OpenTelemetry applies the defaults described in the next table.
 
@@ -1121,327 +757,101 @@ telemetry:
 
 The configuration for metrics exporters has several additional settings beyond those described earlier for exporters in general.
 
-Type: [io.helidon.telemetry.otelconfig.MetricExporterConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/MetricExporterConfig.html)
-
 #### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>certificate</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/telemetry/../../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Trusted certificates.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>client.certificate</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/telemetry/../../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>TLS certificate.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>client.key</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/telemetry/../../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>TLS client key.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>compression</code></p></td>
-<td style="text-align: left;"><p>CompressionType (GZIP, NONE)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Compression the exporter uses.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>GZIP</code>: GZIP compression.</p></li>
-<li><p><code>NONE</code>: No compression.</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>connect-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Connection timeout.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>default-histogram-aggregation</code></p></td>
-<td style="text-align: left;"><p>DefaultAggregationSelector</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Preferred default histogram aggregation technique, configurable as io.helidon.telemetry.otelconfig.MetricDefaultHistogramAggregationConfig.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>endpoint</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Endpoint of the collector to which the exporter should transmit.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>headers</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, string&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Headers added to each export message.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>internal-telemetry-version</code></p></td>
-<td style="text-align: left;"><p>InternalTelemetryVersion (LEGACY, LATEST)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Self-monitoring telemetry OpenTelemetry should collect.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>memory-mode</code></p></td>
-<td style="text-align: left;"><p>MemoryMode (REUSABLE_DATA, IMMUTABLE_DATA)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Memory mode.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>protocol</code></p></td>
-<td style="text-align: left;"><p>OtlpExporterProtocolType (HTTP_PROTO, GRPC)</p></td>
-<td style="text-align: left;"><p><code>OtlpExporterProtocolType.DEFAULT</code></p></td>
-<td style="text-align: left;"><p>Exporter protocol type.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>HTTP_PROTO</code>: http/proto protocol type.</p></li>
-<li><p><code>GRPC</code>: grpc protocol type.</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>retry-policy</code></p></td>
-<td style="text-align: left;"><p>RetryPolicy</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Retry policy.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>temporality-preference</code></p></td>
-<td style="text-align: left;"><p>AggregationTemporalitySelector</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Preferred output aggregation technique (how transmitted values reflect the values recorded locally), configurable as a io.helidon.telemetry.otelconfig.MetricTemporalityPreferenceType value: <code>CUMULATIVE, DELTA, LOWMEMORY</code>.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Exporter timeout.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>type</code></p></td>
-<td style="text-align: left;"><p>MetricExporterType (OTLP, CONSOLE, LOGGING_OTLP)</p></td>
-<td style="text-align: left;"><p><code>MetricExporterType.OTLP</code></p></td>
-<td style="text-align: left;"><p>Metric exporter type.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>OTLP</code>: OpenTelemetry Protocol io.opentelemetry.exporter.otlp.http.metrics.OtlpHttpMetricExporter and io.opentelemetry.exporter.otlp.metrics.OtlpGrpcMetricExporter.</p></li>
-<li><p><code>CONSOLE</code>: Console (io.opentelemetry.exporter.logging.LoggingMetricExporter.</p></li>
-<li><p><code>LOGGING_OTLP</code>: JSON logging to console io.opentelemetry.exporter.logging.otlp.OtlpJsonLoggingMetricExporter.</p></li>
-</ul></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a54672-certificate"></span> [`certificate`](../../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | Trusted certificates |
+| <span id="a34754-client-certificate"></span> [`client.certificate`](../../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | TLS certificate |
+| <span id="ab930c-client-key"></span> [`client.key`](../../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | TLS client key |
+| <span id="a1de7a-compression"></span> [`compression`](../../config/io_helidon_telemetry_otelconfig_CompressionType.md) | `VALUE` | `i.h.t.o.CompressionType` |   | Compression the exporter uses |
+| <span id="ac5879-connect-timeout"></span> `connect-timeout` | `VALUE` | `Duration` |   | Connection timeout |
+| <span id="ae5004-default-histogram-aggregation"></span> `default-histogram-aggregation` | `VALUE` | `i.h.t.o.M.CustomMethods` |   | Preferred default histogram aggregation technique, configurable as `io.helidon.telemetry.otelconfig.MetricDefaultHistogramAggregationConfig` |
+| <span id="a29159-endpoint"></span> `endpoint` | `VALUE` | `URI` |   | Endpoint of the collector to which the exporter should transmit |
+| <span id="a9e00c-headers"></span> `headers` | `MAP` | `String` |   | Headers added to each export message |
+| <span id="ac582d-internal-telemetry-version"></span> [`internal-telemetry-version`](../../config/io_opentelemetry_sdk_common_InternalTelemetryVersion.md) | `VALUE` | `i.o.s.c.InternalTelemetryVersion` |   | Self-monitoring telemetry OpenTelemetry should collect |
+| <span id="a8c72a-memory-mode"></span> [`memory-mode`](../../config/io_opentelemetry_sdk_common_export_MemoryMode.md) | `VALUE` | `i.o.s.c.e.MemoryMode` |   | Memory mode |
+| <span id="a37375-protocol"></span> `protocol` | `VALUE` | `i.h.t.o.O.CustomMethods` | `DEFAULT` | Exporter protocol type |
+| <span id="aef8f0-retry-policy"></span> `retry-policy` | `VALUE` | `i.h.t.o.O.CustomMethods` |   | Retry policy |
+| <span id="a887fd-temporality-preference"></span> `temporality-preference` | `VALUE` | `i.h.t.o.M.CustomMethods` |   | Preferred output aggregation technique (how transmitted values reflect the values recorded locally), configurable as a `io.helidon.telemetry.otelconfig.MetricTemporalityPreferenceType` value: `CUMULATIVE, DELTA, LOWMEMORY` |
+| <span id="a426f1-timeout"></span> `timeout` | `VALUE` | `Duration` |   | Exporter timeout |
+| <span id="ab4fd4-type"></span> [`type`](../../config/io_helidon_telemetry_otelconfig_MetricExporterType.md) | `VALUE` | `i.h.t.o.MetricExporterType` | `OTLP` | Metric exporter type |
 
 ##### Metric Aggregation
 
 OpenTelemetry allows control over how each exporter aggregates histogram data prior to transmission to a backend.
 
-Type: [io.helidon.telemetry.otelconfig.MetricDefaultHistogramAggregationConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/MetricDefaultHistogramAggregationConfig.html)
-
 #### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>type</code></p></td>
-<td style="text-align: left;"><p>MetricDefaultHistogramAggregationType (EXPLICIT_BUCKET_HISTOGRAM, BASE2_EXPONENTIAL_BUCKET_HISTOGRAM)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Type of aggregation default.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>EXPLICIT_BUCKET_HISTOGRAM</code>: Explicit buckets.</p></li>
-<li><p><code>BASE2_EXPONENTIAL_BUCKET_HISTOGRAM</code>: Base 2 exponential bucket.</p></li>
-</ul></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="adc504-type"></span> [`type`](../../config/io_helidon_telemetry_otelconfig_MetricDefaultHistogramAggregationType.md) | `VALUE` | `i.h.t.o.MetricDefaultHistogramAggregationType` | Type of aggregation default |
 
 You can configure the explicit bucket boundaries for `EXPLICIT_BUCKET_HISTOGRAM` aggregation.
 
-Type: [io.helidon.telemetry.otelconfig.ExplicitBucketHistogramAggregationConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/ExplicitBucketHistogramAggregationConfig.html)
-
 #### Configuration options
 
-| key                 | type       | default value | description                 |
-|---------------------|------------|---------------|-----------------------------|
-| `bucket-boundaries` | double\[\] |               | Explicit bucket boundaries. |
-
-Optional configuration options
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="abd1fd-bucket-boundaries"></span> `bucket-boundaries` | `LIST` | `Double` | Explicit bucket boundaries |
 
 You can configure the exponential histogram aggregation behavior.
 
-Type: [io.helidon.telemetry.otelconfig.Base2ExponentialHistogramAggregationConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/Base2ExponentialHistogramAggregationConfig.html)
-
 #### Configuration options
 
-| key           | type | default value | description                |
-|---------------|------|---------------|----------------------------|
-| `max-buckets` | int  |               | Maximum number of buckets. |
-| `max-scale`   | int  |               | Maximum scale.             |
-
-Optional configuration options
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="ad284d-max-buckets"></span> `max-buckets` | `VALUE` | `Integer` | Maximum number of buckets |
+| <span id="a8834e-max-scale"></span> `max-scale` | `VALUE` | `Integer` | Maximum scale |
 
 #### Metric Readers
 
 An OpenTelemetry metric reader collects metric data in the server and then uses the associated metric exporter to send that data to the endpoint configured.
 
-Type: [io.helidon.telemetry.otelconfig.MetricReaderConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/MetricReaderConfig.html)
-
 #### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>exporter</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Name of the configured metric exporter to use for this metric reader.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>type</code></p></td>
-<td style="text-align: left;"><p>MetricReaderType (PERIODIC)</p></td>
-<td style="text-align: left;"><p><code>MetricReaderType.PERIODIC</code></p></td>
-<td style="text-align: left;"><p>Metric reader type.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>PERIODIC</code>: Periodic metric reader type.</p></li>
-</ul></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a79a06-exporter"></span> `exporter` | `VALUE` | `String` |   | Name of the configured metric exporter to use for this metric reader |
+| <span id="a3f4d9-type"></span> [`type`](../../config/io_helidon_telemetry_otelconfig_MetricReaderType.md) | `VALUE` | `i.h.t.o.MetricReaderType` | `PERIODIC` | Metric reader type |
 
 The periodic reader supports the following settings.
 
-Type: [io.helidon.telemetry.otelconfig.PeriodicMetricReaderConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/PeriodicMetricReaderConfig.html)
-
 #### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>exporter</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Name of the configured metric exporter to use for this metric reader.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>interval</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Metric reader read interval.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>type</code></p></td>
-<td style="text-align: left;"><p>MetricReaderType (PERIODIC)</p></td>
-<td style="text-align: left;"><p><code>MetricReaderType.PERIODIC</code></p></td>
-<td style="text-align: left;"><p>Metric reader type.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>PERIODIC</code>: Periodic metric reader type.</p></li>
-</ul></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a173a8-exporter"></span> `exporter` | `VALUE` | `String` |   | Name of the configured metric exporter to use for this metric reader |
+| <span id="a5a14c-interval"></span> `interval` | `VALUE` | `Duration` |   | Metric reader read interval |
+| <span id="a1a217-type"></span> [`type`](../../config/io_helidon_telemetry_otelconfig_MetricReaderType.md) | `VALUE` | `i.h.t.o.MetricReaderType` | `PERIODIC` | Metric reader type |
 
 #### Metric Views
 
 OpenTelemetry metric views allow you to influence how meters are aggregated for reporting to backend systems.
 
-Type: [io.helidon.telemetry.otelconfig.ViewRegistrationConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/ViewRegistrationConfig.html)
-
 #### Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `aggregation` | Aggregation |   | Aggregation for the metric view, configurable as an io.helidon.telemetry.otelconfig.AggregationType: `DROP, DEFAULT, SUM, LAST_VALUE, EXPLICIT_BUCKET_HISTOGRAM, BASE2_EXPONENTIAL_BUCKET_HISTOGRAM`. |
-| `attribute-filter` | Predicate |   | Attribute name filter, configurable as a string compiled as a regular expression using java.util.regex.Pattern. |
-| `cardinality-limit` | int |   | Cardinality limit. |
-| `description` | string |   | Metric view description. |
-| `instrument-selector` | InstrumentSelector |   | Instrument selector, configurable using io.helidon.telemetry.otelconfig.InstrumentSelectorConfig. |
-| `name` | string |   | Metrics view name. |
-
-Optional configuration options
+| <span id="a6e77f-aggregation"></span> `aggregation` | `VALUE` | `i.h.t.o.V.CustomMethods` | Aggregation for the metric view, configurable as an `io.helidon.telemetry.otelconfig.AggregationType`: `DROP, DEFAULT, SUM, LAST_VALUE, EXPLICIT_BUCKET_HISTOGRAM, BASE2_EXPONENTIAL_BUCKET_HISTOGRAM` |
+| <span id="a2d426-attribute-filter"></span> `attribute-filter` | `VALUE` | `i.h.t.o.V.CustomMethods` | Attribute name filter, configurable as a string compiled as a regular expression using `java.util.regex.Pattern` |
+| <span id="ae87fb-cardinality-limit"></span> `cardinality-limit` | `VALUE` | `Integer` | Cardinality limit |
+| <span id="abda85-description"></span> `description` | `VALUE` | `String` | Metric view description |
+| <span id="acbe0f-instrument-selector"></span> `instrument-selector` | `VALUE` | `i.h.t.o.V.CustomMethods` | Instrument selector, configurable using `io.helidon.telemetry.otelconfig.InstrumentSelectorConfig` |
+| <span id="a14ee9-name"></span> `name` | `VALUE` | `String` | Metrics view name |
 
 The instrument selector controls which meters this view reflects.
 
-Type: [io.helidon.telemetry.otelconfig.InstrumentSelectorConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/InstrumentSelectorConfig.html)
-
 #### Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `meter-name` | string |   | Meter name. |
-| `meter-schema-url` | string |   | Meter schema URL. |
-| `meter-version` | string |   | Meter version. |
-| `name` | string |   | Instrument name. |
-| `type` | InstrumentType (COUNTER, UP_DOWN_COUNTER, HISTOGRAM, OBSERVABLE_COUNTER, OBSERVABLE_UP_DOWN_COUNTER, OBSERVABLE_GAUGE, GAUGE) |   | Instrument type. |
-| `unit` | string |   | Instrument unit. |
-
-Optional configuration options
+| <span id="a14bb9-meter-name"></span> `meter-name` | `VALUE` | `String` | Meter name |
+| <span id="a7c47f-meter-schema-url"></span> `meter-schema-url` | `VALUE` | `String` | Meter schema URL |
+| <span id="a24c92-meter-version"></span> `meter-version` | `VALUE` | `String` | Meter version |
+| <span id="acf44a-name"></span> `name` | `VALUE` | `String` | Instrument name |
+| <span id="abc056-type"></span> [`type`](../../config/io_opentelemetry_sdk_metrics_InstrumentType.md) | `VALUE` | `i.o.s.m.InstrumentType` | Instrument type |
+| <span id="afa38c-unit"></span> `unit` | `VALUE` | `String` | Instrument unit |
 
 ### Controlling OpenTelemetry Logger Behavior
 
@@ -1451,72 +861,17 @@ The sections below describe Helidon config settings that correspond directly to 
 
 The next table describes the OpenTelemetry logging settings.
 
-Type: [io.helidon.telemetry.otelconfig.OpenTelemetryLoggingConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/OpenTelemetryLoggingConfig.html)
-
 #### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>attributes</code></p></td>
-<td style="text-align: left;"><p>AttributesBuilder</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Name/value pairs passed to OpenTelemetry.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Whether the OpenTelemetry logger should be enabled. (Passed to OpenTelemetry.)</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>exporters</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, LogRecordExporter&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Log record exporters.</p>
-<p>The key in the map is a unique name—​of the user’s choice—​for the exporter config settings. The ProcessorConfig.exporters() config setting for a processor config specifies zero or more of these names to associate the exporters built from the exporter configs with the processor built from the processor config.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>log-limits</code></p></td>
-<td style="text-align: left;"><p>LogLimits</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Log limits to apply to log transmission.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>minimum-severity</code></p></td>
-<td style="text-align: left;"><p>Severity (UNDEFINED_SEVERITY_NUMBER, TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Minimum severity level of log records to process.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>processors</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/telemetry/../../config/io_helidon_telemetry_otelconfig_ProcessorConfig.xml">ProcessorConfig[]</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Settings for logging processors.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>trace-based</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Whether to include &lt;em&gt;only&lt;/em&gt; log records from traces which are sampled. Defaults to the OpenTelemetry default.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="a070ac-attributes"></span> `attributes` | `VALUE` | `i.h.t.o.O.CustomMethods` | Name/value pairs passed to OpenTelemetry |
+| <span id="aaa180-enabled"></span> `enabled` | `VALUE` | `Boolean` | Whether the OpenTelemetry logger should be enabled |
+| <span id="a5919f-exporters"></span> `exporters` | `MAP` | `i.h.t.o.O.CustomMethods` | Log record exporters |
+| <span id="afaf4d-log-limits"></span> `log-limits` | `VALUE` | `i.h.t.o.O.CustomMethods` | Log limits to apply to log transmission |
+| <span id="a33fd0-minimum-severity"></span> [`minimum-severity`](../../config/io_opentelemetry_api_logs_Severity.md) | `VALUE` | `i.o.a.l.Severity` | Minimum severity level of log records to process |
+| <span id="af7d01-processors"></span> `processors` | `LIST` | `i.h.t.o.O.CustomMethods` | Settings for logging processors |
+| <span id="a251a3-trace-based"></span> `trace-based` | `VALUE` | `Boolean` | Whether to include only log records from traces which are sampled |
 
 OpenTelemetry uses the following defaults:
 
@@ -1539,16 +894,12 @@ Sections below explain how to set up the configuration that is specific to the l
 
 For defaults, Helidon defers to the OpenTelemetry defaults, listed below.
 
-Type: [io.helidon.telemetry.otelconfig.LogLimitsConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/LogLimitsConfig.html)
-
 ##### Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `max-attribute-value-length` | int |   | Maximum length of an attribute value. |
-| `max-number-of-attributes` | int |   | Maximum number of attributes allowed. |
-
-Optional configuration options
+| <span id="a85828-max-attribute-value-length"></span> `max-attribute-value-length` | `VALUE` | `Integer` | Maximum length of an attribute value |
+| <span id="a15268-max-number-of-attributes"></span> `max-number-of-attributes` | `VALUE` | `Integer` | Maximum number of attributes allowed |
 
 OpenTelemetry applies the following defaults:
 

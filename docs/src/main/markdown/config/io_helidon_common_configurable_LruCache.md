@@ -1,11 +1,15 @@
-# LruCache (common.configurable) Configuration
+# io.helidon.common.configurable.LruCache
 
-Type: [io.helidon.common.configurable.LruCache](/apidocs/io.helidon.common.configurable/io/helidon/common/configurable/LruCache.html)
+## Description
+
+Configuration of a LRU Cache.
+
+## Usages
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `capacity` | int | `10000` | Configure capacity of the cache. Defaults to LruCache.DEFAULT_CAPACITY. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a41677-capacity"></span> `capacity` | `VALUE` | `Integer` | `10000` | Configure capacity of the cache |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

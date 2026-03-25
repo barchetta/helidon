@@ -65,14 +65,6 @@ Within Helidon, each type of meter registry is paired with some code that examin
 
 You can configure the Helidon Micrometer REST service as you can other built-in Helidon services by adding configuration settings under the `micrometer` top-level key.
 
-Type: [io.helidon.integrations.micrometer.MicrometerFeature]({javadoc-base-url}/io.helidon.integrations.micrometer/io/helidon/integrations/micrometer/MicrometerFeature.md)
-
-*Config key*
-
-``` text
-micrometer
-```
-
 ### Configuration options
 
 By default, Helidon Micrometer integration exposes the `/micrometer` endpoint. You can override the path using the [`Builder`]({micrometer-javadoc-base-url}/MicrometerSupport.Builder.md) or the `micrometer.web-context` configuration key.

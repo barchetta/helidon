@@ -1,26 +1,22 @@
-# JdbcDataSourceConfig (data.sql.datasource.jdbc) Configuration
+# io.helidon.data.sql.datasource.jdbc.JdbcDataSourceConfig
 
-Type: [io.helidon.data.sql.datasource.jdbc.JdbcDataSourceConfig](/apidocs/io.helidon.data.sql.datasource.jdbc/io/helidon/data/sql/datasource/jdbc/JdbcDataSourceConfig.html)
+## Description
 
-*Config key*
+JDBC Data source configuration.
 
-``` text
-jdbc
-```
+## Usages
 
-This type provides the following service implementations:
-
-- `io.helidon.data.sql.datasource.spi.DataSourceConfigProvider`
+- [`data.sources.sql.provider.jdbc`](../config/io_helidon_data_sql_datasource_ProviderConfig.md#ad38ee-jdbc)
 
 ## Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `auto-commit` | boolean |   | Set the default auto-commit behavior of create connections. |
-| `catalog` | string |   | Set the default catalog name to be set on connections. |
-| `properties` | Map\<string, string\> |   | Add properties (name/value pair) that will be used to configure the DataSource/Driver. Property values are limited to String values. |
-| `read-only` | boolean |   | Whether the connection should be read only. |
-| `schema` | string |   | Set the default schema name to be set on connections. |
-| `transaction-isolation` | TransactionIsolation (TRANSACTION_READ_UNCOMMITTED, TRANSACTION_READ_COMMITTED, TRANSACTION_REPEATABLE_READ, TRANSACTION_SERIALIZABLE) |   | Set the default transaction isolation level. |
+| <span id="a2ea60-auto-commit"></span> `auto-commit` | `VALUE` | `Boolean` | Set the default auto-commit behavior of create connections |
+| <span id="ada475-catalog"></span> `catalog` | `VALUE` | `String` | Set the default catalog name to be set on connections |
+| <span id="aa3d90-properties"></span> `properties` | `MAP` | `String` | Add properties (name/value pair) that will be used to configure the DataSource/Driver |
+| <span id="afd7f4-read-only"></span> `read-only` | `VALUE` | `Boolean` | Whether the connection should be read only |
+| <span id="ab7b1f-schema"></span> `schema` | `VALUE` | `String` | Set the default schema name to be set on connections |
+| <span id="aa1bc5-transaction-isolation"></span> [`transaction-isolation`](../config/io_helidon_data_sql_datasource_TransactionIsolation.md) | `VALUE` | `i.h.d.s.d.TransactionIsolation` | Set the default transaction isolation level |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

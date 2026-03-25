@@ -1,21 +1,26 @@
-# JlamaChatModelConfig (integrations.langchain4j.providers.jlama) Configuration
+# io.helidon.integrations.langchain4j.providers.jlama.JlamaChatModelConfig
 
-Type: [io.helidon.integrations.langchain4j.providers.jlama.JlamaChatModelConfig](/apidocs/io.helidon.integrations.langchain4j.providers.jlama/io/helidon/integrations/langchain4j/providers/jlama/JlamaChatModelConfig.html)
+## Description
 
-This is a standalone configuration type, prefix from configuration root: `langchain4j.providers.jlama`
+Configuration for LangChain4j model JlamaChatModel.
+
+## Usages
+
+- [`langchain4j.providers.jlama`](../config/config_reference.md#a0b6bc-langchain4j-providers-jlama)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `auth-token` | string |   | Generated from dev.langchain4j.model.jlama.JlamaChatModel.JlamaChatModelBuilder.authToken(java.lang.String) |
-| `enabled` | boolean | `true` | If set to `false`, JlamaChatModel will not be available even if configured. |
-| `max-tokens` | int |   | Generated from dev.langchain4j.model.jlama.JlamaChatModel.JlamaChatModelBuilder.maxTokens(java.lang.Integer) |
-| `model-cache-path` | Path |   | Generated from dev.langchain4j.model.jlama.JlamaChatModel.JlamaChatModelBuilder.modelCachePath(java.nio.file.Path) |
-| `quantize-model-at-runtime` | boolean |   | Generated from dev.langchain4j.model.jlama.JlamaChatModel.JlamaChatModelBuilder.quantizeModelAtRuntime(java.lang.Boolean) |
-| `temperature` | float |   | Generated from dev.langchain4j.model.jlama.JlamaChatModel.JlamaChatModelBuilder.temperature(java.lang.Float) |
-| `thread-count` | int |   | Generated from dev.langchain4j.model.jlama.JlamaChatModel.JlamaChatModelBuilder.threadCount(java.lang.Integer) |
-| `working-directory` | Path |   | Generated from dev.langchain4j.model.jlama.JlamaChatModel.JlamaChatModelBuilder.workingDirectory(java.nio.file.Path) |
-| `working-quantized-type` | DType (BOOL, U8, I8, I16, U16, F16, BF16, I32, U32, F32, F64, I64, U64, Q4, Q5) |   | Generated from dev.langchain4j.model.jlama.JlamaChatModel.JlamaChatModelBuilder.workingQuantizedType(com.github.tjake.jlama.safetensors.DType) |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="af4b38-auth-token"></span> `auth-token` | `VALUE` | `String` |   | Generated from `dev.langchain4j.model.jlama.JlamaChatModel.JlamaChatModelBuilder#authToken(java.lang.String)` |
+| <span id="af0cd3-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | If set to `false`, JlamaChatModel will not be available even if configured |
+| <span id="aa3287-max-tokens"></span> `max-tokens` | `VALUE` | `Integer` |   | Generated from `dev.langchain4j.model.jlama.JlamaChatModel.JlamaChatModelBuilder#maxTokens(java.lang.Integer)` |
+| <span id="ad24b2-model-cache-path"></span> `model-cache-path` | `VALUE` | `Path` |   | Generated from `dev.langchain4j.model.jlama.JlamaChatModel.JlamaChatModelBuilder#modelCachePath(java.nio.file.Path)` |
+| <span id="afa0fc-model-name"></span> `model-name` | `VALUE` | `String` |   | Configure the model name |
+| <span id="a11d12-quantize-model-at-runtime"></span> `quantize-model-at-runtime` | `VALUE` | `Boolean` |   | Generated from `dev.langchain4j.model.jlama.JlamaChatModel.JlamaChatModelBuilder#quantizeModelAtRuntime(java.lang.Boolean)` |
+| <span id="a644ff-temperature"></span> `temperature` | `VALUE` | `Float` |   | Generated from `dev.langchain4j.model.jlama.JlamaChatModel.JlamaChatModelBuilder#temperature(java.lang.Float)` |
+| <span id="aacd12-thread-count"></span> `thread-count` | `VALUE` | `Integer` |   | Generated from `dev.langchain4j.model.jlama.JlamaChatModel.JlamaChatModelBuilder#threadCount(java.lang.Integer)` |
+| <span id="a82adf-working-directory"></span> `working-directory` | `VALUE` | `Path` |   | Generated from `dev.langchain4j.model.jlama.JlamaChatModel.JlamaChatModelBuilder#workingDirectory(java.nio.file.Path)` |
+| <span id="a2c1de-working-quantized-type"></span> [`working-quantized-type`](../config/com_github_tjake_jlama_safetensors_DType.md) | `VALUE` | `c.g.t.j.s.DType` |   | Generated from `dev.langchain4j.model.jlama.JlamaChatModel.JlamaChatModelBuilder#workingQuantizedType(com.github.tjake.jlama.safetensors.DType)` |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

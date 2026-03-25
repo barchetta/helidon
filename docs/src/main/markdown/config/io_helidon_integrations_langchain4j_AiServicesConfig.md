@@ -1,13 +1,19 @@
-# AiServicesConfig (integrations.langchain4j) Configuration
+# io.helidon.integrations.langchain4j.AiServicesConfig
 
-Type: [io.helidon.integrations.langchain4j.AiServicesConfig](/apidocs/io.helidon.integrations.langchain4j/io/helidon/integrations/langchain4j/AiServicesConfig.html)
+## Description
 
-This is a standalone configuration type, prefix from configuration root: `langchain4j.services`
+N/A
+
+.
+
+## Usages
+
+- [`langchain4j.services`](../config/config_reference.md#a98791-langchain4j-services)
 
 ## Configuration options
 
-| key          | type   | default value | description |
-|--------------|--------|---------------|-------------|
-| `chat-model` | string |               |             |
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="a893a7-chat-model"></span> `chat-model` | `VALUE` | `String` | `N/A` |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

@@ -1,6 +1,6 @@
 # CORS in Helidon MP
 
-### Contents
+## Contents
 
 - [Overview](#_overview)
 
@@ -16,28 +16,28 @@
 
 - [Additional Information](#_additional_information)
 
-### Overview
+## Overview
 
 The [cross-origin resource sharing (CORS) protocol](https://www.w3.org/TR/cors) helps developers control if and how REST resources served by their applications can be shared across origins. Helidon MP includes an implementation of CORS that you can use to add CORS behavior to the services you develop. You can define your application’s CORS behavior programmatically using the Helidon CORS API alone or together with configuration.
 
-### Before You Begin
+## Before You Begin
 
 Before you revise your application to add CORS support, you need to decide what type of cross-origin sharing you want to allow for each resource your application exposes. For example, suppose for a given resource you want to allow unrestricted sharing for GET, HEAD, and POST requests (what CORS refers to as "simple" requests), but permit other types of requests only from the two origins `foo.com` and `there.com`. Your application would implement two types of CORS sharing: more relaxed for the simple requests and stricter for others.
 
 Once you know the type of sharing you want to allow for each of your resources—​including any from built-in services—​you can change your application accordingly.
 
-### Maven Coordinates
+## Maven Coordinates
 
 To enable CORS, add the following dependency to your project’s `pom.xml` (see [Managing Dependencies](../../about/managing-dependencies.md)).
 
-``` highlight
+``` xml
 <dependency>
     <groupId>io.helidon.microprofile</groupId>
     <artifactId>helidon-microprofile-cors</artifactId>
 </dependency>
 ```
 
-### Usage
+## Usage
 
 Once you have planned how each of your resources should support CORS, you specify the CORS behavior in one of two ways:
 
@@ -47,9 +47,9 @@ Once you have planned how each of your resources should support CORS, you specif
 
 You can do both. CORS configuration for a resource overrides any CORS settings declared using `@Cors.*` in the Java class for the resource.
 
-### API
+## API
 
-#### The `@Cors.*` Annotations
+### The `@Cors.*` Annotations
 
 Adding CORS behavior to your Helidon MP application involves just a few simple steps.
 
@@ -63,21 +63,12 @@ For each resource class in your application:
 
     2.  To that `@OPTIONS` Java method add a Helidon [`@Cors.*`](/apidocs/io.helidon.webserver.cors/io/helidon/webserver/cors/Cors.html) annotation(s) that describes the cross-origin sharing you want for that resource.
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr>
-<td class="icon">Note</td>
-<td class="content">Using @Cors.* Correctly
-<p>Use the <code>@Cors.*</code> annotations <em>only</em> on methods which also have the <code>@OPTIONS</code> annotation. Remember that the CORS settings apply to a given path and therefore to all Java resource methods which share that path.</p>
-<p>Helidon MP aborts the server start-up if you use the <code>@Cors.*</code> annotations on a resource method other than an <code>@OPTIONS</code> method.</p>
-<p>For an informal look at the reasons for applying the <code>@Cors.*</code> annotations to the <code>@OPTIONS</code> method, instead of another method, see <a href="../../mp/cors/../../mp/cors/why-options.html">Why <code>@OPTIONS</code>?</a>.</p></td>
-</tr>
-</tbody>
-</table>
+> [!NOTE]
+> Use the `@Cors.*` annotations *only* on methods which also have the `@OPTIONS` annotation. Remember that the CORS settings apply to a given path and therefore to all Java resource methods which share that path.
+>
+> Helidon MP aborts the server start-up if you use the `@Cors.*` annotations on a resource method other than an `@OPTIONS` method.
+>
+> For an informal look at the reasons for applying the `@Cors.*` annotations to the `@OPTIONS` method, instead of another method, see [Why `@OPTIONS`?](../../mp/cors/why-options.md).
 
 The following annotations are available:
 
@@ -95,136 +86,60 @@ The following annotations are available:
 
 - [\`@Cors.MaxAgeSeconds](/apidocs/io.helidon.webserver.cors/io/helidon/webserver/cors/Cors.MaxAgeSeconds.html) - value is the max age as a number of seconds
 
-### Configuration
+## Configuration
 
 You can define CORS behavior—​and you or your users can override behavior declared in your code—​using configuration.
 
 For each resource you want to configure, add a section to `META-INF/microprofile-config.properties` file:
 
-General form of CORS configuration
+*General form of CORS configuration*
 
-``` highlight
-cors.enabled= # (1)
+``` properties
+cors.enabled= 
 
-# (2)
-cors.paths.i.path-pattern= # (3)
+cors.paths.i.path-pattern= 
 cors.paths.i.allow-headers=
-cors.paths.i.max-age= # (4)
+cors.paths.i.max-age= 
 cors.paths.i.allow-credentials=
 cors.paths.i.allow-origins=
 cors.paths.i.expose-headers=
 cors.paths.i.allow-methods=
-cors.paths.i.enabled= # (5)
+cors.paths.i.enabled= 
 ```
 
-1.  You can disable CORS processing for all resources by setting `cors.enabled` to `false`. Defaults to `true`.
+- You can disable CORS processing for all resources by setting `cors.enabled` to `false`. Defaults to `true`.
 
-2.  Add a block for each resource you want to configure. The index *`i`* is an integer (0, 1, 2, etc).
+- Add a block for each resource you want to configure. The index `i` is an integer (0, 1, 2, etc).
 
-3.  Specify the settings as needed to define the CORS behavior you want for that resource.
+- Specify the settings as needed to define the CORS behavior you want for that resource.
 
-4.  The `max-age` option is a `Duration` string, such as `PT1H` for 1 hour
+- The `max-age` option is a `Duration` string, such as `PT1H` for 1 hour
 
-5.  The `enabled` setting lets you control whether the system uses that set of CORS configuration. Defaults to `true`.
+- The `enabled` setting lets you control whether the system uses that set of CORS configuration. Defaults to `true`.
 
-The system uses the index *`i`*, not the position in the config file, to identify the settings for a particular resource.
+The system uses the index `i`, not the position in the config file, to identify the settings for a particular resource.
 
 Path patterns can be any expression accepted by the [`PathMatcher`](/apidocs/io.helidon.http/io/helidon/http/PathMatcher.html) class.
 
-|  |  |
-|----|----|
-| Note | Helidon scans the cross-origin entries in index order (0, 1, 2, etc.) until it finds an entry that matches an incoming request’s path and HTTP method, so be sure to assign index values to the entries so Helidon will check them in the order you want. In particular, use lower index values for entries with more specific path patterns. |
+> [!NOTE]
+> Helidon scans the cross-origin entries in index order (0, 1, 2, etc.) until it finds an entry that matches an incoming request’s path and HTTP method, so be sure to assign index values to the entries so Helidon will check them in the order you want. In particular, use lower index values for entries with more specific path patterns.
 
 Each annotation in `Cors` class (except for `Defaults`) is mapped to one of the configuration options, see details below:
 
-Type: [io.helidon.webserver.cors.CorsPathConfig](/apidocs/io.helidon.webserver.cors/io/helidon/webserver/cors/CorsPathConfig.html)
+### Configuration options
 
-#### Configuration options
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a63978-allow-credentials"></span> `allow-credentials` | `VALUE` | `Boolean` | `false` | Whether to allow credentials |
+| <span id="abc506-allow-headers"></span> `allow-headers` | `LIST` | `String` | `*` | Set of allowed headers, defaults to all |
+| <span id="a7f636-allow-methods"></span> `allow-methods` | `LIST` | `String` | `*` | Set of allowed methods, defaults to all |
+| <span id="a10bcf-allow-origins"></span> `allow-origins` | `LIST` | `String` | `*` | Set of allowed origins, defaults to all |
+| <span id="aeefbd-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Whether this CORS configuration should be enabled or not |
+| <span id="abb307-expose-headers"></span> `expose-headers` | `LIST` | `String` |   | Set of exposed headers, defaults to none |
+| <span id="a1f548-max-age"></span> `max-age` | `VALUE` | `i.h.w.c.C.PathCustomMethods` | `PT1H` | Max age as a duration |
+| <span id="afe1ca-path-pattern"></span> `path-pattern` | `VALUE` | `String` |   | Path pattern to apply this configuration for |
 
-<table class="tableblock frame-all grid-all stretch" style="width:100%;">
-<caption>Table 1. Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">key</th>
-<th class="tableblock halign-left valign-top">type</th>
-<th class="tableblock halign-left valign-top">default value</th>
-<th class="tableblock halign-left valign-top">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p><code>allow-credentials</code></p></td>
-<td class="tableblock halign-left valign-top"><p>boolean</p></td>
-<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
-<td class="tableblock halign-left valign-top"><p>Whether to allow credentials.</p>
-<p>If enabled, this will be used in <code>Access-Control-Allow-Credentials</code> header.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p><code>allow-headers</code></p></td>
-<td class="tableblock halign-left valign-top"><p>string[]</p></td>
-<td class="tableblock halign-left valign-top"><p><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p>Set of allowed headers, defaults to all.</p>
-<p>If not empty, this will be used in <code>Access-Control-Allow-Headers</code> header.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p><code>allow-methods</code></p></td>
-<td class="tableblock halign-left valign-top"><p>string[]</p></td>
-<td class="tableblock halign-left valign-top"><p><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p>Set of allowed methods, defaults to all.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p><code>allow-origins</code></p></td>
-<td class="tableblock halign-left valign-top"><p>string[]</p></td>
-<td class="tableblock halign-left valign-top"><p><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p>Set of allowed origins, defaults to all.</p>
-If not empty, this will be used with <code>Access-Control-Allow-Origin</code> header. Note that allowed origins may be either a full origin, such as <a href="http://www.example.com" class="bare"><code>http://www.example.com</code></a>, or a regular expression. Any origin that contains (
-`), or `
-, or curly braces is considered a regular expression (i.e. <code>http://..example.com</code>).
-<p>If you configure a regular expression, it would never be returned if all allowed origins are returned in a pre-flight request.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p><code>enabled</code></p></td>
-<td class="tableblock halign-left valign-top"><p>boolean</p></td>
-<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
-<td class="tableblock halign-left valign-top"><p>Whether this CORS configuration should be enabled or not. If disabled, this configuration will be ignored, and the next path will be checked.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p><code>expose-headers</code></p></td>
-<td class="tableblock halign-left valign-top"><p>string[]</p></td>
-<td class="tableblock halign-left valign-top"><p> </p></td>
-<td class="tableblock halign-left valign-top"><p>Set of exposed headers, defaults to none.</p>
-<p>If not empty, this will be used in <code>Access-Control-Expose-Headers</code> header.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p><code>max-age</code></p></td>
-<td class="tableblock halign-left valign-top"><p>Duration</p></td>
-<td class="tableblock halign-left valign-top"><p><code>PT1H</code></p></td>
-<td class="tableblock halign-left valign-top"><p>Max age as a duration.</p>
-<p>This value will be used in <code>Access-Control-Max-Age</code> header (in seconds).</p>
-<p>For backward compatibility, you can specify the following when used from configuration:</p>
-<ul>
-<li><p>integer (such as <code>3600</code>) - number of seconds as a number</p></li>
-<li><p>integer ms (such as <code>10000 ms</code>) - number of milliseconds</p></li>
-<li><p>duration format (such as <code>PT1H</code>) - format of java.time.Duration</p></li>
-</ul></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p><code>path-pattern</code></p></td>
-<td class="tableblock halign-left valign-top"><p>string</p></td>
-<td class="tableblock halign-left valign-top"><p> </p></td>
-<td class="tableblock halign-left valign-top"><p>Path pattern to apply this configuration for. Note that paths are checked in sequence, and the first path that matches the request will be used to configure CORS.</p>
-<p>Always configure the most restrictive rules first.</p></td>
-</tr>
-</tbody>
-</table>
-
-### Examples
+## Examples
 
 The [Helidon MP Quickstart application](https://github.com/helidon-io/helidon-examples/tree/helidon-4.x/examples/quickstarts/helidon-quickstart-mp) allows users to:
 
@@ -240,16 +155,16 @@ The discussion below describes the changes in the application which:
 
 - restrict sharing of the resource `/greet/greeting` so that only the origins `http://foo.com` and `http://there.com` can change the greeting.
 
-#### Adding Annotations
+### Adding Annotations
 
-Using annotations to declare CORS behavior
+*Using annotations to declare CORS behavior*
 
-``` highlight
+``` java
 @Path("/greet")
-public class GreetResource { // (1)
+public class GreetResource { 
 
     @GET
-    public JsonObject getDefaultMessage() { // (2)
+    public JsonObject getDefaultMessage() { 
         return Json.createObjectBuilder()
                 .add("message", "Hello")
                 .build();
@@ -257,73 +172,73 @@ public class GreetResource { // (1)
 
     @Path("/greeting")
     @PUT
-    public Response updateGreeting(JsonObject jsonObject) { // (3)
+    public Response updateGreeting(JsonObject jsonObject) { 
         return Response.ok().build();
     }
 
     @OPTIONS
     @Cors.Defaults
-    public void optionsForRetrievingUnnamedGreeting() { // (4)
+    public void optionsForRetrievingUnnamedGreeting() { 
     }
 
     @OPTIONS
     @Path("/greeting")
     @Cors.AllowOrigins({"http://foo.com", "http://there.com"})
     @Cors.AllowMethods(HttpMethod.PUT)
-    public void optionsForUpdatingGreeting() { // (5)
+    public void optionsForUpdatingGreeting() { 
     }
 }
 ```
 
-1.  Existing `GreetResource` resource class with path `/greet`.
+- Existing `GreetResource` resource class with path `/greet`.
 
-2.  Existing `@GET` method for resource `/greet`.
+- Existing `@GET` method for resource `/greet`.
 
-3.  Existing `@PUT` method for resource `/greet/greeting`.
+- Existing `@PUT` method for resource `/greet/greeting`.
 
-4.  New `@OPTIONS` method for `/greet`. (Just like the `@GET` method `getDefaultMessage`, this `@OPTIONS` method does not have a `@Path` annotation; both "inherit" the class-level `@Path` setting `/greet`.) The `@Cors.Defaults` annotation declares default cross-origin sharing which permits sharing via all HTTP methods to all origins.
+- New `@OPTIONS` method for `/greet`. (Just like the `@GET` method `getDefaultMessage`, this `@OPTIONS` method does not have a `@Path` annotation; both "inherit" the class-level `@Path` setting `/greet`.) The `@Cors.Defaults` annotation declares default cross-origin sharing which permits sharing via all HTTP methods to all origins.
 
-5.  New `@OPTIONS` method for `/greet/greeting`. The `@Cors.AllowMethods` annotations specifies sharing only via the `PUT` HTTP method, and the `@Cors.AllowOrigins` specifies sharing only to the two listed origins.
+- New `@OPTIONS` method for `/greet/greeting`. The `@Cors.AllowMethods` annotations specifies sharing only via the `PUT` HTTP method, and the `@Cors.AllowOrigins` specifies sharing only to the two listed origins.
 
-#### Adding Configuration
+### Adding Configuration
 
 You could use the following configuration in place of using annotations to set up the same CORS behavior.
 
-Using configuration to set up the same CORS behavior
+*Using configuration to set up the same CORS behavior*
 
-``` highlight
-cors.paths.0.path-pattern=/greet # (1)
+``` properties
+cors.paths.0.path-pattern=/greet 
 
-cors.paths.1.path-pattern=/greet/greeting # (2)
+cors.paths.1.path-pattern=/greet/greeting 
 cors.paths.1.allow-origins=https://foo.com,https://there.com
 cors.paths.1.allow-methods=PUT
 ```
 
-1.  Enables default CORS settings for the `/greet` resource.
+- Enables default CORS settings for the `/greet` resource.
 
-2.  Sets up sharing for the `/greet/greeting` resource only via `PUT` requests and only from the specified origins.
+- Sets up sharing for the `/greet/greeting` resource only via `PUT` requests and only from the specified origins.
 
 Or, alternatively, the following configuration example augments the settings from the `@Cors.*` annotations in the code.
 
-Using configuration to augment or override declared CORS behavior
+*Using configuration to augment or override declared CORS behavior*
 
-``` highlight
-cors.paths.0.path-pattern=/greet # (1)
+``` properties
+cors.paths.0.path-pattern=/greet 
 cors.paths.0.allow-methods=GET
 cors.paths.0.allow-origins=https://here.com,https://foo.com,https://there.com
 
-cors.paths.1.path-pattern=/greet/greeting # (2)
+cors.paths.1.path-pattern=/greet/greeting 
 cors.paths.1.allow-methods=PUT
 cors.paths.1.allow-origins=https://foo.com
 ```
 
-1.  Changes the declared settings to restrict cross-origin use of `/greet` to only `GET` and only from `foo.com` and `there.com`.
+- Changes the declared settings to restrict cross-origin use of `/greet` to only `GET` and only from `foo.com` and `there.com`.
 
-2.  Changes the settings for `/greet/greeting` from what they were declared; with this configuration, only the origin `foo.com` is permitted. (The declared setting also allowed `there.com`).
+- Changes the settings for `/greet/greeting` from what they were declared; with this configuration, only the origin `foo.com` is permitted. (The declared setting also allowed `there.com`).
 
-### Additional Information
+## Additional Information
 
-### CORS and the Requested URI Feature
+## CORS and the Requested URI Feature
 
 The decisions the Helidon CORS feature makes depend on accurate information about each incoming request, particularly the host to which the request is sent. Conveyed as headers in the request, this information can be changed or overwritten by intermediate nodes—​such as load balancers—​between the origin of the request and your service.
 
@@ -331,7 +246,7 @@ Well-behaved intermediate nodes preserve this important data in other headers, s
 
 The CORS support in Helidon uses the requested URI feature to discover the correct information about each request, according to your configuration, so it can make accurate decisions about whether to permit cross-origin accesses.
 
-### Configuring CORS for Built-in Services
+## Configuring CORS for Built-in Services
 
 Use configuration to control whether and how each of the built-in services works with CORS.
 
@@ -343,45 +258,45 @@ The following example restricts sharing of
 
 - the `/metrics` resource, provided by the metrics built-in service, to only the origin `https://foo.com`.
 
-Configuration which restricts sharing of the health and metrics resources
+*Configuration which restricts sharing of the health and metrics resources*
 
-``` highlight
+``` properties
 cors.paths.0.path-pattern=/health
 cors.paths.0.allow-origins=https://there.com
 cors.paths.1.path-pattern=/metrics
 cors.paths.1.allow-origins=https://foo.com
 ```
 
-#### Accessing the Shared Resources
+### Accessing the Shared Resources
 
 If you have edited the Helidon MP QuickStart application as described in the previous topics and saved your changes, you can build and run the application. Once you do so you can execute `curl` commands to demonstrate the behavior changes in the metric and health services with the addition of the CORS functionality. Note the addition of the `Origin` header value in the `curl` commands, and the `Access-Control-Allow-Origin` in the successful responses.
 
-##### Build and Run the Application
+#### Build and Run the Application
 
 Build and run the QuickStart application as usual.
 
-``` highlight
+``` bash
 mvn package
 java -jar target/helidon-quickstart-mp.jar
 ```
 
-Console output
+*Console output*
 
-     ...
+...
      2020.05.12 05:44:08 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[main,5,main]: Server started on http://localhost:8080 (and all other host addresses) in 5280 milliseconds (since JVM startup).
      ...
 
-#### Retrieve Metrics
+### Retrieve Metrics
 
 The metrics service rejects attempts to access metrics on behalf of a disallowed origin.
 
-``` highlight
+``` bash
 curl -i -H "Origin: https://other.com" http://localhost:8080/metrics
 ```
 
-Curl output
+*Curl output*
 
-``` highlight
+``` listing
 HTTP/1.1 403 Forbidden
 Date: Mon, 11 May 2020 11:08:09 -0500
 transfer-encoding: chunked
@@ -390,13 +305,13 @@ connection: keep-alive
 
 But accesses from `foo.com` succeed.
 
-``` highlight
+``` bash
 curl -i -H "Origin: https://foo.com" http://localhost:8080/metrics
 ```
 
-Curl output
+*Curl output*
 
-``` highlight
+``` listing
 HTTP/1.1 200 OK
 Access-Control-Allow-Origin: https://foo.com
 Content-Type: text/plain
@@ -410,15 +325,15 @@ content-length: 6065
 base_classloader_loadedClasses_count 3568
 ```
 
-##### Retrieve Health
+#### Retrieve Health
 
 The health service rejects requests from origins not specifically approved.
 
-``` highlight
+``` bash
 curl -i -H "Origin: https://foo.com" http://localhost:8080/health
 ```
 
-``` highlight
+``` listing
 HTTP/1.1 403 Forbidden
 Date: Mon, 11 May 2020 12:06:55 -0500
 transfer-encoding: chunked
@@ -427,11 +342,11 @@ connection: keep-alive
 
 And responds successfully only to cross-origin requests from `https://there.com`.
 
-``` highlight
+``` bash
 curl -i -H "Origin: https://there.com" http://localhost:8080/health
 ```
 
-``` highlight
+``` listing
 HTTP/1.1 200 OK
 Access-Control-Allow-Origin: https://there.com
 Content-Type: application/json

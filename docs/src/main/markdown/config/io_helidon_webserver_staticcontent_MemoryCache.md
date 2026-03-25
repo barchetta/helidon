@@ -1,38 +1,22 @@
-# MemoryCache (webserver.staticcontent) Configuration
+# io.helidon.webserver.staticcontent.MemoryCache
 
-Type: [io.helidon.webserver.staticcontent.MemoryCache](/apidocs/io.helidon.webserver.staticcontent/io/helidon/webserver/staticcontent/MemoryCache.html)
+## Description
+
+Configuration of memory cache for static content.
+
+## Usages
+
+- [`server.features.static-content.classpath.memory-cache`](../config/io_helidon_webserver_staticcontent_ClasspathHandlerConfig.md#aa63a5-memory-cache)
+
+- [`server.features.static-content.memory-cache`](../config/io_helidon_webserver_staticcontent_StaticContentFeature.md#a1e68a-memory-cache)
+
+- [`server.features.static-content.path.memory-cache`](../config/io_helidon_webserver_staticcontent_FileSystemHandlerConfig.md#af8862-memory-cache)
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>capacity</code></p></td>
-<td style="text-align: left;"><p>Size</p></td>
-<td style="text-align: left;"><p><code>50 mB</code></p></td>
-<td style="text-align: left;"><p>Capacity of the cached bytes of file content. If set to <code>0</code>, the cache is unlimited. To disable caching, set enabled() to <code>false</code>, or do not configure a memory cache at all.</p>
-<p>The capacity must be less than java.lang.Long.MAX_VALUE bytes, though you must be careful still, as it must fit into the heap size.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether the cache is enabled, defaults to <code>true</code>.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="aaa495-capacity"></span> `capacity` | `VALUE` | `i.h.c.Size` | `50 mB` | Capacity of the cached bytes of file content |
+| <span id="a9d973-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Whether the cache is enabled, defaults to `true` |
+
+See the [manifest](../config/manifest.md) for all available types.

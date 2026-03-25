@@ -1,23 +1,18 @@
-# InfoObserver (webserver.observe.info) Configuration
+# io.helidon.webserver.observe.info.InfoObserver
 
-Type: [io.helidon.webserver.observe.info.InfoObserver](/apidocs/io.helidon.webserver.observe.info/io/helidon/webserver/observe/info/InfoObserver.html)
+## Description
 
-*Config key*
+Info Observer configuration.
 
-``` text
-info
-```
+## Usages
 
-This type provides the following service implementations:
-
-- `io.helidon.webserver.observe.spi.ObserveProvider`
+- [`server.features.observe.observers.info`](../config/io_helidon_webserver_observe_spi_Observer.md#afa4a1-info)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `enabled` | boolean | `true` | Whether this observer is enabled. |
-| `endpoint` | string | `info` |  |
-| `values` | Map\<string, string\> |   | Values to be exposed using this observability endpoint. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a5c2d9-endpoint"></span> `endpoint` | `VALUE` | `String` | `info` | `N/A` |
+| <span id="ab7ada-values"></span> `values` | `MAP` | `String` |   | Values to be exposed using this observability endpoint |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

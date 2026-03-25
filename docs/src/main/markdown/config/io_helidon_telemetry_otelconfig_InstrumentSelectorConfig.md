@@ -1,16 +1,20 @@
-# InstrumentSelectorConfig (telemetry.otelconfig) Configuration
+# io.helidon.telemetry.otelconfig.InstrumentSelectorConfig
 
-Type: [io.helidon.telemetry.otelconfig.InstrumentSelectorConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/InstrumentSelectorConfig.html)
+## Description
+
+Settings for OpenTelemetry instrument selectors.
+
+## Usages
 
 ## Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `meter-name` | string |   | Meter name. |
-| `meter-schema-url` | string |   | Meter schema URL. |
-| `meter-version` | string |   | Meter version. |
-| `name` | string |   | Instrument name. |
-| `type` | InstrumentType (COUNTER, UP_DOWN_COUNTER, HISTOGRAM, OBSERVABLE_COUNTER, OBSERVABLE_UP_DOWN_COUNTER, OBSERVABLE_GAUGE, GAUGE) |   | Instrument type. |
-| `unit` | string |   | Instrument unit. |
+| <span id="a14bb9-meter-name"></span> `meter-name` | `VALUE` | `String` | Meter name |
+| <span id="a7c47f-meter-schema-url"></span> `meter-schema-url` | `VALUE` | `String` | Meter schema URL |
+| <span id="a24c92-meter-version"></span> `meter-version` | `VALUE` | `String` | Meter version |
+| <span id="acf44a-name"></span> `name` | `VALUE` | `String` | Instrument name |
+| <span id="abc056-type"></span> [`type`](../config/io_opentelemetry_sdk_metrics_InstrumentType.md) | `VALUE` | `i.o.s.m.InstrumentType` | Instrument type |
+| <span id="afa38c-unit"></span> `unit` | `VALUE` | `String` | Instrument unit |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

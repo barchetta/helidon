@@ -1,11 +1,15 @@
-# JsonRpcClientProtocolConfig (webclient.jsonrpc) Configuration
+# io.helidon.webclient.jsonrpc.JsonRpcClientProtocolConfig
 
-Type: [io.helidon.webclient.jsonrpc.JsonRpcClientProtocolConfig](/apidocs/io.helidon.webclient.jsonrpc/io/helidon/webclient/jsonrpc/JsonRpcClientProtocolConfig.html)
+## Description
+
+Configuration of a JSON-RPC client.
+
+## Usages
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `name` | string | `jsonrpc` | Name identifying this client protocol. Defaults to type. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a9e9ae-name"></span> `name` | `VALUE` | `String` | `jsonrpc` | Name identifying this client protocol |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

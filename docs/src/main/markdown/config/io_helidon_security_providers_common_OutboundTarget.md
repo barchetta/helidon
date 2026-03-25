@@ -1,70 +1,39 @@
-# OutboundTarget (security.providers.common) Configuration
+# io.helidon.security.providers.common.OutboundTarget
 
-Type: [io.helidon.security.providers.common.OutboundTarget](/apidocs/io.helidon.security.providers.common/io/helidon/security/providers/common/OutboundTarget.html)
+## Description
+
+Configuration of outbound target.
+
+## Usages
+
+- [`security.providers.google-login.outbound.outbound`](../config/io_helidon_security_providers_common_OutboundConfig.md#a54601-outbound)
+
+- [`security.providers.header-atn.outbound`](../config/io_helidon_security_providers_header_HeaderAtnProvider.md#aa4f36-outbound)
+
+- [`security.providers.http-basic-auth.outbound`](../config/io_helidon_security_providers_httpauth_HttpBasicAuthProvider.md#aade93-outbound)
+
+- [`security.providers.jwt.sign-token.outbound`](../config/io_helidon_security_providers_common_OutboundConfig.md#a54601-outbound)
+
+- [`security.providers.oidc.outbound`](../config/io_helidon_security_providers_oidc_OidcProvider.md#acf040-outbound)
+
+- [`server.features.security.security.providers.google-login.outbound.outbound`](../config/io_helidon_security_providers_common_OutboundConfig.md#a54601-outbound)
+
+- [`server.features.security.security.providers.header-atn.outbound`](../config/io_helidon_security_providers_header_HeaderAtnProvider.md#aa4f36-outbound)
+
+- [`server.features.security.security.providers.http-basic-auth.outbound`](../config/io_helidon_security_providers_httpauth_HttpBasicAuthProvider.md#aade93-outbound)
+
+- [`server.features.security.security.providers.jwt.sign-token.outbound`](../config/io_helidon_security_providers_common_OutboundConfig.md#a54601-outbound)
+
+- [`server.features.security.security.providers.oidc.outbound`](../config/io_helidon_security_providers_oidc_OidcProvider.md#acf040-outbound)
 
 ## Configuration options
 
-| key    | type   | default value | description                                 |
-|--------|--------|---------------|---------------------------------------------|
-| `name` | string |               | Configure the name of this outbound target. |
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="a18a07-hosts"></span> `hosts` | `LIST` | `String` | Add supported host for this target |
+| <span id="ae8e21-methods"></span> `methods` | `LIST` | `String` | Add supported method for this target |
+| <span id="a18020-name"></span> `name` | `VALUE` | `String` | Configure the name of this outbound target |
+| <span id="ac8317-paths"></span> `paths` | `LIST` | `String` | Add supported paths for this target |
+| <span id="af7d0d-transport"></span> `transport` | `LIST` | `String` | Add supported transports for this target |
 
-Required configuration options
-
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>hosts</code></p></td>
-<td style="text-align: left;"><p>string[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Add supported host for this target. May be called more than once to add more hosts.</p>
-<p>Valid examples:</p>
-<ul>
-<li><p>localhost</p></li>
-<li><p>www.google.com</p></li>
-<li><p>127.0.0.1</p></li>
-<li><p>*.oracle.com</p></li>
-<li><p>192.169.<strong>.</strong></p></li>
-<li><p><strong>.google.</strong></p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>methods</code></p></td>
-<td style="text-align: left;"><p>string[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Add supported method for this target. May be called more than once to add more methods. The method is tested as is ignoring case against the used method.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>paths</code></p></td>
-<td style="text-align: left;"><p>string[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Add supported paths for this target. May be called more than once to add more paths. The path is tested as is against called path, and also tested as a regular expression.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>transport</code></p></td>
-<td style="text-align: left;"><p>string[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Add supported transports for this target. May be called more than once to add more transports.</p>
-<p>Valid examples:</p>
-<ul>
-<li><p>http</p></li>
-<li><p>https</p></li>
-</ul>
-<p>There is no wildcard support</p></td>
-</tr>
-</tbody>
-</table>
+See the [manifest](../config/manifest.md) for all available types.

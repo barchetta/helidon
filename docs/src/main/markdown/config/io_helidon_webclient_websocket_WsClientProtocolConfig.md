@@ -1,12 +1,16 @@
-# WsClientProtocolConfig (webclient.websocket) Configuration
+# io.helidon.webclient.websocket.WsClientProtocolConfig
 
-Type: [io.helidon.webclient.websocket.WsClientProtocolConfig](/apidocs/io.helidon.webclient.websocket/io/helidon/webclient/websocket/WsClientProtocolConfig.html)
+## Description
+
+Configuration of an HTTP/1.1 client.
+
+## Usages
 
 ## Configuration options
 
-| key             | type       | default value | description |
-|-----------------|------------|---------------|-------------|
-| `name`          | string     | `websocket`   |             |
-| `sub-protocols` | string\[\] |               |             |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a38222-name"></span> `name` | `VALUE` | `String` | `websocket` | `N/A` |
+| <span id="ab4ea8-sub-protocols"></span> `sub-protocols` | `LIST` | `String` |   | `N/A` |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

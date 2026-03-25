@@ -1,161 +1,35 @@
-# ExtendedTracerConfig (tracing) Configuration
+# io.helidon.tracing.ExtendedTracerConfig
 
-Type: [io.helidon.tracing.ExtendedTracerConfig](/apidocs/io.helidon.tracing/io/helidon/tracing/ExtendedTracerConfig.html)
+## Description
+
+Common settings for tracers including settings for span processors and secure client connections.
+
+## Usages
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>boolean-tags</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, boolean&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Tracer-level tags with boolean values added to all reported spans.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>client-cert-pem</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Client certificate for connecting securely to the tracing collector.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to enable tracing. That is, whether to use a fully-featured tracing implementation on the path vs. a no-op implementation.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>export-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>PT10S</code></p></td>
-<td style="text-align: left;"><p>Maximum time a transmission can be in progress before being cancelled.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>global</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to create and register a tracer as the global tracer.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>host</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Host used in connecting to the tracing collector.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>int-tags</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, int&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Tracer level tags with integer values added to all reported spans.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-export-batch-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>512</code></p></td>
-<td style="text-align: left;"><p>Maximum number of spans grouped for transmission together; typically does not exceed maxQueueSize() (batch processing).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-queue-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>2048</code></p></td>
-<td style="text-align: left;"><p>Maximum number of spans retained before discarding any not sent to the tracing collector (batch processing).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>path</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Path at the collector host and port used when sending trace data to the collector.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>port</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Port used in connecting to the tracing collector.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>private-key-pem</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Private key for connecting securely to the tracing collector.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>protocol</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Protocol (such as <code>http</code> or <code>https</code>) used in connecting to the tracing collector.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>sampler-param</code></p></td>
-<td style="text-align: left;"><p>double</p></td>
-<td style="text-align: left;"><p><code>1.0</code></p></td>
-<td style="text-align: left;"><p>Parameter value used by the selected sampler; interpretation depends on the sampler type..</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>sampler-type</code></p></td>
-<td style="text-align: left;"><p>SamplerType (CONSTANT, RATIO)</p></td>
-<td style="text-align: left;"><p><code>SamplerType.CONSTANT</code></p></td>
-<td style="text-align: left;"><p>Type of sampler for collecting spans.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>CONSTANT</code>: Sampling of every span.</p></li>
-<li><p><code>RATIO</code>: Sampling of a proportion [0.0, 1.0] of spans.</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>schedule-delay</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>PT5S</code></p></td>
-<td style="text-align: left;"><p>Delay between consecutive transmissions to the tracing collector (batch processing).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>service</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Service name of the traced service.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>span-processor-type</code></p></td>
-<td style="text-align: left;"><p>SpanProcessorType (SIMPLE, BATCH)</p></td>
-<td style="text-align: left;"><p><code>SpanProcessorType.BATCH</code></p></td>
-<td style="text-align: left;"><p>Type of span processor for accumulating spans before transmission to the tracing collector.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>SIMPLE</code>: Simple Span Processor.</p></li>
-<li><p><code>BATCH</code>: Batch Span Processor.</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>tags</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, string&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Tracer-level tags with <code>String</code> values added to all reported spans.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>trusted-cert-pem</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Trusted certificates for connecting to the tracing collector.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>uri</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>URI for the collector to which to send tracing data.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="af4eea-boolean-tags"></span> `boolean-tags` | `MAP` | `Boolean` |   | Tracer-level tags with boolean values added to all reported spans |
+| <span id="a06ff0-client-cert-pem"></span> [`client-cert-pem`](../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | Client certificate for connecting securely to the tracing collector |
+| <span id="a3b608-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Whether to enable tracing |
+| <span id="a9f351-export-timeout"></span> `export-timeout` | `VALUE` | `Duration` | `PT10S` | Maximum time a transmission can be in progress before being cancelled |
+| <span id="ac87f1-global"></span> `global` | `VALUE` | `Boolean` | `true` | Whether to create and register a tracer as the global tracer |
+| <span id="a5be91-host"></span> `host` | `VALUE` | `String` |   | Host used in connecting to the tracing collector |
+| <span id="a4a16b-int-tags"></span> `int-tags` | `MAP` | `Integer` |   | Tracer level tags with integer values added to all reported spans |
+| <span id="a90220-max-export-batch-size"></span> `max-export-batch-size` | `VALUE` | `Integer` | `512` | Maximum number of spans grouped for transmission together; typically does not exceed `#maxQueueSize()` (batch processing) |
+| <span id="a964fb-max-queue-size"></span> `max-queue-size` | `VALUE` | `Integer` | `2048` | Maximum number of spans retained before discarding any not sent to the tracing collector (batch processing) |
+| <span id="a68b2a-path"></span> `path` | `VALUE` | `String` |   | Path at the collector host and port used when sending trace data to the collector |
+| <span id="aedcc8-port"></span> `port` | `VALUE` | `Integer` |   | Port used in connecting to the tracing collector |
+| <span id="a9228e-private-key-pem"></span> [`private-key-pem`](../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | Private key for connecting securely to the tracing collector |
+| <span id="a2b780-protocol"></span> `protocol` | `VALUE` | `String` |   | Protocol (such as `http` or `https`) used in connecting to the tracing collector |
+| <span id="af2924-sampler-param"></span> `sampler-param` | `VALUE` | `Double` | `1.0` | Parameter value used by the selected sampler; interpretation depends on the sampler type |
+| <span id="a23803-sampler-type"></span> [`sampler-type`](../config/io_helidon_tracing_SamplerType.md) | `VALUE` | `i.h.t.SamplerType` | `CONSTANT` | Type of sampler for collecting spans |
+| <span id="a4383c-schedule-delay"></span> `schedule-delay` | `VALUE` | `Duration` | `PT5S` | Delay between consecutive transmissions to the tracing collector (batch processing) |
+| <span id="a5b04a-service"></span> `service` | `VALUE` | `String` |   | Service name of the traced service |
+| <span id="a501dc-span-processor-type"></span> [`span-processor-type`](../config/io_helidon_tracing_SpanProcessorType.md) | `VALUE` | `i.h.t.SpanProcessorType` | `BATCH` | Type of span processor for accumulating spans before transmission to the tracing collector |
+| <span id="a892f2-tags"></span> `tags` | `MAP` | `String` |   | Tracer-level tags with `String` values added to all reported spans |
+| <span id="a38973-trusted-cert-pem"></span> [`trusted-cert-pem`](../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | Trusted certificates for connecting to the tracing collector |
+| <span id="a90d64-uri"></span> `uri` | `VALUE` | `URI` |   | URI for the collector to which to send tracing data |
+
+See the [manifest](../config/manifest.md) for all available types.

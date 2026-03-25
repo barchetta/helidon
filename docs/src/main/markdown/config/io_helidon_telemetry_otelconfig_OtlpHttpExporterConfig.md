@@ -1,107 +1,26 @@
-# OtlpHttpExporterConfig (telemetry.otelconfig) Configuration
+# io.helidon.telemetry.otelconfig.OtlpHttpExporterConfig
 
-Type: [io.helidon.telemetry.otelconfig.OtlpHttpExporterConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/OtlpHttpExporterConfig.html)
+## Description
+
+Settings common to HTTP-based OTLP exporters.
+
+## Usages
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>certificate</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Trusted certificates.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>client.certificate</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>TLS certificate.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>client.key</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>TLS client key.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>compression</code></p></td>
-<td style="text-align: left;"><p>CompressionType (GZIP, NONE)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Compression the exporter uses.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>GZIP</code>: GZIP compression.</p></li>
-<li><p><code>NONE</code>: No compression.</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>connect-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Connection timeout.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>endpoint</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Endpoint of the collector to which the exporter should transmit.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>headers</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, string&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Headers added to each export message.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>internal-telemetry-version</code></p></td>
-<td style="text-align: left;"><p>InternalTelemetryVersion (LEGACY, LATEST)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Self-monitoring telemetry OpenTelemetry should collect.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>memory-mode</code></p></td>
-<td style="text-align: left;"><p>MemoryMode (REUSABLE_DATA, IMMUTABLE_DATA)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Memory mode.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>protocol</code></p></td>
-<td style="text-align: left;"><p>OtlpExporterProtocolType (HTTP_PROTO, GRPC)</p></td>
-<td style="text-align: left;"><p><code>OtlpExporterProtocolType.DEFAULT</code></p></td>
-<td style="text-align: left;"><p>Exporter protocol type.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>HTTP_PROTO</code>: http/proto protocol type.</p></li>
-<li><p><code>GRPC</code>: grpc protocol type.</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>retry-policy</code></p></td>
-<td style="text-align: left;"><p>RetryPolicy</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Retry policy.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Exporter timeout.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a823ee-certificate"></span> [`certificate`](../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | Trusted certificates |
+| <span id="a1ac05-client-certificate"></span> [`client.certificate`](../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | TLS certificate |
+| <span id="a0cc2d-client-key"></span> [`client.key`](../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | TLS client key |
+| <span id="a21971-compression"></span> [`compression`](../config/io_helidon_telemetry_otelconfig_CompressionType.md) | `VALUE` | `i.h.t.o.CompressionType` |   | Compression the exporter uses |
+| <span id="a450f0-connect-timeout"></span> `connect-timeout` | `VALUE` | `Duration` |   | Connection timeout |
+| <span id="a501d1-endpoint"></span> `endpoint` | `VALUE` | `URI` |   | Endpoint of the collector to which the exporter should transmit |
+| <span id="a23e4c-headers"></span> `headers` | `MAP` | `String` |   | Headers added to each export message |
+| <span id="a6edc1-internal-telemetry-version"></span> [`internal-telemetry-version`](../config/io_opentelemetry_sdk_common_InternalTelemetryVersion.md) | `VALUE` | `i.o.s.c.InternalTelemetryVersion` |   | Self-monitoring telemetry OpenTelemetry should collect |
+| <span id="a16c7e-memory-mode"></span> [`memory-mode`](../config/io_opentelemetry_sdk_common_export_MemoryMode.md) | `VALUE` | `i.o.s.c.e.MemoryMode` |   | Memory mode |
+| <span id="a813ef-protocol"></span> `protocol` | `VALUE` | `i.h.t.o.O.CustomMethods` | `DEFAULT` | Exporter protocol type |
+| <span id="a6fde0-retry-policy"></span> `retry-policy` | `VALUE` | `i.h.t.o.O.CustomMethods` |   | Retry policy |
+| <span id="ae5a36-timeout"></span> `timeout` | `VALUE` | `Duration` |   | Exporter timeout |
+
+See the [manifest](../config/manifest.md) for all available types.

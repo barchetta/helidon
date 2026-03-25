@@ -1,153 +1,49 @@
-# Tls (common.tls) Configuration
+# io.helidon.common.tls.Tls
 
-Type: [io.helidon.common.tls.Tls](/apidocs/io.helidon.common.tls/io/helidon/common/tls/Tls.html)
+## Description
+
+TLS configuration - common for server and client.
+
+## Usages
+
+- [`clients.tls`](../config/io_helidon_webclient_api_WebClient.md#aba9ef-tls)
+
+- [`security.providers.idcs-role-mapper.oidc-config.webclient.tls`](../config/io_helidon_webclient_api_WebClient.md#aba9ef-tls)
+
+- [`security.providers.oidc.webclient.tls`](../config/io_helidon_webclient_api_WebClient.md#aba9ef-tls)
+
+- [`server.features.security.security.providers.idcs-role-mapper.oidc-config.webclient.tls`](../config/io_helidon_webclient_api_WebClient.md#aba9ef-tls)
+
+- [`server.features.security.security.providers.oidc.webclient.tls`](../config/io_helidon_webclient_api_WebClient.md#aba9ef-tls)
+
+- [`server.sockets.tls`](../config/io_helidon_webserver_ListenerConfig.md#aed6f6-tls)
+
+- [`server.tls`](../config/io_helidon_webserver_WebServer.md#ac9efa-tls)
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>cipher-suite</code></p></td>
-<td style="text-align: left;"><p>string[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Enabled cipher suites for TLS communication.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>client-auth</code></p></td>
-<td style="text-align: left;"><p>TlsClientAuth (REQUIRED, OPTIONAL, NONE)</p></td>
-<td style="text-align: left;"><p><code>TlsClientAuth.NONE</code></p></td>
-<td style="text-align: left;"><p>Configure requirement for mutual TLS.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>REQUIRED</code>: Mutual TLS is required. Server MUST present a certificate trusted by the client, client MUST present a certificate trusted by the server. This implies private key and trust configuration for both server and client.</p></li>
-<li><p><code>OPTIONAL</code>: Mutual TLS is optional. Server MUST present a certificate trusted by the client, client MAY present a certificate trusted by the server. This implies private key configuration at least for server, trust configuration for at least client.</p></li>
-<li><p><code>NONE</code>: Mutual TLS is disabled. Server MUST present a certificate trusted by the client, client does not present a certificate. This implies private key configuration for server, trust configuration for client.</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Flag indicating whether Tls is enabled.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>endpoint-identification-algorithm</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>HTTPS</code></p></td>
-<td style="text-align: left;"><p>Identification algorithm for SSL endpoints.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>internal-keystore-provider</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Provider of the key stores used internally to create a key and trust manager factories.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>internal-keystore-type</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Type of the key stores used internally to create a key and trust manager factories.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>key-manager-factory-algorithm</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Algorithm of the key manager factory used when private key is defined. Defaults to javax.net.ssl.KeyManagerFactory.getDefaultAlgorithm().</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>manager</code></p></td>
-<td style="text-align: left;"><p>io.helidon.common.tls.TlsManager (service provider interface)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>The Tls manager. If one is not explicitly defined in the config then a default manager will be created.</p>
-<p>See ConfiguredTlsManager</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>private-key</code></p></td>
-<td style="text-align: left;"><p>PrivateKey</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Private key to use. For server side TLS, this is required. For client side TLS, this is optional (used when mutual TLS is enabled).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>protocol</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>TLS</code></p></td>
-<td style="text-align: left;"><p>Configure the protocol used to obtain an instance of javax.net.ssl.SSLContext.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>protocols</code></p></td>
-<td style="text-align: left;"><p>string[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Enabled protocols for TLS communication. Example of valid values for <code>TLS</code> protocol: <code>TLSv1.3</code>, <code>TLSv1.2</code></p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>provider</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Use explicit provider to obtain an instance of javax.net.ssl.SSLContext.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>revocation</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_common_tls_RevocationConfig.xml">RevocationConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Certificate revocation check configuration.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>secure-random-algorithm</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Algorithm to use when creating a new secure random.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>secure-random-provider</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Provider to use when creating a new secure random. When defined, secureRandomAlgorithm() must be defined as well.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>session-cache-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>20480</code></p></td>
-<td style="text-align: left;"><p>SSL session cache size.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>session-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>PT24H</code></p></td>
-<td style="text-align: left;"><p>SSL session timeout.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>trust</code></p></td>
-<td style="text-align: left;"><p>X509Certificate[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>List of certificates that form the trust manager.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>trust-all</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Trust any certificate provided by the other side of communication.</p>
-<p><strong>This is a dangerous setting:</strong> if set to <code>true</code>, any certificate will be accepted, throwing away most of the security advantages of TLS. <strong>NEVER</strong> do this in production.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>trust-manager-factory-algorithm</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Trust manager factory algorithm.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a6e5c3-cipher-suite"></span> `cipher-suite` | `LIST` | `String` |   | Enabled cipher suites for TLS communication |
+| <span id="aa9957-client-auth"></span> [`client-auth`](../config/io_helidon_common_tls_TlsClientAuth.md) | `VALUE` | `i.h.c.t.TlsClientAuth` | `NONE` | Configure requirement for mutual TLS |
+| <span id="ab3264-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Flag indicating whether Tls is enabled |
+| <span id="a734ef-endpoint-identification-algorithm"></span> `endpoint-identification-algorithm` | `VALUE` | `String` | `HTTPS` | Identification algorithm for SSL endpoints |
+| <span id="a4eeba-internal-keystore-provider"></span> `internal-keystore-provider` | `VALUE` | `String` |   | Provider of the key stores used internally to create a key and trust manager factories |
+| <span id="ab7ae6-internal-keystore-type"></span> `internal-keystore-type` | `VALUE` | `String` |   | Type of the key stores used internally to create a key and trust manager factories |
+| <span id="a93230-key-manager-factory-algorithm"></span> `key-manager-factory-algorithm` | `VALUE` | `String` |   | Algorithm of the key manager factory used when private key is defined |
+| <span id="a49b7a-manager"></span> [`manager`](../config/io_helidon_common_tls_TlsManager.md) | `VALUE` | `i.h.c.t.TlsManager` |   | The Tls manager |
+| <span id="a7cad5-manager-discover-services"></span> `manager-discover-services` | `VALUE` | `Boolean` | `false` | Whether to enable automatic service discovery for `manager` |
+| <span id="aeed7c-private-key"></span> [`private-key`](../config/io_helidon_common_pki_Keys.md) | `VALUE` | `i.h.c.p.Keys` |   | Private key to use |
+| <span id="a910b8-protocol"></span> `protocol` | `VALUE` | `String` | `TLS` | Configure the protocol used to obtain an instance of `javax.net.ssl.SSLContext` |
+| <span id="aef2f6-protocols"></span> `protocols` | `LIST` | `String` |   | Enabled protocols for TLS communication |
+| <span id="a0da60-provider"></span> `provider` | `VALUE` | `String` |   | Use explicit provider to obtain an instance of `javax.net.ssl.SSLContext` |
+| <span id="a7a660-revocation"></span> [`revocation`](../config/io_helidon_common_tls_RevocationConfig.md) | `VALUE` | `i.h.c.t.RevocationConfig` |   | Certificate revocation check configuration |
+| <span id="ab9360-secure-random-algorithm"></span> `secure-random-algorithm` | `VALUE` | `String` |   | Algorithm to use when creating a new secure random |
+| <span id="a82d0c-secure-random-provider"></span> `secure-random-provider` | `VALUE` | `String` |   | Provider to use when creating a new secure random |
+| <span id="a59f4a-session-cache-size"></span> `session-cache-size` | `VALUE` | `Integer` | `20480` | SSL session cache size |
+| <span id="abf0bb-session-timeout"></span> `session-timeout` | `VALUE` | `Duration` | `PT24H` | SSL session timeout |
+| <span id="adbc4b-trust"></span> [`trust`](../config/io_helidon_common_pki_Keys.md) | `LIST` | `i.h.c.p.Keys` |   | List of certificates that form the trust manager |
+| <span id="a0346e-trust-all"></span> `trust-all` | `VALUE` | `Boolean` | `false` | Trust any certificate provided by the other side of communication |
+| <span id="af626f-trust-manager-factory-algorithm"></span> `trust-manager-factory-algorithm` | `VALUE` | `String` |   | Trust manager factory algorithm |
+
+See the [manifest](../config/manifest.md) for all available types.

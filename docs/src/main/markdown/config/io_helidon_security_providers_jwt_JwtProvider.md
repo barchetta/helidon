@@ -1,124 +1,32 @@
-# JwtProvider (security.providers.jwt) Configuration
+# io.helidon.security.providers.jwt.JwtProvider
 
-JWT authentication provider
+## Description
 
-Type: [io.helidon.security.providers.jwt.JwtProvider](/apidocs/io.helidon.security.providers.jwt/io/helidon/security/providers/jwt/JwtProvider.html)
+JWT authentication provider.
 
-*Config key*
+## Usages
 
-``` text
-jwt
-```
+- [`security.providers.jwt`](../config/io_helidon_security_spi_SecurityProvider.md#ad2fae-jwt)
 
-This type provides the following service implementations:
-
-- `io.helidon.security.spi.SecurityProvider`
-
-- `io.helidon.security.spi.AuthenticationProvider`
+- [`server.features.security.security.providers.jwt`](../config/io_helidon_security_spi_SecurityProvider.md#ad2fae-jwt)
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>allow-impersonation</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Whether to allow impersonation by explicitly overriding username from outbound requests using io.helidon.security.EndpointConfig.PROPERTY_OUTBOUND_ID property. By default this is not allowed and identity can only be propagated.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>allow-unsigned</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Configure support for unsigned JWT. If this is set to <code>true</code> any JWT that has algorithm set to <code>none</code> and no <code>kid</code> defined will be accepted. Note that this has serious security impact - if JWT can be sent from a third party, this allows the third party to send ANY JWT and it would be accpted as valid.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>atn-token.handler</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_security_util_TokenHandler.xml">TokenHandler</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Token handler to extract username from request.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>atn-token.jwk.resource</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>JWK resource used to verify JWTs created by other parties.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>atn-token.jwt-audience</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Audience expected in inbound JWTs.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>atn-token.verify-signature</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Configure whether to verify signatures. Signatures verification is enabled by default. You can configure the provider not to verify signatures.</p>
-<p><strong>Make sure your service is properly secured on network level and only accessible from a secure endpoint that provides the JWTs when signature verification is disabled. If signature verification is disabled, this service will accept <em>ANY</em> JWT</strong></p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>authenticate</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to authenticate requests.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>optional</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Whether authentication is required. By default, request will fail if the username cannot be extracted. If set to false, request will process and this provider will abstain.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>principal-type</code></p></td>
-<td style="text-align: left;"><p>SubjectType (USER, SERVICE)</p></td>
-<td style="text-align: left;"><p><code>USER</code></p></td>
-<td style="text-align: left;"><p>Principal type this provider extracts (and also propagates).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>propagate</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to propagate identity.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>sign-token</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_security_providers_common_OutboundConfig.xml">OutboundConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Configuration of outbound rules.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>sign-token.jwk.resource</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>JWK resource used to sign JWTs created by us.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>sign-token.jwt-issuer</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Issuer used to create new JWTs.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>use-jwt-groups</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Claim <code>groups</code> from JWT will be used to automatically add groups to current subject (may be used with jakarta.annotation.security.RolesAllowed annotation).</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a8e9cb-allow-impersonation"></span> `allow-impersonation` | `VALUE` | `Boolean` | `false` | Whether to allow impersonation by explicitly overriding username from outbound requests using `io.helidon.security.EndpointConfig#PROPERTY_OUTBOUND_ID` property |
+| <span id="ac7a36-allow-unsigned"></span> `allow-unsigned` | `VALUE` | `Boolean` | `false` | Configure support for unsigned JWT |
+| <span id="a31c89-atn-token-handler"></span> [`atn-token.handler`](../config/io_helidon_security_util_TokenHandler.md) | `VALUE` | `i.h.s.u.TokenHandler` |   | Token handler to extract username from request |
+| <span id="ab9ed4-atn-token-jwk-resource"></span> [`atn-token.jwk.resource`](../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | JWK resource used to verify JWTs created by other parties |
+| <span id="a7fd00-atn-token-jwt-audience"></span> `atn-token.jwt-audience` | `VALUE` | `String` |   | Audience expected in inbound JWTs |
+| <span id="a1483b-atn-token-verify-signature"></span> `atn-token.verify-signature` | `VALUE` | `Boolean` | `true` | Configure whether to verify signatures |
+| <span id="a2bd0c-authenticate"></span> `authenticate` | `VALUE` | `Boolean` | `true` | Whether to authenticate requests |
+| <span id="ac625d-optional"></span> `optional` | `VALUE` | `Boolean` | `false` | Whether authentication is required |
+| <span id="af07ea-principal-type"></span> [`principal-type`](../config/io_helidon_security_SubjectType.md) | `VALUE` | `i.h.s.SubjectType` | `USER` | Principal type this provider extracts (and also propagates) |
+| <span id="a5a95f-propagate"></span> `propagate` | `VALUE` | `Boolean` | `true` | Whether to propagate identity |
+| <span id="a9294b-sign-token"></span> [`sign-token`](../config/io_helidon_security_providers_common_OutboundConfig.md) | `VALUE` | `i.h.s.p.c.OutboundConfig` |   | Configuration of outbound rules |
+| <span id="adc22c-sign-token-jwk-resource"></span> [`sign-token.jwk.resource`](../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | JWK resource used to sign JWTs created by us |
+| <span id="ab60c1-sign-token-jwt-issuer"></span> `sign-token.jwt-issuer` | `VALUE` | `String` |   | Issuer used to create new JWTs |
+| <span id="a8cde7-use-jwt-groups"></span> `use-jwt-groups` | `VALUE` | `Boolean` | `true` | Claim `groups` from JWT will be used to automatically add groups to current subject (may be used with `jakarta.annotation.security.RolesAllowed` annotation) |
+
+See the [manifest](../config/manifest.md) for all available types.

@@ -1,24 +1,23 @@
-# PrometheusPublisher (metrics.providers.micrometer) Configuration
+# io.helidon.metrics.providers.micrometer.PrometheusPublisher
 
-Type: [io.helidon.metrics.providers.micrometer.PrometheusPublisher](/apidocs/io.helidon.metrics.providers.micrometer/io/helidon/metrics/providers/micrometer/PrometheusPublisher.html)
+## Description
 
-*Config key*
+Settings for a Micrometer Prometheus meter registry.
 
-``` text
-prometheus
-```
+## Usages
 
-This type provides the following service implementations:
+- [`metrics.publishers.prometheus`](../config/io_helidon_metrics_api_MetricsPublisher.md#a62230-prometheus)
 
-- `io.helidon.metrics.spi.MetricsPublisherProvider`
+- [`server.features.observe.observers.metrics.publishers.prometheus`](../config/io_helidon_metrics_api_MetricsPublisher.md#a62230-prometheus)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `descriptions` | boolean |   | Whether to include meter descriptions in Prometheus output. |
-| `enabled` | boolean | `true` | Whether the configured publisher is enabled. |
-| `interval` | Duration |   | Step size used in computing "windowed" statistics. Micrometer advises that this value should be close to the interval with which backend systems scrape the Prometheus-format metrics data. |
-| `prefix` | string |   | Property name prefix. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a6614e-descriptions"></span> `descriptions` | `VALUE` | `Boolean` |   | Whether to include meter descriptions in Prometheus output |
+| <span id="a248f8-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Whether the configured publisher is enabled |
+| <span id="ae8bbc-interval"></span> `interval` | `VALUE` | `Duration` |   | Step size used in computing "windowed" statistics |
+| <span id="abd446-name"></span> `name` | `VALUE` | `String` |   | `N/A` |
+| <span id="a3221e-prefix"></span> `prefix` | `VALUE` | `String` |   | Property name prefix |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

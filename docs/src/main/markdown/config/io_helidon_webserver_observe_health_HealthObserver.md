@@ -1,21 +1,22 @@
-# HealthObserver (webserver.observe.health) Configuration
+# io.helidon.webserver.observe.health.HealthObserver
 
-Type: [io.helidon.webserver.observe.health.HealthObserver](/apidocs/io.helidon.webserver.observe.health/io/helidon/webserver/observe/health/HealthObserver.html)
+## Description
 
-This is a standalone configuration type, prefix from configuration root: `health`
+Configuration of Health observer.
 
-This type provides the following service implementations:
+## Usages
 
-- `io.helidon.webserver.observe.spi.ObserveProvider`
+- [`health`](../config/config_reference.md#ac9c2c-health)
+
+- [`server.features.observe.observers.health`](../config/io_helidon_webserver_observe_spi_Observer.md#a27684-health)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `details` | boolean | `false` | Whether details should be printed. By default, health only returns a io.helidon.http.Status.NO_CONTENT_204 for success, io.helidon.http.Status.SERVICE_UNAVAILABLE_503 for health down, and io.helidon.http.Status.INTERNAL_SERVER_ERROR_500 in case of error with no entity. When details are enabled, health returns io.helidon.http.Status.OK_200 for success, same codes otherwise and a JSON entity with detailed information about each health check executed. |
-| `enabled` | boolean | `true` | Whether this observer is enabled. |
-| `endpoint` | string | `health` |  |
-| `exclude` | string\[\] |   | Health check names to exclude in computing the overall health of the server. |
-| `use-system-services` | boolean | `true` | Whether to use services discovered by java.util.ServiceLoader. By default, all io.helidon.health.spi.HealthCheckProvider based health checks are added. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a66088-details"></span> `details` | `VALUE` | `Boolean` | `false` | Whether details should be printed |
+| <span id="aaa7ec-endpoint"></span> `endpoint` | `VALUE` | `String` | `health` | `N/A` |
+| <span id="af4081-exclude"></span> `exclude` | `LIST` | `String` |   | Health check names to exclude in computing the overall health of the server |
+| <span id="a27567-use-system-services"></span> `use-system-services` | `VALUE` | `Boolean` | `true` | Whether to use services discovered by `java.util.ServiceLoader` |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

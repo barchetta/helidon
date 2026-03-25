@@ -1,6 +1,6 @@
 # Security Providers
 
-## Contents
+### Contents
 
 - [Implemented Security Providers](#_implemented_security_providers)
 
@@ -8,7 +8,7 @@
 
 - [Reference](#_reference)
 
-## Implemented Security Providers
+### Implemented Security Providers
 
 Helidon provides the following security providers for endpoint protection:
 
@@ -29,28 +29,28 @@ The following providers are no longer evolved:
 | [Google Login](#_google_login_provider) | Authentication | ✅ | **Deprecated**! Authenticates a token from request against Google servers |
 | [JWT Provider](#_jwt_provider) | Authentication | ✅ | JWT tokens passed from frontend |
 
-## OIDC Provider
+### OIDC Provider
 
 Open ID Connect security provider.
 
-### Maven Coordinates
+#### Maven Coordinates
 
-*Maven dependency*
+Maven dependency
 
-``` xml
+``` highlight
 <dependency>
     <groupId>io.helidon.security.providers</groupId>
     <artifactId>helidon-security-providers-oidc</artifactId>
 </dependency>
 ```
 
-#### Overview
+##### Overview
 
 In Helidon SE, we need to register the redirection support with routing (in addition to `SecurityFeature` that integrates with `WebServer`). This is not required when `redirect` is set to false.
 
-*Adding support for OIDC redirects*
+Adding support for OIDC redirects
 
-``` java
+``` highlight
 WebServer.builder()
         .addFeature(SecurityFeature.builder()
                             .config(config.get("security"))
@@ -59,487 +59,367 @@ WebServer.builder()
         .build();
 ```
 
-Open ID Connect security provider
+##### Configuration options
 
-Type: [io.helidon.security.providers.oidc.OidcProvider](/apidocs/io.helidon.security.providers.oidc/io/helidon/security/providers/oidc/OidcProvider.html)
-
-*Config key*
-
-``` text
-oidc
-```
-
-This type provides the following service implementations:
-
-- `io.helidon.security.spi.AuthenticationProvider`
-
-- `io.helidon.security.spi.SecurityProvider`
-
-#### Configuration options
-
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
 </colgroup>
 <thead>
 <tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
+<th class="tableblock halign-left valign-top">Key</th>
+<th class="tableblock halign-left valign-top">Kind</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><p><code>access-token-ip-check</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to check if current IP address matches the one access token was issued for. This check helps with cookie replay attack prevention.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a3a883-access-token-ip-check"></span> <code>access-token-ip-check</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to check if current IP address matches the one access token was issued for</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>audience</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Audience of issued tokens.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a7e9b5-client-credentials-config"></span> <a href="../../se/security/../../config/io_helidon_security_providers_oidc_common_ClientCredentialsConfig.html"><code>client-credentials-config</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.s.p.o.c.ClientCredentialsConfig</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Set the configuration related to the client credentials flow</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>authorization-endpoint-uri</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>URI of an authorization endpoint used to redirect users to for logging-in.</p>
-<p>If not defined, it is obtained from oidcMetadata(Resource), if that is not defined an attempt is made to use identityUri(URI)/oauth2/v1/authorize.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a9b107-cookie-domain"></span> <code>cookie-domain</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Domain the cookie is valid for</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>base-scopes</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>openid</code></p></td>
-<td style="text-align: left;"><p>Configure base scopes. By default, this is <code>openid</code>. If scope has a qualifier, it must be used here.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a593cb-cookie-encryption-enabled"></span> <code>cookie-encryption-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to encrypt token cookie created by this microservice</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>check-audience</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Configure audience claim check.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="aaabc9-cookie-encryption-id-enabled"></span> <code>cookie-encryption-id-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to encrypt id token cookie created by this microservice</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>client-credentials-config</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_security_providers_oidc_common_ClientCredentialsConfig.xml">ClientCredentialsConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Set the configuration related to the client credentials flow.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ab14ce-cookie-encryption-name"></span> <code>cookie-encryption-name</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top">Name of the encryption configuration available through
+Security#encrypt(String, byte[)&lt;/code&gt; and &lt;code&gt;Security#decrypt(String, String)&lt;/code&gt;]</td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>client-id</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Client ID as generated by OIDC server.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ac0d77-cookie-encryption-password"></span> <code>cookie-encryption-password</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>LIST</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Master password for encryption/decryption of cookies</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>client-secret</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Client secret as generated by OIDC server. Used to authenticate this application with the server when requesting JWT based on a code.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ad8fc7-cookie-encryption-refresh-enabled"></span> <code>cookie-encryption-refresh-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to encrypt refresh token cookie created by this microservice</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>client-timeout-millis</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>30000</code></p></td>
-<td style="text-align: left;"><p>Timeout of calls using web client.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a5da71-cookie-encryption-state-enabled"></span> <code>cookie-encryption-state-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to encrypt state cookie created by this microservice</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-domain</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Domain the cookie is valid for. Not used by default.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a16963-cookie-encryption-tenant-enabled"></span> <code>cookie-encryption-tenant-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to encrypt tenant name cookie created by this microservice</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-encryption-enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Whether to encrypt token cookie created by this microservice. Defaults to <code>false</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ad2ea9-cookie-http-only"></span> <code>cookie-http-only</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>When using cookie, if set to true, the HttpOnly attribute will be configured</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-encryption-id-enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to encrypt id token cookie created by this microservice. Defaults to <code>true</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ae7d0f-cookie-max-age-seconds"></span> <code>cookie-max-age-seconds</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Long</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>When using cookie, used to set MaxAge attribute of the cookie, defining how long the cookie is valid</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-encryption-name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Name of the encryption configuration available through Security.encrypt(String, byte[]) and Security.decrypt(String, String). If configured and encryption is enabled for any cookie, Security MUST be configured in global or current <code>io.helidon.common.context.Context</code> (this is done automatically in Helidon MP).</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a423f0-cookie-name"></span> <code>cookie-name</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>JSESSIONID</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Name of the cookie to use</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-encryption-password</code></p></td>
-<td style="text-align: left;"><p>char[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Master password for encryption/decryption of cookies. This must be configured to the same value on each microservice using the cookie.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a47aa0-cookie-name-id-token"></span> <code>cookie-name-id-token</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>JSESSIONID_2</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Name of the cookie to use for id token</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-encryption-refresh-enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to encrypt refresh token cookie created by this microservice. Defaults to <code>true</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="afcd78-cookie-name-refresh-token"></span> <code>cookie-name-refresh-token</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>JSESSIONID_3</code></p></td>
+<td class="tableblock halign-left valign-top"><p>The name of the cookie to use for the refresh token</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-encryption-state-enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to encrypt state cookie created by this microservice. Defaults to <code>true</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a3e5f9-cookie-name-state"></span> <code>cookie-name-state</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>JSESSIONID_3</code></p></td>
+<td class="tableblock halign-left valign-top"><p>The name of the cookie to use for the state storage</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-encryption-tenant-enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to encrypt tenant name cookie created by this microservice. Defaults to <code>true</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="afcf69-cookie-name-tenant"></span> <code>cookie-name-tenant</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>HELIDON_TENANT</code></p></td>
+<td class="tableblock halign-left valign-top"><p>The name of the cookie to use for the tenant name</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-http-only</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>When using cookie, if set to true, the HttpOnly attribute will be configured. Defaults to <code>true</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ae5841-cookie-path"></span> <code>cookie-path</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>/</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Path the cookie is valid for</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-max-age-seconds</code></p></td>
-<td style="text-align: left;"><p>long</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>When using cookie, used to set MaxAge attribute of the cookie, defining how long the cookie is valid. Not used by default.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a0a656-cookie-same-site"></span> <a href="../../se/security/../../config/io_helidon_http_SetCookie_SameSite.html"><code>cookie-same-site</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.h.S.SameSite</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>LAX</code></p></td>
+<td class="tableblock halign-left valign-top"><p>When using cookie, used to set the SameSite cookie value</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>JSESSIONID</code></p></td>
-<td style="text-align: left;"><p>Name of the cookie to use. Defaults to DEFAULT_COOKIE_NAME.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a0f553-cookie-secure"></span> <code>cookie-secure</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>When using cookie, if set to true, the Secure attribute will be configured</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-name-id-token</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>JSESSIONID_2</code></p></td>
-<td style="text-align: left;"><p>Name of the cookie to use for id token. Defaults to DEFAULT_COOKIE_NAME_2.</p>
-<p>This cookie is only used when logout is enabled, as otherwise it is not needed. Content of this cookie is encrypted.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a70aa3-cookie-use"></span> <code>cookie-use</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to use cookie to store JWT between requests</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-name-refresh-token</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>JSESSIONID_3</code></p></td>
-<td style="text-align: left;"><p>The name of the cookie to use for the refresh token. Defaults to DEFAULT_REFRESH_COOKIE_NAME.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ad1309-cors"></span> <a href="../../se/security/../../config/io_helidon_cors_CrossOriginConfig.html"><code>cors</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.c.CrossOriginConfig</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Assign cross-origin resource sharing settings</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-name-state</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>JSESSIONID_3</code></p></td>
-<td style="text-align: left;"><p>The name of the cookie to use for the state storage. Defaults to DEFAULT_STATE_COOKIE_NAME.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="afd33a-force-https-redirects"></span> <code>force-https-redirects</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Force HTTPS for redirects to identity provider</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-name-tenant</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>HELIDON_TENANT</code></p></td>
-<td style="text-align: left;"><p>The name of the cookie to use for the tenant name. Defaults to DEFAULT_TENANT_COOKIE_NAME.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a069b5-frontend-uri"></span> <code>frontend-uri</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Full URI of this application that is visible from user browser</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-path</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>/</code></p></td>
-<td style="text-align: left;"><p>Path the cookie is valid for. Defaults to "/".</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="abf3fb-header-token"></span> <a href="../../se/security/../../config/io_helidon_security_util_TokenHandler.html"><code>header-token</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.s.u.TokenHandler</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>A <code>TokenHandler</code> to process header containing a JWT</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-same-site</code></p></td>
-<td style="text-align: left;"><p>SetCookie.SameSite (LAX, STRICT, NONE)</p></td>
-<td style="text-align: left;"><p><code>LAX</code></p></td>
-<td style="text-align: left;"><p>When using cookie, used to set the SameSite cookie value. Can be "Strict" or "Lax".</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a866f7-header-use"></span> <code>header-use</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to expect JWT in a header field</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-secure</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>When using cookie, if set to true, the Secure attribute will be configured. Defaults to false.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a5a4ae-id-token-signature-validation"></span> <code>id-token-signature-validation</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether id token signature check should be enabled</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-use</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to use cookie to store JWT between requests. Defaults to DEFAULT_COOKIE_USE.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ab5728-max-redirects"></span> <code>max-redirects</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>5</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Configure maximal number of redirects when redirecting to an OIDC provider within a single authentication attempt</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cors</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_cors_CrossOriginConfig.xml">CrossOriginConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Assign cross-origin resource sharing settings.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ab32e8-optional"></span> <code>optional</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether authentication is required</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>decryption-keys.resource</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>A resource pointing to JWK with private keys used for JWE content key decryption.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="acf040-outbound"></span> <a href="../../se/security/../../config/io_helidon_security_providers_common_OutboundTarget.html"><code>outbound</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>LIST</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.s.p.c.OutboundTarget</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Add a new target configuration</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>force-https-redirects</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Force HTTPS for redirects to identity provider. Defaults to <code>false</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="aebe14-outbound-type"></span> <a href="../../se/security/../../config/io_helidon_security_providers_oidc_common_OidcOutboundType.html"><code>outbound-type</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.s.p.o.c.OidcOutboundType</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>USER_JWT</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Type of the OIDC outbound</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>frontend-uri</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Full URI of this application that is visible from user browser. Used to redirect request back from identity server after successful login.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a6ccfb-pkce-challenge-method"></span> <a href="../../se/security/../../config/io_helidon_security_providers_oidc_common_PkceChallengeMethod.html"><code>pkce-challenge-method</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.s.p.o.c.PkceChallengeMethod</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>S256</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Proof Key Code Exchange (PKCE) challenge creation method</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>header-token</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_security_util_TokenHandler.xml">TokenHandler</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>A TokenHandler to process header containing a JWT. Default is "Authorization" header with a prefix "bearer ".</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a4050c-pkce-enabled"></span> <code>pkce-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether this provider should support PKCE</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>header-use</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to expect JWT in a header field.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ad84e8-propagate"></span> <code>propagate</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to propagate identity</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>id-token-signature-validation</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether id token signature check should be enabled. Signature check is enabled by default, and it is highly recommended to not change that. Change this setting only when you really know what you are doing, otherwise it could case security issues.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a03394-proxy-port"></span> <code>proxy-port</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>80</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Proxy port</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>identity-uri</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>URI of the identity server, base used to retrieve OIDC metadata.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="aa5960-query-id-token-param-name"></span> <code>query-id-token-param-name</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>id_token</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Name of a query parameter that contains the JWT id token when parameter is used</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>introspect-endpoint-uri</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Endpoint to use to validate JWT. Either use this or set signJwk(JwkKeys) or signJwk(Resource).</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a4e9c0-query-param-name"></span> <code>query-param-name</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>accessToken</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Name of a query parameter that contains the JWT access token when parameter is used</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>issuer</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Issuer of issued tokens.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a0b01e-query-param-tenant-name"></span> <code>query-param-tenant-name</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>h_tenant</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Name of a query parameter that contains the tenant name when the parameter is used</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>max-redirects</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>5</code></p></td>
-<td style="text-align: left;"><p>Configure maximal number of redirects when redirecting to an OIDC provider within a single authentication attempt.</p>
-<p>Defaults to DEFAULT_MAX_REDIRECTS</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a3d4be-query-param-use"></span> <code>query-param-use</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to use a query parameter to send JWT token from application to this server</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>oidc-metadata-well-known</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>If set to true, metadata will be loaded from default (well known) location, unless it is explicitly defined using oidc-metadata-resource. If set to false, it would not be loaded even if oidc-metadata-resource is not defined. In such a case all URIs must be explicitly defined (e.g. token-endpoint-uri).</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="aa4ba9-redirect"></span> <code>redirect</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>By default, the client should redirect to the identity server for the user to log in</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>oidc-metadata.resource</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Resource configuration for OIDC Metadata containing endpoints to various identity services, as well as information about the identity server.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="adf51c-redirect-attempt-param"></span> <code>redirect-attempt-param</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>h_ra</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Configure the parameter used to store the number of attempts in redirect</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>optional</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Whether authentication is required. By default, request will fail if the authentication cannot be verified. If set to true, request will process and this provider will abstain.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a21f20-redirect-uri"></span> <code>redirect-uri</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>/oidc/redirect</code></p></td>
+<td class="tableblock halign-left valign-top"><p>URI to register web server component on, used by the OIDC server to redirect authorization requests to after a user logs in or approves scopes</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>optional-audience</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Allow audience claim to be optional.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="aef163-tenants"></span> <a href="../../se/security/../../config/io_helidon_security_providers_oidc_common_TenantConfig.html"><code>tenants</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.s.p.o.c.TenantConfig</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Configurations of the tenants</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>outbound</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_security_providers_common_OutboundTarget.xml">OutboundTarget[]</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Add a new target configuration.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a5f4ac-token-signature-validation"></span> <code>token-signature-validation</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether access token signature check should be enabled</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>pkce-challenge-method</code></p></td>
-<td style="text-align: left;"><p>PkceChallengeMethod (PLAIN, S256)</p></td>
-<td style="text-align: left;"><p><code>S256</code></p></td>
-<td style="text-align: left;"><p>Proof Key Code Exchange (PKCE) challenge creation method. Default value is PkceChallengeMethod.S256.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>PLAIN</code>: No hashing will be applied. Challenge string will be the same as verifier.</p></li>
-<li><p><code>S256</code>: SHA-256 algorithm is used to hash the verifier value.</p></li>
-</ul></td>
+<td class="tableblock halign-left valign-top"><p><span id="a50324-use-jwt-groups"></span> <code>use-jwt-groups</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Claim <code>groups</code> from JWT will be used to automatically add groups to current subject (may be used with <code>jakarta.annotation.security.RolesAllowed</code> annotation)</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>pkce-enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Whether this provider should support PKCE. Default value is <code>false</code>.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>propagate</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Whether to propagate identity.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><span class="line-through"><code>proxy-host</code></span></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p><strong>Deprecated</strong> Proxy host to use. When defined, triggers usage of proxy for HTTP requests. Setting to empty String has the same meaning as setting to null - disables proxy.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>proxy-port</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>80</code></p></td>
-<td style="text-align: left;"><p>Proxy port. Defaults to DEFAULT_PROXY_PORT</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><span class="line-through"><code>proxy-protocol</code></span></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>http</code></p></td>
-<td style="text-align: left;"><p><strong>Deprecated</strong> Proxy protocol to use when proxy is used. Defaults to DEFAULT_PROXY_PROTOCOL.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>query-id-token-param-name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>id_token</code></p></td>
-<td style="text-align: left;"><p>Name of a query parameter that contains the JWT id token when parameter is used.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>query-param-name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>accessToken</code></p></td>
-<td style="text-align: left;"><p>Name of a query parameter that contains the JWT access token when parameter is used.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>query-param-tenant-name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>h_tenant</code></p></td>
-<td style="text-align: left;"><p>Name of a query parameter that contains the tenant name when the parameter is used. Defaults to DEFAULT_TENANT_PARAM_NAME.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>query-param-use</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Whether to use a query parameter to send JWT token from application to this server.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>redirect</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>By default, the client should redirect to the identity server for the user to log in. This behavior can be overridden by setting redirect to false. When token is not present in the request, the client will not redirect and just return appropriate error response code.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>redirect-attempt-param</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>h_ra</code></p></td>
-<td style="text-align: left;"><p>Configure the parameter used to store the number of attempts in redirect.</p>
-<p>Defaults to DEFAULT_ATTEMPT_PARAM</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>redirect-uri</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>/oidc/redirect</code></p></td>
-<td style="text-align: left;"><p>URI to register web server component on, used by the OIDC server to redirect authorization requests to after a user logs in or approves scopes. Note that usually the redirect URI configured here must be the same one as configured on OIDC server.</p>
-<p>Defaults to DEFAULT_REDIRECT_URI</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><span class="line-through"><code>relative-uris</code></span></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p><strong>Deprecated</strong> Can be set to <code>true</code> to force the use of relative URIs in all requests, regardless of the presence or absence of proxies or no-proxy lists. By default, requests that use the Proxy will have absolute URIs. Set this flag to <code>true</code> if the host is unable to accept absolute URIs. Defaults to DEFAULT_RELATIVE_URIS.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>scope-audience</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Audience of the scope required by this application. This is prefixed to the scope name when requesting scopes from the identity server. Defaults to empty string.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>server-type</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>@default</code></p></td>
-<td style="text-align: left;"><p>Configure one of the supported types of identity servers.</p>
-<p>If the type does not have an explicit mapping, a warning is logged and the default implementation is used.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>sign-jwk.resource</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>A resource pointing to JWK with public keys of signing certificates used to validate JWT.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>tenants</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_security_providers_oidc_common_TenantConfig.xml">TenantConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Configurations of the tenants</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>token-endpoint-auth</code></p></td>
-<td style="text-align: left;"><p>OidcConfig.ClientAuthentication (CLIENT_SECRET_BASIC, CLIENT_SECRET_POST, CLIENT_SECRET_JWT, PRIVATE_KEY_JWT, CLIENT_CERTIFICATE, NONE)</p></td>
-<td style="text-align: left;"><p><code>CLIENT_SECRET_BASIC</code></p></td>
-<td style="text-align: left;"><p>Type of authentication to use when invoking the token endpoint. Current supported options:</p>
-<ul>
-<li><p>io.helidon.security.providers.oidc.common.OidcConfig.ClientAuthentication.CLIENT_SECRET_BASIC</p></li>
-<li><p>io.helidon.security.providers.oidc.common.OidcConfig.ClientAuthentication.CLIENT_SECRET_POST</p></li>
-<li><p>io.helidon.security.providers.oidc.common.OidcConfig.ClientAuthentication.NONE</p></li>
-</ul>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>CLIENT_SECRET_BASIC</code>: Clients that have received a client_secret value from the Authorization Server authenticate with the Authorization Server in accordance with Section 2.3.1 of OAuth 2.0 [RFC6749] using the HTTP Basic authentication scheme. This is the default client authentication.</p></li>
-<li><p><code>CLIENT_SECRET_POST</code>: Clients that have received a client_secret value from the Authorization Server, authenticate with the Authorization Server in accordance with Section 2.3.1 of OAuth 2.0 [RFC6749] by including the Client Credentials in the request body.</p></li>
-<li><p><code>CLIENT_SECRET_JWT</code>: Clients that have received a client_secret value from the Authorization Server create a JWT using an HMAC SHA algorithm, such as HMAC SHA-256. The HMAC (Hash-based Message Authentication Code) is calculated using the octets of the UTF-8 representation of the client_secret as the shared key. The Client authenticates in accordance with JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants [OAuth.JWT] and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants [OAuth.Assertions].</p></li>
-</ul>
-<p>The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values.</p>
-<p>Required: <code>iss, sub, aud, jti, exp</code></p>
-<p>Optional: <code>iat</code> - <code>PRIVATE_KEY_JWT</code>: Clients that have registered a public key sign a JWT using that key. The Client authenticates in accordance with JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants [OAuth.JWT] and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants [OAuth.Assertions].</p>
-<p>The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values.</p>
-<p>Required: <code>iss, sub, aud, jti, exp</code></p>
-<p>Optional: <code>iat</code> - <code>CLIENT_CERTIFICATE</code>: Authentication is done via the client certificate used with MTLS. The Returned access token is bound to this client certificate. The Client needs to have MTLS enabled for the OIDC. - <code>NONE</code>: The Client does not authenticate itself at the Token Endpoint, either because it uses only the Implicit Flow (and so does not use the Token Endpoint) or because it is a Public Client with no Client Secret or other authentication mechanism.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>token-endpoint-uri</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>URI of a token endpoint used to obtain a JWT based on the authentication code. If not defined, it is obtained from oidcMetadata(Resource), if that is not defined an attempt is made to use identityUri(URI)/oauth2/v1/token.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>token-signature-validation</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether access token signature check should be enabled. Signature check is enabled by default, and it is highly recommended to not change that. Change this setting only when you really know what you are doing, otherwise it could case security issues.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>use-jwt-groups</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Claim <code>groups</code> from JWT will be used to automatically add groups to current subject (may be used with jakarta.annotation.security.RolesAllowed annotation).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>validate-jwt-with-jwk</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Use JWK (a set of keys to validate signatures of JWT) to validate tokens. Use this method when you want to use default values for JWK or introspection endpoint URI.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>webclient</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_webclient_api_WebClient.xml">WebClient</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>WebClient configuration used for outbound requests to the identity server. This configuration sets the values to the OIDC WebClient default configuration.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a85467-webclient"></span> <a href="../../se/security/../../config/io_helidon_webclient_api_WebClient.html"><code>webclient</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.w.a.WebClient</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>WebClient configuration used for outbound requests to the identity server. This configuration sets the values to the OIDC WebClient default configuration</p></td>
 </tr>
 </tbody>
 </table>
 
-### Example code
+###### Deprecated Options
+
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="af9976-proxy-host"></span> `proxy-host` | `VALUE` | `String` |   | Proxy host to use |
+| <span id="aa965f-proxy-protocol"></span> `proxy-protocol` | `VALUE` | `String` | `http` | Proxy protocol to use when proxy is used |
+| <span id="abf0b4-relative-uris"></span> `relative-uris` | `VALUE` | `Boolean` | `false` | Can be set to `true` to force the use of relative URIs in all requests, regardless of the presence or absence of proxies or no-proxy lists |
+
+#### Example code
 
 See the [example](https://github.com/helidon-io/helidon-examples/tree/helidon-4.x/examples/security/idcs-login) on GitHub.
 
-*Configuration example*
+Configuration example
 
-``` yaml
+``` highlight
 security:
   providers:
   - oidc:
@@ -555,7 +435,7 @@ security:
             header: "X-Internal-Auth"
 ```
 
-### How does it work?
+#### How does it work?
 
 At Helidon startup, if OIDC provider is configured, the following will happen:
 
@@ -593,7 +473,7 @@ Helidon obtains a token from request (from cookie, header, or query parameter):
 
 6.  Handling is returned to security to process other security providers
 
-### Multiple tenants
+#### Multiple tenants
 
 The OIDC provider also supports multiple tenants. To enable this feature, it is required to do several steps.
 
@@ -603,7 +483,7 @@ The OIDC provider also supports multiple tenants. To enable this feature, it is 
 
 3.  Add the tenants section to the OIDC provider configuration
 
-``` yaml
+``` highlight
 tenants:
    - name: "example-tenant"
      # ... tenant configuration options
@@ -611,8 +491,8 @@ tenants:
 
 There are four ways to provide the required tenant information to Helidon by default.
 
-<table>
-<caption>Possible <code>tenant-id-style</code> configuration options</caption>
+<table class="tableblock frame-all grid-all stretch">
+<caption>Table 1. Possible <code>tenant-id-style</code> configuration options</caption>
 <colgroup>
 <col style="width: 22%" />
 <col style="width: 44%" />
@@ -620,33 +500,33 @@ There are four ways to provide the required tenant information to Helidon by def
 </colgroup>
 <thead>
 <tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">description</th>
-<th style="text-align: left;">additional config options</th>
+<th class="tableblock halign-left valign-top">key</th>
+<th class="tableblock halign-left valign-top">description</th>
+<th class="tableblock halign-left valign-top">additional config options</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><p><code>host-header</code></p></td>
-<td style="text-align: left;"><p>Tenant configuration will be selected based on your host present in the <code>Host</code> header value.</p></td>
-<td style="text-align: left;"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p><code>host-header</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Tenant configuration will be selected based on your host present in the <code>Host</code> header value.</p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>domain</code></p></td>
-<td style="text-align: left;"><p>Similar to the <code>host-header</code> style, but now the tenant name is identified just as a part of the host name. By default, it selects the third domain level.</p>
+<td class="tableblock halign-left valign-top"><p><code>domain</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Similar to the <code>host-header</code> style, but now the tenant name is identified just as a part of the host name. By default, it selects the third domain level.</p>
 <p>Example: Host header value from inbound request is <code>my.helidon.com</code> → domain level 3 is <code>my</code>, domain level 2 is <code>helidon</code> and domain level 1 is <code>com</code>.</p></td>
-<td style="text-align: left;"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tenant-id-domain-level</span><span class="kw">:</span><span class="at"> &lt;domain level&gt;</span></span></code></pre></div></td>
+<td class="tableblock halign-left valign-top"><pre class="highlight"><code>tenant-id-domain-level: &lt;domain level&gt;</code></pre></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>token-handler</code></p></td>
-<td style="text-align: left;"><p>The tenant name information is expected to be provided through the configured custom header value.</p></td>
-<td style="text-align: left;"><div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tenant-id-handler</span><span class="kw">:</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">header</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;my-custom-header&quot;</span></span></code></pre></div></td>
+<td class="tableblock halign-left valign-top"><p><code>token-handler</code></p></td>
+<td class="tableblock halign-left valign-top"><p>The tenant name information is expected to be provided through the configured custom header value.</p></td>
+<td class="tableblock halign-left valign-top"><pre class="highlight"><code>tenant-id-handler:
+  header: &quot;my-custom-header&quot;</code></pre></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>none</code></p></td>
-<td style="text-align: left;"><p>No tenant name finding is used. Default tenant name <code>@default</code> is used instead.</p></td>
-<td style="text-align: left;"></td>
+<td class="tableblock halign-left valign-top"><p><code>none</code></p></td>
+<td class="tableblock halign-left valign-top"><p>No tenant name finding is used. Default tenant name <code>@default</code> is used instead.</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
@@ -659,180 +539,35 @@ and the custom tenant configuration discovery can be provided by implementing SP
 
 `io.helidon.security.providers.oidc.common.spi.TenantConfigProvider`
 
-#### Available tenant config options
+##### Available tenant config options
 
-Open ID Connect tenant configuration
+###### Configuration options
 
-Type: [io.helidon.security.providers.oidc.common.TenantConfig](/apidocs/io.helidon.security.providers.oidc.common/io/helidon/security/providers/oidc/common/TenantConfig.html)
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a2e4f7-audience"></span> `audience` | `VALUE` | `String` |   | Audience of issued tokens |
+| <span id="a37c39-authorization-endpoint-uri"></span> `authorization-endpoint-uri` | `VALUE` | `URI` |   | URI of an authorization endpoint used to redirect users to for logging-in |
+| <span id="ad0521-base-scopes"></span> `base-scopes` | `VALUE` | `String` | `openid` | Configure base scopes |
+| <span id="a7bcb9-check-audience"></span> `check-audience` | `VALUE` | `Boolean` | `true` | Configure audience claim check |
+| <span id="a67ded-client-id"></span> `client-id` | `VALUE` | `String` |   | Client ID as generated by OIDC server |
+| <span id="abd29e-client-secret"></span> `client-secret` | `VALUE` | `String` |   | Client secret as generated by OIDC server |
+| <span id="a3942e-client-timeout-millis"></span> `client-timeout-millis` | `VALUE` | `Duration` | `30000` | Timeout of calls using web client |
+| <span id="a989a6-decryption-keys-resource"></span> [`decryption-keys.resource`](../../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | A resource pointing to JWK with private keys used for JWE content key decryption |
+| <span id="aea75b-identity-uri"></span> `identity-uri` | `VALUE` | `URI` |   | URI of the identity server, base used to retrieve OIDC metadata |
+| <span id="a0f21f-introspect-endpoint-uri"></span> `introspect-endpoint-uri` | `VALUE` | `URI` |   | Endpoint to use to validate JWT |
+| <span id="aa6493-issuer"></span> `issuer` | `VALUE` | `String` |   | Issuer of issued tokens |
+| <span id="aaf0a0-name"></span> `name` | `VALUE` | `String` |   | Name of the tenant |
+| <span id="a14def-oidc-metadata-well-known"></span> `oidc-metadata-well-known` | `VALUE` | `Boolean` | `true` | If set to true, metadata will be loaded from default (well known) location, unless it is explicitly defined using oidc-metadata-resource |
+| <span id="a23e2c-oidc-metadata-resource"></span> [`oidc-metadata.resource`](../../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | Resource configuration for OIDC Metadata containing endpoints to various identity services, as well as information about the identity server |
+| <span id="ac2900-optional-audience"></span> `optional-audience` | `VALUE` | `Boolean` | `false` | Allow audience claim to be optional |
+| <span id="aa8075-scope-audience"></span> `scope-audience` | `VALUE` | `String` |   | Audience of the scope required by this application |
+| <span id="af12f3-server-type"></span> `server-type` | `VALUE` | `String` | `@default` | Configure one of the supported types of identity servers |
+| <span id="a8cb9d-sign-jwk-resource"></span> [`sign-jwk.resource`](../../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | A resource pointing to JWK with public keys of signing certificates used to validate JWT |
+| <span id="aa5a6b-token-endpoint-auth"></span> [`token-endpoint-auth`](../../config/io_helidon_security_providers_oidc_common_OidcConfig_ClientAuthentication.md) | `VALUE` | `i.h.s.p.o.c.O.ClientAuthentication` | `CLIENT_SECRET_BASIC` | Type of authentication to use when invoking the token endpoint |
+| <span id="a3ab59-token-endpoint-uri"></span> `token-endpoint-uri` | `VALUE` | `URI` |   | URI of a token endpoint used to obtain a JWT based on the authentication code |
+| <span id="aa43d0-validate-jwt-with-jwk"></span> `validate-jwt-with-jwk` | `VALUE` | `Boolean` | `true` | Use JWK (a set of keys to validate signatures of JWT) to validate tokens |
 
-##### Configuration options
-
-| key    | type   | default value | description         |
-|--------|--------|---------------|---------------------|
-| `name` | string |               | Name of the tenant. |
-
-Required configuration options
-
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>audience</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Audience of issued tokens.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>authorization-endpoint-uri</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>URI of an authorization endpoint used to redirect users to for logging-in.</p>
-<p>If not defined, it is obtained from oidcMetadata(Resource), if that is not defined an attempt is made to use identityUri(URI)/oauth2/v1/authorize.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>base-scopes</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>openid</code></p></td>
-<td style="text-align: left;"><p>Configure base scopes. By default, this is <code>openid</code>. If scope has a qualifier, it must be used here.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>check-audience</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Configure audience claim check.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>client-id</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Client ID as generated by OIDC server.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>client-secret</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Client secret as generated by OIDC server. Used to authenticate this application with the server when requesting JWT based on a code.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>client-timeout-millis</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>30000</code></p></td>
-<td style="text-align: left;"><p>Timeout of calls using web client.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>decryption-keys.resource</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>A resource pointing to JWK with private keys used for JWE content key decryption.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>identity-uri</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>URI of the identity server, base used to retrieve OIDC metadata.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>introspect-endpoint-uri</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Endpoint to use to validate JWT. Either use this or set signJwk(JwkKeys) or signJwk(Resource).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>issuer</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Issuer of issued tokens.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>oidc-metadata-well-known</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>If set to true, metadata will be loaded from default (well known) location, unless it is explicitly defined using oidc-metadata-resource. If set to false, it would not be loaded even if oidc-metadata-resource is not defined. In such a case all URIs must be explicitly defined (e.g. token-endpoint-uri).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>oidc-metadata.resource</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Resource configuration for OIDC Metadata containing endpoints to various identity services, as well as information about the identity server.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>optional-audience</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Allow audience claim to be optional.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>scope-audience</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Audience of the scope required by this application. This is prefixed to the scope name when requesting scopes from the identity server. Defaults to empty string.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>server-type</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>@default</code></p></td>
-<td style="text-align: left;"><p>Configure one of the supported types of identity servers.</p>
-<p>If the type does not have an explicit mapping, a warning is logged and the default implementation is used.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>sign-jwk.resource</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>A resource pointing to JWK with public keys of signing certificates used to validate JWT.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>token-endpoint-auth</code></p></td>
-<td style="text-align: left;"><p>OidcConfig.ClientAuthentication (CLIENT_SECRET_BASIC, CLIENT_SECRET_POST, CLIENT_SECRET_JWT, PRIVATE_KEY_JWT, CLIENT_CERTIFICATE, NONE)</p></td>
-<td style="text-align: left;"><p><code>CLIENT_SECRET_BASIC</code></p></td>
-<td style="text-align: left;"><p>Type of authentication to use when invoking the token endpoint. Current supported options:</p>
-<ul>
-<li><p>io.helidon.security.providers.oidc.common.OidcConfig.ClientAuthentication.CLIENT_SECRET_BASIC</p></li>
-<li><p>io.helidon.security.providers.oidc.common.OidcConfig.ClientAuthentication.CLIENT_SECRET_POST</p></li>
-<li><p>io.helidon.security.providers.oidc.common.OidcConfig.ClientAuthentication.NONE</p></li>
-</ul>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>CLIENT_SECRET_BASIC</code>: Clients that have received a client_secret value from the Authorization Server authenticate with the Authorization Server in accordance with Section 2.3.1 of OAuth 2.0 [RFC6749] using the HTTP Basic authentication scheme. This is the default client authentication.</p></li>
-<li><p><code>CLIENT_SECRET_POST</code>: Clients that have received a client_secret value from the Authorization Server, authenticate with the Authorization Server in accordance with Section 2.3.1 of OAuth 2.0 [RFC6749] by including the Client Credentials in the request body.</p></li>
-<li><p><code>CLIENT_SECRET_JWT</code>: Clients that have received a client_secret value from the Authorization Server create a JWT using an HMAC SHA algorithm, such as HMAC SHA-256. The HMAC (Hash-based Message Authentication Code) is calculated using the octets of the UTF-8 representation of the client_secret as the shared key. The Client authenticates in accordance with JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants [OAuth.JWT] and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants [OAuth.Assertions].</p></li>
-</ul>
-<p>The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values.</p>
-<p>Required: <code>iss, sub, aud, jti, exp</code></p>
-<p>Optional: <code>iat</code> - <code>PRIVATE_KEY_JWT</code>: Clients that have registered a public key sign a JWT using that key. The Client authenticates in accordance with JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants [OAuth.JWT] and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants [OAuth.Assertions].</p>
-<p>The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values.</p>
-<p>Required: <code>iss, sub, aud, jti, exp</code></p>
-<p>Optional: <code>iat</code> - <code>CLIENT_CERTIFICATE</code>: Authentication is done via the client certificate used with MTLS. The Returned access token is bound to this client certificate. The Client needs to have MTLS enabled for the OIDC. - <code>NONE</code>: The Client does not authenticate itself at the Token Endpoint, either because it uses only the Implicit Flow (and so does not use the Token Endpoint) or because it is a Public Client with no Client Secret or other authentication mechanism.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>token-endpoint-uri</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>URI of a token endpoint used to obtain a JWT based on the authentication code. If not defined, it is obtained from oidcMetadata(Resource), if that is not defined an attempt is made to use identityUri(URI)/oauth2/v1/token.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>validate-jwt-with-jwk</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Use JWK (a set of keys to validate signatures of JWT) to validate tokens. Use this method when you want to use default values for JWK or introspection endpoint URI.</p></td>
-</tr>
-</tbody>
-</table>
-
-#### How does that work?
+##### How does that work?
 
 Multi-tenant support requires to obtain tenant name from the incoming request. OIDC configuration is selected based on the received tenant name. The way this tenant name has to be provided is configured via `tenant-id-style` configuration. See [How to enable tenants](#tenant-enable) for more information. After matching tenant configuration with the received name, the rest of the OIDC flow if exactly the same as in [How does OIDC work](#oidc-workflow).
 
@@ -840,62 +575,44 @@ Base OIDC configuration is treated as a default tenant, which is used, if no ten
 
 It is also important to note, that each tenant configuration is based on the default tenant configuration (base OIDC configuration), and therefore its configuration do not need to change all the properties, if they do not differ from the base OIDC configuration.
 
-## CORS Settings
+### CORS Settings
 
 CORS is (now) a single component configured either through config (key `cors`), or programmatically via `io.helidon.webserver.cors.CorsFeature`. To add proper CORS setup for the OIDC endpoint, use one of these. Component specific CORS setup will be removed from Helidon.
 
-### HTTP Basic Authentication Provider
+#### HTTP Basic Authentication Provider
 
 HTTP Basic authentication support
 
-#### Setup
+##### Setup
 
-*Maven dependency*
+Maven dependency
 
-``` xml
+``` highlight
 <dependency>
     <groupId>io.helidon.security.providers</groupId>
     <artifactId>helidon-security-providers-http-auth</artifactId>
 </dependency>
 ```
 
-#### Overview
+##### Overview
 
-HTTP Basic Authentication provider
+##### Configuration options
 
-Type: [io.helidon.security.providers.httpauth.HttpBasicAuthProvider](/apidocs/io.helidon.security.providers.httpauth/io/helidon/security/providers/httpauth/HttpBasicAuthProvider.html)
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a57c45-optional"></span> `optional` | `VALUE` | `Boolean` | `false` | Whether authentication is required |
+| <span id="aade93-outbound"></span> [`outbound`](../../config/io_helidon_security_providers_common_OutboundTarget.md) | `LIST` | `i.h.s.p.c.OutboundTarget` |   | Add a new outbound target to configure identity propagation or explicit username/password |
+| <span id="aa4dbd-principal-type"></span> [`principal-type`](../../config/io_helidon_security_SubjectType.md) | `VALUE` | `i.h.s.SubjectType` | `USER` | Principal type this provider extracts (and also propagates) |
+| <span id="a9be1e-realm"></span> `realm` | `VALUE` | `String` | `helidon` | Set the realm to use when challenging users |
+| <span id="a18d67-users"></span> [`users`](../../config/io_helidon_security_providers_httpauth_ConfigUserStore_ConfigUser.md) | `LIST` | `i.h.s.p.h.C.ConfigUser` |   | Set user store to validate users |
 
-*Config key*
-
-``` text
-http-basic-auth
-```
-
-This type provides the following service implementations:
-
-- `io.helidon.security.spi.SecurityProvider`
-
-- `io.helidon.security.spi.AuthenticationProvider`
-
-#### Configuration options
-
-| key | type | default value | description |
-|----|----|----|----|
-| `optional` | boolean | `false` | Whether authentication is required. By default, request will fail if the authentication cannot be verified. If set to false, request will process and this provider will abstain. |
-| `outbound` | [OutboundTarget\[\]](../../se/security/../../config/io_helidon_security_providers_common_OutboundTarget.md) |   | Add a new outbound target to configure identity propagation or explicit username/password. |
-| `principal-type` | SubjectType (USER, SERVICE) | `USER` | Principal type this provider extracts (and also propagates). |
-| `realm` | string | `helidon` | Set the realm to use when challenging users. |
-| `users` | [ConfigUserStore.ConfigUser\[\]](../../se/security/../../config/io_helidon_security_providers_httpauth_ConfigUserStore_ConfigUser.md) |   | Set user store to validate users. Removes any other stores added through addUserStore(SecureUserStore). |
-
-Optional configuration options
-
-#### Example code
+##### Example code
 
 See the [example](https://github.com/helidon-io/helidon-examples/tree/helidon-4.x/examples/security/outbound-override) on GitHub.
 
-*Configuration example*
+Configuration example
 
-``` yaml
+``` highlight
 security:
   providers:
   - http-basic-auth:
@@ -920,9 +637,9 @@ security:
           password: "${CLEAR=changeit}"
 ```
 
-#### How does it work?
+##### How does it work?
 
-See <https://tools.ietf.org/html/rfc7617>.
+See <a href="https://tools.ietf.org/html/rfc7617" class="bare">https://tools.ietf.org/html/rfc7617</a>.
 
 **Authentication of request**
 
@@ -956,123 +673,41 @@ Java service loader service `io.helidon.security.providers.httpauth.spi.UserStor
 
 Basic authentication uses base64 encoded username and password and passes it over the network. Base64 is only encoding, not encryption - so anybody that gets hold of the header value can learn the actual username and password of the user. This is a security risk and an attack vector that everybody should be aware of before using HTTP Basic Authentication. We recommend using this approach only for testing and demo purposes.
 
-### HTTP Digest Authentication Provider
+#### HTTP Digest Authentication Provider
 
 HTTP Digest authentication support
 
-#### Setup
+##### Setup
 
-*Maven dependency*
+Maven dependency
 
-``` xml
+``` highlight
 <dependency>
     <groupId>io.helidon.security.providers</groupId>
     <artifactId>helidon-security-providers-http-auth</artifactId>
 </dependency>
 ```
 
-#### Overview
+##### Overview
 
-Http digest authentication security provider
+##### Configuration options
 
-Type: [io.helidon.security.providers.httpauth.HttpDigestAuthProvider](/apidocs/io.helidon.security.providers.httpauth/io/helidon/security/providers/httpauth/HttpDigestAuthProvider.html)
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a090f1-algorithm"></span> [`algorithm`](../../config/io_helidon_security_providers_httpauth_HttpDigest_Algorithm.md) | `VALUE` | `i.h.s.p.h.H.Algorithm` | `MD5` | Digest algorithm to use |
+| <span id="a0ad17-nonce-timeout-millis"></span> `nonce-timeout-millis` | `VALUE` | `Long` | `86400000` | How long will the nonce value be valid. When timed-out, browser will re-request username/password |
+| <span id="a45a23-optional"></span> `optional` | `VALUE` | `Boolean` | `false` | Whether authentication is required |
+| <span id="a5336f-principal-type"></span> [`principal-type`](../../config/io_helidon_security_SubjectType.md) | `VALUE` | `i.h.s.SubjectType` | `USER` | Principal type this provider extracts (and also propagates) |
+| <span id="af980a-qop"></span> [`qop`](../../config/io_helidon_security_providers_httpauth_HttpDigest_Qop.md) | `VALUE` | `i.h.s.p.h.H.Qop` | `NONE` | Only \`AUTH\` supported. If left empty, uses the legacy approach (older RFC version). \`AUTH-INT\` is not supported |
+| <span id="a5d808-realm"></span> `realm` | `VALUE` | `String` | `Helidon` | Set the realm to use when challenging users |
+| <span id="abd869-server-secret"></span> `server-secret` | `LIST` | `String` |   | The nonce is encrypted using this secret - to make sure the nonce we get back was generated by us and to make sure we can safely time-out nonce values |
+| <span id="a97822-users"></span> [`users`](../../config/io_helidon_security_providers_httpauth_ConfigUserStore_ConfigUser.md) | `LIST` | `i.h.s.p.h.C.ConfigUser` |   | Set user store to obtain passwords and roles based on logins |
 
-*Config key*
+##### Example code
 
-``` text
-http-digest-auth
-```
+Configuration example
 
-This type provides the following service implementations:
-
-- `io.helidon.security.spi.SecurityProvider`
-
-- `io.helidon.security.spi.AuthenticationProvider`
-
-#### Configuration options
-
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>algorithm</code></p></td>
-<td style="text-align: left;"><p>HttpDigest.Algorithm (MD5)</p></td>
-<td style="text-align: left;"><p><code>MD5</code></p></td>
-<td style="text-align: left;"><p>Digest algorithm to use.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>MD5</code>: MD5 algorithm.</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>nonce-timeout-millis</code></p></td>
-<td style="text-align: left;"><p>long</p></td>
-<td style="text-align: left;"><p><code>86400000</code></p></td>
-<td style="text-align: left;"><p>How long will the nonce value be valid. When timed-out, browser will re-request username/password.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>optional</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Whether authentication is required. By default, request will fail if the authentication cannot be verified. If set to false, request will process and this provider will abstain.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>principal-type</code></p></td>
-<td style="text-align: left;"><p>SubjectType (USER, SERVICE)</p></td>
-<td style="text-align: left;"><p><code>USER</code></p></td>
-<td style="text-align: left;"><p>Principal type this provider extracts (and also propagates).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>qop</code></p></td>
-<td style="text-align: left;"><p>HttpDigest.Qop (NONE, AUTH)</p></td>
-<td style="text-align: left;"><p><code>NONE</code></p></td>
-<td style="text-align: left;"><p>Only <code>AUTH</code> supported. If left empty, uses the legacy approach (older RFC version). <code>AUTH-INT</code> is not supported.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>NONE</code>: Legacy approach - used internally to parse headers. Do not use this option when building provider. If you want to support only legacy RFC, please use HttpDigestAuthProvider.Builder.noDigestQop(). Only AUTH is supported, as auth-int requires access to message body.</p></li>
-<li><p><code>AUTH</code>: QOP "auth" - stands for "authentication".</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>realm</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>Helidon</code></p></td>
-<td style="text-align: left;"><p>Set the realm to use when challenging users.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>server-secret</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>The nonce is encrypted using this secret - to make sure the nonce we get back was generated by us and to make sure we can safely time-out nonce values. This secret must be the same for all service instances (or all services that want to share the same authentication). Defaults to a random password - e.g. if deployed to multiple servers, the authentication WILL NOT WORK. You MUST provide your own password to work in a distributed environment with non-sticky load balancing.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>users</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_security_providers_httpauth_ConfigUserStore_ConfigUser.xml">ConfigUserStore.ConfigUser[]</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Set user store to obtain passwords and roles based on logins.</p></td>
-</tr>
-</tbody>
-</table>
-
-#### Example code
-
-*Configuration example*
-
-``` yaml
+``` highlight
 security:
   providers:
   - http-digest-auth:
@@ -1087,9 +722,9 @@ security:
         roles: ["user", "admin"]
 ```
 
-#### How does it work?
+##### How does it work?
 
-See <https://tools.ietf.org/html/rfc7616>.
+See <a href="https://tools.ietf.org/html/rfc7616" class="bare">https://tools.ietf.org/html/rfc7616</a>.
 
 **Authentication of request**
 
@@ -1107,58 +742,40 @@ Java service loader service `io.helidon.security.providers.httpauth.spi.UserStor
 
 These authentication schemes should be *obsolete*, though they provide a very easy way to test a protected resource.
 
-### Header Authentication Provider
+#### Header Authentication Provider
 
 Asserts user or service identity based on a value of a header.
 
-#### Setup
+##### Setup
 
-*Maven dependency*
+Maven dependency
 
-``` xml
+``` highlight
 <dependency>
     <groupId>io.helidon.security.providers</groupId>
     <artifactId>helidon-security-providers-header</artifactId>
 </dependency>
 ```
 
-#### Overview
+##### Overview
 
-Security provider that extracts a username (or service name) from a header.
+##### Configuration options
 
-Type: [io.helidon.security.providers.header.HeaderAtnProvider](/apidocs/io.helidon.security.providers.header/io/helidon/security/providers/header/HeaderAtnProvider.html)
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a9672f-atn-token"></span> [`atn-token`](../../config/io_helidon_security_util_TokenHandler.md) | `VALUE` | `i.h.s.u.TokenHandler` |   | Token handler to extract username from request |
+| <span id="a25377-authenticate"></span> `authenticate` | `VALUE` | `Boolean` | `true` | Whether to authenticate requests |
+| <span id="adbdf3-optional"></span> `optional` | `VALUE` | `Boolean` | `false` | Whether authentication is required |
+| <span id="aa4f36-outbound"></span> [`outbound`](../../config/io_helidon_security_providers_common_OutboundTarget.md) | `LIST` | `i.h.s.p.c.OutboundTarget` |   | Configure outbound target for identity propagation |
+| <span id="ad5021-outbound-token"></span> [`outbound-token`](../../config/io_helidon_security_util_TokenHandler.md) | `VALUE` | `i.h.s.u.TokenHandler` |   | Token handler to create outbound headers to propagate identity |
+| <span id="aa8e94-principal-type"></span> [`principal-type`](../../config/io_helidon_security_SubjectType.md) | `VALUE` | `i.h.s.SubjectType` | `USER` | Principal type this provider extracts (and also propagates) |
+| <span id="a0309f-propagate"></span> `propagate` | `VALUE` | `Boolean` | `false` | Whether to propagate identity |
 
-*Config key*
+##### Example code
 
-``` text
-header-atn
-```
+Configuration example
 
-This type provides the following service implementations:
-
-- `io.helidon.security.spi.SecurityProvider`
-
-- `io.helidon.security.spi.AuthenticationProvider`
-
-#### Configuration options
-
-| key | type | default value | description |
-|----|----|----|----|
-| `atn-token` | [TokenHandler](../../config/io_helidon_security_util_TokenHandler.md) |   | Token handler to extract username from request. |
-| `authenticate` | boolean | `true` | Whether to authenticate requests. |
-| `optional` | boolean | `false` | Whether authentication is required. By default, request will fail if the username cannot be extracted. If set to false, request will process and this provider will abstain. |
-| `outbound` | [OutboundTarget\[\]](../../se/security/../../config/io_helidon_security_providers_common_OutboundTarget.md) |   | Configure outbound target for identity propagation. |
-| `outbound-token` | [TokenHandler](../../config/io_helidon_security_util_TokenHandler.md) |   | Token handler to create outbound headers to propagate identity. If not defined, atnTokenHandler will be used. |
-| `principal-type` | SubjectType (USER, SERVICE) | `USER` | Principal type this provider extracts (and also propagates). |
-| `propagate` | boolean | `false` | Whether to propagate identity. |
-
-Optional configuration options
-
-#### Example code
-
-*Configuration example*
-
-``` yaml
+``` highlight
 security:
   providers:
     header-atn:
@@ -1176,7 +793,7 @@ security:
             header: "X-Service-Auth"
 ```
 
-#### How does it work?
+##### How does it work?
 
 This provider inspects a specified request header and extracts the username/service name from it and asserts it as current subject’s principal.
 
@@ -1192,155 +809,42 @@ The following options exist when propagating identity: 1. We propagate the curre
 
 When using this provider, you must be sure the header cannot be explicitly configured by a user or another service. All requests should go through a gateway that removes this header from inbound traffic, and only configures it for authenticated users/services. Another option is to use this with fully trusted parties (such as services within a single company, on a single protected network not accessible to any users), and of course for testing and demo purposes.
 
-### HTTP Signatures Provider
+#### HTTP Signatures Provider
 
 Support for HTTP Signatures.
 
-#### Setup
+##### Setup
 
-*Maven dependency*
+Maven dependency
 
-``` xml
+``` highlight
 <dependency>
     <groupId>io.helidon.security.providers</groupId>
     <artifactId>helidon-security-providers-http-sign</artifactId>
 </dependency>
 ```
 
-#### Overview
+##### Overview
 
-HTTP header signature provider.
+##### Configuration options
 
-Type: [io.helidon.security.providers.httpsign.HttpSignProvider](/apidocs/io.helidon.security.providers.httpsign/io/helidon/security/providers/httpsign/HttpSignProvider.html)
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="ac1d34-backward-compatible-eol"></span> `backward-compatible-eol` | `VALUE` | `Boolean` | `false` | Enable support for Helidon versions before 3.0.0 (exclusive) |
+| <span id="acc108-headers"></span> [`headers`](../../config/io_helidon_security_providers_httpsign_HttpSignHeader.md) | `LIST` | `i.h.s.p.h.HttpSignHeader` |   | Add a header that is validated on inbound requests |
+| <span id="abbc62-inbound-keys"></span> [`inbound.keys`](../../config/io_helidon_security_providers_httpsign_InboundClientDefinition.md) | `LIST` | `i.h.s.p.h.InboundClientDefinition` |   | Add inbound configuration |
+| <span id="a9cb96-optional"></span> `optional` | `VALUE` | `Boolean` | `true` | Set whether the signature is optional |
+| <span id="af2400-outbound"></span> [`outbound`](../../config/io_helidon_security_providers_common_OutboundConfig.md) | `VALUE` | `i.h.s.p.c.OutboundConfig` |   | Add outbound targets to this builder |
+| <span id="a4938a-realm"></span> `realm` | `VALUE` | `String` | `helidon` | Realm to use for challenging inbound requests that do not have "Authorization" header in case header is `HttpSignHeader#AUTHORIZATION` and singatures are not optional |
+| <span id="a4ba7d-sign-headers"></span> [`sign-headers`](../../config/io_helidon_security_providers_httpsign_SignedHeadersConfig_HeadersConfig.md) | `LIST` | `i.h.s.p.h.S.HeadersConfig` |   | Override the default inbound required headers (e.g |
 
-*Config key*
-
-``` text
-http-signatures
-```
-
-This type provides the following service implementations:
-
-- `io.helidon.security.spi.AuthenticationProvider`
-
-#### Configuration options
-
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>backward-compatible-eol</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Enable support for Helidon versions before 3.0.0 (exclusive).</p>
-<p>Until version 3.0.0 (exclusive) there was a trailing end of line added to the signed data. To be able to communicate cross versions, we must configure this when talking to older versions of Helidon. Default value is <code>false</code>. In Helidon 2.x, this switch exists as well and the default is <code>true</code>, to allow communication between versions as needed.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>headers</code></p></td>
-<td style="text-align: left;"><p>HttpSignHeader[] (SIGNATURE, AUTHORIZATION, CUSTOM)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Add a header that is validated on inbound requests. Provider may support more than one header to validate.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>SIGNATURE</code>: Creates (or validates) a "Signature" header.</p></li>
-<li><p><code>AUTHORIZATION</code>: Creates (or validates) an "Authorization" header, that contains "Signature" as the beginning of its content (the rest of the header is the same as for SIGNATURE.</p></li>
-<li><p><code>CUSTOM</code>: Custom provided using a io.helidon.security.util.TokenHandler.</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>inbound.keys</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_security_providers_httpsign_InboundClientDefinition.xml">InboundClientDefinition[]</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Add inbound configuration. This is used to validate signature and authenticate the party.</p>
-<p>The same can be done through configuration:</p>
-<pre><code>{
- name = &quot;http-signatures&quot;
- class = &quot;HttpSignProvider&quot;
- http-signatures {
-     inbound {
-         # This configures the InboundClientDefinition
-         keys: [
-         {
-             key-id = &quot;service1&quot;
-             hmac.secret = &quot;${CLEAR=password}&quot;
-         }]
-     }
- }
-}</code></pre></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>optional</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Set whether the signature is optional. If set to true (default), this provider will SecurityResponse.SecurityStatus.ABSTAIN from this request if signature is not present. If set to false, this provider will SecurityResponse.SecurityStatus.FAILURE fail if signature is not present.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>outbound</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_security_providers_common_OutboundConfig.xml">OutboundConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Add outbound targets to this builder. The targets are used to chose what to do for outbound communication. The targets should have OutboundTargetDefinition attached through OutboundTarget.Builder.customObject(Class, Object) to tell us how to sign the request.</p>
-<p>The same can be done through configuration:</p>
-<pre><code>{
- name = &quot;http-signatures&quot;
- class = &quot;HttpSignProvider&quot;
- http-signatures {
-     targets: [
-     {
-         name = &quot;service2&quot;
-         hosts = [&quot;localhost&quot;]
-         paths = [&quot;/service2/.*&quot;]
-&#10;         # This configures the OutboundTargetDefinition
-         signature {
-             key-id = &quot;service1&quot;
-             hmac.secret = &quot;${CLEAR=password}&quot;
-         }
-     }]
- }
-}</code></pre></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>realm</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>helidon</code></p></td>
-<td style="text-align: left;"><p>Realm to use for challenging inbound requests that do not have "Authorization" header in case header is HttpSignHeader.AUTHORIZATION and singatures are not optional.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>sign-headers</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_security_providers_httpsign_SignedHeadersConfig_HeadersConfig.xml">SignedHeadersConfig.HeadersConfig[]</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Override the default inbound required headers (e.g. headers that MUST be signed and headers that MUST be signed IF present).</p>
-<p>Defaults:</p>
-<ul>
-<li><p>get, head, delete methods: date, (request-target), host are mandatory; authorization if present (unless we are creating/validating the HttpSignHeader.AUTHORIZATION ourselves</p></li>
-<li><p>put, post: same as above, with addition of: content-length, content-type and digest if present</p></li>
-<li><p>for other methods: date, (request-target)</p></li>
-</ul>
-<p>Note that this provider DOES NOT validate the "Digest" HTTP header, only the signature.</p></td>
-</tr>
-</tbody>
-</table>
-
-#### Example code
+##### Example code
 
 See the [example](https://github.com/helidon-io/helidon-examples/tree/helidon-4.x/examples/security/webserver-signatures) on GitHub.
 
-*Configuration example*
+Configuration example
 
-``` yaml
+``` highlight
 security:
   providers:
     - http-signatures:
@@ -1375,100 +879,64 @@ security:
                   key.alias: "myPrivateKey"
 ```
 
-#### Signature basics
+##### Signature basics
 
-- standard: based on <https://tools.ietf.org/html/draft-cavage-http-signatures-03>
+- standard: based on <a href="https://tools.ietf.org/html/draft-cavage-http-signatures-03" class="bare">https://tools.ietf.org/html/draft-cavage-http-signatures-03</a>
 
 - key-id: an arbitrary string used to locate signature configuration - when a request is received the provider locates validation configuration based on this id (e.g. HMAC shared secret or RSA public key). Commonly used meanings are: key fingerprint (RSA); API Key
 
-#### How does it work?
+##### How does it work?
 
 **Inbound Signatures** We act as a server and another party is calling us with a signed HTTP request. We validate the signature and assume identity of the caller.
 
 **Outbound Signatures** We act as a client and we sign our outgoing requests. If there is a matching `outbound` target specified in configuration, its configuration will be applied for signing the outgoing request, otherwise there is no signature added
 
-### IDCS Role Mapper
+#### IDCS Role Mapper
 
 A role mapper to retrieve roles from Oracle IDCS.
 
-#### Setup
+##### Setup
 
-*Maven dependency*
+Maven dependency
 
-``` xml
+``` highlight
 <dependency>
     <groupId>io.helidon.security.providers</groupId>
     <artifactId>helidon-security-providers-idcs-mapper</artifactId>
 </dependency>
 ```
 
-#### Single-tenant IDCS Role Mapper
+##### Single-tenant IDCS Role Mapper
 
-IDCS role mapping provider
+##### Configuration options
 
-Type: [io.helidon.security.providers.idcs.mapper.IdcsRoleMapperProvider](/apidocs/io.helidon.security.providers.idcs.mapper/io/helidon/security/providers/idcs/mapper/IdcsRoleMapperProvider.html)
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="aed3ab-cache-config"></span> [`cache-config`](../../config/io_helidon_security_providers_common_EvictableCache.md) | `VALUE` | `i.h.s.p.c.EvictableCache` |   | Use explicit `io.helidon.security.providers.common.EvictableCache` for role caching |
+| <span id="aa2e00-default-idcs-subject-type"></span> `default-idcs-subject-type` | `VALUE` | `String` | `user` | Configure subject type to use when requesting roles from IDCS |
+| <span id="a630af-oidc-config"></span> [`oidc-config`](../../config/io_helidon_security_providers_oidc_common_OidcConfig.md) | `VALUE` | `i.h.s.p.o.c.OidcConfig` |   | Use explicit `io.helidon.security.providers.oidc.common.OidcConfig` instance, e.g |
+| <span id="a477d4-subject-types"></span> [`subject-types`](../../config/io_helidon_security_SubjectType.md) | `LIST` | `i.h.s.SubjectType` | `USER` | Add a supported subject type |
 
-*Config key*
+##### Multi-tenant IDCS Role Mapper
 
-``` text
-idcs-role-mapper
-```
+##### Configuration options
 
-This type provides the following service implementations:
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a6bc4c-cache-config"></span> [`cache-config`](../../config/io_helidon_security_providers_common_EvictableCache.md) | `VALUE` | `i.h.s.p.c.EvictableCache` |   | Use explicit `io.helidon.security.providers.common.EvictableCache` for role caching |
+| <span id="a75027-default-idcs-subject-type"></span> `default-idcs-subject-type` | `VALUE` | `String` | `user` | Configure subject type to use when requesting roles from IDCS |
+| <span id="a89a70-idcs-app-name-handler"></span> [`idcs-app-name-handler`](../../config/io_helidon_security_util_TokenHandler.md) | `VALUE` | `i.h.s.u.TokenHandler` |   | Configure token handler for IDCS Application name |
+| <span id="af8920-idcs-tenant-handler"></span> [`idcs-tenant-handler`](../../config/io_helidon_security_util_TokenHandler.md) | `VALUE` | `i.h.s.u.TokenHandler` |   | Configure token handler for IDCS Tenant ID |
+| <span id="a2275a-oidc-config"></span> [`oidc-config`](../../config/io_helidon_security_providers_oidc_common_OidcConfig.md) | `VALUE` | `i.h.s.p.o.c.OidcConfig` |   | Use explicit `io.helidon.security.providers.oidc.common.OidcConfig` instance, e.g |
+| <span id="ab2c38-subject-types"></span> [`subject-types`](../../config/io_helidon_security_SubjectType.md) | `LIST` | `i.h.s.SubjectType` | `USER` | Add a supported subject type |
 
-- `io.helidon.security.spi.SecurityProvider`
-
-- `io.helidon.security.spi.SubjectMappingProvider`
-
-#### Configuration options
-
-| key | type | default value | description |
-|----|----|----|----|
-| `cache-config` | [EvictableCache](../../config/io_helidon_security_providers_common_EvictableCache.md) |   | Use explicit io.helidon.security.providers.common.EvictableCache for role caching. |
-| `default-idcs-subject-type` | string | `user` | Configure subject type to use when requesting roles from IDCS. Can be either IDCS_SUBJECT_TYPE_USER or IDCS_SUBJECT_TYPE_CLIENT. Defaults to IDCS_SUBJECT_TYPE_USER. |
-| `oidc-config` | [OidcConfig](../../config/io_helidon_security_providers_oidc_common_OidcConfig.md) |   | Use explicit io.helidon.security.providers.oidc.common.OidcConfig instance, e.g. when using it also for OIDC provider. |
-| `subject-types` | SubjectType\[\] (USER, SERVICE) | `USER` | Add a supported subject type. If none added, io.helidon.security.SubjectType.USER is used. If any added, only the ones added will be used (e.g. if you want to use both io.helidon.security.SubjectType.USER and io.helidon.security.SubjectType.SERVICE, both need to be added. |
-
-Optional configuration options
-
-#### Multi-tenant IDCS Role Mapper
-
-Multitenant IDCS role mapping provider
-
-Type: [io.helidon.security.providers.idcs.mapper.IdcsMtRoleMapperProvider](/apidocs/io.helidon.security.providers.idcs.mapper/io/helidon/security/providers/idcs/mapper/IdcsMtRoleMapperProvider.html)
-
-*Config key*
-
-``` text
-idcs-role-mapper
-```
-
-This type provides the following service implementations:
-
-- `io.helidon.security.spi.SecurityProvider`
-
-- `io.helidon.security.spi.SubjectMappingProvider`
-
-#### Configuration options
-
-| key | type | default value | description |
-|----|----|----|----|
-| `cache-config` | [EvictableCache](../../config/io_helidon_security_providers_common_EvictableCache.md) |   | Use explicit io.helidon.security.providers.common.EvictableCache for role caching. |
-| `default-idcs-subject-type` | string | `user` | Configure subject type to use when requesting roles from IDCS. Can be either IDCS_SUBJECT_TYPE_USER or IDCS_SUBJECT_TYPE_CLIENT. Defaults to IDCS_SUBJECT_TYPE_USER. |
-| `idcs-app-name-handler` | [TokenHandler](../../config/io_helidon_security_util_TokenHandler.md) |   | Configure token handler for IDCS Application name. By default the header `X-RESOURCE-SERVICE-INSTANCE-IDENTITY-APPNAME` is used. |
-| `idcs-tenant-handler` | [TokenHandler](../../config/io_helidon_security_util_TokenHandler.md) |   | Configure token handler for IDCS Tenant ID. By default the header `X-USER-IDENTITY-SERVICE-GUID` is used. |
-| `oidc-config` | [OidcConfig](../../config/io_helidon_security_providers_oidc_common_OidcConfig.md) |   | Use explicit io.helidon.security.providers.oidc.common.OidcConfig instance, e.g. when using it also for OIDC provider. |
-| `subject-types` | SubjectType\[\] (USER, SERVICE) | `USER` | Add a supported subject type. If none added, io.helidon.security.SubjectType.USER is used. If any added, only the ones added will be used (e.g. if you want to use both io.helidon.security.SubjectType.USER and io.helidon.security.SubjectType.SERVICE, both need to be added. |
-
-Optional configuration options
-
-#### Example code
+##### Example code
 
 See the [example](https://github.com/helidon-io/helidon-examples/tree/helidon-4.x/examples/security/idcs-login/) on GitHub.
 
-*Configuration example*
+Configuration example
 
-``` yaml
+``` highlight
 security:
   providers:
     - idcs-role-mapper:
@@ -1479,65 +947,47 @@ security:
             identity-uri: "IDCS identity server address"
 ```
 
-#### How does it work?
+##### How does it work?
 
 The provider asks the IDCS server to provide list of roles for the currently authenticated user. The result is cached for a certain period of time (see `cache-config` above).
 
-### ABAC Provider
+#### ABAC Provider
 
 Attribute based access control authorization provider.
 
-#### Setup
+##### Setup
 
-*Maven dependency*
+Maven dependency
 
-``` xml
+``` highlight
 <dependency>
     <groupId>io.helidon.security.providers</groupId>
     <artifactId>helidon-security-providers-abac</artifactId>
 </dependency>
 ```
 
-#### Overview
+##### Overview
 
-Attribute Based Access Control provider
+##### Configuration options
 
-Type: [io.helidon.security.providers.abac.AbacProvider](/apidocs/io.helidon.security.providers.abac/io/helidon/security/providers/abac/AbacProvider.html)
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a4f520-fail-if-none-validated"></span> `fail-if-none-validated` | `VALUE` | `Boolean` | `true` | Whether to fail if NONE of the attributes is validated |
+| <span id="a52725-fail-on-unvalidated"></span> `fail-on-unvalidated` | `VALUE` | `Boolean` | `true` | Whether to fail if any attribute is left unvalidated |
 
-*Config key*
-
-``` text
-abac
-```
-
-This type provides the following service implementations:
-
-- `io.helidon.security.spi.SecurityProvider`
-
-- `io.helidon.security.spi.AuthorizationProvider`
-
-#### Configuration options
-
-| key | type | default value | description |
-|----|----|----|----|
-| `fail-if-none-validated` | boolean | `true` | Whether to fail if NONE of the attributes is validated. |
-| `fail-on-unvalidated` | boolean | `true` | Whether to fail if any attribute is left unvalidated. |
-
-Optional configuration options
-
-#### Example code
+##### Example code
 
 See the [example](https://github.com/helidon-io/helidon-examples/tree/helidon-4.x/examples/security/attribute-based-access-control) on GitHub.
 
-*Configuration example*
+Configuration example
 
-``` yaml
+``` highlight
 security:
   providers:
     - abac:
 ```
 
-#### Configuration options
+##### Configuration options
 
 The following table shows all configuration options of the provider and their default values
 
@@ -1546,7 +996,7 @@ The following table shows all configuration options of the provider and their de
 | `fail-on-unvalidated` | `true` | "Unvalidated" means: an attribute is defined, but there is no validator available for it |
 | `fail-if-none-validated` | `true` | "None validated" means: there was not a single attribute that was validated |
 
-#### How does it work?
+##### How does it work?
 
 ABAC uses available validators and validates them against attributes of the authenticated user.
 
@@ -1572,9 +1022,9 @@ This provider checks that all defined ABAC validators are validated. If there is
 
 ABAC provider also allows an object to be used in authorization process, such as when evaluating if an object’s owner is the current user. The following example uses the Expression language validator to demonstrate the point in a JAX-RS resource:
 
-*Example of using an object*
+Example of using an object
 
-``` java
+``` highlight
 @Authenticated
 @Path("/abac")
 public class AbacResource {
@@ -1606,7 +1056,7 @@ public class AbacResource {
 
 - [EL Policy](#_expression_language_policy_validator)
 
-#### Role Validator
+##### Role Validator
 
 Checks whether user/service is in either of the required role(s).
 
@@ -1614,18 +1064,18 @@ Configuration Key: `role-validator`
 
 Annotations: `@RolesAllowed`, `@RoleValidator.Roles`
 
-*Configuration example for `WebServer`*
+Configuration example for `WebServer`
 
-``` yaml
+``` highlight
 security:
   web-server.paths:
     - path: "/user/*"
       roles-allowed: ["user"]
 ```
 
-*JAX-RS example*
+JAX-RS example
 
-``` java
+``` highlight
 @RolesAllowed("user")
 @RoleValidator.Roles(value = "service_role", subjectType = SubjectType.SERVICE)
 @Authenticated
@@ -1634,7 +1084,7 @@ public class AbacResource {
 }
 ```
 
-##### Interaction with JAX-RS sub-resource locators
+###### Interaction with JAX-RS sub-resource locators
 
 When using sub-resource locators in JAX-RS, the roles allowed are collected from each "level" of execution: - Application class annotations - Resource class annotations + resource method annotations - Sub-resource class annotations + sub-resource method annotations - Sub-resource class annotations + sub-resource method annotations (for every sub-resource on the path)
 
@@ -1644,7 +1094,7 @@ The `RolesAllowed` or `Roles` annotation to be used is the last one in the path 
 
 *Example 2:* There is a `RolesAllowed("admin")` defined on a sub-resource locator resource class and a `RolesAllowed("user")` defined on the method of the sub-resource that provides the response. In this case the required role is `user`.
 
-#### Scope Validator
+##### Scope Validator
 
 Checks whether user has all the required scopes.
 
@@ -1652,9 +1102,9 @@ Configuration Key: `scope-validator`
 
 Annotations: `@Scope`
 
-*Configuration example for `WebServer`*
+Configuration example for `WebServer`
 
-``` yaml
+``` highlight
 security:
   web-server.paths:
     - path: "/user/*"
@@ -1662,9 +1112,9 @@ security:
         ["calendar_read", "calendar_edit"]
 ```
 
-*JAX-RS example*
+JAX-RS example
 
-``` java
+``` highlight
 @Scope("calendar_read")
 @Scope("calendar_edit")
 @Authenticated
@@ -1673,7 +1123,7 @@ public class AbacResource {
 }
 ```
 
-#### Expression Language Policy Validator
+##### Expression Language Policy Validator
 
 Policy executor using Java EE policy expression language (EL)
 
@@ -1683,9 +1133,9 @@ Annotations: `@PolicyStatement`
 
 Example of a policy statement: `${env.time.year >= 2017}`
 
-*Configuration example for `WebServer`*
+Configuration example for `WebServer`
 
-``` yaml
+``` highlight
 security:
   web-server.paths:
     - path: "/user/*"
@@ -1693,9 +1143,9 @@ security:
         statement: "hasScopes('calendar_read','calendar_edit') AND timeOfDayBetween('8:15', '17:30')"
 ```
 
-*JAX-RS example*
+JAX-RS example
 
-``` java
+``` highlight
 @PolicyStatement("${env.time.year >= 2017}")
 @Authenticated
 @Path("/abac")
@@ -1703,9 +1153,9 @@ public class AbacResource {
 }
 ```
 
-*Configuration example for `JAX-RS` over the configuration*
+Configuration example for `JAX-RS` over the configuration
 
-``` yaml
+``` highlight
 server:
   features:
     security:
@@ -1715,69 +1165,51 @@ server:
             abac.policy-validator.statement: "\\${env.time.year >= 2017}"
 ```
 
-### Google Login Provider
+#### Google Login Provider
 
-<span class="line-through">Authenticates a token from request against Google identity provider</span>
+Authenticates a token from request against Google identity provider
 
 This provider is deprecated and will be removed in a future version of Helidon. Please use our OpenID Connect security provider instead.
 
-#### Setup
+##### Setup
 
-*Maven dependency*
+Maven dependency
 
-``` xml
+``` highlight
 <dependency>
     <groupId>io.helidon.security.providers</groupId>
     <artifactId>helidon-security-providers-google-login</artifactId>
 </dependency>
 ```
 
-#### Overview
+##### Overview
 
-Google Authentication provider
+##### Configuration options
 
-Type: [io.helidon.security.providers.google.login.GoogleTokenProvider](/apidocs/io.helidon.security.providers.google.login/io/helidon/security/providers/google/login/GoogleTokenProvider.html)
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a8327f-client-id"></span> `client-id` | `VALUE` | `String` |   | Google application client id, to validate that the token was generated by Google for us |
+| <span id="a5eb30-optional"></span> `optional` | `VALUE` | `Boolean` | `false` | If set to true, this provider will return `io.helidon.security.SecurityResponse.SecurityStatus#ABSTAIN` instead of failing in case of invalid request |
+| <span id="a6fd85-outbound"></span> [`outbound`](../../config/io_helidon_security_providers_common_OutboundConfig.md) | `VALUE` | `i.h.s.p.c.OutboundConfig` |   | Outbound configuration - a set of outbound targets that will have the token propagated |
+| <span id="a836e0-proxy-host"></span> `proxy-host` | `VALUE` | `String` |   | Set proxy host when talking to Google |
+| <span id="a72cab-proxy-port"></span> `proxy-port` | `VALUE` | `Integer` | `80` | Set proxy port when talking to Google |
+| <span id="a7871a-realm"></span> `realm` | `VALUE` | `String` | `helidon` | Set the authentication realm to build challenge, defaults to "helidon" |
+| <span id="af185f-token"></span> [`token`](../../config/io_helidon_security_util_TokenHandler.md) | `VALUE` | `i.h.s.u.TokenHandler` | `` `Authorization` header with `bearer` prefix `` | Token provider to extract Google access token from request, defaults to "Authorization" header with a "bearer " prefix |
 
-*Config key*
-
-``` text
-google-login
-```
-
-This type provides the following service implementations:
-
-- `io.helidon.security.spi.SecurityProvider`
-
-- `io.helidon.security.spi.AuthenticationProvider`
-
-#### Configuration options
-
-| key | type | default value | description |
-|----|----|----|----|
-| `client-id` | string |   | Google application client id, to validate that the token was generated by Google for us. |
-| `optional` | boolean | `false` | If set to true, this provider will return io.helidon.security.SecurityResponse.SecurityStatus.ABSTAIN instead of failing in case of invalid request. |
-| `outbound` | [OutboundConfig](../../config/io_helidon_security_providers_common_OutboundConfig.md) |   | Outbound configuration - a set of outbound targets that will have the token propagated. |
-| `proxy-host` | string |   | Set proxy host when talking to Google. |
-| `proxy-port` | int | `80` | Set proxy port when talking to Google. |
-| `realm` | string | `helidon` | Set the authentication realm to build challenge, defaults to "helidon". |
-| `token` | [TokenHandler](../../config/io_helidon_security_util_TokenHandler.md) | `` `Authorization` header with `bearer` prefix `` | Token provider to extract Google access token from request, defaults to "Authorization" header with a "bearer " prefix. |
-
-Optional configuration options
-
-#### Example code
+##### Example code
 
 See the [example](https://github.com/helidon-io/helidon-examples/tree/helidon-4.x/examples/security/google-login) on GitHub.
 
-*Configuration example*
+Configuration example
 
-``` yaml
+``` highlight
 security:
   providers:
     - provider:
         client-id: "Google client id"
 ```
 
-#### How does it work?
+##### How does it work?
 
 We expect to receive a token (with sufficient scopes) from the inbound request, such as when using the Google login button on a page. The page has access to the token in javascript and can send it to backend with every request in a header field (`Authorization` with \`bearer \` prefix is assumed by default).
 
@@ -1809,153 +1241,49 @@ We build a subject from the Google token with the following attributes filled (i
 
 **Outbound security** The token will be propagated to outbound calls if an outbound target exists that matches the invoked endpoint (see `outbound` configuration above).
 
-### JWT Provider
+#### JWT Provider
 
 JWT token authentication and outbound security provider.
 
-#### Setup
+##### Setup
 
-*Maven dependency*
+Maven dependency
 
-``` xml
+``` highlight
 <dependency>
     <groupId>io.helidon.security.providers</groupId>
     <artifactId>helidon-security-providers-jwt</artifactId>
 </dependency>
 ```
 
-#### Overview
+##### Overview
 
-JWT authentication provider
+##### Configuration options
 
-Type: [io.helidon.security.providers.jwt.JwtProvider](/apidocs/io.helidon.security.providers.jwt/io/helidon/security/providers/jwt/JwtProvider.html)
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a8e9cb-allow-impersonation"></span> `allow-impersonation` | `VALUE` | `Boolean` | `false` | Whether to allow impersonation by explicitly overriding username from outbound requests using `io.helidon.security.EndpointConfig#PROPERTY_OUTBOUND_ID` property |
+| <span id="ac7a36-allow-unsigned"></span> `allow-unsigned` | `VALUE` | `Boolean` | `false` | Configure support for unsigned JWT |
+| <span id="a31c89-atn-token-handler"></span> [`atn-token.handler`](../../config/io_helidon_security_util_TokenHandler.md) | `VALUE` | `i.h.s.u.TokenHandler` |   | Token handler to extract username from request |
+| <span id="ab9ed4-atn-token-jwk-resource"></span> [`atn-token.jwk.resource`](../../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | JWK resource used to verify JWTs created by other parties |
+| <span id="a7fd00-atn-token-jwt-audience"></span> `atn-token.jwt-audience` | `VALUE` | `String` |   | Audience expected in inbound JWTs |
+| <span id="a1483b-atn-token-verify-signature"></span> `atn-token.verify-signature` | `VALUE` | `Boolean` | `true` | Configure whether to verify signatures |
+| <span id="a2bd0c-authenticate"></span> `authenticate` | `VALUE` | `Boolean` | `true` | Whether to authenticate requests |
+| <span id="ac625d-optional"></span> `optional` | `VALUE` | `Boolean` | `false` | Whether authentication is required |
+| <span id="af07ea-principal-type"></span> [`principal-type`](../../config/io_helidon_security_SubjectType.md) | `VALUE` | `i.h.s.SubjectType` | `USER` | Principal type this provider extracts (and also propagates) |
+| <span id="a5a95f-propagate"></span> `propagate` | `VALUE` | `Boolean` | `true` | Whether to propagate identity |
+| <span id="a9294b-sign-token"></span> [`sign-token`](../../config/io_helidon_security_providers_common_OutboundConfig.md) | `VALUE` | `i.h.s.p.c.OutboundConfig` |   | Configuration of outbound rules |
+| <span id="adc22c-sign-token-jwk-resource"></span> [`sign-token.jwk.resource`](../../config/io_helidon_common_configurable_Resource.md) | `VALUE` | `i.h.c.c.Resource` |   | JWK resource used to sign JWTs created by us |
+| <span id="ab60c1-sign-token-jwt-issuer"></span> `sign-token.jwt-issuer` | `VALUE` | `String` |   | Issuer used to create new JWTs |
+| <span id="a8cde7-use-jwt-groups"></span> `use-jwt-groups` | `VALUE` | `Boolean` | `true` | Claim `groups` from JWT will be used to automatically add groups to current subject (may be used with `jakarta.annotation.security.RolesAllowed` annotation) |
 
-*Config key*
-
-``` text
-jwt
-```
-
-This type provides the following service implementations:
-
-- `io.helidon.security.spi.SecurityProvider`
-
-- `io.helidon.security.spi.AuthenticationProvider`
-
-#### Configuration options
-
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>allow-impersonation</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Whether to allow impersonation by explicitly overriding username from outbound requests using io.helidon.security.EndpointConfig.PROPERTY_OUTBOUND_ID property. By default this is not allowed and identity can only be propagated.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>allow-unsigned</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Configure support for unsigned JWT. If this is set to <code>true</code> any JWT that has algorithm set to <code>none</code> and no <code>kid</code> defined will be accepted. Note that this has serious security impact - if JWT can be sent from a third party, this allows the third party to send ANY JWT and it would be accpted as valid.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>atn-token.handler</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_security_util_TokenHandler.xml">TokenHandler</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Token handler to extract username from request.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>atn-token.jwk.resource</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>JWK resource used to verify JWTs created by other parties.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>atn-token.jwt-audience</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Audience expected in inbound JWTs.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>atn-token.verify-signature</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Configure whether to verify signatures. Signatures verification is enabled by default. You can configure the provider not to verify signatures.</p>
-<p><strong>Make sure your service is properly secured on network level and only accessible from a secure endpoint that provides the JWTs when signature verification is disabled. If signature verification is disabled, this service will accept <em>ANY</em> JWT</strong></p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>authenticate</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to authenticate requests.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>optional</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Whether authentication is required. By default, request will fail if the username cannot be extracted. If set to false, request will process and this provider will abstain.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>principal-type</code></p></td>
-<td style="text-align: left;"><p>SubjectType (USER, SERVICE)</p></td>
-<td style="text-align: left;"><p><code>USER</code></p></td>
-<td style="text-align: left;"><p>Principal type this provider extracts (and also propagates).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>propagate</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to propagate identity.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>sign-token</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_security_providers_common_OutboundConfig.xml">OutboundConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Configuration of outbound rules.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>sign-token.jwk.resource</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/security/../../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>JWK resource used to sign JWTs created by us.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>sign-token.jwt-issuer</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Issuer used to create new JWTs.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>use-jwt-groups</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Claim <code>groups</code> from JWT will be used to automatically add groups to current subject (may be used with jakarta.annotation.security.RolesAllowed annotation).</p></td>
-</tr>
-</tbody>
-</table>
-
-#### Example code
+##### Example code
 
 See the [example](https://github.com/helidon-io/helidon-examples/tree/helidon-4.x/examples/security/outbound-override) on GitHub.
 
-*Configuration example*
+Configuration example
 
-``` yaml
+``` highlight
 security:
   providers:
     - provider:
@@ -1975,7 +1303,7 @@ security:
             jwt-audience: "http://1.partner-service"
 ```
 
-#### How does it work?
+##### How does it work?
 
 JSON Web Token (JWT) provider has support for authentication and outbound security.
 
@@ -1983,7 +1311,7 @@ Authentication is based on validating the token (signature, valid before etc.) a
 
 For outbound, we support either token propagation (e.g. the token from request is propagated further) or support for generating a brand new token based on configuration of this provider.
 
-## Reference
+### Reference
 
 - [Helidon Security Examples](https://github.com/oracle/helidon/tree/mainexamples/security)
 

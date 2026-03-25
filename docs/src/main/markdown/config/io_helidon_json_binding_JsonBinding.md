@@ -1,5 +1,11 @@
-# JsonBinding (json.binding) Configuration
+# io.helidon.json.binding.JsonBinding
 
-Type: [io.helidon.json.binding.JsonBinding](/apidocs/io.helidon.json.binding/io/helidon/json/binding/JsonBinding.html)
+## Description
+
+Configuration for JSON binding.
+
+## Usages
 
 ## Configuration options
+
+See the [manifest](../config/manifest.md) for all available types.

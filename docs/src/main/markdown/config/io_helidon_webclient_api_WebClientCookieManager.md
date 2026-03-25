@@ -1,13 +1,17 @@
-# WebClientCookieManager (webclient.api) Configuration
+# io.helidon.webclient.api.WebClientCookieManager
 
-Type: [io.helidon.webclient.api.WebClientCookieManager](/apidocs/io.helidon.webclient.api/io/helidon/webclient/api/WebClientCookieManager.html)
+## Description
+
+Helidon WebClient cookie manager.
+
+## Usages
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `automatic-store-enabled` | boolean | `false` | Whether automatic cookie store is enabled or not. |
-| `cookie-policy` | CookiePolicy | `java.net.CookiePolicy.ACCEPT_ORIGINAL_SERVER` | Current cookie policy for this client. |
-| `default-cookies` | Map\<string, string\> |   | Map of default cookies to include in all requests if cookies enabled. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="ab5e64-automatic-store-enabled"></span> `automatic-store-enabled` | `VALUE` | `Boolean` | `false` | Whether automatic cookie store is enabled or not |
+| <span id="af56bd-cookie-policy"></span> `cookie-policy` | `VALUE` | `CookiePolicy` | `java.net.CookiePolicy.ACCEPT_ORIGINAL_SERVER` | Current cookie policy for this client |
+| <span id="aaf4d1-default-cookies"></span> `default-cookies` | `MAP` | `String` |   | Map of default cookies to include in all requests if cookies enabled |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

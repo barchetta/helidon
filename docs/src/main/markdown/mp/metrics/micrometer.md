@@ -78,14 +78,6 @@ Your code can create, look up, and update metrics programmatically using the Mic
 
 You can configure the Helidon Micrometer REST service as you can other built-in Helidon services by adding configuration settings under the `micrometer` top-level key.
 
-Type: [io.helidon.integrations.micrometer.MicrometerFeature](/apidocs/io.helidon.integrations.micrometer/io/helidon/integrations/micrometer/MicrometerFeature.html)
-
-*Config key*
-
-``` text
-micrometer
-```
-
 ### Configuration options
 
 By default, Helidon Micrometer integration exposes the `/micrometer` endpoint. You can override the path using the `micrometer.web-context` configuration key.

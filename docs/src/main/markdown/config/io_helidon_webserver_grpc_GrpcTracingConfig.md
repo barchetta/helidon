@@ -1,13 +1,17 @@
-# GrpcTracingConfig (webserver.grpc) Configuration
+# io.helidon.webserver.grpc.GrpcTracingConfig
 
-Type: [io.helidon.webserver.grpc.GrpcTracingConfig](/apidocs/io.helidon.webserver.grpc/io/helidon/webserver/grpc/GrpcTracingConfig.html)
+## Description
+
+Grpc tracing config.
+
+## Usages
 
 ## Configuration options
 
-| key         | type    | default value | description                              |
-|-------------|---------|---------------|------------------------------------------|
-| `enabled`   | boolean | `true`        | A flag indicating if tracing is enabled. |
-| `streaming` | boolean | `false`       | A flag indicating streaming logging.     |
-| `verbose`   | boolean | `false`       | A flag indicating verbose logging.       |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a55f2a-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | A flag indicating if tracing is enabled |
+| <span id="a97a8b-streaming"></span> `streaming` | `VALUE` | `Boolean` | `false` | A flag indicating streaming logging |
+| <span id="a0cb57-verbose"></span> `verbose` | `VALUE` | `Boolean` | `false` | A flag indicating verbose logging |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

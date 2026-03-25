@@ -1,22 +1,26 @@
-# CohereEmbeddingModelConfig (integrations.langchain4j.providers.cohere) Configuration
+# io.helidon.integrations.langchain4j.providers.cohere.CohereEmbeddingModelConfig
 
-Type: [io.helidon.integrations.langchain4j.providers.cohere.CohereEmbeddingModelConfig](/apidocs/io.helidon.integrations.langchain4j.providers.cohere/io/helidon/integrations/langchain4j/providers/cohere/CohereEmbeddingModelConfig.html)
+## Description
 
-This is a standalone configuration type, prefix from configuration root: `langchain4j.providers.cohere`
+Configuration for LangChain4j model CohereEmbeddingModel.
+
+## Usages
+
+- [`langchain4j.providers.cohere`](../config/config_reference.md#a0e7c5-langchain4j-providers-cohere)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `api-key` | string |   | Generated from dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder.apiKey(java.lang.String) |
-| `base-url` | string |   | Generated from dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder.baseUrl(java.lang.String) |
-| `enabled` | boolean | `true` | If set to `false`, CohereEmbeddingModel will not be available even if configured. |
-| `input-type` | string |   | Generated from dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder.inputType(java.lang.String) |
-| `log-requests` | boolean |   | Generated from dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder.logRequests(java.lang.Boolean) |
-| `log-responses` | boolean |   | Generated from dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder.logResponses(java.lang.Boolean) |
-| `logger` | Logger |   | Generated from dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder.logger(org.slf4j.Logger) |
-| `max-segments-per-batch` | int |   | Generated from dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder.maxSegmentsPerBatch(java.lang.Integer) |
-| `model-name` | string |   | Generated from dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder.modelName(java.lang.String) |
-| `timeout` | Duration |   | Generated from dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder.timeout(java.time.Duration) |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="ae4419-api-key"></span> `api-key` | `VALUE` | `String` |   | Generated from `dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder#apiKey(java.lang.String)` |
+| <span id="aa0698-base-url"></span> `base-url` | `VALUE` | `String` |   | Generated from `dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder#baseUrl(java.lang.String)` |
+| <span id="a0c4bb-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | If set to `false`, CohereEmbeddingModel will not be available even if configured |
+| <span id="a668a9-input-type"></span> `input-type` | `VALUE` | `String` |   | Generated from `dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder#inputType(java.lang.String)` |
+| <span id="a21993-log-requests"></span> `log-requests` | `VALUE` | `Boolean` |   | Generated from `dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder#logRequests(java.lang.Boolean)` |
+| <span id="ac9000-log-responses"></span> `log-responses` | `VALUE` | `Boolean` |   | Generated from `dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder#logResponses(java.lang.Boolean)` |
+| <span id="aaf3cd-logger"></span> `logger` | `VALUE` | `o.s.Logger` |   | Generated from `dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder#logger(org.slf4j.Logger)` |
+| <span id="acb8c0-max-segments-per-batch"></span> `max-segments-per-batch` | `VALUE` | `Integer` |   | Generated from `dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder#maxSegmentsPerBatch(java.lang.Integer)` |
+| <span id="a6b39d-model-name"></span> `model-name` | `VALUE` | `String` |   | Generated from `dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder#modelName(java.lang.String)` |
+| <span id="a3b3d2-timeout"></span> `timeout` | `VALUE` | `Duration` |   | Generated from `dev.langchain4j.model.cohere.CohereEmbeddingModel.CohereEmbeddingModelBuilder#timeout(java.time.Duration)` |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

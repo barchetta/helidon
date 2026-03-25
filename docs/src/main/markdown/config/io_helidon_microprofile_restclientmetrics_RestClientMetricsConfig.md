@@ -1,13 +1,17 @@
-# RestClientMetricsConfig (microprofile.restclientmetrics) Configuration
+# io.helidon.microprofile.restclientmetrics.RestClientMetricsConfig
 
-Type: [io.helidon.microprofile.restclientmetrics.RestClientMetricsConfig](/apidocs/io.helidon.microprofile.restclient.metrics/io/helidon/microprofile/restclientmetrics/RestClientMetricsConfig.html)
+## Description
 
-This is a standalone configuration type, prefix from configuration root: `rest-client.metrics`
+Configuration settings for MP REST client metrics.
+
+## Usages
+
+- [`rest-client.metrics`](../config/config_reference.md#afecb9-rest-client-metrics)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `enabled` | boolean | `true` | Whether REST client metrics functionality is enabled. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a69b1a-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Whether REST client metrics functionality is enabled |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

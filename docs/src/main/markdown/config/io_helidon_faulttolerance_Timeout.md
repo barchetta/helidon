@@ -1,15 +1,21 @@
-# Timeout (faulttolerance) Configuration
+# io.helidon.faulttolerance.Timeout
 
-Type: [io.helidon.faulttolerance.Timeout](/apidocs/io.helidon.faulttolerance/io/helidon/faulttolerance/Timeout.html)
+## Description
 
-This is a standalone configuration type, prefix from configuration root: `fault-tolerance.timeouts`
+Timeout
+
+configuration bean.
+
+## Usages
+
+- [`fault-tolerance.timeouts`](../config/config_reference.md#abdf4d-fault-tolerance-timeouts)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `current-thread` | boolean | `false` | Flag to indicate that code must be executed in current thread instead of in an executor’s thread. This flag is `false` by default. |
-| `enable-metrics` | boolean | `false` | Flag to enable metrics for this instance. The value of this flag is combined with the global config entry io.helidon.faulttolerance.FaultTolerance.FT_METRICS_DEFAULT_ENABLED. If either of these flags is `true`, then metrics will be enabled for the instance. |
-| `timeout` | Duration | `PT10S` | Duration to wait before timing out. Defaults to `10 seconds`. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a04782-current-thread"></span> `current-thread` | `VALUE` | `Boolean` | `false` | Flag to indicate that code must be executed in current thread instead of in an executor's thread |
+| <span id="a2cfc5-enable-metrics"></span> `enable-metrics` | `VALUE` | `Boolean` | `false` | Flag to enable metrics for this instance |
+| <span id="a37c97-timeout"></span> `timeout` | `VALUE` | `Duration` | `PT10S` | Duration to wait before timing out |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

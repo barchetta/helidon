@@ -1,16 +1,20 @@
-# SpanLimitsConfig (telemetry.otelconfig) Configuration
+# io.helidon.telemetry.otelconfig.SpanLimitsConfig
 
-Type: [io.helidon.telemetry.otelconfig.SpanLimitsConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/SpanLimitsConfig.html)
+## Description
+
+Tracing span limits settings.
+
+## Usages
 
 ## Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `max-attribute-value-length` | int |   | Maximum attribute value length. |
-| `max-attributes` | int |   | Maximum number of attributes. |
-| `max-attributes-per-event` | int |   | Maximum number of attributes per event. |
-| `max-attributes-per-link` | int |   | Maximum number of attributes per link. |
-| `max-events` | int |   | Maximum number of events. |
-| `max-links` | int |   | Maximum number of links. |
+| <span id="ab951d-max-attribute-value-length"></span> `max-attribute-value-length` | `VALUE` | `Integer` | Maximum attribute value length |
+| <span id="a87a84-max-attributes"></span> `max-attributes` | `VALUE` | `Integer` | Maximum number of attributes |
+| <span id="ac75ae-max-attributes-per-event"></span> `max-attributes-per-event` | `VALUE` | `Integer` | Maximum number of attributes per event |
+| <span id="aa0fbc-max-attributes-per-link"></span> `max-attributes-per-link` | `VALUE` | `Integer` | Maximum number of attributes per link |
+| <span id="acea3c-max-events"></span> `max-events` | `VALUE` | `Integer` | Maximum number of events |
+| <span id="a090c5-max-links"></span> `max-links` | `VALUE` | `Integer` | Maximum number of links |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

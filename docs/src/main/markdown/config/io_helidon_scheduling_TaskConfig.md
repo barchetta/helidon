@@ -1,12 +1,18 @@
-# TaskConfig (scheduling) Configuration
+# io.helidon.scheduling.TaskConfig
 
-Type: [io.helidon.scheduling.TaskConfig](/apidocs/io.helidon.scheduling/io/helidon/scheduling/TaskConfig.html)
+## Description
+
+N/A
+
+.
+
+## Usages
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `enabled` | boolean | `true` | Whether the task is enabled. If disabled, the task will not be scheduled. Default value is `true`. |
-| `id` | string |   | Identification of the started task. This can be used to later look up the instance, for example to cancel it. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="ae762a-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Whether the task is enabled |
+| <span id="a1756b-id"></span> `id` | `VALUE` | `String` |   | Identification of the started task |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

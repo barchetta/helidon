@@ -1,27 +1,19 @@
-# ConfigVaultProvider (security.providers.config.vault) Configuration
+# io.helidon.security.providers.config.vault.ConfigVaultProvider
 
-Secrets and Encryption provider using just configuration
+## Description
 
-Type: [io.helidon.security.providers.config.vault.ConfigVaultProvider](/apidocs/io.helidon.security.providers.config.vault/io/helidon/security/providers/config/vault/ConfigVaultProvider.html)
+Secrets and Encryption provider using just configuration.
 
-*Config key*
+## Usages
 
-``` text
-config-vault
-```
+- [`security.providers.config-vault`](../config/io_helidon_security_spi_SecurityProvider.md#ad4a0b-config-vault)
 
-This type provides the following service implementations:
-
-- `io.helidon.security.spi.SecurityProvider`
-
-- `io.helidon.security.spi.SecretsProvider`
-
-- `io.helidon.security.spi.EncryptionProvider`
+- [`server.features.security.security.providers.config-vault`](../config/io_helidon_security_spi_SecurityProvider.md#ad4a0b-config-vault)
 
 ## Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `master-password` | string |   | Configure master password used for encryption/decryption. If master password cannot be obtained from any source (this method, configuration, system property, environment variable), encryption and decryption will not be supported. |
+| <span id="a72e2d-master-password"></span> `master-password` | `LIST` | `String` | Configure master password used for encryption/decryption |
 
-Required configuration options
+See the [manifest](../config/manifest.md) for all available types.

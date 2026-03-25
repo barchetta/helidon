@@ -1,66 +1,93 @@
-# RevocationConfig (common.tls) Configuration
+# io.helidon.common.tls.RevocationConfig
 
-Type: [io.helidon.common.tls.RevocationConfig](/apidocs/io.helidon.common.tls/io/helidon/common/tls/RevocationConfig.html)
+### Description
 
-## Configuration options
+Certificate revocation configuration.
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
+### Usages
+
+- [`clients.tls.revocation`](../config/io_helidon_common_tls_Tls.md#a7a660-revocation)
+
+- [`security.providers.idcs-role-mapper.oidc-config.webclient.tls.revocation`](../config/io_helidon_common_tls_Tls.md#a7a660-revocation)
+
+- [`security.providers.oidc.webclient.tls.revocation`](../config/io_helidon_common_tls_Tls.md#a7a660-revocation)
+
+- [`server.features.security.security.providers.idcs-role-mapper.oidc-config.webclient.tls.revocation`](../config/io_helidon_common_tls_Tls.md#a7a660-revocation)
+
+- [`server.features.security.security.providers.oidc.webclient.tls.revocation`](../config/io_helidon_common_tls_Tls.md#a7a660-revocation)
+
+- [`server.sockets.tls.revocation`](../config/io_helidon_common_tls_Tls.md#a7a660-revocation)
+
+- [`server.tls.revocation`](../config/io_helidon_common_tls_Tls.md#a7a660-revocation)
+
+### Configuration options
+
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
 </colgroup>
 <thead>
 <tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
+<th class="tableblock halign-left valign-top">Key</th>
+<th class="tableblock halign-left valign-top">Kind</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><p><code>check-only-end-entity</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Only check the revocation status of end-entity certificates. Default value is <code>false</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="af8d12-check-only-end-entity"></span> <code>check-only-end-entity</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Only check the revocation status of end-entity certificates</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Flag indicating whether this revocation config is enabled.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a50413-enabled"></span> <code>enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Flag indicating whether this revocation config is enabled</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>fallback-enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Enable fallback to the less preferred checking option.</p>
-<p>If the primary method for revocation checking fails to verify the revocation status of a certificate (such as using a CRL or OCSP), the checker will attempt alternative methods. This option ensures whether revocation checking is performed strictly according to the specified method, or should fallback to the one less preferred. OCSP is preferred over the CRL by default.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a0a3e8-fallback-enabled"></span> <code>fallback-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Enable fallback to the less preferred checking option</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>ocsp-responder-uri</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>The URI that identifies the location of the OCSP responder. This overrides the <code>ocsp.responderURL</code> security property and any responder specified in a certificate’s Authority Information Access Extension, as defined in RFC 5280.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a501f0-ocsp-responder-uri"></span> <code>ocsp-responder-uri</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>URI</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>The URI that identifies the location of the OCSP responder</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>prefer-crl-over-ocsp</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Prefer CRL over OCSP. Default value is <code>false</code>. OCSP is preferred over the CRL by default.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="aabaa0-prefer-crl-over-ocsp"></span> <code>prefer-crl-over-ocsp</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Prefer CRL over OCSP</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>soft-fail-enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Allow revocation check to succeed if the revocation status cannot be determined for one of the following reasons:</p>
+<td class="tableblock halign-left valign-top"><p><span id="ab0b51-soft-fail-enabled"></span> <code>soft-fail-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Allow revocation check to succeed if the revocation status cannot be determined for one of the following reasons:</p>
 <ul>
-<li><p>The CRL or OCSP response cannot be obtained because of a network error.</p></li>
-<li><p>The OCSP responder returns one of the following errors specified in section 2.3 of RFC 2560: internalError or tryLater.</p></li>
+<li>The CRL or OCSP response cannot be obtained because of a network error</li>
 </ul></td>
 </tr>
 </tbody>
 </table>
+
+------------------------------------------------------------------------
+
+See the [manifest](../config/manifest.md) for all available types.

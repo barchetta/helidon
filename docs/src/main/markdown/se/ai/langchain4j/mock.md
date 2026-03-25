@@ -110,11 +110,12 @@ class FoodExpertTest {
 }
 ```
 
-Type: [io.helidon.integrations.langchain4j.providers.mock.MockChatModel](/apidocs/io.helidon.integrations.langchain4j.providers.mock/io/helidon/integrations/langchain4j/providers/mock/MockChatModel.html)
-
-This is a standalone configuration type, prefix from configuration root: `langchain4j.providers.helidon-mock`
-
 ### Configuration options
+
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="ac9963-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | If set to `false` , MockChatModel will not be available even if configured |
+| <span id="aa2a29-rules"></span> [`rules`](../../../config/io_helidon_integrations_langchain4j_providers_mock_MockChatRule.md) | `LIST` | `i.h.i.l.p.m.MockChatRule` |   | The list of `MockChatRule`s that the mock chat model evaluates |
 
 ## Additional Information
 

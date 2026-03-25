@@ -1,28 +1,22 @@
-# IdcsRoleMapperProvider (security.providers.idcs.mapper) Configuration
+# io.helidon.security.providers.idcs.mapper.IdcsRoleMapperProvider
 
-IDCS role mapping provider
+## Description
 
-Type: [io.helidon.security.providers.idcs.mapper.IdcsRoleMapperProvider](/apidocs/io.helidon.security.providers.idcs.mapper/io/helidon/security/providers/idcs/mapper/IdcsRoleMapperProvider.html)
+IDCS role mapping provider.
 
-*Config key*
+## Usages
 
-``` text
-idcs-role-mapper
-```
+- [`security.providers.idcs-role-mapper`](../config/io_helidon_security_spi_SecurityProvider.md#af9608-idcs-role-mapper)
 
-This type provides the following service implementations:
-
-- `io.helidon.security.spi.SecurityProvider`
-
-- `io.helidon.security.spi.SubjectMappingProvider`
+- [`server.features.security.security.providers.idcs-role-mapper`](../config/io_helidon_security_spi_SecurityProvider.md#af9608-idcs-role-mapper)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `cache-config` | [EvictableCache](../config/io_helidon_security_providers_common_EvictableCache.md) |   | Use explicit io.helidon.security.providers.common.EvictableCache for role caching. |
-| `default-idcs-subject-type` | string | `user` | Configure subject type to use when requesting roles from IDCS. Can be either IDCS_SUBJECT_TYPE_USER or IDCS_SUBJECT_TYPE_CLIENT. Defaults to IDCS_SUBJECT_TYPE_USER. |
-| `oidc-config` | [OidcConfig](../config/io_helidon_security_providers_oidc_common_OidcConfig.md) |   | Use explicit io.helidon.security.providers.oidc.common.OidcConfig instance, e.g. when using it also for OIDC provider. |
-| `subject-types` | SubjectType\[\] (USER, SERVICE) | `USER` | Add a supported subject type. If none added, io.helidon.security.SubjectType.USER is used. If any added, only the ones added will be used (e.g. if you want to use both io.helidon.security.SubjectType.USER and io.helidon.security.SubjectType.SERVICE, both need to be added. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="aed3ab-cache-config"></span> [`cache-config`](../config/io_helidon_security_providers_common_EvictableCache.md) | `VALUE` | `i.h.s.p.c.EvictableCache` |   | Use explicit `io.helidon.security.providers.common.EvictableCache` for role caching |
+| <span id="aa2e00-default-idcs-subject-type"></span> `default-idcs-subject-type` | `VALUE` | `String` | `user` | Configure subject type to use when requesting roles from IDCS |
+| <span id="a630af-oidc-config"></span> [`oidc-config`](../config/io_helidon_security_providers_oidc_common_OidcConfig.md) | `VALUE` | `i.h.s.p.o.c.OidcConfig` |   | Use explicit `io.helidon.security.providers.oidc.common.OidcConfig` instance, e.g |
+| <span id="a477d4-subject-types"></span> [`subject-types`](../config/io_helidon_security_SubjectType.md) | `LIST` | `i.h.s.SubjectType` | `USER` | Add a supported subject type |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

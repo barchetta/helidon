@@ -1,14 +1,18 @@
-# RetryPolicyConfig (telemetry.otelconfig) Configuration
+# io.helidon.telemetry.otelconfig.RetryPolicyConfig
 
-Type: [io.helidon.telemetry.otelconfig.RetryPolicyConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/RetryPolicyConfig.html)
+## Description
+
+Retry policy settings.
+
+## Usages
 
 ## Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `initial-backoff` | Duration |   | Initial backoff time. |
-| `max-attempts` | int |   | Maximum number of retry attempts. |
-| `max-backoff` | Duration |   | Maximum backoff time. |
-| `max-backoff-multiplier` | double |   | Maximum backoff multiplier. |
+| <span id="a45b53-initial-backoff"></span> `initial-backoff` | `VALUE` | `Duration` | Initial backoff time |
+| <span id="a38788-max-attempts"></span> `max-attempts` | `VALUE` | `Integer` | Maximum number of retry attempts |
+| <span id="a56cea-max-backoff"></span> `max-backoff` | `VALUE` | `Duration` | Maximum backoff time |
+| <span id="a11229-max-backoff-multiplier"></span> `max-backoff-multiplier` | `VALUE` | `Double` | Maximum backoff multiplier |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

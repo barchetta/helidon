@@ -1,465 +1,61 @@
-# Configuration Reference
-
-The following section lists all configurable types in Helidon.
-
-- [AbacProvider (security.providers.abac)](../config/io_helidon_security_providers_abac_AbacProvider.md)
-
-- [AccessLogConfig (webserver.accesslog)](../config/io_helidon_webserver_accesslog_AccessLogConfig.md)
-
-- [AccessLogFeature (webserver.accesslog)](../config/io_helidon_webserver_accesslog_AccessLogFeature.md)
-
-- [AgentsConfig (integrations.langchain4j)](../config/io_helidon_integrations_langchain4j_AgentsConfig.md)
-
-- [AggregationConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_AggregationConfig.md)
-
-- [AiServicesConfig (integrations.langchain4j)](../config/io_helidon_integrations_langchain4j_AiServicesConfig.md)
-
-- [AimdLimit (common.concurrency.limits)](../config/io_helidon_common_concurrency_limits_AimdLimit.md)
-
-- [AllowList (common.configurable)](../config/io_helidon_common_configurable_AllowList.md)
-
-- [AqConfigBuilder (messaging.connectors.aq)](../config/io_helidon_messaging_connectors_aq_AqConfigBuilder.md)
-
-- [Async (faulttolerance)](../config/io_helidon_faulttolerance_Async.md)
-
-- [AutoHttpMetricsConfig (webserver.observe.metrics)](../config/io_helidon_webserver_observe_metrics_AutoHttpMetricsConfig.md)
-
-- [AutoHttpMetricsPathConfig (webserver.observe.metrics)](../config/io_helidon_webserver_observe_metrics_AutoHttpMetricsPathConfig.md)
-
-- [Base2ExponentialHistogramAggregationConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_Base2ExponentialHistogramAggregationConfig.md)
-
-- [BaseBuilder (security.providers.oidc.common)](../config/io_helidon_security_providers_oidc_common_BaseBuilder.md)
-
-- [BaseHandlerConfig (webserver.staticcontent)](../config/io_helidon_webserver_staticcontent_BaseHandlerConfig.md)
-
-- [BatchProcessorConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_BatchProcessorConfig.md)
-
-- [Bulkhead (faulttolerance)](../config/io_helidon_faulttolerance_Bulkhead.md)
-
-- [CacheConfig (discovery.providers.eureka)](../config/io_helidon_discovery_providers_eureka_CacheConfig.md)
-
-- [CircuitBreaker (faulttolerance)](../config/io_helidon_faulttolerance_CircuitBreaker.md)
-
-- [ClasspathHandlerConfig (webserver.staticcontent)](../config/io_helidon_webserver_staticcontent_ClasspathHandlerConfig.md)
-
-- [ClientCredentialsConfig (security.providers.oidc.common)](../config/io_helidon_security_providers_oidc_common_ClientCredentialsConfig.md)
-
-- [CohereEmbeddingModelConfig (integrations.langchain4j.providers.cohere)](../config/io_helidon_integrations_langchain4j_providers_cohere_CohereEmbeddingModelConfig.md)
-
-- [CohereScoringModelConfig (integrations.langchain4j.providers.cohere)](../config/io_helidon_integrations_langchain4j_providers_cohere_CohereScoringModelConfig.md)
-
-- [CoherenceEmbeddingStoreConfig (integrations.langchain4j.providers.coherence)](../config/io_helidon_integrations_langchain4j_providers_coherence_CoherenceEmbeddingStoreConfig.md)
-
-- [ComponentMetricsSettings (metrics.api)](../config/io_helidon_metrics_api_ComponentMetricsSettings.md)
-
-- [ConfigFileMethodConfig (integrations.oci)](../config/io_helidon_integrations_oci_ConfigFileMethodConfig.md)
-
-- [ConfigMethodConfig (integrations.oci)](../config/io_helidon_integrations_oci_ConfigMethodConfig.md)
-
-- [ConfigObserver (webserver.observe.config)](../config/io_helidon_webserver_observe_config_ConfigObserver.md)
-
-- [ConfigUserStore.ConfigUser (security.providers.httpauth)](../config/io_helidon_security_providers_httpauth_ConfigUserStore_ConfigUser.md)
-
-- [ConfigVaultProvider (security.providers.config.vault)](../config/io_helidon_security_providers_config_vault_ConfigVaultProvider.md)
-
-- [ConfigVaultProvider.SecretConfig (security.providers.config.vault)](../config/io_helidon_security_providers_config_vault_ConfigVaultProvider_SecretConfig.md)
-
-- [ConnectionConfig (webserver)](../config/io_helidon_webserver_ConnectionConfig.md)
-
-- [ContentEncodingContext (http.encoding)](../config/io_helidon_http_encoding_ContentEncodingContext.md)
-
-- [ContentRetrieverConfig (integrations.langchain4j)](../config/io_helidon_integrations_langchain4j_ContentRetrieverConfig.md)
-
-- [ContextFeature (webserver.context)](../config/io_helidon_webserver_context_ContextFeature.md)
-
-- [ContextRecordConfig (common.context.http)](../config/io_helidon_common_context_http_ContextRecordConfig.md)
-
-- [CorsConfig (webserver.cors)](../config/io_helidon_webserver_cors_CorsConfig.md)
-
-- [CorsFeature (webserver.cors)](../config/io_helidon_webserver_cors_CorsFeature.md)
-
-- [CorsPathConfig (webserver.cors)](../config/io_helidon_webserver_cors_CorsPathConfig.md)
-
-- [Cron (scheduling)](../config/io_helidon_scheduling_Cron.md)
-
-- [CrossOriginConfig (cors)](../config/io_helidon_cors_CrossOriginConfig.md)
-
-- [DataSourceConfig (data.sql.datasource)](../config/io_helidon_data_sql_datasource_DataSourceConfig.md)
-
-- [EmbeddingTableConfig (integrations.langchain4j.providers.oracle)](../config/io_helidon_integrations_langchain4j_providers_oracle_EmbeddingTableConfig.md)
-
-- [ErrorHandling (webserver)](../config/io_helidon_webserver_ErrorHandling.md)
-
-- [EurekaDiscovery (discovery.providers.eureka)](../config/io_helidon_discovery_providers_eureka_EurekaDiscovery.md)
-
-- [EurekaRegistrationConfig (integrations.eureka)](../config/io_helidon_integrations_eureka_EurekaRegistrationConfig.md)
-
-- [EurekaRegistrationServerFeature (integrations.eureka)](../config/io_helidon_integrations_eureka_EurekaRegistrationServerFeature.md)
-
-- [EvictableCache (security.providers.common)](../config/io_helidon_security_providers_common_EvictableCache.md)
-
-- [ExplicitBucketHistogramAggregationConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_ExplicitBucketHistogramAggregationConfig.md)
-
-- [ExtendedTracerConfig (tracing)](../config/io_helidon_tracing_ExtendedTracerConfig.md)
-
-- [FileSystemHandlerConfig (webserver.staticcontent)](../config/io_helidon_webserver_staticcontent_FileSystemHandlerConfig.md)
-
-- [FixedLimit (common.concurrency.limits)](../config/io_helidon_common_concurrency_limits_FixedLimit.md)
-
-- [FixedRate (scheduling)](../config/io_helidon_scheduling_FixedRate.md)
-
-- [GoogleAiGeminiChatModelConfig (integrations.langchain4j.providers.gemini)](../config/io_helidon_integrations_langchain4j_providers_gemini_GoogleAiGeminiChatModelConfig.md)
-
-- [GoogleAiGeminiStreamingChatModelConfig (integrations.langchain4j.providers.gemini)](../config/io_helidon_integrations_langchain4j_providers_gemini_GoogleAiGeminiStreamingChatModelConfig.md)
-
-- [GoogleTokenProvider (security.providers.google.login)](../config/io_helidon_security_providers_google_login_GoogleTokenProvider.md)
-
-- [GrpcClient (webclient.grpc)](../config/io_helidon_webclient_grpc_GrpcClient.md)
-
-- [GrpcClientProtocolConfig (webclient.grpc)](../config/io_helidon_webclient_grpc_GrpcClientProtocolConfig.md)
-
-- [GrpcConfig (webserver.grpc)](../config/io_helidon_webserver_grpc_GrpcConfig.md)
-
-- [GrpcReflectionConfig (webserver.grpc)](../config/io_helidon_webserver_grpc_GrpcReflectionConfig.md)
-
-- [GrpcReflectionFeature (webserver.grpc)](../config/io_helidon_webserver_grpc_GrpcReflectionFeature.md)
-
-- [GrpcTracingConfig (webserver.grpc)](../config/io_helidon_webserver_grpc_GrpcTracingConfig.md)
-
-- [GsonSupport (http.media.gson)](../config/io_helidon_http_media_gson_GsonSupport.md)
-
-- [HeaderAtnProvider (security.providers.header)](../config/io_helidon_security_providers_header_HeaderAtnProvider.md)
-
-- [HealthObserver (webserver.observe.health)](../config/io_helidon_webserver_observe_health_HealthObserver.md)
-
-- [HelidonFeatureSupport.Builder (webserver.servicecommon)](../config/io_helidon_webserver_servicecommon_HelidonFeatureSupport_Builder.md)
-
-- [HelidonOpenTelemetry (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_HelidonOpenTelemetry.md)
-
-- [HikariDataSourceConfig (data.sql.datasource.hikari)](../config/io_helidon_data_sql_datasource_hikari_HikariDataSourceConfig.md)
-
-- [Http1Client (webclient.http1)](../config/io_helidon_webclient_http1_Http1Client.md)
-
-- [Http1ClientProtocolConfig (webclient.http1)](../config/io_helidon_webclient_http1_Http1ClientProtocolConfig.md)
-
-- [Http1Config (webserver.http1)](../config/io_helidon_webserver_http1_Http1Config.md)
-
-- [Http2ClientProtocolConfig (webclient.http2)](../config/io_helidon_webclient_http2_Http2ClientProtocolConfig.md)
-
-- [Http2Config (webserver.http2)](../config/io_helidon_webserver_http2_Http2Config.md)
-
-- [HttpBasicAuthProvider (security.providers.httpauth)](../config/io_helidon_security_providers_httpauth_HttpBasicAuthProvider.md)
-
-- [HttpClientConfig (webclient.api)](../config/io_helidon_webclient_api_HttpClientConfig.md)
-
-- [HttpConfigBase (webclient.api)](../config/io_helidon_webclient_api_HttpConfigBase.md)
-
-- [HttpDigestAuthProvider (security.providers.httpauth)](../config/io_helidon_security_providers_httpauth_HttpDigestAuthProvider.md)
-
-- [HttpSignProvider (security.providers.httpsign)](../config/io_helidon_security_providers_httpsign_HttpSignProvider.md)
-
-- [IdcsMtRoleMapperProvider (security.providers.idcs.mapper)](../config/io_helidon_security_providers_idcs_mapper_IdcsMtRoleMapperProvider.md)
-
-- [IdcsRoleMapperProvider (security.providers.idcs.mapper)](../config/io_helidon_security_providers_idcs_mapper_IdcsRoleMapperProvider.md)
-
-- [IdcsRoleMapperProviderBase.Builder (security.providers.idcs.mapper)](../config/io_helidon_security_providers_idcs_mapper_IdcsRoleMapperProviderBase_Builder.md)
-
-- [ImdsInstanceInfo (integrations.oci)](../config/io_helidon_integrations_oci_ImdsInstanceInfo.md)
-
-- [InMemoryEmbeddingStoreConfig (integrations.langchain4j)](../config/io_helidon_integrations_langchain4j_InMemoryEmbeddingStoreConfig.md)
-
-- [InProcessEmbeddingModelConfig (integrations.langchain4j.providers.lc4jinprocess)](../config/io_helidon_integrations_langchain4j_providers_lc4jinprocess_InProcessEmbeddingModelConfig.md)
-
-- [InboundClientDefinition (security.providers.httpsign)](../config/io_helidon_security_providers_httpsign_InboundClientDefinition.md)
-
-- [InfoObserver (webserver.observe.info)](../config/io_helidon_webserver_observe_info_InfoObserver.md)
-
-- [InstanceInfoConfig (integrations.eureka)](../config/io_helidon_integrations_eureka_InstanceInfoConfig.md)
-
-- [InstrumentSelectorConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_InstrumentSelectorConfig.md)
-
-- [IvfIndexConfig (integrations.langchain4j.providers.oracle)](../config/io_helidon_integrations_langchain4j_providers_oracle_IvfIndexConfig.md)
-
-- [JacksonSupport (http.media.jackson)](../config/io_helidon_http_media_jackson_JacksonSupport.md)
-
-- [JaegerTracerBuilder (tracing.providers.jaeger)](../config/io_helidon_tracing_providers_jaeger_JaegerTracerBuilder.md)
-
-- [JdbcDataSourceConfig (data.sql.datasource.jdbc)](../config/io_helidon_data_sql_datasource_jdbc_JdbcDataSourceConfig.md)
-
-- [JdbcParametersConfig (dbclient.jdbc)](../config/io_helidon_dbclient_jdbc_JdbcParametersConfig.md)
-
-- [JlamaChatModelConfig (integrations.langchain4j.providers.jlama)](../config/io_helidon_integrations_langchain4j_providers_jlama_JlamaChatModelConfig.md)
-
-- [JlamaEmbeddingModelConfig (integrations.langchain4j.providers.jlama)](../config/io_helidon_integrations_langchain4j_providers_jlama_JlamaEmbeddingModelConfig.md)
-
-- [JlamaLanguageModelConfig (integrations.langchain4j.providers.jlama)](../config/io_helidon_integrations_langchain4j_providers_jlama_JlamaLanguageModelConfig.md)
-
-- [JlamaStreamingChatModelConfig (integrations.langchain4j.providers.jlama)](../config/io_helidon_integrations_langchain4j_providers_jlama_JlamaStreamingChatModelConfig.md)
-
-- [JmsConfigBuilder (messaging.connectors.jms)](../config/io_helidon_messaging_connectors_jms_JmsConfigBuilder.md)
-
-- [JsonBinding (json.binding)](../config/io_helidon_json_binding_JsonBinding.md)
-
-- [JsonBindingSupport (http.media.json.binding)](../config/io_helidon_http_media_json_binding_JsonBindingSupport.md)
-
-- [JsonIndexConfig (integrations.langchain4j.providers.oracle)](../config/io_helidon_integrations_langchain4j_providers_oracle_JsonIndexConfig.md)
-
-- [JsonRpcClient (webclient.jsonrpc)](../config/io_helidon_webclient_jsonrpc_JsonRpcClient.md)
-
-- [JsonRpcClientProtocolConfig (webclient.jsonrpc)](../config/io_helidon_webclient_jsonrpc_JsonRpcClientProtocolConfig.md)
-
-- [JsonSupport (http.media.json)](../config/io_helidon_http_media_json_JsonSupport.md)
-
-- [JsonbSupport (http.media.jsonb)](../config/io_helidon_http_media_jsonb_JsonbSupport.md)
-
-- [JwtAuthProvider (microprofile.jwt.auth)](../config/io_helidon_microprofile_jwt_auth_JwtAuthProvider.md)
-
-- [JwtProvider (security.providers.jwt)](../config/io_helidon_security_providers_jwt_JwtProvider.md)
-
-- [KafkaConfigBuilder (messaging.connectors.kafka)](../config/io_helidon_messaging_connectors_kafka_KafkaConfigBuilder.md)
-
-- [KeyPerformanceIndicatorMetricsConfig (metrics.api)](../config/io_helidon_metrics_api_KeyPerformanceIndicatorMetricsConfig.md)
-
-- [Keys (common.pki)](../config/io_helidon_common_pki_Keys.md)
-
-- [KeystoreKeys (common.pki)](../config/io_helidon_common_pki_KeystoreKeys.md)
-
-- [LeaseInfoConfig (integrations.eureka)](../config/io_helidon_integrations_eureka_LeaseInfoConfig.md)
-
-- [LimitsFeature (webserver.concurrency.limits)](../config/io_helidon_webserver_concurrency_limits_LimitsFeature.md)
-
-- [ListenerConfig (webserver)](../config/io_helidon_webserver_ListenerConfig.md)
-
-- [LogLimitsConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_LogLimitsConfig.md)
-
-- [LogObserver (webserver.observe.log)](../config/io_helidon_webserver_observe_log_LogObserver.md)
-
-- [LogRecordExporterConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_LogRecordExporterConfig.md)
-
-- [LogStreamConfig (webserver.observe.log)](../config/io_helidon_webserver_observe_log_LogStreamConfig.md)
-
-- [LruCache (common.configurable)](../config/io_helidon_common_configurable_LruCache.md)
-
-- [McpClientConfig (integrations.langchain4j)](../config/io_helidon_integrations_langchain4j_McpClientConfig.md)
-
-- [MediaContext (http.media)](../config/io_helidon_http_media_MediaContext.md)
-
-- [MediaSupportConfig (http.media)](../config/io_helidon_http_media_MediaSupportConfig.md)
-
-- [MemoryCache (webserver.staticcontent)](../config/io_helidon_webserver_staticcontent_MemoryCache.md)
-
-- [MetricDefaultHistogramAggregationConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_MetricDefaultHistogramAggregationConfig.md)
-
-- [MetricExporterConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_MetricExporterConfig.md)
-
-- [MetricReaderConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_MetricReaderConfig.md)
-
-- [MetricsConfig (metrics.api)](../config/io_helidon_metrics_api_MetricsConfig.md)
-
-- [MetricsObserver (webserver.observe.metrics)](../config/io_helidon_webserver_observe_metrics_MetricsObserver.md)
-
-- [MicrometerFeature (integrations.micrometer)](../config/io_helidon_integrations_micrometer_MicrometerFeature.md)
-
-- [MockChatModel (integrations.langchain4j.providers.mock)](../config/io_helidon_integrations_langchain4j_providers_mock_MockChatModel.md)
-
-- [MockChatRule (integrations.langchain4j.providers.mock)](../config/io_helidon_integrations_langchain4j_providers_mock_MockChatRule.md)
-
-- [MockStreamingChatModel (integrations.langchain4j.providers.mock)](../config/io_helidon_integrations_langchain4j_providers_mock_MockStreamingChatModel.md)
-
-- [MpConfigBuilder (config.mp)](../config/io_helidon_config_mp_MpConfigBuilder.md)
-
-- [MpOpenApiManagerConfig (microprofile.openapi)](../config/io_helidon_microprofile_openapi_MpOpenApiManagerConfig.md)
-
-- [Neo4j (integrations.neo4j)](../config/io_helidon_integrations_neo4j_Neo4j.md)
-
-- [ObserveFeature (webserver.observe)](../config/io_helidon_webserver_observe_ObserveFeature.md)
-
-- [ObserverConfigBase (webserver.observe)](../config/io_helidon_webserver_observe_ObserverConfigBase.md)
-
-- [OciCertificatesTlsManager (integrations.oci.tls.certificates)](../config/io_helidon_integrations_oci_tls_certificates_OciCertificatesTlsManager.md)
-
-- [OciConfig (integrations.oci)](../config/io_helidon_integrations_oci_OciConfig.md)
-
-- [OciConfig (integrations.oci.sdk.runtime)](../config/io_helidon_integrations_oci_sdk_runtime_OciConfig.md)
-
-- [OciGenAiChatModelConfig (integrations.langchain4j.providers.oci.genai)](../config/io_helidon_integrations_langchain4j_providers_oci_genai_OciGenAiChatModelConfig.md)
-
-- [OciGenAiCohereChatModelConfig (integrations.langchain4j.providers.oci.genai)](../config/io_helidon_integrations_langchain4j_providers_oci_genai_OciGenAiCohereChatModelConfig.md)
-
-- [OciGenAiCohereStreamingChatModelConfig (integrations.langchain4j.providers.oci.genai)](../config/io_helidon_integrations_langchain4j_providers_oci_genai_OciGenAiCohereStreamingChatModelConfig.md)
-
-- [OciGenAiStreamingChatModelConfig (integrations.langchain4j.providers.oci.genai)](../config/io_helidon_integrations_langchain4j_providers_oci_genai_OciGenAiStreamingChatModelConfig.md)
-
-- [OciMetricsSupport (integrations.oci.metrics)](../config/io_helidon_integrations_oci_metrics_OciMetricsSupport.md)
-
-- [OidcConfig (security.providers.oidc.common)](../config/io_helidon_security_providers_oidc_common_OidcConfig.md)
-
-- [OidcProvider (security.providers.oidc)](../config/io_helidon_security_providers_oidc_OidcProvider.md)
-
-- [OllamaChatModelConfig (integrations.langchain4j.providers.ollama)](../config/io_helidon_integrations_langchain4j_providers_ollama_OllamaChatModelConfig.md)
-
-- [OllamaEmbeddingModelConfig (integrations.langchain4j.providers.ollama)](../config/io_helidon_integrations_langchain4j_providers_ollama_OllamaEmbeddingModelConfig.md)
-
-- [OllamaLanguageModelConfig (integrations.langchain4j.providers.ollama)](../config/io_helidon_integrations_langchain4j_providers_ollama_OllamaLanguageModelConfig.md)
-
-- [OllamaStreamingChatModelConfig (integrations.langchain4j.providers.ollama)](../config/io_helidon_integrations_langchain4j_providers_ollama_OllamaStreamingChatModelConfig.md)
-
-- [OpenAiChatModelConfig (integrations.langchain4j.providers.openai)](../config/io_helidon_integrations_langchain4j_providers_openai_OpenAiChatModelConfig.md)
-
-- [OpenAiEmbeddingModelConfig (integrations.langchain4j.providers.openai)](../config/io_helidon_integrations_langchain4j_providers_openai_OpenAiEmbeddingModelConfig.md)
-
-- [OpenAiImageModelConfig (integrations.langchain4j.providers.openai)](../config/io_helidon_integrations_langchain4j_providers_openai_OpenAiImageModelConfig.md)
-
-- [OpenAiLanguageModelConfig (integrations.langchain4j.providers.openai)](../config/io_helidon_integrations_langchain4j_providers_openai_OpenAiLanguageModelConfig.md)
-
-- [OpenAiModerationModelConfig (integrations.langchain4j.providers.openai)](../config/io_helidon_integrations_langchain4j_providers_openai_OpenAiModerationModelConfig.md)
-
-- [OpenAiStreamingChatModelConfig (integrations.langchain4j.providers.openai)](../config/io_helidon_integrations_langchain4j_providers_openai_OpenAiStreamingChatModelConfig.md)
-
-- [OpenApiFeature (openapi)](../config/io_helidon_openapi_OpenApiFeature.md)
-
-- [OpenApiUi (integrations.openapi.ui)](../config/io_helidon_integrations_openapi_ui_OpenApiUi.md)
-
-- [OpenTelemetryConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_OpenTelemetryConfig.md)
-
-- [OpenTelemetryLoggingConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_OpenTelemetryLoggingConfig.md)
-
-- [OpenTelemetryMetricsConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_OpenTelemetryMetricsConfig.md)
-
-- [OpenTelemetryTracer (tracing.providers.opentelemetry)](../config/io_helidon_tracing_providers_opentelemetry_OpenTelemetryTracer.md)
-
-- [OpenTelemetryTracingConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_OpenTelemetryTracingConfig.md)
-
-- [OpenTracingTracerBuilder (tracing.providers.opentracing)](../config/io_helidon_tracing_providers_opentracing_OpenTracingTracerBuilder.md)
-
-- [OracleEmbeddingStoreConfig (integrations.langchain4j.providers.oracle)](../config/io_helidon_integrations_langchain4j_providers_oracle_OracleEmbeddingStoreConfig.md)
-
-- [OtlpExporterConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_OtlpExporterConfig.md)
-
-- [OtlpHttpExporterConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_OtlpHttpExporterConfig.md)
-
-- [OtlpPublisher (metrics.providers.micrometer)](../config/io_helidon_metrics_providers_micrometer_OtlpPublisher.md)
-
-- [OutboundConfig (security.providers.common)](../config/io_helidon_security_providers_common_OutboundConfig.md)
-
-- [OutboundTarget (security.providers.common)](../config/io_helidon_security_providers_common_OutboundTarget.md)
-
-- [PathsConfig (webserver.security)](../config/io_helidon_webserver_security_PathsConfig.md)
-
-- [PemKeys (common.pki)](../config/io_helidon_common_pki_PemKeys.md)
-
-- [PeriodicMetricReaderConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_PeriodicMetricReaderConfig.md)
-
-- [PortInfoConfig (integrations.eureka)](../config/io_helidon_integrations_eureka_PortInfoConfig.md)
-
-- [ProcessorConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_ProcessorConfig.md)
-
-- [PrometheusPublisher (metrics.providers.micrometer)](../config/io_helidon_metrics_providers_micrometer_PrometheusPublisher.md)
-
-- [Proxy (webclient.api)](../config/io_helidon_webclient_api_Proxy.md)
-
-- [RequestedUriDiscoveryContext (http)](../config/io_helidon_http_RequestedUriDiscoveryContext.md)
-
-- [Resource (common.configurable)](../config/io_helidon_common_configurable_Resource.md)
-
-- [RestClientMetricsConfig (microprofile.restclientmetrics)](../config/io_helidon_microprofile_restclientmetrics_RestClientMetricsConfig.md)
-
-- [RestServiceSettings (webserver.servicecommon)](../config/io_helidon_webserver_servicecommon_RestServiceSettings.md)
-
-- [Retry (faulttolerance)](../config/io_helidon_faulttolerance_Retry.md)
-
-- [RetryPolicyConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_RetryPolicyConfig.md)
-
-- [RevocationConfig (common.tls)](../config/io_helidon_common_tls_RevocationConfig.md)
-
-- [SamplerConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_SamplerConfig.md)
-
-- [ScheduledThreadPoolConfig (common.configurable)](../config/io_helidon_common_configurable_ScheduledThreadPoolConfig.md)
-
-- [ScheduledThreadPoolSupplier (common.configurable)](../config/io_helidon_common_configurable_ScheduledThreadPoolSupplier.md)
-
-- [ScopeConfig (metrics.api)](../config/io_helidon_metrics_api_ScopeConfig.md)
-
-- [ScopingConfig (metrics.api)](../config/io_helidon_metrics_api_ScopingConfig.md)
-
-- [Security (security)](../config/io_helidon_security_Security.md)
-
-- [SecurityFeature (webserver.security)](../config/io_helidon_webserver_security_SecurityFeature.md)
-
-- [SecurityHandler (webserver.security)](../config/io_helidon_webserver_security_SecurityHandler.md)
-
-- [SecurityTime (security)](../config/io_helidon_security_SecurityTime.md)
-
-- [Server (microprofile.server)](../config/io_helidon_microprofile_server_Server.md)
-
-- [SessionTokenMethodConfig (integrations.oci)](../config/io_helidon_integrations_oci_SessionTokenMethodConfig.md)
-
-- [SignedHeadersConfig.HeadersConfig (security.providers.httpsign)](../config/io_helidon_security_providers_httpsign_SignedHeadersConfig_HeadersConfig.md)
-
-- [SocketOptions (common.socket)](../config/io_helidon_common_socket_SocketOptions.md)
-
-- [SpanExporterConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_SpanExporterConfig.md)
-
-- [SpanLimitsConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_SpanLimitsConfig.md)
-
-- [StaticContentConfig (webserver.staticcontent)](../config/io_helidon_webserver_staticcontent_StaticContentConfig.md)
-
-- [StaticContentFeature (webserver.staticcontent)](../config/io_helidon_webserver_staticcontent_StaticContentFeature.md)
-
-- [Tag (metrics.api)](../config/io_helidon_metrics_api_Tag.md)
-
-- [TaskConfig (scheduling)](../config/io_helidon_scheduling_TaskConfig.md)
-
-- [TemporaryStorage (webserver.staticcontent)](../config/io_helidon_webserver_staticcontent_TemporaryStorage.md)
-
-- [TenantConfig (security.providers.oidc.common)](../config/io_helidon_security_providers_oidc_common_TenantConfig.md)
-
-- [ThreadPoolConfig (common.configurable)](../config/io_helidon_common_configurable_ThreadPoolConfig.md)
-
-- [ThreadPoolSupplier (common.configurable)](../config/io_helidon_common_configurable_ThreadPoolSupplier.md)
-
-- [ThroughputLimit (common.concurrency.limits)](../config/io_helidon_common_concurrency_limits_ThroughputLimit.md)
-
-- [Timeout (faulttolerance)](../config/io_helidon_faulttolerance_Timeout.md)
-
-- [Tls (common.tls)](../config/io_helidon_common_tls_Tls.md)
-
-- [TokenHandler (security.util)](../config/io_helidon_security_util_TokenHandler.md)
-
-- [Tracer (tracing)](../config/io_helidon_tracing_Tracer.md)
-
-- [TracerBuilder (tracing)](../config/io_helidon_tracing_TracerBuilder.md)
-
-- [TracingObserver (webserver.observe.tracing)](../config/io_helidon_webserver_observe_tracing_TracingObserver.md)
-
-- [TypedAttributes (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_TypedAttributes.md)
-
-- [UcpDataSourceConfig (data.sql.datasource.ucp)](../config/io_helidon_data_sql_datasource_ucp_UcpDataSourceConfig.md)
-
-- [ViewRegistrationConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_ViewRegistrationConfig.md)
-
-- [WebClient (webclient.api)](../config/io_helidon_webclient_api_WebClient.md)
-
-- [WebClientContextConfig (webclient.context)](../config/io_helidon_webclient_context_WebClientContextConfig.md)
-
-- [WebClientContextService (webclient.context)](../config/io_helidon_webclient_context_WebClientContextService.md)
-
-- [WebClientCookieManager (webclient.api)](../config/io_helidon_webclient_api_WebClientCookieManager.md)
-
-- [WebClientDiscovery (webclient.discovery)](../config/io_helidon_webclient_discovery_WebClientDiscovery.md)
-
-- [WebServer (webserver)](../config/io_helidon_webserver_WebServer.md)
-
-- [WsClient (webclient.websocket)](../config/io_helidon_webclient_websocket_WsClient.md)
-
-- [WsClientProtocolConfig (webclient.websocket)](../config/io_helidon_webclient_websocket_WsClientProtocolConfig.md)
-
-- [WsConfig (webserver.websocket)](../config/io_helidon_webserver_websocket_WsConfig.md)
-
-- [ZipkinExporterConfig (telemetry.otelconfig)](../config/io_helidon_telemetry_otelconfig_ZipkinExporterConfig.md)
-
-- [ZipkinTracerBuilder (tracing.providers.zipkin)](../config/io_helidon_tracing_providers_zipkin_ZipkinTracerBuilder.md)
-
-- [io.opentracing.Tracer](../config/io_opentracing_Tracer.md)
-
-- [org.eclipse.microprofile.config.Config](../config/org_eclipse_microprofile_config_Config.md)
+# Config Reference
+
+## Config Roots
+
+| Key | Type | Description |
+|----|----|----|
+| <span id="a7b703-clients"></span> [`clients`](io_helidon_webclient_api_WebClient.md) | `i.h.w.a.WebClient` | WebClient configuration |
+| <span id="ad017c-cors"></span> [`cors`](io_helidon_webserver_cors_CorsFeature.md) | `i.h.w.c.CorsFeature` | Configuration of CORS feature |
+| <span id="ac9c2c-health"></span> [`health`](io_helidon_webserver_observe_health_HealthObserver.md) | `i.h.w.o.h.HealthObserver` | Configuration of Health observer |
+| <span id="acd7ea-metrics"></span> [`metrics`](io_helidon_metrics_api_MetricsConfig.md) | `i.h.m.a.MetricsConfig` | Configuration settings for metrics |
+| <span id="a01ebb-metrics"></span> [`metrics`](io_helidon_webserver_observe_metrics_MetricsObserver.md) | `i.h.w.o.m.MetricsObserver` | Metrics Observer configuration |
+| <span id="a111fa-oci"></span> [`oci`](io_helidon_integrations_oci_sdk_runtime_OciConfig.md) | `i.h.i.o.s.r.OciConfig` | Configuration used by `OciAuthenticationDetailsProvider` |
+| <span id="a937cb-openapi"></span> [`openapi`](io_helidon_openapi_OpenApiFeature.md) | `i.h.o.OpenApiFeature` | `OpenApiFeature` prototype |
+| <span id="ac4d0b-security"></span> [`security`](io_helidon_security_Security.md) | `i.h.s.Security` | Configuration of security providers, integration and other security options |
+| <span id="a3be6d-server"></span> [`server`](io_helidon_webserver_WebServer.md) | `i.h.w.WebServer` | WebServer configuration bean |
+| <span id="ae1891-telemetry"></span> [`telemetry`](io_helidon_telemetry_otelconfig_HelidonOpenTelemetry.md) | `i.h.t.o.HelidonOpenTelemetry` | OpenTelemetry settings |
+| <span id="a56f94-tracing"></span> [`tracing`](io_helidon_tracing_providers_jaeger_JaegerTracerBuilder.md) | `i.h.t.p.j.JaegerTracerBuilder` | Jaeger tracer configuration |
+| <span id="ace1ff-tracing"></span> [`tracing`](io_helidon_tracing_providers_opentelemetry_OpenTelemetryTracer.md) | `i.h.t.p.o.OpenTelemetryTracer` | Settings for OpenTelemetry tracer configuration under the `OpenTelemetryTracerConfig#TRACING_CONFIG_KEY` config key |
+| <span id="abca8b-tracing"></span> [`tracing`](io_helidon_tracing_providers_zipkin_ZipkinTracerBuilder.md) | `i.h.t.p.z.ZipkinTracerBuilder` | Zipkin tracer configuration |
+| <span id="ac15c2-data-sources-sql"></span> [`data.sources.sql`](io_helidon_data_sql_datasource_DataSourceConfig.md) | `i.h.d.s.d.DataSourceConfig` | `javax.sql.DataSource` configuration |
+| <span id="a017e8-fault-tolerance-bulkheads"></span> [`fault-tolerance.bulkheads`](io_helidon_faulttolerance_Bulkhead.md) | `i.h.f.Bulkhead` | `Bulkhead` configuration bean |
+| <span id="a6df4a-fault-tolerance-circuit-breakers"></span> [`fault-tolerance.circuit-breakers`](io_helidon_faulttolerance_CircuitBreaker.md) | `i.h.f.CircuitBreaker` | Configuration of a circuit breaker |
+| <span id="a614ff-fault-tolerance-retries"></span> [`fault-tolerance.retries`](io_helidon_faulttolerance_Retry.md) | `i.h.f.Retry` | `Retry` configuration bean |
+| <span id="abdf4d-fault-tolerance-timeouts"></span> [`fault-tolerance.timeouts`](io_helidon_faulttolerance_Timeout.md) | `i.h.f.Timeout` | `Timeout` configuration bean |
+| <span id="a4b5dd-helidon-oci"></span> [`helidon.oci`](io_helidon_integrations_oci_OciConfig.md) | `i.h.i.o.OciConfig` | Meta configuration of OCI integration for Helidon |
+| <span id="ab76ee-langchain4j-agents"></span> [`langchain4j.agents`](io_helidon_integrations_langchain4j_AgentsConfig.md) | `i.h.i.l.AgentsConfig` | Configuration for a single LangChain4j agent |
+| <span id="a0e7c5-langchain4j-providers-cohere"></span> [`langchain4j.providers.cohere`](io_helidon_integrations_langchain4j_providers_cohere_CohereEmbeddingModelConfig.md) | `i.h.i.l.p.c.CohereEmbeddingModelConfig` | Configuration for LangChain4j model CohereEmbeddingModel |
+| <span id="a31757-langchain4j-providers-cohere"></span> [`langchain4j.providers.cohere`](io_helidon_integrations_langchain4j_providers_cohere_CohereScoringModelConfig.md) | `i.h.i.l.p.c.CohereScoringModelConfig` | Configuration for LangChain4j model CohereScoringModel |
+| <span id="afc71b-langchain4j-providers-coherence"></span> [`langchain4j.providers.coherence`](io_helidon_integrations_langchain4j_providers_coherence_CoherenceEmbeddingStoreConfig.md) | `i.h.i.l.p.c.CoherenceEmbeddingStoreConfig` | Configuration for LangChain4j model CoherenceEmbeddingStore |
+| <span id="a5e1ca-langchain4j-providers-google-gemini"></span> [`langchain4j.providers.google-gemini`](io_helidon_integrations_langchain4j_providers_gemini_GoogleAiGeminiChatModelConfig.md) | `i.h.i.l.p.g.GoogleAiGeminiChatModelConfig` | Configuration for LangChain4j model GoogleAiGeminiChatModel |
+| <span id="a43f3c-langchain4j-providers-google-gemini"></span> [`langchain4j.providers.google-gemini`](io_helidon_integrations_langchain4j_providers_gemini_GoogleAiGeminiStreamingChatModelConfig.md) | `i.h.i.l.p.g.GoogleAiGeminiStreamingChatModelConfig` | Configuration for LangChain4j model GoogleAiGeminiStreamingChatModel |
+| <span id="a5268a-langchain4j-providers-helidon-mock"></span> [`langchain4j.providers.helidon-mock`](io_helidon_integrations_langchain4j_providers_mock_MockChatModel.md) | `i.h.i.l.p.m.MockChatModel` | Configuration blueprint for `MockChatModel` |
+| <span id="a2fc71-langchain4j-providers-helidon-mock"></span> [`langchain4j.providers.helidon-mock`](io_helidon_integrations_langchain4j_providers_mock_MockStreamingChatModel.md) | `i.h.i.l.p.m.MockStreamingChatModel` | Configuration blueprint for `MockStreamingChatModel` |
+| <span id="a0b6bc-langchain4j-providers-jlama"></span> [`langchain4j.providers.jlama`](io_helidon_integrations_langchain4j_providers_jlama_JlamaChatModelConfig.md) | `i.h.i.l.p.j.JlamaChatModelConfig` | Configuration for LangChain4j model JlamaChatModel |
+| <span id="a2ba60-langchain4j-providers-jlama"></span> [`langchain4j.providers.jlama`](io_helidon_integrations_langchain4j_providers_jlama_JlamaEmbeddingModelConfig.md) | `i.h.i.l.p.j.JlamaEmbeddingModelConfig` | Configuration for LangChain4j model JlamaEmbeddingModel |
+| <span id="aaedd8-langchain4j-providers-jlama"></span> [`langchain4j.providers.jlama`](io_helidon_integrations_langchain4j_providers_jlama_JlamaLanguageModelConfig.md) | `i.h.i.l.p.j.JlamaLanguageModelConfig` | Configuration for LangChain4j model JlamaLanguageModel |
+| <span id="a40390-langchain4j-providers-jlama"></span> [`langchain4j.providers.jlama`](io_helidon_integrations_langchain4j_providers_jlama_JlamaStreamingChatModelConfig.md) | `i.h.i.l.p.j.JlamaStreamingChatModelConfig` | Configuration for LangChain4j model JlamaStreamingChatModel |
+| <span id="a3ca3d-langchain4j-providers-lc4j-in-process"></span> [`langchain4j.providers.lc4j-in-process`](io_helidon_integrations_langchain4j_providers_lc4jinprocess_InProcessEmbeddingModelConfig.md) | `i.h.i.l.p.l.InProcessEmbeddingModelConfig` | Configuration blueprint for LangChain4j in-process models |
+| <span id="a4c41d-langchain4j-providers-oci-gen-ai"></span> [`langchain4j.providers.oci-gen-ai`](io_helidon_integrations_langchain4j_providers_oci_genai_OciGenAiChatModelConfig.md) | `i.h.i.l.p.o.g.OciGenAiChatModelConfig` | Configuration for LangChain4j model OciGenAiChatModel |
+| <span id="a8c210-langchain4j-providers-oci-gen-ai"></span> [`langchain4j.providers.oci-gen-ai`](io_helidon_integrations_langchain4j_providers_oci_genai_OciGenAiStreamingChatModelConfig.md) | `i.h.i.l.p.o.g.OciGenAiStreamingChatModelConfig` | Configuration for LangChain4j model OciGenAiStreamingChatModel |
+| <span id="a456bb-langchain4j-providers-oci-gen-ai-cohere"></span> [`langchain4j.providers.oci-gen-ai-cohere`](io_helidon_integrations_langchain4j_providers_oci_genai_OciGenAiCohereChatModelConfig.md) | `i.h.i.l.p.o.g.OciGenAiCohereChatModelConfig` | Configuration for LangChain4j model OciGenAiCohereChatModel |
+| <span id="af05e9-langchain4j-providers-oci-gen-ai-cohere"></span> [`langchain4j.providers.oci-gen-ai-cohere`](io_helidon_integrations_langchain4j_providers_oci_genai_OciGenAiCohereStreamingChatModelConfig.md) | `i.h.i.l.p.o.g.OciGenAiCohereStreamingChatModelConfig` | Configuration for LangChain4j model OciGenAiCohereStreamingChatModel |
+| <span id="a20890-langchain4j-providers-ollama"></span> [`langchain4j.providers.ollama`](io_helidon_integrations_langchain4j_providers_ollama_OllamaChatModelConfig.md) | `i.h.i.l.p.o.OllamaChatModelConfig` | Configuration for LangChain4j model OllamaChatModel |
+| <span id="a503d7-langchain4j-providers-ollama"></span> [`langchain4j.providers.ollama`](io_helidon_integrations_langchain4j_providers_ollama_OllamaEmbeddingModelConfig.md) | `i.h.i.l.p.o.OllamaEmbeddingModelConfig` | Configuration for LangChain4j model OllamaEmbeddingModel |
+| <span id="aceb19-langchain4j-providers-ollama"></span> [`langchain4j.providers.ollama`](io_helidon_integrations_langchain4j_providers_ollama_OllamaLanguageModelConfig.md) | `i.h.i.l.p.o.OllamaLanguageModelConfig` | Configuration for LangChain4j model OllamaLanguageModel |
+| <span id="ae83f5-langchain4j-providers-ollama"></span> [`langchain4j.providers.ollama`](io_helidon_integrations_langchain4j_providers_ollama_OllamaStreamingChatModelConfig.md) | `i.h.i.l.p.o.OllamaStreamingChatModelConfig` | Configuration for LangChain4j model OllamaStreamingChatModel |
+| <span id="af16db-langchain4j-providers-open-ai"></span> [`langchain4j.providers.open-ai`](io_helidon_integrations_langchain4j_providers_openai_OpenAiChatModelConfig.md) | `i.h.i.l.p.o.OpenAiChatModelConfig` | Configuration for LangChain4j model OpenAiChatModel |
+| <span id="a224a9-langchain4j-providers-open-ai"></span> [`langchain4j.providers.open-ai`](io_helidon_integrations_langchain4j_providers_openai_OpenAiEmbeddingModelConfig.md) | `i.h.i.l.p.o.OpenAiEmbeddingModelConfig` | Configuration for LangChain4j model OpenAiEmbeddingModel |
+| <span id="ae8791-langchain4j-providers-open-ai"></span> [`langchain4j.providers.open-ai`](io_helidon_integrations_langchain4j_providers_openai_OpenAiImageModelConfig.md) | `i.h.i.l.p.o.OpenAiImageModelConfig` | Configuration for LangChain4j model OpenAiImageModel |
+| <span id="a76420-langchain4j-providers-open-ai"></span> [`langchain4j.providers.open-ai`](io_helidon_integrations_langchain4j_providers_openai_OpenAiLanguageModelConfig.md) | `i.h.i.l.p.o.OpenAiLanguageModelConfig` | Configuration for LangChain4j model OpenAiLanguageModel |
+| <span id="abe220-langchain4j-providers-open-ai"></span> [`langchain4j.providers.open-ai`](io_helidon_integrations_langchain4j_providers_openai_OpenAiModerationModelConfig.md) | `i.h.i.l.p.o.OpenAiModerationModelConfig` | Configuration for LangChain4j model OpenAiModerationModel |
+| <span id="ac2039-langchain4j-providers-open-ai"></span> [`langchain4j.providers.open-ai`](io_helidon_integrations_langchain4j_providers_openai_OpenAiStreamingChatModelConfig.md) | `i.h.i.l.p.o.OpenAiStreamingChatModelConfig` | Configuration for LangChain4j model OpenAiStreamingChatModel |
+| <span id="afcb77-langchain4j-providers-oracle"></span> [`langchain4j.providers.oracle`](io_helidon_integrations_langchain4j_providers_oracle_OracleEmbeddingStoreConfig.md) | `i.h.i.l.p.o.OracleEmbeddingStoreConfig` | Configuration for LangChain4j model OracleEmbeddingStore |
+| <span id="ab8e96-langchain4j-providers-oracle-ivf-index"></span> [`langchain4j.providers.oracle.ivf-index`](io_helidon_integrations_langchain4j_providers_oracle_IvfIndexConfig.md) | `i.h.i.l.p.o.IvfIndexConfig` | `N/A` |
+| <span id="a86391-langchain4j-providers-oracle-json-index"></span> [`langchain4j.providers.oracle.json-index`](io_helidon_integrations_langchain4j_providers_oracle_JsonIndexConfig.md) | `i.h.i.l.p.o.JsonIndexConfig` | `N/A` |
+| <span id="a4e373-langchain4j-providers-oracle-oracle"></span> [`langchain4j.providers.oracle.oracle`](io_helidon_integrations_langchain4j_providers_oracle_EmbeddingTableConfig.md) | `i.h.i.l.p.o.EmbeddingTableConfig` | `N/A` |
+| <span id="a98791-langchain4j-services"></span> [`langchain4j.services`](io_helidon_integrations_langchain4j_AiServicesConfig.md) | `i.h.i.l.AiServicesConfig` | `N/A` |
+| <span id="ac96b0-mp-config"></span> [`mp.config`](io_helidon_config_mp_MpConfigBuilder.md) | `i.h.c.m.MpConfigBuilder` | Configuration builder |
+| <span id="afecb9-rest-client-metrics"></span> [`rest-client.metrics`](io_helidon_microprofile_restclientmetrics_RestClientMetricsConfig.md) | `i.h.m.r.RestClientMetricsConfig` | Configuration settings for MP REST client metrics |
+
+See the [manifest](../config/manifest.md) for all available types.

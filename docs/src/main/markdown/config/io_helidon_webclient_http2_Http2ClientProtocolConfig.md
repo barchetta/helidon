@@ -1,83 +1,25 @@
-# Http2ClientProtocolConfig (webclient.http2) Configuration
+# io.helidon.webclient.http2.Http2ClientProtocolConfig
 
-Type: [io.helidon.webclient.http2.Http2ClientProtocolConfig](/apidocs/io.helidon.webclient.http2/io/helidon/webclient/http2/Http2ClientProtocolConfig.html)
+## Description
+
+N/A
+
+.
+
+## Usages
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>flow-control-block-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>PT15S</code></p></td>
-<td style="text-align: left;"><p>Timeout for blocking while waiting for window update when window is depleted.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>initial-window-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>65535</code></p></td>
-<td style="text-align: left;"><p>Configure INITIAL_WINDOW_SIZE setting for new HTTP/2 connections. Sends to the server the size of the largest frame payload client is willing to receive. Defaults to <code>65535</code>.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-buffered-entity-size</code></p></td>
-<td style="text-align: left;"><p>Size</p></td>
-<td style="text-align: left;"><p><code>64 KB</code></p></td>
-<td style="text-align: left;"><p>Configure the maximum size allowed for an entity that can be explicitly buffered by the application by calling io.helidon.http.media.ReadableEntity.buffer.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-frame-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>16384</code></p></td>
-<td style="text-align: left;"><p>Configure initial MAX_FRAME_SIZE setting for new HTTP/2 connections. Maximum size of data frames in bytes the client is prepared to accept from the server. Default value is 2^14(16_384).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-header-list-size</code></p></td>
-<td style="text-align: left;"><p>long</p></td>
-<td style="text-align: left;"><p><code>-1</code></p></td>
-<td style="text-align: left;"><p>Configure initial MAX_HEADER_LIST_SIZE setting for new HTTP/2 connections. Sends to the server the maximum header field section size client is prepared to accept. Defaults to <code>-1</code>, which means "unconfigured".</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>h2</code></p></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>ping</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Check healthiness of cached connections with HTTP/2.0 ping frame. Defaults to <code>false</code>.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>ping-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>PT0.5S</code></p></td>
-<td style="text-align: left;"><p>Timeout for ping probe used for checking healthiness of cached connections. Defaults to <code>PT0.5S</code>, which means 500 milliseconds.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>prior-knowledge</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Prior knowledge of HTTP/2 capabilities of the server. If server we are connecting to does not support HTTP/2 and prior knowledge is set to <code>false</code>, only features supported by HTTP/1 will be available and attempts to use HTTP/2 specific will throw an UnsupportedOperationException.</p>
-<p><u>Plain text connection</u></p>
-<p>If prior knowledge is set to <code>true</code>, we will not attempt an upgrade of connection and use prior knowledge. If prior knowledge is set to <code>false</code>, we will initiate an HTTP/1 connection and upgrade it to HTTP/2, if supported by the server. plaintext connection (<code>h2c</code>).</p>
-<p><u>TLS protected connection</u></p>
-<p>If prior knowledge is set to <code>true</code>, we will negotiate protocol using HTTP/2 only, failing if not supported. if prior knowledge is set to <code>false</code>, we will negotiate protocol using both HTTP/2 and HTTP/1, using the protocol supported by server.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a06f7b-flow-control-block-timeout"></span> `flow-control-block-timeout` | `VALUE` | `Duration` | `PT15S` | Timeout for blocking while waiting for window update when window is depleted |
+| <span id="a942dc-initial-window-size"></span> `initial-window-size` | `VALUE` | `Integer` | `65535` | Configure INITIAL_WINDOW_SIZE setting for new HTTP/2 connections |
+| <span id="a2ae0e-max-buffered-entity-size"></span> `max-buffered-entity-size` | `VALUE` | `i.h.c.Size` | `64 KB` | Configure the maximum size allowed for an entity that can be explicitly buffered by the application by calling `io.helidon.http.media.ReadableEntity#buffer` |
+| <span id="aecd63-max-frame-size"></span> `max-frame-size` | `VALUE` | `Integer` | `16384` | Configure initial MAX_FRAME_SIZE setting for new HTTP/2 connections |
+| <span id="aa6ab2-max-header-list-size"></span> `max-header-list-size` | `VALUE` | `Long` | `-1` | Configure initial MAX_HEADER_LIST_SIZE setting for new HTTP/2 connections |
+| <span id="ae847a-name"></span> `name` | `VALUE` | `String` | `h2` | `N/A` |
+| <span id="ac97c5-ping"></span> `ping` | `VALUE` | `Boolean` | `false` | Check healthiness of cached connections with HTTP/2.0 ping frame |
+| <span id="af75f0-ping-timeout"></span> `ping-timeout` | `VALUE` | `Duration` | `PT0.5S` | Timeout for ping probe used for checking healthiness of cached connections |
+| <span id="a8e968-prior-knowledge"></span> `prior-knowledge` | `VALUE` | `Boolean` | `false` | Prior knowledge of HTTP/2 capabilities of the server |
+
+See the [manifest](../config/manifest.md) for all available types.

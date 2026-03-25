@@ -1,24 +1,19 @@
-# LogObserver (webserver.observe.log) Configuration
+# io.helidon.webserver.observe.log.LogObserver
 
-Type: [io.helidon.webserver.observe.log.LogObserver](/apidocs/io.helidon.webserver.observe.log/io/helidon/webserver/observe/log/LogObserver.html)
+## Description
 
-*Config key*
+Log Observer configuration.
 
-``` text
-log
-```
+## Usages
 
-This type provides the following service implementations:
-
-- `io.helidon.webserver.observe.spi.ObserveProvider`
+- [`server.features.observe.observers.log`](../config/io_helidon_webserver_observe_spi_Observer.md#a5e04c-log)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `enabled` | boolean | `true` | Whether this observer is enabled. |
-| `endpoint` | string | `log` |  |
-| `permit-all` | boolean |   | Permit all access, even when not authorized. |
-| `stream` | [LogStreamConfig](../config/io_helidon_webserver_observe_log_LogStreamConfig.md) | `@io.helidon.webserver.observe.log.LogStreamConfig@.create()` | Configuration of log stream. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a5d87e-endpoint"></span> `endpoint` | `VALUE` | `String` | `log` | `N/A` |
+| <span id="a56e47-permit-all"></span> `permit-all` | `VALUE` | `Boolean` |   | Permit all access, even when not authorized |
+| <span id="afc46a-stream"></span> [`stream`](../config/io_helidon_webserver_observe_log_LogStreamConfig.md) | `VALUE` | `i.h.w.o.l.LogStreamConfig` |   | Configuration of log stream |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

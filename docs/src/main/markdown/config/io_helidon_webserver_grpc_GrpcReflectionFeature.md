@@ -1,22 +1,18 @@
-# GrpcReflectionFeature (webserver.grpc) Configuration
+# io.helidon.webserver.grpc.GrpcReflectionFeature
 
-Type: [io.helidon.webserver.grpc.GrpcReflectionFeature](/apidocs/io.helidon.webserver.grpc/io/helidon/webserver/grpc/GrpcReflectionFeature.html)
+## Description
 
-*Config key*
+Configuration of gRPC Reflection feature.
 
-``` text
-grpc-reflection
-```
+## Usages
 
-This type provides the following service implementations:
-
-- `io.helidon.webserver.spi.ServerFeatureProvider`
+- [`server.features.grpc-reflection`](../config/io_helidon_webserver_spi_ServerFeature.md#af2058-grpc-reflection)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `enabled` | boolean | `false` | This feature can be enabled. |
-| `sockets` | string\[\] |   | List of sockets to register this feature on. If empty, it would get registered on all sockets. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="af327d-enabled"></span> `enabled` | `VALUE` | `Boolean` | `false` | This feature can be enabled |
+| <span id="a15e5b-sockets"></span> `sockets` | `LIST` | `String` |   | List of sockets to register this feature on |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

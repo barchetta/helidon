@@ -1,18 +1,26 @@
-# OciCertificatesTlsManager (integrations.oci.tls.certificates) Configuration
+# io.helidon.integrations.oci.tls.certificates.OciCertificatesTlsManager
 
-Type: [io.helidon.integrations.oci.tls.certificates.OciCertificatesTlsManager](/apidocs/io.helidon.integrations.oci.tls.certificates/io/helidon/integrations/oci/tls/certificates/OciCertificatesTlsManager.html)
+## Description
+
+Blueprint configuration for
+
+OciCertificatesTlsManager
+
+.
+
+## Usages
 
 ## Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `ca-ocid` | string |   | The Certificate Authority OCID. |
-| `cert-ocid` | string |   | The Certificate OCID. |
-| `compartment-ocid` | string |   | The OCID of the compartment the services are in. |
-| `key-ocid` | string |   | The Key OCID. |
-| `key-password` | Supplier |   | The Key password. |
-| `schedule` | string |   | The schedule for trigger a reload check, testing whether there is a new io.helidon.common.tls.Tls instance available. |
-| `vault-crypto-endpoint` | URI |   | The address to use for the OCI Key Management Service / Vault crypto usage. Each OCI Vault has public crypto and management endpoints. We need to specify the crypto endpoint of the vault we are rotating the private keys in. The implementation expects both client and server to store the private key in the same vault. |
-| `vault-management-endpoint` | URI |   | The address to use for the OCI Key Management Service / Vault management usage. The crypto endpoint of the vault we are rotating the private keys in. |
+| <span id="ac9ca6-ca-ocid"></span> `ca-ocid` | `VALUE` | `String` | The Certificate Authority OCID |
+| <span id="a0d50d-cert-ocid"></span> `cert-ocid` | `VALUE` | `String` | The Certificate OCID |
+| <span id="a628a2-compartment-ocid"></span> `compartment-ocid` | `VALUE` | `String` | The OCID of the compartment the services are in |
+| <span id="a7b951-key-ocid"></span> `key-ocid` | `VALUE` | `String` | The Key OCID |
+| <span id="ab9e46-key-password"></span> `key-password` | `VALUE` | `Supplier` | The Key password |
+| <span id="a9c7c4-schedule"></span> `schedule` | `VALUE` | `String` | The schedule for trigger a reload check, testing whether there is a new `io.helidon.common.tls.Tls` instance available |
+| <span id="a159ff-vault-crypto-endpoint"></span> `vault-crypto-endpoint` | `VALUE` | `URI` | The address to use for the OCI Key Management Service / Vault crypto usage |
+| <span id="a0fad0-vault-management-endpoint"></span> `vault-management-endpoint` | `VALUE` | `URI` | The address to use for the OCI Key Management Service / Vault management usage |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

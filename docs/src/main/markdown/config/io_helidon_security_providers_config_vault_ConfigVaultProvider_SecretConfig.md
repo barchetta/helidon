@@ -1,17 +1,19 @@
-# SecretConfig (security.providers.config.vault.ConfigVaultProvider) Configuration
+# io.helidon.security.providers.config.vault.ConfigVaultProvider.SecretConfig
 
-Provider of secrets defined in configuration itself
+## Description
 
-Type: [io.helidon.security.providers.config.vault.ConfigVaultProvider.SecretConfig](/apidocs/io.helidon.security.providers.config.vault/io/helidon/security/providers/config/vault/ConfigVaultProvider.SecretConfig.html)
+Provider of secrets defined in configuration itself.
 
-This type provides the following service implementations:
+## Usages
 
-- `io.helidon.security.SecretsProviderConfig`
+- [`security.secrets.*.config.config-vault`](../config/io_helidon_security_SecretsProviderConfig.md#adf4fc-config-vault)
+
+- [`server.features.security.security.secrets.*.config.config-vault`](../config/io_helidon_security_SecretsProviderConfig.md#adf4fc-config-vault)
 
 ## Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `value` | ConfiguredOption |   | Value of the secret, can be a reference to another configuration key, such as \${app.secret} |
+| <span id="a15d66-value"></span> `value` | `VALUE` | `String` | Value of the secret, can be a reference to another configuration key, such as \${app.secret} |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

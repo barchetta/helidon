@@ -203,17 +203,11 @@ Config sources can be configured using the following properties.
 
 The class responsible for configuration is:
 
-Type: org.eclipse.microprofile.config.Config
-
-This is a standalone configuration type, prefix from configuration root: `mp.config`
-
 ### Configuration options
 
-| key       | type   | default value | description                         |
-|-----------|--------|---------------|-------------------------------------|
-| `profile` | string |               | Configure an explicit profile name. |
-
-Optional configuration options
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="a2c415-profile"></span> `profile` | `VALUE` | `String` | Configure an explicit profile name |
 
 Current properties may be set in `application.yaml` or in `microprofile-config.properties` with `mp.config` prefix.
 

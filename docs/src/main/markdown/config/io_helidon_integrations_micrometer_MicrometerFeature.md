@@ -1,11 +1,11 @@
-# MicrometerFeature (integrations.micrometer) Configuration
+# io.helidon.integrations.micrometer.MicrometerFeature
 
-Type: [io.helidon.integrations.micrometer.MicrometerFeature](/apidocs/io.helidon.integrations.micrometer/io/helidon/integrations/micrometer/MicrometerFeature.html)
+## Description
 
-*Config key*
+Implements simple Micrometer support.
 
-``` text
-micrometer
-```
+## Usages
 
 ## Configuration options
+
+See the [manifest](../config/manifest.md) for all available types.

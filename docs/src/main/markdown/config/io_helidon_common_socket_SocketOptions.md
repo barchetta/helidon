@@ -1,72 +1,25 @@
-# SocketOptions (common.socket) Configuration
+# io.helidon.common.socket.SocketOptions
 
-Type: [io.helidon.common.socket.SocketOptions](/apidocs/io.helidon.common.socket/io/helidon/common/socket/SocketOptions.html)
+## Description
+
+Socket options.
+
+## Usages
+
+- [`server.connection-options`](../config/io_helidon_webserver_WebServer.md#ac9c91-connection-options)
+
+- [`server.sockets.connection-options`](../config/io_helidon_webserver_ListenerConfig.md#a251be-connection-options)
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>connect-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>PT10S</code></p></td>
-<td style="text-align: left;"><p>Socket connect timeout. Default is 10 seconds.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>read-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>PT30S</code></p></td>
-<td style="text-align: left;"><p>Socket read timeout. Default is 30 seconds.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>socket-keep-alive</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Configure socket keep alive. Default is <code>true</code>.</p>
-<p>See java.net.StandardSocketOptions.SO_KEEPALIVE</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>socket-receive-buffer-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Socket receive buffer size.</p>
-<p>See java.net.StandardSocketOptions.SO_RCVBUF</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>socket-reuse-address</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Socket reuse address. Default is <code>true</code>.</p>
-<p>See java.net.StandardSocketOptions.SO_REUSEADDR</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>socket-send-buffer-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Socket send buffer size.</p>
-<p>See java.net.StandardSocketOptions.SO_SNDBUF</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>tcp-no-delay</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>This option may improve performance on some systems. Default is <code>false</code>.</p>
-<p>See java.net.StandardSocketOptions.TCP_NODELAY</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a964a9-connect-timeout"></span> `connect-timeout` | `VALUE` | `Duration` | `PT10S` | Socket connect timeout |
+| <span id="abfb11-read-timeout"></span> `read-timeout` | `VALUE` | `Duration` | `PT30S` | Socket read timeout |
+| <span id="aa481e-socket-keep-alive"></span> `socket-keep-alive` | `VALUE` | `Boolean` | `true` | Configure socket keep alive |
+| <span id="a0f53d-socket-receive-buffer-size"></span> `socket-receive-buffer-size` | `VALUE` | `Integer` |   | Socket receive buffer size |
+| <span id="ab693f-socket-reuse-address"></span> `socket-reuse-address` | `VALUE` | `Boolean` | `true` | Socket reuse address |
+| <span id="aaf0e6-socket-send-buffer-size"></span> `socket-send-buffer-size` | `VALUE` | `Integer` |   | Socket send buffer size |
+| <span id="ae4080-tcp-no-delay"></span> `tcp-no-delay` | `VALUE` | `Boolean` | `false` | This option may improve performance on some systems |
+
+See the [manifest](../config/manifest.md) for all available types.

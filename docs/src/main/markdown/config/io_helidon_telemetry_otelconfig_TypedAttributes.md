@@ -1,14 +1,18 @@
-# TypedAttributes (telemetry.otelconfig) Configuration
+# io.helidon.telemetry.otelconfig.TypedAttributes
 
-Type: [io.helidon.telemetry.otelconfig.TypedAttributes](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/TypedAttributes.html)
+## Description
+
+Abstraction of typed attributes settable on OpenTelemetry elements.
+
+## Usages
 
 ## Configuration options
 
-| key        | type                   | default value | description         |
-|------------|------------------------|---------------|---------------------|
-| `booleans` | Map\<string, boolean\> |               | Boolean attributes. |
-| `doubles`  | Map\<string, double\>  |               | Double attributes.  |
-| `longs`    | Map\<string, long\>    |               | Long attributes.    |
-| `strings`  | Map\<string, string\>  |               | String attributes.  |
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="a3fd47-booleans"></span> `booleans` | `MAP` | `Boolean` | Boolean attributes |
+| <span id="a4baae-doubles"></span> `doubles` | `MAP` | `Double` | Double attributes |
+| <span id="a4159e-longs"></span> `longs` | `MAP` | `Long` | Long attributes |
+| <span id="a7a017-strings"></span> `strings` | `MAP` | `String` | String attributes |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

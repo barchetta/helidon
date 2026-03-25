@@ -1,21 +1,26 @@
-# JlamaStreamingChatModelConfig (integrations.langchain4j.providers.jlama) Configuration
+# io.helidon.integrations.langchain4j.providers.jlama.JlamaStreamingChatModelConfig
 
-Type: [io.helidon.integrations.langchain4j.providers.jlama.JlamaStreamingChatModelConfig](/apidocs/io.helidon.integrations.langchain4j.providers.jlama/io/helidon/integrations/langchain4j/providers/jlama/JlamaStreamingChatModelConfig.html)
+## Description
 
-This is a standalone configuration type, prefix from configuration root: `langchain4j.providers.jlama`
+Configuration for LangChain4j model JlamaStreamingChatModel.
+
+## Usages
+
+- [`langchain4j.providers.jlama`](../config/config_reference.md#a40390-langchain4j-providers-jlama)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `auth-token` | string |   | Generated from dev.langchain4j.model.jlama.JlamaStreamingChatModel.JlamaStreamingChatModelBuilder.authToken(java.lang.String) |
-| `enabled` | boolean | `true` | If set to `false`, JlamaStreamingChatModel will not be available even if configured. |
-| `max-tokens` | int |   | Generated from dev.langchain4j.model.jlama.JlamaStreamingChatModel.JlamaStreamingChatModelBuilder.maxTokens(java.lang.Integer) |
-| `model-cache-path` | Path |   | Generated from dev.langchain4j.model.jlama.JlamaStreamingChatModel.JlamaStreamingChatModelBuilder.modelCachePath(java.nio.file.Path) |
-| `quantize-model-at-runtime` | boolean |   | Generated from dev.langchain4j.model.jlama.JlamaStreamingChatModel.JlamaStreamingChatModelBuilder.quantizeModelAtRuntime(java.lang.Boolean) |
-| `temperature` | float |   | Generated from dev.langchain4j.model.jlama.JlamaStreamingChatModel.JlamaStreamingChatModelBuilder.temperature(java.lang.Float) |
-| `thread-count` | int |   | Generated from dev.langchain4j.model.jlama.JlamaStreamingChatModel.JlamaStreamingChatModelBuilder.threadCount(java.lang.Integer) |
-| `working-directory` | Path |   | Generated from dev.langchain4j.model.jlama.JlamaStreamingChatModel.JlamaStreamingChatModelBuilder.workingDirectory(java.nio.file.Path) |
-| `working-quantized-type` | DType (BOOL, U8, I8, I16, U16, F16, BF16, I32, U32, F32, F64, I64, U64, Q4, Q5) |   | Generated from dev.langchain4j.model.jlama.JlamaStreamingChatModel.JlamaStreamingChatModelBuilder.workingQuantizedType(com.github.tjake.jlama.safetensors.DType) |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a33ccb-auth-token"></span> `auth-token` | `VALUE` | `String` |   | Generated from `dev.langchain4j.model.jlama.JlamaStreamingChatModel.JlamaStreamingChatModelBuilder#authToken(java.lang.String)` |
+| <span id="aa1ba8-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | If set to `false`, JlamaStreamingChatModel will not be available even if configured |
+| <span id="a84b79-max-tokens"></span> `max-tokens` | `VALUE` | `Integer` |   | Generated from `dev.langchain4j.model.jlama.JlamaStreamingChatModel.JlamaStreamingChatModelBuilder#maxTokens(java.lang.Integer)` |
+| <span id="a2a5b5-model-cache-path"></span> `model-cache-path` | `VALUE` | `Path` |   | Generated from `dev.langchain4j.model.jlama.JlamaStreamingChatModel.JlamaStreamingChatModelBuilder#modelCachePath(java.nio.file.Path)` |
+| <span id="a502d4-model-name"></span> `model-name` | `VALUE` | `String` |   | Configure the model name |
+| <span id="a5048b-quantize-model-at-runtime"></span> `quantize-model-at-runtime` | `VALUE` | `Boolean` |   | Generated from `dev.langchain4j.model.jlama.JlamaStreamingChatModel.JlamaStreamingChatModelBuilder#quantizeModelAtRuntime(java.lang.Boolean)` |
+| <span id="ac321b-temperature"></span> `temperature` | `VALUE` | `Float` |   | Generated from `dev.langchain4j.model.jlama.JlamaStreamingChatModel.JlamaStreamingChatModelBuilder#temperature(java.lang.Float)` |
+| <span id="a1f1d0-thread-count"></span> `thread-count` | `VALUE` | `Integer` |   | Generated from `dev.langchain4j.model.jlama.JlamaStreamingChatModel.JlamaStreamingChatModelBuilder#threadCount(java.lang.Integer)` |
+| <span id="aaaabb-working-directory"></span> `working-directory` | `VALUE` | `Path` |   | Generated from `dev.langchain4j.model.jlama.JlamaStreamingChatModel.JlamaStreamingChatModelBuilder#workingDirectory(java.nio.file.Path)` |
+| <span id="a4e893-working-quantized-type"></span> [`working-quantized-type`](../config/com_github_tjake_jlama_safetensors_DType.md) | `VALUE` | `c.g.t.j.s.DType` |   | Generated from `dev.langchain4j.model.jlama.JlamaStreamingChatModel.JlamaStreamingChatModelBuilder#workingQuantizedType(com.github.tjake.jlama.safetensors.DType)` |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

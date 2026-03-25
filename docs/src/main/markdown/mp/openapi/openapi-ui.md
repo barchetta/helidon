@@ -107,17 +107,13 @@ Your Helidon MP application does not use any API to enable or control Helidon Op
 
 To use configuration to control how the Helidon OpenAPI UI service behaves, add `mp.openapi.services.ui` settings to your `META-INF/microprofile-config.properties` file.
 
-Type: [io.helidon.integrations.openapi.ui.OpenApiUi](/apidocs/io.helidon.integrations.openapi.ui/io/helidon/integrations/openapi/ui/OpenApiUi.html)
-
 ### Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `enabled` | boolean | `true` | Sets whether the service should be enabled. |
-| `options` | Map\<string, string\> |   | Merges implementation-specific UI options. |
-| `web-context` | string |   | Full web context (not just the suffix). |
-
-Optional configuration options
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="ad2183-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Sets whether the service should be enabled |
+| <span id="aa88b9-options"></span> `options` | `MAP` | `String` |   | Merges implementation-specific UI options |
+| <span id="a05812-web-context"></span> `web-context` | `VALUE` | `String` |   | Full web context (not just the suffix) |
 
 The default UI `web-context` value is the web context for your `OpenApiFeature` service with the added suffix `/ui`. If you use the default web context for both `OpenApiFeature` and the UI, the UI responds at `/openapi/ui`.
 

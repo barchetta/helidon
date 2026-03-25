@@ -1,76 +1,25 @@
-# ContentRetrieverConfig (integrations.langchain4j) Configuration
+# io.helidon.integrations.langchain4j.ContentRetrieverConfig
 
-Type: [io.helidon.integrations.langchain4j.ContentRetrieverConfig](/apidocs/io.helidon.integrations.langchain4j/io/helidon/integrations/langchain4j/ContentRetrieverConfig.html)
+## Description
+
+Configuration for LangChain4j
+
+ContentRetriever
+
+components.
+
+## Usages
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>display-name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Display name for this content retriever configuration.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>embedding-model</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Explicit embedding model to use in the content retriever.</p>
-<p>If empty, the default embedding model is used (as resolved by the service registry). If set, the value identifies a named service that provides embedding model bean.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>embedding-store</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Embedding store to use in the content retriever.</p>
-<p>The value identifies a named service that provides embedding store implementation used to retrieve relevant content.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>If set to <code>false</code>, component will be disabled even if configured.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-results</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Maximum number of results to return from the retriever.</p>
-<p>If empty, the retriever implementation default is used.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>min-score</code></p></td>
-<td style="text-align: left;"><p>double</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Minimum score threshold for retrieved results.</p>
-<p>If empty, the retriever implementation default is used.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>type</code></p></td>
-<td style="text-align: left;"><p>ContentRetrieverType (EMBEDDING_STORE_CONTENT_RETRIEVER, WEB_SEARCH_CONTENT_RETRIEVER)</p></td>
-<td style="text-align: left;"><p><code>ContentRetrieverType.EMBEDDING_STORE_CONTENT_RETRIEVER</code></p></td>
-<td style="text-align: left;"><p>Type of content retriever to create.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>EMBEDDING_STORE_CONTENT_RETRIEVER</code>: Embedding store-backed content retriever.</p></li>
-<li><p><code>WEB_SEARCH_CONTENT_RETRIEVER</code>: Web search-backed content retriever.</p></li>
-</ul></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="aa8c41-display-name"></span> `display-name` | `VALUE` | `String` |   | Display name for this content retriever configuration |
+| <span id="aed316-embedding-model"></span> `embedding-model` | `VALUE` | `String` |   | Explicit embedding model to use in the content retriever |
+| <span id="aa55e0-embedding-store"></span> `embedding-store` | `VALUE` | `String` |   | Embedding store to use in the content retriever |
+| <span id="a2a276-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | If set to `false`, component will be disabled even if configured |
+| <span id="a7fe57-max-results"></span> `max-results` | `VALUE` | `Integer` |   | Maximum number of results to return from the retriever |
+| <span id="a4bf10-min-score"></span> `min-score` | `VALUE` | `Double` |   | Minimum score threshold for retrieved results |
+| <span id="afd89c-type"></span> [`type`](../config/io_helidon_integrations_langchain4j_ContentRetrieverType.md) | `VALUE` | `i.h.i.l.ContentRetrieverType` | `EMBEDDING_STORE_CONTENT_RETRIEVER` | Type of content retriever to create |
+
+See the [manifest](../config/manifest.md) for all available types.

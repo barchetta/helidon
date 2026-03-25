@@ -1,439 +1,481 @@
-# OidcConfig (security.providers.oidc.common) Configuration
+# io.helidon.security.providers.oidc.common.OidcConfig
 
-Open ID Connect configuration
+### Description
 
-Type: [io.helidon.security.providers.oidc.common.OidcConfig](/apidocs/io.helidon.security.providers.oidc.common/io/helidon/security/providers/oidc/common/OidcConfig.html)
+Open ID Connect configuration.
 
-## Configuration options
+### Usages
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
+- [`security.providers.idcs-role-mapper.oidc-config`](../config/io_helidon_security_providers_idcs_mapper_IdcsMtRoleMapperProvider.md#a2275a-oidc-config)
+
+- [`server.features.security.security.providers.idcs-role-mapper.oidc-config`](../config/io_helidon_security_providers_idcs_mapper_IdcsMtRoleMapperProvider.md#a2275a-oidc-config)
+
+### Configuration options
+
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
 </colgroup>
 <thead>
 <tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
+<th class="tableblock halign-left valign-top">Key</th>
+<th class="tableblock halign-left valign-top">Kind</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><p><code>access-token-ip-check</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to check if current IP address matches the one access token was issued for. This check helps with cookie replay attack prevention.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a13441-access-token-ip-check"></span> <code>access-token-ip-check</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to check if current IP address matches the one access token was issued for</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>audience</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Audience of issued tokens.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a57dcf-audience"></span> <code>audience</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Audience of issued tokens</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>authorization-endpoint-uri</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>URI of an authorization endpoint used to redirect users to for logging-in.</p>
-<p>If not defined, it is obtained from oidcMetadata(Resource), if that is not defined an attempt is made to use identityUri(URI)/oauth2/v1/authorize.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a2134b-authorization-endpoint-uri"></span> <code>authorization-endpoint-uri</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>URI</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>URI of an authorization endpoint used to redirect users to for logging-in</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>base-scopes</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>openid</code></p></td>
-<td style="text-align: left;"><p>Configure base scopes. By default, this is <code>openid</code>. If scope has a qualifier, it must be used here.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ad554f-base-scopes"></span> <code>base-scopes</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>openid</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Configure base scopes</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>check-audience</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Configure audience claim check.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="aaf7af-check-audience"></span> <code>check-audience</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Configure audience claim check</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>client-credentials-config</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_security_providers_oidc_common_ClientCredentialsConfig.xml">ClientCredentialsConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Set the configuration related to the client credentials flow.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ae1fec-client-credentials-config"></span> <a href="../config/../config/io_helidon_security_providers_oidc_common_ClientCredentialsConfig.html"><code>client-credentials-config</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.s.p.o.c.ClientCredentialsConfig</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Set the configuration related to the client credentials flow</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>client-id</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Client ID as generated by OIDC server.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ae9784-client-id"></span> <code>client-id</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Client ID as generated by OIDC server</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>client-secret</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Client secret as generated by OIDC server. Used to authenticate this application with the server when requesting JWT based on a code.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a2e4f0-client-secret"></span> <code>client-secret</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Client secret as generated by OIDC server</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>client-timeout-millis</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>30000</code></p></td>
-<td style="text-align: left;"><p>Timeout of calls using web client.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="af5258-client-timeout-millis"></span> <code>client-timeout-millis</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Duration</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>30000</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Timeout of calls using web client</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-domain</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Domain the cookie is valid for. Not used by default.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a7efa5-cookie-domain"></span> <code>cookie-domain</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Domain the cookie is valid for</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-encryption-enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Whether to encrypt token cookie created by this microservice. Defaults to <code>false</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a3b8c2-cookie-encryption-enabled"></span> <code>cookie-encryption-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to encrypt token cookie created by this microservice</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-encryption-id-enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to encrypt id token cookie created by this microservice. Defaults to <code>true</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a77500-cookie-encryption-id-enabled"></span> <code>cookie-encryption-id-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to encrypt id token cookie created by this microservice</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-encryption-name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Name of the encryption configuration available through Security.encrypt(String, byte[]) and Security.decrypt(String, String). If configured and encryption is enabled for any cookie, Security MUST be configured in global or current <code>io.helidon.common.context.Context</code> (this is done automatically in Helidon MP).</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a26f70-cookie-encryption-name"></span> <code>cookie-encryption-name</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top">Name of the encryption configuration available through
+Security#encrypt(String, byte[)&lt;/code&gt; and &lt;code&gt;Security#decrypt(String, String)&lt;/code&gt;]</td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-encryption-password</code></p></td>
-<td style="text-align: left;"><p>char[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Master password for encryption/decryption of cookies. This must be configured to the same value on each microservice using the cookie.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a9b17d-cookie-encryption-password"></span> <code>cookie-encryption-password</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>LIST</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Master password for encryption/decryption of cookies</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-encryption-refresh-enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to encrypt refresh token cookie created by this microservice. Defaults to <code>true</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="aef91d-cookie-encryption-refresh-enabled"></span> <code>cookie-encryption-refresh-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to encrypt refresh token cookie created by this microservice</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-encryption-state-enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to encrypt state cookie created by this microservice. Defaults to <code>true</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a65747-cookie-encryption-state-enabled"></span> <code>cookie-encryption-state-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to encrypt state cookie created by this microservice</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-encryption-tenant-enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to encrypt tenant name cookie created by this microservice. Defaults to <code>true</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a96e4b-cookie-encryption-tenant-enabled"></span> <code>cookie-encryption-tenant-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to encrypt tenant name cookie created by this microservice</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-http-only</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>When using cookie, if set to true, the HttpOnly attribute will be configured. Defaults to <code>true</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a32c8f-cookie-http-only"></span> <code>cookie-http-only</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>When using cookie, if set to true, the HttpOnly attribute will be configured</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-max-age-seconds</code></p></td>
-<td style="text-align: left;"><p>long</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>When using cookie, used to set MaxAge attribute of the cookie, defining how long the cookie is valid. Not used by default.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a23f11-cookie-max-age-seconds"></span> <code>cookie-max-age-seconds</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Long</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>When using cookie, used to set MaxAge attribute of the cookie, defining how long the cookie is valid</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>JSESSIONID</code></p></td>
-<td style="text-align: left;"><p>Name of the cookie to use. Defaults to DEFAULT_COOKIE_NAME.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a99387-cookie-name"></span> <code>cookie-name</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>JSESSIONID</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Name of the cookie to use</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-name-id-token</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>JSESSIONID_2</code></p></td>
-<td style="text-align: left;"><p>Name of the cookie to use for id token. Defaults to DEFAULT_COOKIE_NAME_2.</p>
-<p>This cookie is only used when logout is enabled, as otherwise it is not needed. Content of this cookie is encrypted.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a7cf2b-cookie-name-id-token"></span> <code>cookie-name-id-token</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>JSESSIONID_2</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Name of the cookie to use for id token</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-name-refresh-token</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>JSESSIONID_3</code></p></td>
-<td style="text-align: left;"><p>The name of the cookie to use for the refresh token. Defaults to DEFAULT_REFRESH_COOKIE_NAME.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ac5243-cookie-name-refresh-token"></span> <code>cookie-name-refresh-token</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>JSESSIONID_3</code></p></td>
+<td class="tableblock halign-left valign-top"><p>The name of the cookie to use for the refresh token</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-name-state</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>JSESSIONID_3</code></p></td>
-<td style="text-align: left;"><p>The name of the cookie to use for the state storage. Defaults to DEFAULT_STATE_COOKIE_NAME.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ab99e3-cookie-name-state"></span> <code>cookie-name-state</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>JSESSIONID_3</code></p></td>
+<td class="tableblock halign-left valign-top"><p>The name of the cookie to use for the state storage</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-name-tenant</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>HELIDON_TENANT</code></p></td>
-<td style="text-align: left;"><p>The name of the cookie to use for the tenant name. Defaults to DEFAULT_TENANT_COOKIE_NAME.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a5ebc1-cookie-name-tenant"></span> <code>cookie-name-tenant</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>HELIDON_TENANT</code></p></td>
+<td class="tableblock halign-left valign-top"><p>The name of the cookie to use for the tenant name</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-path</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>/</code></p></td>
-<td style="text-align: left;"><p>Path the cookie is valid for. Defaults to "/".</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ad1f65b-cookie-path"></span> <code>cookie-path</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>/</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Path the cookie is valid for</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-same-site</code></p></td>
-<td style="text-align: left;"><p>SetCookie.SameSite (LAX, STRICT, NONE)</p></td>
-<td style="text-align: left;"><p><code>LAX</code></p></td>
-<td style="text-align: left;"><p>When using cookie, used to set the SameSite cookie value. Can be "Strict" or "Lax".</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a833a6-cookie-same-site"></span> <a href="../config/../config/io_helidon_http_SetCookie_SameSite.html"><code>cookie-same-site</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.h.S.SameSite</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>LAX</code></p></td>
+<td class="tableblock halign-left valign-top"><p>When using cookie, used to set the SameSite cookie value</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-secure</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>When using cookie, if set to true, the Secure attribute will be configured. Defaults to false.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="aec52e-cookie-secure"></span> <code>cookie-secure</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>When using cookie, if set to true, the Secure attribute will be configured</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cookie-use</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to use cookie to store JWT between requests. Defaults to DEFAULT_COOKIE_USE.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a62e96-cookie-use"></span> <code>cookie-use</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to use cookie to store JWT between requests</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>cors</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_cors_CrossOriginConfig.xml">CrossOriginConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Assign cross-origin resource sharing settings.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a72304-cors"></span> <a href="../config/../config/io_helidon_cors_CrossOriginConfig.html"><code>cors</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.c.CrossOriginConfig</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Assign cross-origin resource sharing settings</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>decryption-keys.resource</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>A resource pointing to JWK with private keys used for JWE content key decryption.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a2ac29-decryption-keys-resource"></span> <a href="../config/../config/io_helidon_common_configurable_Resource.html"><code>decryption-keys.resource</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.c.c.Resource</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>A resource pointing to JWK with private keys used for JWE content key decryption</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>force-https-redirects</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Force HTTPS for redirects to identity provider. Defaults to <code>false</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ad03fb-force-https-redirects"></span> <code>force-https-redirects</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Force HTTPS for redirects to identity provider</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>frontend-uri</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Full URI of this application that is visible from user browser. Used to redirect request back from identity server after successful login.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a36389-frontend-uri"></span> <code>frontend-uri</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Full URI of this application that is visible from user browser</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>header-token</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_security_util_TokenHandler.xml">TokenHandler</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>A TokenHandler to process header containing a JWT. Default is "Authorization" header with a prefix "bearer ".</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a8d5cc-header-token"></span> <a href="../config/../config/io_helidon_security_util_TokenHandler.html"><code>header-token</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.s.u.TokenHandler</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>A <code>TokenHandler</code> to process header containing a JWT</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>header-use</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to expect JWT in a header field.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ad6719-header-use"></span> <code>header-use</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to expect JWT in a header field</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>id-token-signature-validation</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether id token signature check should be enabled. Signature check is enabled by default, and it is highly recommended to not change that. Change this setting only when you really know what you are doing, otherwise it could case security issues.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a9f42b-id-token-signature-validation"></span> <code>id-token-signature-validation</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether id token signature check should be enabled</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>identity-uri</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>URI of the identity server, base used to retrieve OIDC metadata.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="af5bd0-identity-uri"></span> <code>identity-uri</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>URI</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>URI of the identity server, base used to retrieve OIDC metadata</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>introspect-endpoint-uri</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Endpoint to use to validate JWT. Either use this or set signJwk(JwkKeys) or signJwk(Resource).</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="af6856-introspect-endpoint-uri"></span> <code>introspect-endpoint-uri</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>URI</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Endpoint to use to validate JWT</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>issuer</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Issuer of issued tokens.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a92234-issuer"></span> <code>issuer</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Issuer of issued tokens</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>max-redirects</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>5</code></p></td>
-<td style="text-align: left;"><p>Configure maximal number of redirects when redirecting to an OIDC provider within a single authentication attempt.</p>
-<p>Defaults to DEFAULT_MAX_REDIRECTS</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ad7a34-max-redirects"></span> <code>max-redirects</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>5</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Configure maximal number of redirects when redirecting to an OIDC provider within a single authentication attempt</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>oidc-metadata-well-known</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>If set to true, metadata will be loaded from default (well known) location, unless it is explicitly defined using oidc-metadata-resource. If set to false, it would not be loaded even if oidc-metadata-resource is not defined. In such a case all URIs must be explicitly defined (e.g. token-endpoint-uri).</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a12e05-oidc-metadata-well-known"></span> <code>oidc-metadata-well-known</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>If set to true, metadata will be loaded from default (well known) location, unless it is explicitly defined using oidc-metadata-resource</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>oidc-metadata.resource</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Resource configuration for OIDC Metadata containing endpoints to various identity services, as well as information about the identity server.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a2ed61-oidc-metadata-resource"></span> <a href="../config/../config/io_helidon_common_configurable_Resource.html"><code>oidc-metadata.resource</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.c.c.Resource</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Resource configuration for OIDC Metadata containing endpoints to various identity services, as well as information about the identity server</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>optional-audience</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Allow audience claim to be optional.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a1c400-optional-audience"></span> <code>optional-audience</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Allow audience claim to be optional</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>pkce-challenge-method</code></p></td>
-<td style="text-align: left;"><p>PkceChallengeMethod (PLAIN, S256)</p></td>
-<td style="text-align: left;"><p><code>S256</code></p></td>
-<td style="text-align: left;"><p>Proof Key Code Exchange (PKCE) challenge creation method. Default value is PkceChallengeMethod.S256.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>PLAIN</code>: No hashing will be applied. Challenge string will be the same as verifier.</p></li>
-<li><p><code>S256</code>: SHA-256 algorithm is used to hash the verifier value.</p></li>
-</ul></td>
+<td class="tableblock halign-left valign-top"><p><span id="abfd90-outbound-type"></span> <a href="../config/../config/io_helidon_security_providers_oidc_common_OidcOutboundType.html"><code>outbound-type</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.s.p.o.c.OidcOutboundType</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>USER_JWT</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Type of the OIDC outbound</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>pkce-enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Whether this provider should support PKCE. Default value is <code>false</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ade967-pkce-challenge-method"></span> <a href="../config/../config/io_helidon_security_providers_oidc_common_PkceChallengeMethod.html"><code>pkce-challenge-method</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.s.p.o.c.PkceChallengeMethod</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>S256</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Proof Key Code Exchange (PKCE) challenge creation method</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><span class="line-through"><code>proxy-host</code></span></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p><strong>Deprecated</strong> Proxy host to use. When defined, triggers usage of proxy for HTTP requests. Setting to empty String has the same meaning as setting to null - disables proxy.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a446cc-pkce-enabled"></span> <code>pkce-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether this provider should support PKCE</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>proxy-port</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>80</code></p></td>
-<td style="text-align: left;"><p>Proxy port. Defaults to DEFAULT_PROXY_PORT</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a6d663-proxy-port"></span> <code>proxy-port</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>80</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Proxy port</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><span class="line-through"><code>proxy-protocol</code></span></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>http</code></p></td>
-<td style="text-align: left;"><p><strong>Deprecated</strong> Proxy protocol to use when proxy is used. Defaults to DEFAULT_PROXY_PROTOCOL.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a38cfb-query-id-token-param-name"></span> <code>query-id-token-param-name</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>id_token</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Name of a query parameter that contains the JWT id token when parameter is used</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>query-id-token-param-name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>id_token</code></p></td>
-<td style="text-align: left;"><p>Name of a query parameter that contains the JWT id token when parameter is used.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a8d334-query-param-name"></span> <code>query-param-name</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>accessToken</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Name of a query parameter that contains the JWT access token when parameter is used</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>query-param-name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>accessToken</code></p></td>
-<td style="text-align: left;"><p>Name of a query parameter that contains the JWT access token when parameter is used.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a94bf1-query-param-tenant-name"></span> <code>query-param-tenant-name</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>h_tenant</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Name of a query parameter that contains the tenant name when the parameter is used</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>query-param-tenant-name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>h_tenant</code></p></td>
-<td style="text-align: left;"><p>Name of a query parameter that contains the tenant name when the parameter is used. Defaults to DEFAULT_TENANT_PARAM_NAME.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a86a41-query-param-use"></span> <code>query-param-use</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether to use a query parameter to send JWT token from application to this server</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>query-param-use</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Whether to use a query parameter to send JWT token from application to this server.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a71a81-redirect"></span> <code>redirect</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p>By default, the client should redirect to the identity server for the user to log in</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>redirect</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>By default, the client should redirect to the identity server for the user to log in. This behavior can be overridden by setting redirect to false. When token is not present in the request, the client will not redirect and just return appropriate error response code.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ab56ad-redirect-attempt-param"></span> <code>redirect-attempt-param</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>h_ra</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Configure the parameter used to store the number of attempts in redirect</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>redirect-attempt-param</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>h_ra</code></p></td>
-<td style="text-align: left;"><p>Configure the parameter used to store the number of attempts in redirect.</p>
-<p>Defaults to DEFAULT_ATTEMPT_PARAM</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a01c3c-redirect-uri"></span> <code>redirect-uri</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>/oidc/redirect</code></p></td>
+<td class="tableblock halign-left valign-top"><p>URI to register web server component on, used by the OIDC server to redirect authorization requests to after a user logs in or approves scopes</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>redirect-uri</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>/oidc/redirect</code></p></td>
-<td style="text-align: left;"><p>URI to register web server component on, used by the OIDC server to redirect authorization requests to after a user logs in or approves scopes. Note that usually the redirect URI configured here must be the same one as configured on OIDC server.</p>
-<p>Defaults to DEFAULT_REDIRECT_URI</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a7537d-scope-audience"></span> <code>scope-audience</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Audience of the scope required by this application</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><span class="line-through"><code>relative-uris</code></span></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p><strong>Deprecated</strong> Can be set to <code>true</code> to force the use of relative URIs in all requests, regardless of the presence or absence of proxies or no-proxy lists. By default, requests that use the Proxy will have absolute URIs. Set this flag to <code>true</code> if the host is unable to accept absolute URIs. Defaults to DEFAULT_RELATIVE_URIS.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="aeb204-server-type"></span> <code>server-type</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>@default</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Configure one of the supported types of identity servers</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>scope-audience</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Audience of the scope required by this application. This is prefixed to the scope name when requesting scopes from the identity server. Defaults to empty string.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="ac2d68-sign-jwk-resource"></span> <a href="../config/../config/io_helidon_common_configurable_Resource.html"><code>sign-jwk.resource</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.c.c.Resource</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>A resource pointing to JWK with public keys of signing certificates used to validate JWT</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>server-type</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>@default</code></p></td>
-<td style="text-align: left;"><p>Configure one of the supported types of identity servers.</p>
-<p>If the type does not have an explicit mapping, a warning is logged and the default implementation is used.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="aa908e-tenants"></span> <a href="../config/../config/io_helidon_security_providers_oidc_common_TenantConfig.html"><code>tenants</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.s.p.o.c.TenantConfig</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>Configurations of the tenants</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>sign-jwk.resource</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_common_configurable_Resource.xml">Resource</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>A resource pointing to JWK with public keys of signing certificates used to validate JWT.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="aad441-token-endpoint-auth"></span> <a href="../config/../config/io_helidon_security_providers_oidc_common_OidcConfig_ClientAuthentication.html"><code>token-endpoint-auth</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.s.p.o.c.O.ClientAuthentication</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>CLIENT_SECRET_BASIC</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Type of authentication to use when invoking the token endpoint</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>tenants</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_security_providers_oidc_common_TenantConfig.xml">TenantConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Configurations of the tenants</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a2a0d8-token-endpoint-uri"></span> <code>token-endpoint-uri</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>URI</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>URI of a token endpoint used to obtain a JWT based on the authentication code</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>token-endpoint-auth</code></p></td>
-<td style="text-align: left;"><p>OidcConfig.ClientAuthentication (CLIENT_SECRET_BASIC, CLIENT_SECRET_POST, CLIENT_SECRET_JWT, PRIVATE_KEY_JWT, CLIENT_CERTIFICATE, NONE)</p></td>
-<td style="text-align: left;"><p><code>CLIENT_SECRET_BASIC</code></p></td>
-<td style="text-align: left;"><p>Type of authentication to use when invoking the token endpoint. Current supported options:</p>
-<ul>
-<li><p>io.helidon.security.providers.oidc.common.OidcConfig.ClientAuthentication.CLIENT_SECRET_BASIC</p></li>
-<li><p>io.helidon.security.providers.oidc.common.OidcConfig.ClientAuthentication.CLIENT_SECRET_POST</p></li>
-<li><p>io.helidon.security.providers.oidc.common.OidcConfig.ClientAuthentication.NONE</p></li>
-</ul>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>CLIENT_SECRET_BASIC</code>: Clients that have received a client_secret value from the Authorization Server authenticate with the Authorization Server in accordance with Section 2.3.1 of OAuth 2.0 [RFC6749] using the HTTP Basic authentication scheme. This is the default client authentication.</p></li>
-<li><p><code>CLIENT_SECRET_POST</code>: Clients that have received a client_secret value from the Authorization Server, authenticate with the Authorization Server in accordance with Section 2.3.1 of OAuth 2.0 [RFC6749] by including the Client Credentials in the request body.</p></li>
-<li><p><code>CLIENT_SECRET_JWT</code>: Clients that have received a client_secret value from the Authorization Server create a JWT using an HMAC SHA algorithm, such as HMAC SHA-256. The HMAC (Hash-based Message Authentication Code) is calculated using the octets of the UTF-8 representation of the client_secret as the shared key. The Client authenticates in accordance with JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants [OAuth.JWT] and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants [OAuth.Assertions].</p></li>
-</ul>
-<p>The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values.</p>
-<p>Required: <code>iss, sub, aud, jti, exp</code></p>
-<p>Optional: <code>iat</code> - <code>PRIVATE_KEY_JWT</code>: Clients that have registered a public key sign a JWT using that key. The Client authenticates in accordance with JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants [OAuth.JWT] and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants [OAuth.Assertions].</p>
-<p>The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values.</p>
-<p>Required: <code>iss, sub, aud, jti, exp</code></p>
-<p>Optional: <code>iat</code> - <code>CLIENT_CERTIFICATE</code>: Authentication is done via the client certificate used with MTLS. The Returned access token is bound to this client certificate. The Client needs to have MTLS enabled for the OIDC. - <code>NONE</code>: The Client does not authenticate itself at the Token Endpoint, either because it uses only the Implicit Flow (and so does not use the Token Endpoint) or because it is a Public Client with no Client Secret or other authentication mechanism.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a78fb9-token-signature-validation"></span> <code>token-signature-validation</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Whether access token signature check should be enabled</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>token-endpoint-uri</code></p></td>
-<td style="text-align: left;"><p>URI</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>URI of a token endpoint used to obtain a JWT based on the authentication code. If not defined, it is obtained from oidcMetadata(Resource), if that is not defined an attempt is made to use identityUri(URI)/oauth2/v1/token.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="aa72d8-validate-jwt-with-jwk"></span> <code>validate-jwt-with-jwk</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p>Use JWK (a set of keys to validate signatures of JWT) to validate tokens</p></td>
 </tr>
 <tr>
-<td style="text-align: left;"><p><code>token-signature-validation</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether access token signature check should be enabled. Signature check is enabled by default, and it is highly recommended to not change that. Change this setting only when you really know what you are doing, otherwise it could case security issues.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>validate-jwt-with-jwk</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Use JWK (a set of keys to validate signatures of JWT) to validate tokens. Use this method when you want to use default values for JWK or introspection endpoint URI.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>webclient</code></p></td>
-<td style="text-align: left;"><p><a href="../config/../config/io_helidon_webclient_api_WebClient.xml">WebClient</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>WebClient configuration used for outbound requests to the identity server. This configuration sets the values to the OIDC WebClient default configuration.</p></td>
+<td class="tableblock halign-left valign-top"><p><span id="a5fd1a-webclient"></span> <a href="../config/../config/io_helidon_webclient_api_WebClient.html"><code>webclient</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p><code>VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p><code>i.h.w.a.WebClient</code></p></td>
+<td class="tableblock halign-left valign-top"><p> </p></td>
+<td class="tableblock halign-left valign-top"><p>WebClient configuration used for outbound requests to the identity server. This configuration sets the values to the OIDC WebClient default configuration</p></td>
 </tr>
 </tbody>
 </table>
+
+#### Deprecated Options
+
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a457e7-proxy-host"></span> `proxy-host` | `VALUE` | `String` |   | Proxy host to use |
+| <span id="a0413e-proxy-protocol"></span> `proxy-protocol` | `VALUE` | `String` | `http` | Proxy protocol to use when proxy is used |
+| <span id="a6dde4-relative-uris"></span> `relative-uris` | `VALUE` | `Boolean` | `false` | Can be set to `true` to force the use of relative URIs in all requests, regardless of the presence or absence of proxies or no-proxy lists |
+
+------------------------------------------------------------------------
+
+See the [manifest](../config/manifest.md) for all available types.

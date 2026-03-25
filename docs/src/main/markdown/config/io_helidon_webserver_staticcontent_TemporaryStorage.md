@@ -1,15 +1,23 @@
-# TemporaryStorage (webserver.staticcontent) Configuration
+# io.helidon.webserver.staticcontent.TemporaryStorage
 
-Type: [io.helidon.webserver.staticcontent.TemporaryStorage](/apidocs/io.helidon.webserver.staticcontent/io/helidon/webserver/staticcontent/TemporaryStorage.html)
+## Description
+
+Configuration of temporary storage for classpath based handlers.
+
+## Usages
+
+- [`server.features.static-content.classpath.temporary-storage`](../config/io_helidon_webserver_staticcontent_ClasspathHandlerConfig.md#a19deb-temporary-storage)
+
+- [`server.features.static-content.temporary-storage`](../config/io_helidon_webserver_staticcontent_StaticContentFeature.md#a0dc23-temporary-storage)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `delete-on-exit` | boolean | `true` | Whether temporary files should be deleted on JVM exit. This is enabled by default, yet it may be useful for debugging purposes to keep the files in place. |
-| `directory` | Path |   | Location of the temporary storage, defaults to temporary storage configured for the JVM. |
-| `enabled` | boolean | `true` | Whether the temporary storage is enabled, defaults to `true`. If disabled, nothing is stored in temporary directory (may have performance impact, as for example a file may be extracted from a zip file on each request). |
-| `file-prefix` | string | `helidon-ws` | Prefix of the files in temporary storage. |
-| `file-suffix` | string | `.je` | Suffix of the files in temporary storage. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a1d2d5-delete-on-exit"></span> `delete-on-exit` | `VALUE` | `Boolean` | `true` | Whether temporary files should be deleted on JVM exit |
+| <span id="ad7c21-directory"></span> `directory` | `VALUE` | `Path` |   | Location of the temporary storage, defaults to temporary storage configured for the JVM |
+| <span id="acd2ca-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Whether the temporary storage is enabled, defaults to `true` |
+| <span id="ab3f0d-file-prefix"></span> `file-prefix` | `VALUE` | `String` | `helidon-ws` | Prefix of the files in temporary storage |
+| <span id="aca37b-file-suffix"></span> `file-suffix` | `VALUE` | `String` | `.je` | Suffix of the files in temporary storage |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

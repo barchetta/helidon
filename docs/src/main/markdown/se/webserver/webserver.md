@@ -200,264 +200,50 @@ server:
 
 ### Configuration Options
 
-Type: [io.helidon.webserver.WebServer](/apidocs/io.helidon.webserver/io/helidon/webserver/WebServer.html)
-
-This is a standalone configuration type, prefix from configuration root: `server`
-
 #### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>backlog</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>1024</code></p></td>
-<td style="text-align: left;"><p>Accept backlog.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>bind-address</code></p></td>
-<td style="text-align: left;"><p>SocketAddress</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>The address to bind to. This is to permit both Internet Address (<code>&lt;host&gt;:&lt;port&gt;</code>) and Unix Domain socket (<code>unix:/path/to/socket</code>). If this is set it will override host(), address() and port().</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>concurrency-limit</code></p></td>
-<td style="text-align: left;"><p>io.helidon.common.concurrency.limits.Limit (service provider interface)</p>
-<p>Such as:</p>
-<ul>
-<li><p><a href="../../se/webserver/../../config/io_helidon_common_concurrency_limits_ThroughputLimit.xml">throughput (ThroughputLimit)</a></p></li>
-<li><p><a href="../../se/webserver/../../config/io_helidon_common_concurrency_limits_FixedLimit.xml">fixed (FixedLimit)</a></p></li>
-<li><p><a href="../../se/webserver/../../config/io_helidon_common_concurrency_limits_AimdLimit.xml">aimd (AimdLimit)</a></p></li>
-</ul></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Concurrency limit to use to limit concurrent execution of incoming requests. The default is to have unlimited concurrency.</p>
-<p>Note that if maxConcurrentRequests() is configured, this is ignored.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><span class="line-through"><code>connection-config</code></span></p></td>
-<td style="text-align: left;"><p><a href="../../se/webserver/../../config/io_helidon_webserver_ConnectionConfig.xml">ConnectionConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p><strong>Deprecated</strong> Configuration of a connection (established from client against our server).</p>
-<p>@deprecated use connectionOptions() instead</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>connection-options</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/webserver/../../config/io_helidon_common_socket_SocketOptions.xml">SocketOptions</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Options for connections accepted by this listener. This is not used to setup server connection.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>content-encoding</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/webserver/../../config/io_helidon_http_encoding_ContentEncodingContext.xml">ContentEncodingContext</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Configure the listener specific io.helidon.http.encoding.ContentEncodingContext. This method discards all previously registered ContentEncodingContext. If no content encoding context is registered, content encoding context of the webserver would be used.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>enable-proxy-protocol</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Enable proxy protocol support for this socket. This protocol is supported by some load balancers/reverse proxies as a means to convey client information that would otherwise be lost. If enabled, the proxy protocol header must be present on every new connection established with your server. For more information, see <a href="https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt"> the specification</a>. Default is <code>false</code>.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>error-handling</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/webserver/../../config/io_helidon_webserver_ErrorHandling.xml">ErrorHandling</a></p></td>
-<td style="text-align: left;"><p><code>io.helidon.webserver.ListenerConfigBlueprint.create()</code></p></td>
-<td style="text-align: left;"><p>Configuration for this listener’s error handling.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>features</code></p></td>
-<td style="text-align: left;"><p>io.helidon.webserver.spi.ServerFeature[] (service provider interface)</p>
-<p>Such as:</p>
-<ul>
-<li><p><a href="../../se/webserver/../../config/io_helidon_webserver_accesslog_AccessLogFeature.xml">access-log (AccessLogFeature)</a></p></li>
-<li><p><a href="../../se/webserver/../../config/io_helidon_webserver_observe_ObserveFeature.xml">observe (ObserveFeature)</a></p></li>
-<li><p><a href="../../se/webserver/../../config/io_helidon_webserver_context_ContextFeature.xml">context (ContextFeature)</a></p></li>
-<li><p><a href="../../se/webserver/../../config/io_helidon_openapi_OpenApiFeature.xml">openapi (OpenApiFeature)</a></p></li>
-<li><p><a href="../../se/webserver/../../config/io_helidon_webserver_grpc_GrpcReflectionFeature.xml">grpc-reflection (GrpcReflectionFeature)</a></p></li>
-<li><p><a href="../../se/webserver/../../config/io_helidon_webserver_cors_CorsFeature.xml">cors (CorsFeature)</a></p></li>
-<li><p><a href="../../se/webserver/../../config/io_helidon_webserver_concurrency_limits_LimitsFeature.xml">limits (LimitsFeature)</a></p></li>
-<li><p><a href="../../se/webserver/../../config/io_helidon_webserver_staticcontent_StaticContentFeature.xml">static-content (StaticContentFeature)</a></p></li>
-<li><p><a href="../../se/webserver/../../config/io_helidon_integrations_eureka_EurekaRegistrationServerFeature.xml">eureka (EurekaRegistrationServerFeature)</a></p></li>
-<li><p><a href="../../se/webserver/../../config/io_helidon_webserver_security_SecurityFeature.xml">security (SecurityFeature)</a></p></li>
-</ul></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Server features allow customization of the server, listeners, or routings.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>host</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>0.0.0.0</code></p></td>
-<td style="text-align: left;"><p>Host of the default socket. Defaults to all host addresses (<code>0.0.0.0</code>).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>idle-connection-period</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>PT2M</code></p></td>
-<td style="text-align: left;"><p>How often should we check for idleConnectionTimeout(). Defaults to <code>PT2M</code> (2 minutes).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>idle-connection-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>PT5M</code></p></td>
-<td style="text-align: left;"><p>How long should we wait before closing a connection that has no traffic on it. Defaults to <code>PT5M</code> (5 minutes). Note that the timestamp is refreshed max. once per second, so this setting would be useless if configured for shorter periods of time (also not a very good support for connection keep alive, if the connections are killed so soon anyway).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>ignore-invalid-named-routing</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>If set to <code>true</code>, any named routing configured that does not have an associated named listener will NOT cause an exception to be thrown (default behavior is to throw an exception).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-concurrent-requests</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>-1</code></p></td>
-<td style="text-align: left;"><p>Limits the number of requests that can be executed at the same time (the number of active virtual threads of requests). Defaults to <code>-1</code>, meaning "unlimited" - what the system allows. Also make sure that this number is higher than the expected time it takes to handle a single request in your application, as otherwise you may stop in-progress requests.</p>
-<p>Setting this option will always ignore concurrencyLimit() and will use the io.helidon.common.concurrency.limits.FixedLimit.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-in-memory-entity</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>131072</code></p></td>
-<td style="text-align: left;"><p>If the entity is expected to be smaller that this number of bytes, it would be buffered in memory to optimize performance when writing it. If bigger, streaming will be used.</p>
-<p>Note that for some entity types we cannot use streaming, as they are already fully in memory (String, byte[]), for such cases, this option is ignored.</p>
-<p>Default is 128Kb.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-payload-size</code></p></td>
-<td style="text-align: left;"><p>long</p></td>
-<td style="text-align: left;"><p><code>-1</code></p></td>
-<td style="text-align: left;"><p>Maximal number of bytes an entity may have. If io.helidon.http.HeaderNames.CONTENT_LENGTH is used, this is checked immediately, if io.helidon.http.HeaderValues.TRANSFER_ENCODING_CHUNKED is used, we will fail when the number of bytes read would exceed the max payload size. Defaults to unlimited (<code>-1</code>).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>max-tcp-connections</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>-1</code></p></td>
-<td style="text-align: left;"><p>Limits the number of connections that can be opened at a single point in time. Defaults to <code>-1</code>, meaning "unlimited" - what the system allows.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>media-context</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/webserver/../../config/io_helidon_http_media_MediaContext.xml">MediaContext</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Configure the listener specific io.helidon.http.media.MediaContext. This method discards all previously registered MediaContext. If no media context is registered, media context of the webserver would be used.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>@default</code></p></td>
-<td style="text-align: left;"><p>Name of this socket. Defaults to <code>@default</code>. Must be defined if more than one socket is needed.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>port</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>0</code></p></td>
-<td style="text-align: left;"><p>Port of the default socket. If configured to <code>0</code> (the default), server starts on a random port.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>protocols</code></p></td>
-<td style="text-align: left;"><p>io.helidon.webserver.spi.ProtocolConfig[] (service provider interface)</p>
-<p>Such as:</p>
-<ul>
-<li><p><a href="../../se/webserver/../../config/io_helidon_webserver_http2_Http2Config.xml">http_2 (Http2Config)</a></p></li>
-<li><p><a href="../../se/webserver/../../config/io_helidon_webserver_websocket_WsConfig.xml">websocket (WsConfig)</a></p></li>
-<li><p><a href="../../se/webserver/../../config/io_helidon_webserver_http1_Http1Config.xml">http_1_1 (Http1Config)</a></p></li>
-<li><p><a href="../../se/webserver/../../config/io_helidon_webserver_grpc_GrpcConfig.xml">grpc (GrpcConfig)</a></p></li>
-</ul></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Configuration of protocols. This may be either protocol selectors, or protocol upgraders from HTTP/1.1. As the order is not important (providers are ordered by weight by default), we can use a configuration as an object, such as:</p>
-<pre><code>protocols:
-  providers:
-    http_1_1:
-      max-prologue-length: 8192
-    http_2:
-      max-frame-size: 4096
-    websocket:
-      ....</code></pre></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><span class="line-through"><code>receive-buffer-size</code></span></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p><strong>Deprecated</strong> Listener receive buffer size.</p>
-<p>@deprecated use SocketOptions.socketReceiveBufferSize() instead via connectionOptions().</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>requested-uri-discovery</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/webserver/../../config/io_helidon_http_RequestedUriDiscoveryContext.xml">RequestedUriDiscoveryContext</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Requested URI discovery context.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>restore-response-headers</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Copy and restore response headers before and after passing a request to Jersey for processing. If Jersey fails to handle the request, and the Webserver continues processing the request, it needs to make sure the original headers are restored. Turn off this flag to avoid the extra overhead of copying headers when no handler executes after Jersey returns.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>shutdown-grace-period</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>PT0.5S</code></p></td>
-<td style="text-align: left;"><p>Grace period in ISO 8601 duration format to allow running tasks to complete before listener’s shutdown. Default is <code>500</code> milliseconds. Configuration file values example: <code>PT0.5S</code>, <code>PT2S</code>.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>shutdown-hook</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>When true the webserver registers a shutdown hook with the JVM Runtime.</p>
-<p>Defaults to true. Set this to false such that a shutdown hook is not registered.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>smart-async-writes</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>If enabled and writeQueueLength() is greater than 1, then start with async writes but possibly switch to sync writes if async queue size is always below a certain threshold.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>sockets</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/webserver/../../config/io_helidon_webserver_ListenerConfig.xml">Map&lt;string, ListenerConfig&gt;</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Socket configurations. Note that socket named <code>@default</code> cannot be used, configure the values on the server directly.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>tls</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/webserver/../../config/io_helidon_common_tls_Tls.xml">Tls</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Listener TLS configuration.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>use-nio</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>If set to <code>true</code>, use NIO socket channel, instead of a socket. Listener will always be a channel.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>write-buffer-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>4096</code></p></td>
-<td style="text-align: left;"><p>Initial buffer size in bytes of java.io.BufferedOutputStream created internally to write data to a socket connection. Default is <code>4096</code>. Set buffer size to a value less than one to turn off buffering.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>write-queue-length</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>0</code></p></td>
-<td style="text-align: left;"><p>Number of buffers queued for write operations.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="acb486-backlog"></span> `backlog` | `VALUE` | `Integer` | `1024` | Accept backlog |
+| <span id="a4fc52-bind-address"></span> `bind-address` | `VALUE` | `i.h.w.W.ListenerCustomMethods` |   | The address to bind to |
+| <span id="a32e67-concurrency-limit"></span> [`concurrency-limit`](../../config/io_helidon_common_concurrency_limits_Limit.md) | `VALUE` | `i.h.c.c.l.Limit` |   | Concurrency limit to use to limit concurrent execution of incoming requests |
+| <span id="a3f7e3-concurrency-limit-discover-services"></span> `concurrency-limit-discover-services` | `VALUE` | `Boolean` | `false` | Whether to enable automatic service discovery for `concurrency-limit` |
+| <span id="ac9c91-connection-options"></span> [`connection-options`](../../config/io_helidon_common_socket_SocketOptions.md) | `VALUE` | `i.h.c.s.SocketOptions` |   | Options for connections accepted by this listener |
+| <span id="a511a0-content-encoding"></span> [`content-encoding`](../../config/io_helidon_http_encoding_ContentEncodingContext.md) | `VALUE` | `i.h.h.e.ContentEncodingContext` |   | Configure the listener specific `io.helidon.http.encoding.ContentEncodingContext` |
+| <span id="aa0fb8-enable-proxy-protocol"></span> `enable-proxy-protocol` | `VALUE` | `Boolean` | `false` | Enable proxy protocol support for this socket |
+| <span id="a92b62-error-handling"></span> [`error-handling`](../../config/io_helidon_webserver_ErrorHandling.md) | `VALUE` | `i.h.w.ErrorHandling` |   | Configuration for this listener's error handling |
+| <span id="ae9df6-features"></span> [`features`](../../config/io_helidon_webserver_spi_ServerFeature.md) | `LIST` | `i.h.w.s.ServerFeature` |   | Server features allow customization of the server, listeners, or routings |
+| <span id="a4431f-features-discover-services"></span> `features-discover-services` | `VALUE` | `Boolean` | `true` | Whether to enable automatic service discovery for `features` |
+| <span id="a47500-host"></span> `host` | `VALUE` | `String` | `0.0.0.0` | Host of the default socket |
+| <span id="a570c4-idle-connection-period"></span> `idle-connection-period` | `VALUE` | `Duration` | `PT2M` | How often should we check for `#idleConnectionTimeout()` |
+| <span id="abfcba-idle-connection-timeout"></span> `idle-connection-timeout` | `VALUE` | `Duration` | `PT5M` | How long should we wait before closing a connection that has no traffic on it |
+| <span id="acfc0a-ignore-invalid-named-routing"></span> `ignore-invalid-named-routing` | `VALUE` | `Boolean` |   | If set to `true`, any named routing configured that does not have an associated named listener will NOT cause an exception to be thrown (default behavior is to throw an exception) |
+| <span id="a71146-max-concurrent-requests"></span> `max-concurrent-requests` | `VALUE` | `Integer` | `-1` | Limits the number of requests that can be executed at the same time (the number of active virtual threads of requests) |
+| <span id="a23186-max-in-memory-entity"></span> `max-in-memory-entity` | `VALUE` | `Integer` | `131072` | If the entity is expected to be smaller that this number of bytes, it would be buffered in memory to optimize performance when writing it |
+| <span id="a6e9f1-max-payload-size"></span> `max-payload-size` | `VALUE` | `Long` | `-1` | Maximal number of bytes an entity may have |
+| <span id="ac255e-max-tcp-connections"></span> `max-tcp-connections` | `VALUE` | `Integer` | `-1` | Limits the number of connections that can be opened at a single point in time |
+| <span id="a847a9-media-context"></span> [`media-context`](../../config/io_helidon_http_media_MediaContext.md) | `VALUE` | `i.h.h.m.MediaContext` |   | Configure the listener specific `io.helidon.http.media.MediaContext` |
+| <span id="a390dc-name"></span> `name` | `VALUE` | `String` | `@default` | Name of this socket |
+| <span id="a9d956-port"></span> `port` | `VALUE` | `Integer` | `0` | Port of the default socket |
+| <span id="abdf05-protocols"></span> [`protocols`](../../config/io_helidon_webserver_spi_ProtocolConfig.md) | `LIST` | `i.h.w.s.ProtocolConfig` |   | Configuration of protocols |
+| <span id="a4b6cc-protocols-discover-services"></span> `protocols-discover-services` | `VALUE` | `Boolean` | `true` | Whether to enable automatic service discovery for `protocols` |
+| <span id="aaf9ce-requested-uri-discovery"></span> [`requested-uri-discovery`](../../config/io_helidon_http_RequestedUriDiscoveryContext.md) | `VALUE` | `i.h.h.RequestedUriDiscoveryContext` |   | Requested URI discovery context |
+| <span id="aa99af-restore-response-headers"></span> `restore-response-headers` | `VALUE` | `Boolean` | `true` | Copy and restore response headers before and after passing a request to Jersey for processing |
+| <span id="a875ae-shutdown-grace-period"></span> `shutdown-grace-period` | `VALUE` | `Duration` | `PT0.5S` | Grace period in ISO 8601 duration format to allow running tasks to complete before listener's shutdown |
+| <span id="aa36d3-shutdown-hook"></span> `shutdown-hook` | `VALUE` | `Boolean` | `true` | When true the webserver registers a shutdown hook with the JVM Runtime |
+| <span id="a3378e-smart-async-writes"></span> `smart-async-writes` | `VALUE` | `Boolean` | `false` | If enabled and `#writeQueueLength()` is greater than 1, then start with async writes but possibly switch to sync writes if async queue size is always below a certain threshold |
+| <span id="a03604-sockets"></span> [`sockets`](../../config/io_helidon_webserver_ListenerConfig.md) | `MAP` | `i.h.w.ListenerConfig` |   | Socket configurations |
+| <span id="ac9efa-tls"></span> [`tls`](../../config/io_helidon_common_tls_Tls.md) | `VALUE` | `i.h.c.t.Tls` |   | Listener TLS configuration |
+| <span id="a5f9ab-use-nio"></span> `use-nio` | `VALUE` | `Boolean` | `true` | If set to `true`, use NIO socket channel, instead of a socket |
+| <span id="a57ab6-write-buffer-size"></span> `write-buffer-size` | `VALUE` | `Integer` | `4096` | Initial buffer size in bytes of `java.io.BufferedOutputStream` created internally to write data to a socket connection |
+| <span id="adda19-write-queue-length"></span> `write-queue-length` | `VALUE` | `Integer` | `0` | Number of buffers queued for write operations |
+
+##### Deprecated Options
+
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="a20877-connection-config"></span> [`connection-config`](../../config/io_helidon_webserver_ConnectionConfig.md) | `VALUE` | `i.h.w.ConnectionConfig` | Configuration of a connection (established from client against our server) |
+| <span id="ab275b-receive-buffer-size"></span> `receive-buffer-size` | `VALUE` | `Integer` | Listener receive buffer size |
 
 ## Routing
 
@@ -937,157 +723,31 @@ Any other port defined in your application may include an `error-handling` secti
 
 ## Configuration Options
 
-Type: [io.helidon.common.tls.Tls](/apidocs/io.helidon.common.tls/io/helidon/common/tls/Tls.html)
-
 ### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>cipher-suite</code></p></td>
-<td style="text-align: left;"><p>string[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Enabled cipher suites for TLS communication.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>client-auth</code></p></td>
-<td style="text-align: left;"><p>TlsClientAuth (REQUIRED, OPTIONAL, NONE)</p></td>
-<td style="text-align: left;"><p><code>TlsClientAuth.NONE</code></p></td>
-<td style="text-align: left;"><p>Configure requirement for mutual TLS.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>REQUIRED</code>: Mutual TLS is required. Server MUST present a certificate trusted by the client, client MUST present a certificate trusted by the server. This implies private key and trust configuration for both server and client.</p></li>
-<li><p><code>OPTIONAL</code>: Mutual TLS is optional. Server MUST present a certificate trusted by the client, client MAY present a certificate trusted by the server. This implies private key configuration at least for server, trust configuration for at least client.</p></li>
-<li><p><code>NONE</code>: Mutual TLS is disabled. Server MUST present a certificate trusted by the client, client does not present a certificate. This implies private key configuration for server, trust configuration for client.</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Flag indicating whether Tls is enabled.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>endpoint-identification-algorithm</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>HTTPS</code></p></td>
-<td style="text-align: left;"><p>Identification algorithm for SSL endpoints.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>internal-keystore-provider</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Provider of the key stores used internally to create a key and trust manager factories.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>internal-keystore-type</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Type of the key stores used internally to create a key and trust manager factories.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>key-manager-factory-algorithm</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Algorithm of the key manager factory used when private key is defined. Defaults to javax.net.ssl.KeyManagerFactory.getDefaultAlgorithm().</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>manager</code></p></td>
-<td style="text-align: left;"><p>io.helidon.common.tls.TlsManager (service provider interface)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>The Tls manager. If one is not explicitly defined in the config then a default manager will be created.</p>
-<p>See ConfiguredTlsManager</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>private-key</code></p></td>
-<td style="text-align: left;"><p>PrivateKey</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Private key to use. For server side TLS, this is required. For client side TLS, this is optional (used when mutual TLS is enabled).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>protocol</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>TLS</code></p></td>
-<td style="text-align: left;"><p>Configure the protocol used to obtain an instance of javax.net.ssl.SSLContext.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>protocols</code></p></td>
-<td style="text-align: left;"><p>string[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Enabled protocols for TLS communication. Example of valid values for <code>TLS</code> protocol: <code>TLSv1.3</code>, <code>TLSv1.2</code></p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>provider</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Use explicit provider to obtain an instance of javax.net.ssl.SSLContext.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>revocation</code></p></td>
-<td style="text-align: left;"><p><a href="../../se/webserver/../../config/io_helidon_common_tls_RevocationConfig.xml">RevocationConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Certificate revocation check configuration.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>secure-random-algorithm</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Algorithm to use when creating a new secure random.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>secure-random-provider</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Provider to use when creating a new secure random. When defined, secureRandomAlgorithm() must be defined as well.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>session-cache-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>20480</code></p></td>
-<td style="text-align: left;"><p>SSL session cache size.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>session-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>PT24H</code></p></td>
-<td style="text-align: left;"><p>SSL session timeout.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>trust</code></p></td>
-<td style="text-align: left;"><p>X509Certificate[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>List of certificates that form the trust manager.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>trust-all</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Trust any certificate provided by the other side of communication.</p>
-<p><strong>This is a dangerous setting:</strong> if set to <code>true</code>, any certificate will be accepted, throwing away most of the security advantages of TLS. <strong>NEVER</strong> do this in production.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>trust-manager-factory-algorithm</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Trust manager factory algorithm.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a6e5c3-cipher-suite"></span> `cipher-suite` | `LIST` | `String` |   | Enabled cipher suites for TLS communication |
+| <span id="aa9957-client-auth"></span> [`client-auth`](../../config/io_helidon_common_tls_TlsClientAuth.md) | `VALUE` | `i.h.c.t.TlsClientAuth` | `NONE` | Configure requirement for mutual TLS |
+| <span id="ab3264-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Flag indicating whether Tls is enabled |
+| <span id="a734ef-endpoint-identification-algorithm"></span> `endpoint-identification-algorithm` | `VALUE` | `String` | `HTTPS` | Identification algorithm for SSL endpoints |
+| <span id="a4eeba-internal-keystore-provider"></span> `internal-keystore-provider` | `VALUE` | `String` |   | Provider of the key stores used internally to create a key and trust manager factories |
+| <span id="ab7ae6-internal-keystore-type"></span> `internal-keystore-type` | `VALUE` | `String` |   | Type of the key stores used internally to create a key and trust manager factories |
+| <span id="a93230-key-manager-factory-algorithm"></span> `key-manager-factory-algorithm` | `VALUE` | `String` |   | Algorithm of the key manager factory used when private key is defined |
+| <span id="a49b7a-manager"></span> [`manager`](../../config/io_helidon_common_tls_TlsManager.md) | `VALUE` | `i.h.c.t.TlsManager` |   | The Tls manager |
+| <span id="a7cad5-manager-discover-services"></span> `manager-discover-services` | `VALUE` | `Boolean` | `false` | Whether to enable automatic service discovery for `manager` |
+| <span id="aeed7c-private-key"></span> [`private-key`](../../config/io_helidon_common_pki_Keys.md) | `VALUE` | `i.h.c.p.Keys` |   | Private key to use |
+| <span id="a910b8-protocol"></span> `protocol` | `VALUE` | `String` | `TLS` | Configure the protocol used to obtain an instance of `javax.net.ssl.SSLContext` |
+| <span id="aef2f6-protocols"></span> `protocols` | `LIST` | `String` |   | Enabled protocols for TLS communication |
+| <span id="a0da60-provider"></span> `provider` | `VALUE` | `String` |   | Use explicit provider to obtain an instance of `javax.net.ssl.SSLContext` |
+| <span id="a7a660-revocation"></span> [`revocation`](../../config/io_helidon_common_tls_RevocationConfig.md) | `VALUE` | `i.h.c.t.RevocationConfig` |   | Certificate revocation check configuration |
+| <span id="ab9360-secure-random-algorithm"></span> `secure-random-algorithm` | `VALUE` | `String` |   | Algorithm to use when creating a new secure random |
+| <span id="a82d0c-secure-random-provider"></span> `secure-random-provider` | `VALUE` | `String` |   | Provider to use when creating a new secure random |
+| <span id="a59f4a-session-cache-size"></span> `session-cache-size` | `VALUE` | `Integer` | `20480` | SSL session cache size |
+| <span id="abf0bb-session-timeout"></span> `session-timeout` | `VALUE` | `Duration` | `PT24H` | SSL session timeout |
+| <span id="adbc4b-trust"></span> [`trust`](../../config/io_helidon_common_pki_Keys.md) | `LIST` | `i.h.c.p.Keys` |   | List of certificates that form the trust manager |
+| <span id="a0346e-trust-all"></span> `trust-all` | `VALUE` | `Boolean` | `false` | Trust any certificate provided by the other side of communication |
+| <span id="af626f-trust-manager-factory-algorithm"></span> `trust-manager-factory-algorithm` | `VALUE` | `String` |   | Trust manager factory algorithm |
 
 # Server Features
 
@@ -1127,29 +787,25 @@ To enable execution of routes within Context, add the following dependency to pr
 
 Context feature can be configured, all options shown below are also available both in config, and programmatically when using builder.
 
-# ContextFeature (webserver.context) Configuration
+# io.helidon.webserver.context.ContextFeature
 
-Type: [io.helidon.webserver.context.ContextFeature](/apidocs/io.helidon.webserver.context/io/helidon/webserver/context/ContextFeature.html)
+## Description
 
-*Config key*
+Configuration of context feature.
 
-``` text
-context
-```
+## Usages
 
-This type provides the following service implementations:
-
-- `io.helidon.webserver.spi.ServerFeatureProvider`
+- [`server.features.context`](../../config/io_helidon_webserver_spi_ServerFeature.md#a57af2-context)
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `records` | [ContextRecordConfig\[\]](../../se/webserver/../../config/io_helidon_common_context_http_ContextRecordConfig.md) |   | List of propagation records. |
-| `sockets` | string\[\] |   | List of sockets to register this feature on. If empty, it would get registered on all sockets. |
-| `weight` | double | `1100.0` | Weight of the context feature. As it is used by other features, the default is quite high: `1100.0`. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="aa10e9-records"></span> [`records`](../../config/io_helidon_common_context_http_ContextRecordConfig.md) | `LIST` | `i.h.c.c.h.ContextRecordConfig` |   | List of propagation records |
+| <span id="ac7113-sockets"></span> `sockets` | `LIST` | `String` |   | List of sockets to register this feature on |
+| <span id="a37f63-weight"></span> `weight` | `VALUE` | `Double` | `1100.0` | Weight of the context feature |
 
-Optional configuration options
+See the [manifest](../../config/manifest.md) for all available types.
 
 ## Access Log
 
@@ -1193,126 +849,27 @@ server:
 
 All options shown below are also available programmatically when using builder.
 
-# AccessLogFeature (webserver.accesslog) Configuration
+# io.helidon.webserver.accesslog.AccessLogFeature
 
-Type: [io.helidon.webserver.accesslog.AccessLogFeature](/apidocs/io.helidon.webserver.accesslog/io/helidon/webserver/accesslog/AccessLogFeature.html)
+## Description
 
-*Config key*
+Configuration of access log feature.
 
-``` text
-access-log
-```
+## Usages
 
-This type provides the following service implementations:
-
-- `io.helidon.webserver.spi.ServerFeatureProvider`
+- [`server.features.access-log`](../../config/io_helidon_webserver_spi_ServerFeature.md#a42c97-access-log)
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether this feature will be enabled.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>format</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>The format for log entries (similar to the Apache <code>LogFormat</code>).</p>
-<table class="config">
-<caption>Log format elements</caption>
-<tbody>
-<tr>
-<td>%h</td>
-<td>IP address of the remote host</td>
-<td>HostLogEntry</td>
-</tr>
-<tr>
-<td>%l</td>
-<td>The client identity. This is always undefined in Helidon.</td>
-<td>UserIdLogEntry</td>
-</tr>
-<tr>
-<td>%u</td>
-<td>User ID as asserted by Helidon Security.</td>
-<td>UserLogEntry</td>
-</tr>
-<tr>
-<td>%t</td>
-<td>The timestamp</td>
-<td>TimestampLogEntry</td>
-</tr>
-<tr>
-<td>%r</td>
-<td>The request line (`"GET /favicon.ico HTTP/1.0"`)</td>
-<td>RequestLineLogEntry</td>
-</tr>
-<tr>
-<td>%s</td>
-<td>The status code returned to the client</td>
-<td>StatusLogEntry</td>
-</tr>
-<tr>
-<td>%b</td>
-<td>The entity size in bytes</td>
-<td>SizeLogEntry</td>
-</tr>
-<tr>
-<td>%D</td>
-<td>The time taken in microseconds (start of request until last byte written)</td>
-<td>TimeTakenLogEntry</td>
-</tr>
-<tr>
-<td>%T</td>
-<td>The time taken in seconds (start of request until last byte written), integer</td>
-<td>TimeTakenLogEntry</td>
-</tr>
-<tr>
-<td>%{header-name}i</td>
-<td>Value of header `header-name`</td>
-<td>HeaderLogEntry</td>
-</tr>
-</tbody>
-</table></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>logger-name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p><code>io.helidon.webserver.AccessLog</code></p></td>
-<td style="text-align: left;"><p>Name of the logger used to obtain access log logger from System.getLogger(String). Defaults to <code>io.helidon.webserver.AccessLog</code>.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>sockets</code></p></td>
-<td style="text-align: left;"><p>string[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>List of sockets to register this feature on. If empty, it would get registered on all sockets. The logger used will have the expected logger with a suffix of the socket name.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>weight</code></p></td>
-<td style="text-align: left;"><p>double</p></td>
-<td style="text-align: left;"><p><code>1000.0</code></p></td>
-<td style="text-align: left;"><p>Weight of the access log feature. We need to log access for anything happening on the server, so weight is high: <code>1000.0</code>.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="aaefb9-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Whether this feature will be enabled |
+| <span id="a8717c-format"></span> `format` | `VALUE` | `String` |   | The format for log entries (similar to the Apache `LogFormat`) |
+| <span id="aeb9ad-logger-name"></span> `logger-name` | `VALUE` | `String` | `io.helidon.webserver.AccessLog` | Name of the logger used to obtain access log logger from `System#getLogger(String)` |
+| <span id="a631a5-sockets"></span> `sockets` | `LIST` | `String` |   | List of sockets to register this feature on |
+| <span id="ac3d7a-weight"></span> `weight` | `VALUE` | `Double` | `1000.0` | Weight of the access log feature |
+
+See the [manifest](../../config/manifest.md) for all available types.
 
 # Supported Technologies
 
@@ -1498,76 +1055,13 @@ To enable JSON-B Support add the following dependency to your project’s `pom.x
 
 It is possible to configure the Jsonb instance via programmatic or configuration-based approach. When configured over the configuration, all the configured value types need to be selected correctly according to the JSON-B spec and placed to the right section.
 
-Type: [io.helidon.http.media.jsonb.JsonbSupport](/apidocs/io.helidon.http.media.jsonb/io/helidon/http/media/jsonb/JsonbSupport.html)
-
-*Config key*
-
-``` text
-jsonb
-```
-
-This type provides the following service implementations:
-
-- `io.helidon.http.media.spi.MediaSupportProvider`
-
 #### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>accepted-media-types</code></p></td>
-<td style="text-align: left;"><p>MediaType[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Types accepted by this media support. When server processes the response, it checks the <code>Accept</code> header, to choose the right media support, if there are more supports available for the provided entity object.</p>
-<p>NOTE Make sure that you accept the type returned by contentType().</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>boolean-properties</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, boolean&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Jsonb <code>boolean</code> configuration properties. Properties are being ignored if specific Jsonb is set.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>class-properties</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, Class&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Jsonb Class configuration properties. Properties are being ignored if specific Jsonb is set.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>content-type</code></p></td>
-<td style="text-align: left;"><p>HttpMediaType</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Content type to use if not configured (in response headers for server, and in request headers for client).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Name of the support. Each extension should provide its own default. This is to enable multiple instance of the same type.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>properties</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, string&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Jsonb String configuration properties. Properties are being ignored if specific Jsonb is set.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="a0e015-boolean-properties"></span> `boolean-properties` | `MAP` | `Boolean` | Jsonb `boolean` configuration properties |
+| <span id="ad0c9b-class-properties"></span> `class-properties` | `MAP` | `Class` | Jsonb `Class` configuration properties |
+| <span id="acf561-properties"></span> `properties` | `MAP` | `String` | Jsonb `String` configuration properties |
 
 #### Example
 
@@ -1647,64 +1141,11 @@ To enable Jackson Support add the following dependency to your project’s `pom.
 
 It is possible to configure the Jackson ObjectMapper instance via programmatic or configuration-based approach.
 
-Type: [io.helidon.http.media.jackson.JacksonSupport](/apidocs/io.helidon.http.media.jackson/io/helidon/http/media/jackson/JacksonSupport.html)
-
-*Config key*
-
-``` text
-jackson
-```
-
-This type provides the following service implementations:
-
-- `io.helidon.http.media.spi.MediaSupportProvider`
-
 #### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>accepted-media-types</code></p></td>
-<td style="text-align: left;"><p>MediaType[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Types accepted by this media support. When server processes the response, it checks the <code>Accept</code> header, to choose the right media support, if there are more supports available for the provided entity object.</p>
-<p>NOTE Make sure that you accept the type returned by contentType().</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>content-type</code></p></td>
-<td style="text-align: left;"><p>HttpMediaType</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Content type to use if not configured (in response headers for server, and in request headers for client).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Name of the support. Each extension should provide its own default. This is to enable multiple instance of the same type.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>properties</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, boolean&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Jackson configuration properties. Properties are being ignored if specific JacksonSupport is set. Only <code>boolean</code> configuration values are supported.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="a0b69d-properties"></span> `properties` | `MAP` | `Boolean` | Jackson configuration properties |
 
 #### Example
 
@@ -1787,64 +1228,11 @@ To enable Gson Support add the following dependency to your project’s `pom.xml
 
 It is possible to configure the Gson instance via programmatic or configuration-based approach.
 
-Type: [io.helidon.http.media.gson.GsonSupport](/apidocs/io.helidon.http.media.gson/io/helidon/http/media/gson/GsonSupport.html)
-
-*Config key*
-
-``` text
-gson
-```
-
-This type provides the following service implementations:
-
-- `io.helidon.http.media.spi.MediaSupportProvider`
-
 #### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>accepted-media-types</code></p></td>
-<td style="text-align: left;"><p>MediaType[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Types accepted by this media support. When server processes the response, it checks the <code>Accept</code> header, to choose the right media support, if there are more supports available for the provided entity object.</p>
-<p>NOTE Make sure that you accept the type returned by contentType().</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>content-type</code></p></td>
-<td style="text-align: left;"><p>HttpMediaType</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Content type to use if not configured (in response headers for server, and in request headers for client).</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Name of the support. Each extension should provide its own default. This is to enable multiple instance of the same type.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>properties</code></p></td>
-<td style="text-align: left;"><p>Map&lt;string, boolean&gt;</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Gson configuration properties. Properties are being ignored if specific Gson is set. Only <code>boolean</code> configuration values are supported.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="a26a07-properties"></span> `properties` | `MAP` | `Boolean` | Gson configuration properties |
 
 #### Example
 
@@ -1933,15 +1321,12 @@ WebServer.builder()
 
 Or use a config file using the following options:
 
-Type: [io.helidon.http.encoding.ContentEncodingContext](/apidocs/io.helidon.http.encoding/io/helidon/http/encoding/ContentEncodingContext.html)
-
 ### Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `content-encodings` | io.helidon.http.encoding.ContentEncoding\[\] (service provider interface) |   | List of content encodings that should be used. Encodings configured here have priority over encodings discovered through service loader. |
-
-Optional configuration options
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="ab960c-content-encodings"></span> [`content-encodings`](../../config/io_helidon_http_encoding_ContentEncoding.md) | `LIST` | `i.h.h.e.ContentEncoding` |   | List of content encodings that should be used |
+| <span id="ac89ac-content-encodings-discover-services"></span> `content-encodings-discover-services` | `VALUE` | `Boolean` | `true` | Whether to enable automatic service discovery for `content-encodings` |
 
 The following providers are currently available (simply add the library on the classpath):
 

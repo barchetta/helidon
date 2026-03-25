@@ -1,72 +1,25 @@
-# ConnectionConfig (webserver) Configuration
+# io.helidon.webserver.ConnectionConfig
 
-Type: [io.helidon.webserver.ConnectionConfig](/apidocs/io.helidon.webserver/io/helidon/webserver/ConnectionConfig.html)
+## Description
+
+Configuration of a server connection (for each connection created by clients).
+
+## Usages
+
+- [`server.connection-config`](../config/io_helidon_webserver_WebServer.md#a20877-connection-config)
+
+- [`server.sockets.connection-config`](../config/io_helidon_webserver_ListenerConfig.md#ac4449-connection-config)
 
 ## Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>connect-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>PT10S</code></p></td>
-<td style="text-align: left;"><p>Connect timeout. Default is <code>PT10S</code>.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>keep-alive</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Configure socket keep alive. Default is <code>true</code>.</p>
-<p>See java.net.StandardSocketOptions.SO_KEEPALIVE</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>read-timeout</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>PT30S</code></p></td>
-<td style="text-align: left;"><p>Read timeout. Default is <code>PT30S</code></p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>receive-buffer-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>32768</code></p></td>
-<td style="text-align: left;"><p>Socket receive buffer size. Default is <code>32768</code>.</p>
-<p>See java.net.StandardSocketOptions.SO_RCVBUF</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>reuse-address</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Socket reuse address. Default is <code>true</code>.</p>
-<p>See java.net.StandardSocketOptions.SO_REUSEADDR</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>send-buffer-size</code></p></td>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p><code>32768</code></p></td>
-<td style="text-align: left;"><p>Socket send buffer size. Default is <code>32768</code>.</p>
-<p>See java.net.StandardSocketOptions.SO_SNDBUF</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>tcp-no-delay</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Disable <a href="https://en.wikipedia.org/wiki/Nagle%27s_algorithm">Nagle’s algorithm</a> by setting TCP_NODELAY to true. This can result in better performance on Mac or newer linux kernels for some payload types. Default is <code>false</code>.</p>
-<p>See java.net.StandardSocketOptions.TCP_NODELAY</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a8f124-connect-timeout"></span> `connect-timeout` | `VALUE` | `Duration` | `PT10S` | Connect timeout |
+| <span id="a7e1e7-keep-alive"></span> `keep-alive` | `VALUE` | `Boolean` | `true` | Configure socket keep alive |
+| <span id="ab6092-read-timeout"></span> `read-timeout` | `VALUE` | `Duration` | `PT30S` | Read timeout |
+| <span id="af8f8a-receive-buffer-size"></span> `receive-buffer-size` | `VALUE` | `Integer` | `32768` | Socket receive buffer size |
+| <span id="a81729-reuse-address"></span> `reuse-address` | `VALUE` | `Boolean` | `true` | Socket reuse address |
+| <span id="a679f1-send-buffer-size"></span> `send-buffer-size` | `VALUE` | `Integer` | `32768` | Socket send buffer size |
+| <span id="a25bab-tcp-no-delay"></span> `tcp-no-delay` | `VALUE` | `Boolean` | `false` | Disable Nagle's algorithm by setting TCP_NODELAY to true |
+
+See the [manifest](../config/manifest.md) for all available types.

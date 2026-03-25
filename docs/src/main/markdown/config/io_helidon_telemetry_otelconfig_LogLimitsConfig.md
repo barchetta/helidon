@@ -1,12 +1,16 @@
-# LogLimitsConfig (telemetry.otelconfig) Configuration
+# io.helidon.telemetry.otelconfig.LogLimitsConfig
 
-Type: [io.helidon.telemetry.otelconfig.LogLimitsConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/LogLimitsConfig.html)
+## Description
+
+Settings for log limits.
+
+## Usages
 
 ## Configuration options
 
-| key | type | default value | description |
+| Key | Kind | Type | Description |
 |----|----|----|----|
-| `max-attribute-value-length` | int |   | Maximum length of an attribute value. |
-| `max-number-of-attributes` | int |   | Maximum number of attributes allowed. |
+| <span id="a85828-max-attribute-value-length"></span> `max-attribute-value-length` | `VALUE` | `Integer` | Maximum length of an attribute value |
+| <span id="a15268-max-number-of-attributes"></span> `max-number-of-attributes` | `VALUE` | `Integer` | Maximum number of attributes allowed |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

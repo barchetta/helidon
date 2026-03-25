@@ -1,14 +1,18 @@
-# RestServiceSettings (webserver.servicecommon) Configuration
+# io.helidon.webserver.servicecommon.RestServiceSettings
 
-Type: [io.helidon.webserver.servicecommon.RestServiceSettings](/apidocs/io.helidon.servicecommon/io/helidon/webserver/servicecommon/RestServiceSettings.html)
+## Description
+
+Common settings across REST services.
+
+## Usages
 
 ## Configuration options
 
-| key | type | default value | description |
-|----|----|----|----|
-| `cors` | [Map\<string, CrossOriginConfig\>](../config/io_helidon_cors_CrossOriginConfig.md) |   | Sets the cross-origin config builder for use in establishing CORS support for the service endpoints. |
-| `enabled` | boolean | `true` | Is this service enabled or not. |
-| `routing` | string |   | Sets the routing name to use for setting up the service’s endpoint. |
-| `web-context` | string |   | Sets the web context to use for the service’s endpoint. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="aaa195-cors"></span> [`cors`](../config/io_helidon_cors_CrossOriginConfig.md) | `MAP` | `i.h.c.CrossOriginConfig` |   | Sets the cross-origin config builder for use in establishing CORS support for the service endpoints |
+| <span id="a9f672-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Is this service enabled or not |
+| <span id="ae37e4-routing"></span> `routing` | `VALUE` | `String` |   | Sets the routing name to use for setting up the service's endpoint |
+| <span id="aa843e-web-context"></span> `web-context` | `VALUE` | `String` |   | Sets the web context to use for the service's endpoint |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

@@ -4,154 +4,33 @@ To control how the Helidon metrics subsystem behaves, add a `metrics` section to
 
 Certain default configuration values depend on the fact that you are using Helidon {flavor-uc} as described in the [second table below](#flavor-specific-defaults).
 
-Type: [io.helidon.metrics.api.MetricsConfig]({javadoc-base-url}/io.helidon.metrics.api/io/helidon/metrics/api/MetricsConfig.md)
-
-This is a standalone configuration type, prefix from configuration root: `metrics`
-
 ### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>app-name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Value for the application tag to be added to each meter ID.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>app-tag-name</code></p></td>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Name for the application tag to be added to each meter ID.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>built-in-meter-name-format</code></p></td>
-<td style="text-align: left;"><p>BuiltInMeterNameFormat (SNAKE, CAMEL)</p></td>
-<td style="text-align: left;"><p><code>BuiltInMeterNameFormat.CAMEL</code></p></td>
-<td style="text-align: left;"><p>Output format for built-in meter names.</p>
-<p>BuiltInMeterNameFormat.SNAKE selects "snake_case" which does not conform to the MicroProfile Metrics specification.</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>SNAKE</code>: Snake-case.</p></li>
-<li><p><code>CAMEL</code>: Camel-case (which is compatible with the MicroProfile Metrics spec).</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether metrics functionality is enabled.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><span class="line-through"><code>gc-time-type</code></span></p></td>
-<td style="text-align: left;"><p>GcTimeType (GAUGE, COUNTER)</p></td>
-<td style="text-align: left;"><p><code>GcTimeType.COUNTER</code></p></td>
-<td style="text-align: left;"><p><strong>Deprecated</strong> Whether the <code>gc.time</code> meter should be registered as a gauge (vs. a counter). The <code>gc.time</code> meter is inspired by the MicroProfile Metrics spec, in which the meter was originally checked to be a counter but starting in 5.1 was checked be a gauge. For the duration of Helidon 4.x users can choose which type of meter Helidon registers for <code>gc.time</code>.</p>
-<p>@deprecated Provided for backward compatibility only; no replacement</p>
-<p>Allowed values:</p>
-<ul>
-<li><p><code>GAUGE</code>: Implement the meter as a gauge. This is backward-incompatible with Helidon 4.0.x releases but complies with MicroProfile 5.1.</p></li>
-<li><p><code>COUNTER</code>: Implement the meter as a counter. This is backward-compatible with Helidon 4.0.x releases but does not comply with MicroProfile 5.1.</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>key-performance-indicators</code></p></td>
-<td style="text-align: left;"><p><a href="../../includes/metrics/../../config/io_helidon_metrics_api_KeyPerformanceIndicatorMetricsConfig.xml">KeyPerformanceIndicatorMetricsConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Key performance indicator metrics settings.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>permit-all</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to allow anybody to access the endpoint.</p>
-<p>See roles()</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>publishers</code></p></td>
-<td style="text-align: left;"><p>io.helidon.metrics.api.MetricsPublisher[] (service provider interface)</p>
-<p>Such as:</p>
-<ul>
-<li><p><a href="../../includes/metrics/../../config/io_helidon_metrics_providers_micrometer_OtlpPublisher.xml">otlp (OtlpPublisher)</a></p></li>
-<li><p><a href="../../includes/metrics/../../config/io_helidon_metrics_providers_micrometer_PrometheusPublisher.xml">prometheus (PrometheusPublisher)</a></p></li>
-</ul></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Metrics publishers which make the metrics data available to external systems. Helidon’s Micrometer-based metrics provider includes <code>micrometer-prometheus</code> (used by default) and <code>micrometer-otlp</code>. See the config reference entries for <code>io.helidon.metrics.providers.micrometer.PrometheusPublisher</code> and <code>io.helidon.metrics.providers.micrometer.OtlpPublisher</code>.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><span class="line-through"><code>rest-request-enabled</code></span></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p><strong>Deprecated</strong> Whether automatic REST request metrics should be measured (as indicated by the deprecated config key <code>rest-request-enabled</code>, the config key using a hyphen instead of a dot separator).</p>
-<p>@deprecated Use <code>rest-request.enabled</code> instead.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>rest-request.enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Whether automatic REST request metrics should be measured.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>roles</code></p></td>
-<td style="text-align: left;"><p>string[]</p></td>
-<td style="text-align: left;"><p><code>observe</code></p></td>
-<td style="text-align: left;"><p>Hints for role names the user is expected to be in.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>scoping</code></p></td>
-<td style="text-align: left;"><p><a href="../../includes/metrics/../../config/io_helidon_metrics_api_ScopingConfig.xml">ScopingConfig</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Settings related to scoping management.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>tags</code></p></td>
-<td style="text-align: left;"><p><a href="../../includes/metrics/../../config/io_helidon_metrics_api_Tag.xml">Tag[]</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Global tags.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>timers.json-units-default</code></p></td>
-<td style="text-align: left;"><p>TimeUnit (NANOSECONDS, MICROSECONDS, MILLISECONDS, SECONDS, MINUTES, HOURS, DAYS)</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Default units for timer output in JSON if not specified on a given timer.</p>
-<p>If the configuration key is absent, the Helidon JSON output uses java.util.concurrent.TimeUnit.SECONDS. If the configuration key is present, Helidon formats each timer using that timer’s specific units (if set) and the config value otherwise.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>virtual-threads.enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>false</code></p></td>
-<td style="text-align: left;"><p>Whether Helidon should expose meters related to virtual threads.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>virtual-threads.pinned.threshold</code></p></td>
-<td style="text-align: left;"><p>Duration</p></td>
-<td style="text-align: left;"><p><code>PT0.020S</code></p></td>
-<td style="text-align: left;"><p>Threshold for sampling pinned virtual threads to include in the pinned threads meter.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>warn-on-multiple-registries</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether to log warnings when multiple registries are created.</p>
-<p>By far most applications use a single meter registry, but certain app or library programming errors can cause Helidon to create more than one. By default, Helidon logs warning messages for each additional meter registry created. This setting allows users with apps that &lt;em&gt;need&lt;/em&gt; multiple meter registries to suppress those warnings.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="ab3e25-app-name"></span> `app-name` | `VALUE` | `String` |   | Value for the application tag to be added to each meter ID |
+| <span id="a0590e-app-tag-name"></span> `app-tag-name` | `VALUE` | `String` |   | Name for the application tag to be added to each meter ID |
+| <span id="a24eaf-built-in-meter-name-format"></span> [`built-in-meter-name-format`](../../config/io_helidon_metrics_api_BuiltInMeterNameFormat.md) | `VALUE` | `i.h.m.a.BuiltInMeterNameFormat` | `CAMEL` | Output format for built-in meter names |
+| <span id="aac68d-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Whether metrics functionality is enabled |
+| <span id="a90f80-key-performance-indicators"></span> [`key-performance-indicators`](../../config/io_helidon_metrics_api_KeyPerformanceIndicatorMetricsConfig.md) | `VALUE` | `i.h.m.a.KeyPerformanceIndicatorMetricsConfig` |   | Key performance indicator metrics settings |
+| <span id="acbf94-permit-all"></span> `permit-all` | `VALUE` | `Boolean` | `true` | Whether to allow anybody to access the endpoint |
+| <span id="ae7437-publishers"></span> [`publishers`](../../config/io_helidon_metrics_api_MetricsPublisher.md) | `LIST` | `i.h.m.a.MetricsPublisher` |   | Metrics publishers which make the metrics data available to external systems |
+| <span id="af1711-publishers-discover-services"></span> `publishers-discover-services` | `VALUE` | `Boolean` | `false` | Whether to enable automatic service discovery for `publishers` |
+| <span id="a1e75d-rest-request-enabled"></span> `rest-request.enabled` | `VALUE` | `Boolean` | `false` | Whether automatic REST request metrics should be measured |
+| <span id="a3d689-roles"></span> `roles` | `LIST` | `String` | `observe` | Hints for role names the user is expected to be in |
+| <span id="ae0eb0-scoping"></span> [`scoping`](../../config/io_helidon_metrics_api_ScopingConfig.md) | `VALUE` | `i.h.m.a.ScopingConfig` |   | Settings related to scoping management |
+| <span id="a995f3-tags"></span> `tags` | `LIST` | `i.h.m.a.MetricsConfigSupport` |   | Global tags |
+| <span id="a977e0-timers-json-units-default"></span> [`timers.json-units-default`](../../config/java_util_concurrent_TimeUnit.md) | `VALUE` | `TimeUnit` |   | Default units for timer output in JSON if not specified on a given timer |
+| <span id="a9178f-virtual-threads-enabled"></span> `virtual-threads.enabled` | `VALUE` | `Boolean` | `false` | Whether Helidon should expose meters related to virtual threads |
+| <span id="a628d9-virtual-threads-pinned-threshold"></span> `virtual-threads.pinned.threshold` | `VALUE` | `Duration` | `PT0.020S` | Threshold for sampling pinned virtual threads to include in the pinned threads meter |
+| <span id="adb8b4-warn-on-multiple-registries"></span> `warn-on-multiple-registries` | `VALUE` | `Boolean` | `true` | Whether to log warnings when multiple registries are created |
+
+#### Deprecated Options
+
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a12103-gc-time-type"></span> [`gc-time-type`](../../config/io_helidon_metrics_api_GcTimeType.md) | `VALUE` | `i.h.m.a.GcTimeType` | `COUNTER` | Whether the `gc.time` meter should be registered as a gauge (vs |
+| <span id="aa1220-rest-request-enabled"></span> `rest-request-enabled` | `VALUE` | `Boolean` |   | Whether automatic REST request metrics should be measured (as indicated by the deprecated config key `rest-request-enabled`, the config key using a hyphen instead of a dot separator) |
 
 | Key                | Default Value |
 |--------------------|---------------|
@@ -187,57 +66,14 @@ Optional configuration options
 
 You can choose which endpoints to include in Helidon’s automatic measurements using the `auto-http-metrics` config section.
 
-Type: [io.helidon.webserver.observe.metrics.AutoHttpMetricsConfig]({javadoc-base-url}/io.helidon.webserver.observe.metrics/io/helidon/webserver/observe/metrics/AutoHttpMetricsConfig.md)
-
 #### Configuration options
 
-<table style="width:100%;">
-<caption>Optional configuration options</caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 23%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">key</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">default value</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>enabled</code></p></td>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p><code>true</code></p></td>
-<td style="text-align: left;"><p>Whether automatic metrics collection as a whole is enabled.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>opt-in</code></p></td>
-<td style="text-align: left;"><p>string[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Elective attribute for which to opt in. Each string in the list is of the form <code>meter-name:attribute-name</code> where <code>meter-name</code> is the name of the meter and <code>attribute-name</code> is the name of an attribute (tag) which is optional on that meter.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>paths</code></p></td>
-<td style="text-align: left;"><p><a href="../../includes/metrics/../../config/io_helidon_webserver_observe_metrics_AutoHttpMetricsPathConfig.xml">AutoHttpMetricsPathConfig[]</a></p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Automatic metrics collection settings. Default excludes built-in Helidon paths (e.g., metrics, health). A request’s path and HTTP method are checked against each entry under <code>paths</code> in order.</p>
-<ul>
-<li><p>If a request matches no entry, then the request is measured.</p></li>
-<li><p>If a request matches multiple entries, then the first match wins.</p></li>
-</ul></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>sockets</code></p></td>
-<td style="text-align: left;"><p>string[]</p></td>
-<td style="text-align: left;"><p> </p></td>
-<td style="text-align: left;"><p>Socket names for sockets to be instrumented with automatic metrics. Defaults to all sockets.</p></td>
-</tr>
-</tbody>
-</table>
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a9ac57-enabled"></span> `enabled` | `VALUE` | `Boolean` | `true` | Whether automatic metrics collection as a whole is enabled |
+| <span id="a61ecb-opt-in"></span> `opt-in` | `LIST` | `String` |   | Elective attribute for which to opt in |
+| <span id="a6fb0d-paths"></span> [`paths`](../../config/io_helidon_webserver_observe_metrics_AutoHttpMetricsPathConfig.md) | `LIST` | `i.h.w.o.m.AutoHttpMetricsPathConfig` |   | Automatic metrics collection settings |
+| <span id="af4ffb-sockets"></span> `sockets` | `LIST` | `String` |   | Socket names for sockets to be instrumented with automatic metrics |
 
 The `paths` section contains zero or more entries, each entry having the following settings:
 

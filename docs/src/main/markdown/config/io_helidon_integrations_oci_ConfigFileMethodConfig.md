@@ -1,12 +1,20 @@
-# ConfigFileMethodConfig (integrations.oci) Configuration
+# io.helidon.integrations.oci.ConfigFileMethodConfig
 
-Type: [io.helidon.integrations.oci.ConfigFileMethodConfig](/apidocs/io.helidon.integrations.oci/io/helidon/integrations/oci/ConfigFileMethodConfig.html)
+## Description
+
+N/A
+
+.
+
+## Usages
+
+- [`helidon.oci.authentication.config-file`](../config/io_helidon_integrations_oci_OciConfig.md#a505ba-authentication-config-file)
 
 ## Configuration options
 
-| key       | type   | default value | description                              |
-|-----------|--------|---------------|------------------------------------------|
-| `path`    | string |               | The OCI configuration profile path.      |
-| `profile` | string | `DEFAULT`     | The OCI configuration/auth profile name. |
+| Key | Kind | Type | Default Value | Description |
+|----|----|----|----|----|
+| <span id="a8ce3a-path"></span> `path` | `VALUE` | `String` |   | The OCI configuration profile path |
+| <span id="a01e67-profile"></span> `profile` | `VALUE` | `String` | `DEFAULT` | The OCI configuration/auth profile name |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.

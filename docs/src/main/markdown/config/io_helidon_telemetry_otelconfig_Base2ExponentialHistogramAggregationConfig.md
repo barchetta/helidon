@@ -1,12 +1,16 @@
-# Base2ExponentialHistogramAggregationConfig (telemetry.otelconfig) Configuration
+# io.helidon.telemetry.otelconfig.Base2ExponentialHistogramAggregationConfig
 
-Type: [io.helidon.telemetry.otelconfig.Base2ExponentialHistogramAggregationConfig](/apidocs/io.helidon.telemetry.otelconfig/io/helidon/telemetry/otelconfig/Base2ExponentialHistogramAggregationConfig.html)
+## Description
+
+Settings for the base 2 exponential histogram aggregation.
+
+## Usages
 
 ## Configuration options
 
-| key           | type | default value | description                |
-|---------------|------|---------------|----------------------------|
-| `max-buckets` | int  |               | Maximum number of buckets. |
-| `max-scale`   | int  |               | Maximum scale.             |
+| Key | Kind | Type | Description |
+|----|----|----|----|
+| <span id="ad284d-max-buckets"></span> `max-buckets` | `VALUE` | `Integer` | Maximum number of buckets |
+| <span id="a8834e-max-scale"></span> `max-scale` | `VALUE` | `Integer` | Maximum scale |
 
-Optional configuration options
+See the [manifest](../config/manifest.md) for all available types.
