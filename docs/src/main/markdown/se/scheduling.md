@@ -128,7 +128,7 @@ Cron expressions should be configured as follows.
 
 *Cron expression format*
 
-<seconds> <minutes> <hours> <day-of-month> <month> <day-of-week> <year>
+`<seconds> <minutes> <hours> <day-of-month> <month> <day-of-week> <year>`
 
 | Order | Name | Supported values | Supported field format | Optional |
 |----|----|----|----|----|
