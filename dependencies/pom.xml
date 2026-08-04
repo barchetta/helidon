@@ -77,6 +77,7 @@
         <version.lib.jaxb-runtime>4.0.5</version.lib.jaxb-runtime>
         <!-- Jetbrains annotations: dependency convergence requirement, we never use this directly -->
         <version.lib.jetbrains.annotations>17.0.0</version.lib.jetbrains.annotations>
+        <version.lib.kotlin-stdlib>2.4.20-Beta2</version.lib.kotlin-stdlib>
         <version.lib.junit>5.12.2</version.lib.junit>
         <version.lib.log4j>2.25.5</version.lib.log4j>
         <version.lib.micrometer>1.15.2</version.lib.micrometer>
@@ -477,6 +478,14 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- Force upgrade of kotlin-stdlib. Used by grpc, zipkin exporter -->
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-bom</artifactId>
+            <version>${version.lib.kotlin-stdlib}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
             <dependency>
                 <groupId>io.grpc</groupId>
                 <artifactId>grpc-bom</artifactId>
