@@ -114,6 +114,13 @@
             <groupId>io.grpc</groupId>
             <artifactId>grpc-okhttp</artifactId>
             <scope>runtime</scope>
+            <exclusions>
+                <exclusion>
+                    <!-- Legacy. Replaced by kotlin-stdlib -->
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <artifactId>kotlin-stdlib-common</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- Following is needed so annotation processing works. -->
         <dependency>
